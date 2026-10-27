@@ -8,7 +8,7 @@
     "speedMbit": 500,
     "grundgebuehrMonat": 29.99,
     "effektivpreisMonat": 29.99,
-    "affiliateLink": "https://gfg-original.profiseller.de*",
+    "affiliateLink": "https://gfg-original.profiseller.de",
     "highlights": ["5G inklusive", "ProfiSeller Top-Angebot", "Allnet- & SMS-Flat"],
     "kategorie": "mobilfunk"
   },
@@ -21,7 +21,7 @@
     "speedMbit": 300,
     "grundgebuehrMonat": 39.95,
     "effektivpreisMonat": 41.61,
-    "affiliateLink": "https://0100217375.telekom-profis.de*",
+    "affiliateLink": "https://0100217375.telekom-profis.de",
     "highlights": ["Bestes 5G-Netz", "Telekom Profis Empfehlung", "Allnet- & SMS-Flat"],
     "kategorie": "mobilfunk"
   }
