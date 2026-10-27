@@ -1,0 +1,28 @@
+[
+  {
+    "id": "1und1-5g-l",
+    "anbieter": "1&1",
+    "tarifName": "All-Net-Flat 5G L",
+    "netz": "1&1",
+    "datenvolumenGB": 50,
+    "speedMbit": 500,
+    "grundgebuehrMonat": 29.99,
+    "effektivpreisMonat": 29.99,
+    "affiliateLink": "https://gfg-original.profiseller.de*",
+    "highlights": ["5G inklusive", "ProfiSeller Top-Angebot", "Allnet- & SMS-Flat"],
+    "kategorie": "mobilfunk"
+  },
+  {
+    "id": "telekom-magenta-m",
+    "anbieter": "Telekom",
+    "tarifName": "MagentaMobil M",
+    "netz": "Telekom",
+    "datenvolumenGB": 20,
+    "speedMbit": 300,
+    "grundgebuehrMonat": 39.95,
+    "effektivpreisMonat": 41.61,
+    "affiliateLink": "https://0100217375.telekom-profis.de*",
+    "highlights": ["Bestes 5G-Netz", "Telekom Profis Empfehlung", "Allnet- & SMS-Flat"],
+    "kategorie": "mobilfunk"
+  }
+]
