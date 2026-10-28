@@ -26,7 +26,7 @@
     <!-- Interaktive Filter-Box -->
     <div class="bg-white p-6 rounded-xl shadow-md border mb-8 grid grid-cols-1 md:grid-cols-3 gap-6">
       
-      <!-- Filter 1: Kategorie (Ergänzt um Daten-Flats) -->
+      <!-- Filter 1: Kategorie -->
       <div>
         <label class="block text-xs font-bold uppercase text-gray-500 mb-2">Kategorie</label>
         <select id="kategorieFilter" onchange="filterTarife()" class="w-full border border-gray-300 rounded-lg p-2.5 text-sm focus:ring-2 focus:ring-blue-500">
@@ -64,7 +64,7 @@
     <!-- Liste der Tarife -->
     <div id="tarifListe" class="space-y-4"></div>
 
-    <!-- Ratgeber-Box für Vertrauen -->
+    <!-- Ratgeber-Box -->
     <section class="mt-12 bg-white rounded-xl p-6 border shadow-sm">
       <h3 class="text-md font-bold mb-3 text-gray-900">Worauf sollte man beim Tarifvergleich achten?</h3>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs text-gray-600">
@@ -118,7 +118,16 @@
       const gefiltert = alleTarife.filter(t => {
         const passtKat = (kat === 'alle' || t.kategorie === kat);
         const passtNetz = (netz === 'alle' || t.netz === netz);
-        const passtGb = (t.datenvolumenGB >= minGb);
+        
+        // DSL/Festnetz hat unbegrenztes Datenvolumen (999 GB)
+        // Bei Datenflats prüfen wir flexibel
+        let passtGb = true;
+        if (kat === 'mobilfunk' || kat === 'alle') {
+          passtGb = (t.datenvolumenGB >= minGb);
+        } else if (kat === 'datenflat') {
+          passtGb = (t.datenvolumenGB >= minGb || minGb === 0);
+        }
+
         return passtKat && passtNetz && passtGb;
       });
 
