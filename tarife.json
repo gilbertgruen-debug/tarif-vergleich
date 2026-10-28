@@ -1,5 +1,18 @@
 [
   {
+    "id": "1und1-5g-m",
+    "anbieter": "1&1",
+    "tarifName": "All-Net-Flat 5G M",
+    "netz": "1&1",
+    "datenvolumenGB": 20,
+    "speedMbit": 300,
+    "grundgebuehrMonat": 19.99,
+    "effektivpreisMonat": 19.99,
+    "affiliateLink": "https://gfg-original.profiseller.de",
+    "highlights": ["5G Netz inklusive", "Allnet- & SMS-Flat", "ProfiSeller Deal"],
+    "kategorie": "mobilfunk"
+  },
+  {
     "id": "1und1-5g-l",
     "anbieter": "1&1",
     "tarifName": "All-Net-Flat 5G L",
@@ -9,7 +22,20 @@
     "grundgebuehrMonat": 29.99,
     "effektivpreisMonat": 29.99,
     "affiliateLink": "https://gfg-original.profiseller.de",
-    "highlights": ["5G inklusive", "ProfiSeller Top-Angebot", "Allnet- & SMS-Flat"],
+    "highlights": ["5G Highspeed", "Top Preis-Leistung", "Allnet- & SMS-Flat"],
+    "kategorie": "mobilfunk"
+  },
+  {
+    "id": "telekom-magenta-s",
+    "anbieter": "Telekom",
+    "tarifName": "MagentaMobil S",
+    "netz": "Telekom",
+    "datenvolumenGB": 10,
+    "speedMbit": 300,
+    "grundgebuehrMonat": 39.95,
+    "effektivpreisMonat": 39.95,
+    "affiliateLink": "https://0100217375.telekom-profis.de",
+    "highlights": ["Bestes D1-Netz", "5G inklusive", "Allnet- & SMS-Flat"],
     "kategorie": "mobilfunk"
   },
   {
@@ -19,10 +45,36 @@
     "netz": "Telekom",
     "datenvolumenGB": 20,
     "speedMbit": 300,
-    "grundgebuehrMonat": 39.95,
-    "effektivpreisMonat": 41.61,
+    "grundgebuehrMonat": 49.95,
+    "effektivpreisMonat": 49.95,
     "affiliateLink": "https://0100217375.telekom-profis.de",
-    "highlights": ["Bestes 5G-Netz", "Telekom Profis Empfehlung", "Allnet- & SMS-Flat"],
+    "highlights": ["Exzellente Abdeckung", "20 GB Highspeed-Volumen"],
     "kategorie": "mobilfunk"
-}
+  },
+  {
+    "id": "1und1-dsl-100",
+    "anbieter": "1&1",
+    "tarifName": "DSL 100 (Zuhause)",
+    "netz": "1&1",
+    "datenvolumenGB": 999,
+    "speedMbit": 100,
+    "grundgebuehrMonat": 39.99,
+    "effektivpreisMonat": 34.99,
+    "affiliateLink": "https://gfg-original.profiseller.de",
+    "highlights": ["Echte Internet-Flat", "Festnetz-Flatrate", "WLAN-Router inklusive"],
+    "kategorie": "festnetz"
+  },
+  {
+    "id": "telekom-zuhause-100",
+    "anbieter": "Telekom",
+    "tarifName": "MagentaZuhause L (DSL 100)",
+    "netz": "Telekom",
+    "datenvolumenGB": 999,
+    "speedMbit": 100,
+    "grundgebuehrMonat": 47.95,
+    "effektivpreisMonat": 42.95,
+    "affiliateLink": "https://0100217375.telekom-profis.de",
+    "highlights": ["Maximale Leitungs-Stabilität", "Festnetz-Flatrate"],
+    "kategorie": "festnetz"
+  }
 ]
