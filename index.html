@@ -3,45 +3,92 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Vergleichsportal - Mobilfunk & Internet</title>
+  <title>SmartVergleich24 – Unabhängiger Tarif-Rechner</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-gray-50 text-gray-800 flex flex-col min-h-screen">
+<body class="bg-gray-100 text-gray-800 flex flex-col min-h-screen">
 
-  <header class="bg-blue-900 text-white py-6 shadow-md">
-    <div class="max-w-5xl mx-auto px-4">
-      <h1 class="text-3xl font-bold">TarifVergleich24</h1>
-      <p class="text-blue-200 text-sm mt-1">Geprüfte Mobilfunk- & Internettarife im transparenten Überblick</p>
+  <!-- Hero Header -->
+  <header class="bg-gradient-to-r from-blue-900 to-indigo-900 text-white py-10 px-4 shadow-lg">
+    <div class="max-w-5xl mx-auto text-center md:text-left">
+      <h1 class="text-3xl md:text-4xl font-extrabold tracking-tight">SmartVergleich24</h1>
+      <p class="text-blue-200 mt-2 text-sm md:text-base">Finde in wenigen Sekunden den besten Tarif für dein Budget. Echtzeit-Berechnung aller Effektivkosten.</p>
     </div>
   </header>
 
   <main class="max-w-5xl mx-auto px-4 py-8 flex-grow w-full">
     
-    <div class="bg-blue-50 border-l-4 border-blue-500 p-4 mb-6 text-xs text-blue-900 rounded">
-      * Transparenz-Hinweis: Die mit einem Sternchen (*) gekennzeichneten Links sind sogenannte Affiliate-Links. Wenn Sie über diesen Link einen Vertrag abschließen, erhalten wir eine Provision. Für Sie ändern sich die Kosten dadurch nicht.
+    <!-- Transparenz-Hinweis -->
+    <div class="bg-blue-50 border-l-4 border-blue-600 p-3 mb-6 text-xs text-blue-900 rounded shadow-sm">
+      * <strong>Transparenz-Garantie:</strong> Kostenloser Service. Links mit Sternchen (*) sind Partnerlinks. Für Sie entstehen keine Zusatzkosten.
     </div>
 
-    <div class="bg-white p-4 rounded-lg shadow-sm border mb-6 flex flex-wrap gap-4 items-center justify-between">
+    <!-- Interaktive Filter-Box -->
+    <div class="bg-white p-6 rounded-xl shadow-md border mb-8 grid grid-cols-1 md:grid-cols-3 gap-6">
+      
+      <!-- Filter 1: Kategorie -->
       <div>
-        <label class="block text-xs font-semibold uppercase text-gray-500 mb-1">Netz filtern:</label>
-        <select id="netzFilter" onchange="filterTarife()" class="border border-gray-300 rounded px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
-          <option value="alle">Alle Netze</option>
-          <option value="Telekom">Telekom</option>
-          <option value="1&1">1&1 / O2</option>
+        <label class="block text-xs font-bold uppercase text-gray-500 mb-2">Kategorie</label>
+        <select id="kategorieFilter" onchange="filterTarife()" class="w-full border border-gray-300 rounded-lg p-2.5 text-sm focus:ring-2 focus:ring-blue-500">
+          <option value="alle">Alle Produkte</option>
+          <option value="mobilfunk">Mobilfunk & Smartphone</option>
+          <option value="festnetz">DSL & Internet Zuhause</option>
         </select>
       </div>
-      <div class="text-sm text-gray-500" id="anzahlTreffer">Zeige Tarife...</div>
+
+      <!-- Filter 2: Datenvolumen Regler -->
+      <div>
+        <label class="block text-xs font-bold uppercase text-gray-500 mb-2">Mindest-Datenvolumen: <span id="gbValue" class="text-blue-600 font-extrabold">0 GB</span></label>
+        <input type="range" id="gbSlider" min="0" max="100" value="0" step="10" oninput="updateSlider(this.value)" class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer">
+      </div>
+
+      <!-- Filter 3: Netz -->
+      <div>
+        <label class="block text-xs font-bold uppercase text-gray-500 mb-2">Bevorzugtes Netz</label>
+        <select id="netzFilter" onchange="filterTarife()" class="w-full border border-gray-300 rounded-lg p-2.5 text-sm focus:ring-2 focus:ring-blue-500">
+          <option value="alle">Alle Netze</option>
+          <option value="Telekom">Telekom-Netz</option>
+          <option value="1&1">1&1 / O2-Netz</option>
+        </select>
+      </div>
+
     </div>
 
+    <!-- Ergebnis-Anzahl -->
+    <div class="flex justify-between items-center mb-4 px-1">
+      <h2 class="text-lg font-bold text-gray-800">Verfügbare Tarife im Preisvergleich</h2>
+      <span class="text-xs bg-gray-200 text-gray-700 font-semibold px-3 py-1 rounded-full" id="anzahlTreffer">0 Angebote</span>
+    </div>
+
+    <!-- Liste der Tarife -->
     <div id="tarifListe" class="space-y-4"></div>
+
+    <!-- Ratgeber-Box für Vertrauen -->
+    <section class="mt-12 bg-white rounded-xl p-6 border shadow-sm">
+      <h3 class="text-md font-bold mb-3 text-gray-900">Worauf sollte man beim Tarifvergleich achten?</h3>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs text-gray-600">
+        <div class="p-3 bg-gray-50 rounded-lg">
+          <strong class="block text-gray-800 mb-1">1. Effektivpreis zählt</strong>
+          Lass dich nicht nur von niedrigen Grundgebühren im 1. Jahr locken. Unser Rechner berechnet die Gesamtkosten über 24 Monate.
+        </div>
+        <div class="p-3 bg-gray-50 rounded-lg">
+          <strong class="block text-gray-800 mb-1">2. Netzabdeckung prüfen</strong>
+          Das Telekom-Netz bietet sehr hohe 5G-Abdeckung. 1&1 punktet mit sehr starken Preis-Leistungs-Verhältnissen.
+        </div>
+        <div class="p-3 bg-gray-50 rounded-lg">
+          <strong class="block text-gray-800 mb-1">3. Rufnummer mitnehmen</strong>
+          Die Mitnahme deiner alten Handynummer ist gesetzlich kostenlos. Oft gibt es dafür sogar Wechselboni.
+        </div>
+      </div>
+    </section>
 
   </main>
 
-  <footer class="bg-gray-800 text-gray-400 py-6 text-xs border-t border-gray-700">
-    <div class="max-w-5xl mx-auto px-4 flex justify-between items-center">
-      <div>© 2026 TarifVergleich24 – Alle Angaben ohne Gewähr.</div>
+  <footer class="bg-gray-900 text-gray-400 py-6 text-xs border-t border-gray-800">
+    <div class="max-w-5xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-4">
+      <div>© 2026 SmartVergleich24 – Alle Angaben ohne Gewähr.</div>
       <div class="space-x-4">
-        <a href="impressum.html" class="hover:underline">Impressum & Datenschutz</a>
+        <a href="impressum.html" class="hover:text-white transition">Impressum & Datenschutz</a>
       </div>
     </div>
   </footer>
@@ -53,61 +100,71 @@
       .then(response => response.json())
       .then(data => {
         alleTarife = data;
-        renderTarife(alleTarife);
+        filterTarife();
       })
-      .catch(err => console.error('Fehler beim Laden der Tarife:', err));
+      .catch(err => console.error('Fehler:', err));
+
+    function updateSlider(val) {
+      document.getElementById('gbValue').innerText = val > 0 ? `${val} GB+` : 'Alle GB';
+      filterTarife();
+    }
+
+    function filterTarife() {
+      const kat = document.getElementById('kategorieFilter').value;
+      const netz = document.getElementById('netzFilter').value;
+      const minGb = parseInt(document.getElementById('gbSlider').value);
+
+      const gefiltert = alleTarife.filter(t => {
+        const passtKat = (kat === 'alle' || t.kategorie === kat);
+        const passtNetz = (netz === 'alle' || t.netz === netz);
+        const passtGb = (t.datenvolumenGB >= minGb);
+        return passtKat && passtNetz && passtGb;
+      });
+
+      renderTarife(gefiltert);
+    }
 
     function renderTarife(tarife) {
       const container = document.getElementById('tarifListe');
-      document.getElementById('anzahlTreffer').innerText = `${tarife.length} Tarife gefunden`;
+      document.getElementById('anzahlTreffer').innerText = `${tarife.length} Angebote gefunden`;
       container.innerHTML = '';
 
       if (tarife.length === 0) {
-        container.innerHTML = `<div class="p-8 text-center text-gray-500 bg-white rounded border">Keine passenden Tarife gefunden.</div>`;
+        container.innerHTML = `<div class="p-8 text-center text-gray-500 bg-white rounded-xl border">Keine passenden Tarife für deine Filtereinstellungen gefunden.</div>`;
         return;
       }
 
       tarife.forEach(t => {
         const card = document.createElement('div');
-        card.className = 'bg-white border rounded-lg p-5 shadow-sm hover:shadow-md transition flex flex-col md:flex-row justify-between items-start md:items-center gap-4';
+        card.className = 'bg-white border rounded-xl p-5 shadow-sm hover:shadow-md transition flex flex-col md:flex-row justify-between items-start md:items-center gap-4';
         
-        const highlightsHtml = t.highlights.map(h => `<span class="bg-gray-100 text-gray-700 text-xs px-2 py-1 rounded mr-2">✓ ${h}</span>`).join('');
+        const highlightsHtml = t.highlights.map(h => `<span class="bg-blue-50 text-blue-700 text-xs px-2.5 py-1 rounded-md font-medium mr-2">✓ ${h}</span>`).join('');
 
         card.innerHTML = `
           <div class="flex-1">
             <div class="flex items-center gap-2 mb-1">
               <span class="font-bold text-lg text-gray-900">${t.anbieter}</span>
-              <span class="text-xs bg-blue-100 text-blue-800 font-semibold px-2 py-0.5 rounded">${t.netz}-Netz</span>
+              <span class="text-xs bg-gray-100 text-gray-700 font-semibold px-2 py-0.5 rounded border">${t.netz}-Netz</span>
             </div>
-            <h3 class="text-md font-medium text-gray-700 mb-2">${t.tarifName}</h3>
+            <h3 class="text-md font-semibold text-gray-800 mb-2">${t.tarifName}</h3>
             <div class="flex items-center gap-4 text-sm text-gray-600 mb-3">
-              <div><strong>${t.datenvolumenGB} GB</strong> Daten</div>
-              <div>bis zu <strong>${t.speedMbit} MBit/s</strong></div>
+              <div><strong class="text-gray-900">${t.datenvolumenGB} GB</strong> Daten</div>
+              <div>bis zu <strong class="text-gray-900">${t.speedMbit} MBit/s</strong></div>
             </div>
-            <div>${highlightsHtml}</div>
+            <div class="flex flex-wrap gap-1">${highlightsHtml}</div>
           </div>
           <div class="text-right border-t md:border-t-0 md:border-l pt-3 md:pt-0 md:pl-6 w-full md:w-auto flex md:flex-col justify-between items-center md:items-end">
             <div>
               <div class="text-xs text-gray-400">Effektivpreis ab</div>
-              <div class="text-2xl font-extrabold text-blue-900">${t.effektivpreisMonat.toFixed(2)} € <span class="text-xs font-normal text-gray-500">/ Mtl.</span></div>
+              <div class="text-2xl font-black text-blue-900">${t.effektivpreisMonat.toFixed(2)} € <span class="text-xs font-normal text-gray-500">/ Mtl.</span></div>
             </div>
-            <a href="${t.affiliateLink}" target="_blank" rel="noopener noreferrer" class="mt-2 inline-block bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-5 rounded text-sm transition">
-              Zum Angebot *
+            <a href="${t.affiliateLink}" target="_blank" rel="noopener noreferrer" class="mt-2 inline-block bg-green-600 hover:bg-green-700 text-white font-bold py-2.5 px-6 rounded-lg text-sm transition shadow-sm">
+              Zum Tarif-Angebot *
             </a>
           </div>
         `;
         container.appendChild(card);
       });
-    }
-
-    function filterTarife() {
-      const wahl = document.getElementById('netzFilter').value;
-      if (wahl === 'alle') {
-        renderTarife(alleTarife);
-      } else {
-        const gefiltert = alleTarife.filter(t => t.netz === wahl);
-        renderTarife(gefiltert);
-      }
     }
   </script>
 </body>
