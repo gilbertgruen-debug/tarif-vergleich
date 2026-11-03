@@ -20,7 +20,7 @@
     <!-- Suchmaske -->
     <div class="bg-white p-6 md:p-8 rounded-xl shadow-md border">
       <h2 class="text-2xl font-bold text-gray-900 mb-2">⚡ Modell-Aufrüst-Berater</h2>
-      <p class="text-sm text-gray-600 mb-6">Gib einfach den Namen oder die Modellnummer deines Laptops/PCs ein (z. B. <em>Lenovo IdeaPad 3</em>, <em>Dell</em> oder <em>HP Pavilion 15</em>):</p>
+      <p class="text-sm text-gray-600 mb-6">Gib einfach den Namen oder die Modellnummer deines Laptops/PCs ein (z. B. <em>Lenovo IdeaPad 3</em>, <em>Dell XPS</em> oder <em>HP Pavilion 15</em>):</p>
 
       <div class="relative">
         <input 
@@ -35,7 +35,7 @@
       </div>
     </div>
 
-    <!-- Ergebnisanzeige -->
+    <!-- Ergebnisanzeige Schritt 1: Modell-Specs -->
     <div id="ergebnisBox" class="hidden bg-blue-50 border-2 border-blue-600 rounded-xl p-6 shadow-md space-y-5">
       <div class="flex justify-between items-start border-b border-blue-200 pb-3">
         <div>
@@ -56,9 +56,21 @@
         </div>
       </div>
 
-      <div class="bg-blue-100/70 p-4 rounded-lg text-xs text-blue-950 leading-relaxed space-y-1">
-        <span class="font-bold block text-sm mb-1">💡 Hinweis zum Aufrüsten:</span>
-        <p id="mHinweis">Hier steht der verständliche Hinweis für den Nutzer.</p>
+      <!-- Schritt 2: Nutzung / Spiele-Abfrage -->
+      <div class="bg-white p-5 rounded-xl border border-blue-200 shadow-sm space-y-3">
+        <label class="block text-xs font-bold uppercase text-slate-800">🎯 Schritt 2: Wofür nutzt du das Gerät oder welches Spiel möchtest du spielen?</label>
+        <select id="nutzungsSelect" onchange="berechneSpezifischeEmpfehlung()" class="w-full border-2 border-gray-200 rounded-lg p-3 text-sm focus:border-blue-500 focus:outline-none bg-gray-50 font-medium">
+          <option value="office">Office, Web, Teams & 4K Streaming (Standard)</option>
+          <option value="gaming_standard">Standard Gaming (eSports, Fortnite, GTA V, Minecraft, CS2)</option>
+          <option value="gaming_heavy">Anspruchsvolle Games / Simulationen (Cyberpunk, Starfield, Flight Sim, BeamNG, Anno 1800)</option>
+          <option value="workstation">Professionell (4K-Videosequenzen, 3D-CAD, Virtualisierung)</option>
+        </select>
+      </div>
+
+      <!-- Auswertung / Ehrliche Empfehlungsbox -->
+      <div id="empfehlungsHinweisBox" class="p-4 rounded-lg text-xs leading-relaxed space-y-1 transition-all">
+        <span class="font-bold block text-sm mb-1" id="empfehlungsTitel">💡 Hinweis zum Aufrüsten:</span>
+        <p id="mHinweis">Wähle oben deine Nutzung aus, um eine genaue Auswertung zu erhalten.</p>
       </div>
 
       <a id="amazonBtn" href="#" target="_blank" rel="noopener noreferrer" class="block w-full text-center bg-amber-500 hover:bg-amber-600 text-white font-bold py-3.5 px-6 rounded-lg transition shadow-md text-sm">
@@ -74,6 +86,7 @@
 
   <script>
     let alleModelle = [];
+    let aktuellesModell = null;
 
     // Datenbank laden
     fetch('modelle.json')
@@ -91,7 +104,6 @@
         return;
       }
 
-      // Durchsucht Hersteller, Titel, Kategorie und Kombinationen
       const treffer = alleModelle.filter(m => {
         const herstellerMatch = m.hersteller ? m.hersteller.toLowerCase().includes(eingabe) : false;
         const titelMatch = m.titel ? m.titel.toLowerCase().includes(eingabe) : false;
@@ -119,6 +131,7 @@
     }
 
     function zeigeErgebnis(m) {
+      aktuellesModell = m;
       document.getElementById('vorschlagsListe').classList.add('hidden');
       document.getElementById('modellInput').value = `${m.hersteller} ${m.titel}`;
 
@@ -127,15 +140,88 @@
       document.getElementById('mGerätekategorie').innerText = m.kategorie || "Notebook";
       document.getElementById('mMaxRam').innerText = `${m.maxRamGB} GB RAM`;
       document.getElementById('mSlots').innerText = m.slotsInfo;
-      
-      const hinweisText = `${m.hinweisStandard} ${m.hinweisUpgrade}`;
-      document.getElementById('mHinweis').innerText = hinweisText;
 
-      const amazonQuery = `${m.hersteller} ${m.titel} RAM ${m.ramTyp}`;
-      document.getElementById('amazonBtn').href = `https://www.amazon.de/s?k=${encodeURIComponent(amazonQuery)}`;
+      // Setze Dropdown zurück & berechne Empfehlung
+      document.getElementById('nutzungsSelect').value = "office";
+      berechneSpezifischeEmpfehlung();
 
       document.getElementById('ergebnisBox').classList.remove('hidden');
       document.getElementById('ergebnisBox').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function berechneSpezifischeEmpfehlung() {
+      if (!aktuellesModell) return;
+
+      const nutzung = document.getElementById('nutzungsSelect').value;
+      const hinweisBox = document.getElementById('empfehlungsHinweisBox');
+      const titel = document.getElementById('empfehlungsTitel');
+      const text = document.getElementById('mHinweis');
+      const btn = document.getElementById('amazonBtn');
+
+      // Apple Sonderfall
+      if (aktuellesModell.maxRamGB === 8 && aktuellesModell.slotsInfo.includes("0 Steckplätze")) {
+        hinweisBox.className = "p-4 rounded-lg text-xs leading-relaxed bg-amber-100 text-amber-900 border border-amber-300";
+        titel.innerText = "⚠️ Nicht aufrüstbar:";
+        text.innerText = aktuellesModell.hinweisStandard;
+        btn.innerText = "Alternative Apple-Modelle mit mehr RAM bei Amazon ansehen *";
+        btn.href = `https://www.amazon.de/s?k=${encodeURIComponent('MacBook 16GB RAM')}`;
+        return;
+      }
+
+      let zielRam = 16;
+      let erfordereUpgrade = false;
+
+      if (nutzung === 'office') {
+        zielRam = 8;
+        if (aktuellesModell.standardRamGB >= 8) {
+          hinweisBox.className = "p-4 rounded-lg text-xs leading-relaxed bg-emerald-100 text-emerald-950 border border-emerald-300";
+          titel.innerText = "✅ Keine Aufrüstung notwendig:";
+          text.innerText = `Für Office, Streaming und Surfen reichen deine verbauten ${aktuellesModell.standardRamGB} GB vollkommen aus. Du musst kein Geld für ein Upgrade ausgeben!`;
+          btn.innerText = "Optional: RAM-Kits auf Amazon ansehen *";
+        } else {
+          erfordereUpgrade = true;
+          text.innerText = "Für flüssiges Arbeiten mit mehreren offenen Tabs empfiehlt sich ein kleines Upgrade auf mindestens 8–12 GB.";
+        }
+      } 
+      else if (nutzung === 'gaming_standard') {
+        zielRam = 16;
+        if (aktuellesModell.standardRamGB >= 16) {
+          hinweisBox.className = "p-4 rounded-lg text-xs leading-relaxed bg-emerald-100 text-emerald-950 border border-emerald-300";
+          titel.innerText = "✅ Vorerst kein Upgrade nötig:";
+          text.innerText = `Für eSports-Titel, Fortnite oder GTA V reichen deine verbauten ${aktuellesModell.standardRamGB} GB RAM problemlos aus. Die Spiele laufen damit flüssig.`;
+          btn.innerText = "Optional: Speicher auf Amazon ansehen *";
+        } else {
+          erfordereUpgrade = true;
+          text.innerText = "Um Ruckler in Spielen wie Fortnite oder GTA V zu vermeiden, wird die Erweiterung auf 16 GB dringend empfohlen.";
+        }
+      } 
+      else if (nutzung === 'gaming_heavy') {
+        zielRam = 32;
+        if (aktuellesModell.standardRamGB >= 32) {
+          hinweisBox.className = "p-4 rounded-lg text-xs leading-relaxed bg-emerald-100 text-emerald-950 border border-emerald-300";
+          titel.innerText = "✅ Perfekt ausgestattet:";
+          text.innerText = `Mit deinen verbauten ${aktuellesModell.standardRamGB} GB RAM bist du selbst für extrem anspruchsvolle Titel wie Cyberpunk 2077 oder den Flight Simulator bestens gerüstet.`;
+          btn.innerText = "Optional: High-End RAM Kits ansehen *";
+        } else {
+          erfordereUpgrade = true;
+          text.innerText = `Anspruchsvolle Titel und große Simulationen verlangen heute oft mehr als 16 GB. Ein Upgrade auf ein 32 GB Kit (${aktuellesModell.ramTyp}) sorgt für stabile Bildraten und verhindert Nachladeruckler.`;
+        }
+      } 
+      else if (nutzung === 'workstation') {
+        zielRam = Math.min(64, aktuellesModell.maxRamGB);
+        erfordereUpgrade = true;
+        text.innerText = `Für professionellen 4K/8K-Videoschnitt, 3D-Rendering oder Virtualisierung schöpfst du mit einem Upgrade auf ${zielRam} GB das volle Potenzial deines ${aktuellesModell.titel} aus.`;
+      }
+
+      if (erfordereUpgrade) {
+        hinweisBox.className = "p-4 rounded-lg text-xs leading-relaxed bg-blue-100 text-blue-950 border border-blue-300";
+        titel.innerText = "⚡ Empfohlenes Upgrade:";
+        btn.innerText = `Passendes ${zielRam} GB RAM Kit für ${aktuellesModell.titel} bei Amazon ansehen *`;
+      }
+
+      // Amazon Link anpassen
+      const query = `${aktuellesModell.hersteller} ${aktuellesModell.titel} RAM ${aktuellesModell.ramTyp}`;
+      btn.href = `https://www.amazon.de/s?k=${encodeURIComponent(query)}`;
     }
   </script>
 
