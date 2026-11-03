@@ -11,99 +11,82 @@
   <header class="bg-slate-900 text-white py-6 px-4 shadow">
     <div class="max-w-4xl mx-auto flex justify-between items-center">
       <h1 class="text-xl font-bold"><a href="index.html">TechVergleich24</a></h1>
-      <a href="index.html" class="text-sm bg-slate-800 hover:bg-slate-700 px-3 py-1.5 rounded transition">← Zurück zum Produktvergleich</a>
+      <a href="index.html" class="text-sm bg-slate-800 hover:bg-slate-700 px-3 py-1.5 rounded transition">← Zurück zur Übersicht</a>
     </div>
   </header>
 
-  <main class="max-w-4xl mx-auto px-4 py-8 flex-grow w-full space-y-8">
+  <main class="max-w-3xl mx-auto px-4 py-8 flex-grow w-full space-y-8">
     
-    <!-- Einleitung & Widget -->
+    <!-- Interaktiver Berater -->
     <div class="bg-white p-6 md:p-8 rounded-xl shadow-md border">
-      <h2 class="text-2xl font-bold text-gray-900 mb-2">⚡ Interaktiver RAM-Speichersucher</h2>
-      <p class="text-sm text-gray-600 mb-4">Wähle den Hersteller und dein Gerät im Tool aus, um zu erfahren, welchen Speichertyp dein System unterstützt:</p>
-      
-      <!-- Einbettung der Speichersuche -->
-      <div class="w-full border rounded-xl overflow-hidden shadow-inner bg-gray-50 min-h-[500px]">
-        <iframe 
-          src="https://www.crucial.de/advisor" 
-          class="w-full h-[600px] border-0"
-          title="RAM Speicher-Berater"
-          loading="lazy">
-        </iframe>
-      </div>
+      <h2 class="text-2xl font-bold text-gray-900 mb-2">⚡ Interaktiver RAM-Aufrüst-Berater</h2>
+      <p class="text-sm text-gray-600 mb-6">Beantworte 3 kurze Fragen zu deinem System, um den exakt passenden Speichertyp und die optimale Riegel-Bestückung zu ermitteln:</p>
+
+      <form id="stepForm" class="space-y-6">
+        
+        <!-- Schritt 1 -->
+        <div>
+          <label class="block text-xs font-bold uppercase text-blue-900 mb-2">Schritt 1: Welches Gerät möchtest du aufrüsten?</label>
+          <select id="geraeteTyp" class="w-full border-2 border-gray-200 rounded-lg p-3 text-sm focus:border-blue-500 focus:outline-none">
+            <option value="laptop_ddr4">Laptop / Notebook (Älter bis Aktuell – DDR4 RAM)</option>
+            <option value="laptop_ddr5">Laptop / Notebook (Sehr neu – DDR5 RAM)</option>
+            <option value="pc_ddr4">Desktop-PC (Standard – DDR4 RAM)</option>
+            <option value="pc_ddr5">Desktop-PC (High-End – DDR5 RAM)</option>
+          </select>
+        </div>
+
+        <!-- Schritt 2 -->
+        <div>
+          <label class="block text-xs font-bold uppercase text-blue-900 mb-2">Schritt 2: Wie viel Arbeitsspeicher ist aktuell verbaut?</label>
+          <select id="aktuellerRam" class="w-full border-2 border-gray-200 rounded-lg p-3 text-sm focus:border-blue-500 focus:outline-none">
+            <option value="4">4 GB (System ist oft langsam)</option>
+            <option value="8">8 GB (Standard für Alltagsaufgaben)</option>
+            <option value="16">16 GB (Für flüssiges Arbeiten & Gaming)</option>
+          </select>
+        </div>
+
+        <!-- Schritt 3 -->
+        <div>
+          <label class="block text-xs font-bold uppercase text-blue-900 mb-2">Schritt 3: Wofür nutzt du das Gerät hauptsächlich?</label>
+          <select id="nutzung" class="w-full border-2 border-gray-200 rounded-lg p-3 text-sm focus:border-blue-500 focus:outline-none">
+            <option value="office">Office, Internet, YouTube & Tabellen</option>
+            <option value="multitasking">Home-Office, viele Browser-Tabs gleichzeitig & Bildbearbeitung</option>
+            <option value="gaming">Gaming, Videobearbeitung & 3D/CAD</option>
+          </select>
+        </div>
+
+        <button type="button" onclick="berechneErgebnis()" class="w-full bg-blue-900 hover:bg-blue-800 text-white font-bold py-3 px-6 rounded-lg shadow transition text-sm">
+          Passenden RAM & Bestückung ermitteln
+        </button>
+
+      </form>
     </div>
 
-    <!-- Schnell-Auswahl bekannter RAM-Typen (Direkt-Links zu Amazon) -->
-    <div class="bg-white p-6 md:p-8 rounded-xl shadow-md border space-y-4">
-      <h3 class="text-xl font-bold text-gray-900">Passenden RAM direkt auf Amazon wählen</h3>
-      <p class="text-sm text-gray-600">Klicke einfach auf den ermittelten Speichertyp, um direkt zu den passenden Angeboten auf Amazon zu gelangen:</p>
+    <!-- Ergebnis-Box auf der eigenen Seite -->
+    <div id="ergebnisBox" class="hidden bg-emerald-50 border-2 border-emerald-500 rounded-xl p-6 shadow-md space-y-4">
+      <div class="flex justify-between items-center border-b border-emerald-200 pb-3">
+        <h3 class="text-xl font-bold text-emerald-900">Deine Auswertung & Empfehlung:</h3>
+        <span id="ramTypBadge" class="bg-emerald-600 text-white text-xs font-bold px-3 py-1 rounded-full">DDR4 SODIMM</span>
+      </div>
 
-      <!-- Laptop / Notebook RAM (SO-DIMM) -->
-      <div>
-        <h4 class="text-xs font-bold uppercase tracking-wider text-blue-900 mb-2">💻 Laptop & Notebook RAM (SO-DIMM):</h4>
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
-          <button onclick="direktSuche('DDR4 3200 SODIMM 8GB')" class="bg-gray-50 hover:bg-amber-50 border-2 border-gray-200 hover:border-amber-500 rounded-lg p-3 text-left transition">
-            <div class="font-bold text-sm text-gray-900">8 GB DDR4</div>
-            <div class="text-xs text-gray-500">3200 MHz Laptop</div>
-          </button>
-          <button onclick="direktSuche('DDR4 3200 SODIMM 16GB')" class="bg-gray-50 hover:bg-amber-50 border-2 border-gray-200 hover:border-amber-500 rounded-lg p-3 text-left transition">
-            <div class="font-bold text-sm text-gray-900">16 GB DDR4</div>
-            <div class="text-xs text-gray-500">3200 MHz Laptop</div>
-          </button>
-          <button onclick="direktSuche('DDR4 3200 SODIMM 32GB Kit')" class="bg-gray-50 hover:bg-amber-50 border-2 border-gray-200 hover:border-amber-500 rounded-lg p-3 text-left transition">
-            <div class="font-bold text-sm text-gray-900">32 GB Kit DDR4</div>
-            <div class="text-xs text-gray-500">2x 16GB Laptop</div>
-          </button>
-          <button onclick="direktSuche('DDR5 4800 SODIMM 16GB')" class="bg-gray-50 hover:bg-amber-50 border-2 border-gray-200 hover:border-amber-500 rounded-lg p-3 text-left transition">
-            <div class="font-bold text-sm text-gray-900">16 GB DDR5</div>
-            <div class="text-xs text-gray-500">Neue Laptops</div>
-          </button>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+        <div class="bg-white p-4 rounded-lg border border-emerald-100">
+          <span class="text-xs text-gray-500 uppercase font-bold">Empfohlener Ziel-RAM</span>
+          <div class="text-2xl font-extrabold text-emerald-700" id="zielRamText">16 GB RAM</div>
+        </div>
+        <div class="bg-white p-4 rounded-lg border border-emerald-100">
+          <span class="text-xs text-gray-500 uppercase font-bold">Empfohlene Riegel-Bestückung</span>
+          <div class="text-md font-bold text-gray-900" id="bestueckungText">2x 8 GB Kit (Dual-Channel)</div>
         </div>
       </div>
 
-      <!-- Desktop PC RAM (DIMM) -->
-      <div class="pt-3">
-        <h4 class="text-xs font-bold uppercase tracking-wider text-blue-900 mb-2">🖥️ Desktop-PC RAM (Standard DIMM):</h4>
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
-          <button onclick="direktSuche('DDR4 RAM 16GB Kit 3200MHz')" class="bg-gray-50 hover:bg-amber-50 border-2 border-gray-200 hover:border-amber-500 rounded-lg p-3 text-left transition">
-            <div class="font-bold text-sm text-gray-900">16 GB DDR4 Kit</div>
-            <div class="text-xs text-gray-500">PC 3200 MHz</div>
-          </button>
-          <button onclick="direktSuche('DDR4 RAM 32GB Kit 3200MHz')" class="bg-gray-50 hover:bg-amber-50 border-2 border-gray-200 hover:border-amber-500 rounded-lg p-3 text-left transition">
-            <div class="font-bold text-sm text-gray-900">32 GB DDR4 Kit</div>
-            <div class="text-xs text-gray-500">PC 3200 MHz</div>
-          </button>
-          <button onclick="direktSuche('DDR5 RAM 32GB Kit 6000MHz')" class="bg-gray-50 hover:bg-amber-50 border-2 border-gray-200 hover:border-amber-500 rounded-lg p-3 text-left transition">
-            <div class="font-bold text-sm text-gray-900">32 GB DDR5 Kit</div>
-            <div class="text-xs text-gray-500">High-End PC</div>
-          </button>
-          <button onclick="direktSuche('DDR5 RAM 64GB Kit')" class="bg-gray-50 hover:bg-amber-50 border-2 border-gray-200 hover:border-amber-500 rounded-lg p-3 text-left transition">
-            <div class="font-bold text-sm text-gray-900">64 GB DDR5 Kit</div>
-            <div class="text-xs text-gray-500">Workstation</div>
-          </button>
-        </div>
+      <div class="text-xs text-emerald-950 bg-emerald-100/70 p-3 rounded leading-relaxed" id="tippText">
+        Tipp: Nutze am besten zwei baugleiche Riegel als Kit, um vom schnelleren Dual-Channel-Modus zu profitieren.
       </div>
 
-      <!-- Manuelle Suche als Ausweichoption -->
-      <div class="border-t pt-4 mt-4">
-        <label class="block text-xs font-bold text-gray-500 uppercase mb-2">Andere Spezifikation suchen:</label>
-        <div class="flex flex-col md:flex-row gap-3">
-          <input 
-            type="text" 
-            id="ramAmazonInput" 
-            placeholder="z. B. DDR3 SODIMM 8GB..." 
-            class="flex-1 border rounded-lg p-2.5 text-sm focus:ring-2 focus:ring-blue-500"
-          >
-          <button 
-            type="button" 
-            onclick="manuelleSuche()" 
-            class="bg-amber-500 hover:bg-amber-600 text-white font-bold py-2.5 px-6 rounded-lg transition text-sm shadow-sm"
-          >
-            Auf Amazon suchen *
-          </button>
-        </div>
-      </div>
-
+      <a id="amazonBtn" href="#" target="_blank" rel="noopener noreferrer" class="block w-full text-center bg-amber-500 hover:bg-amber-600 text-white font-bold py-3 px-6 rounded-lg transition shadow">
+        Empfohlenen RAM auf Amazon anzeigen *
+      </a>
     </div>
 
   </main>
@@ -113,18 +96,50 @@
   </footer>
 
   <script>
-    function direktSuche(query) {
-      const amazonUrl = `https://www.amazon.de/s?k=${encodeURIComponent(query + ' Arbeitsspeicher')}`;
-      window.open(amazonUrl, '_blank');
-    }
+    function berechneErgebnis() {
+      const typ = document.getElementById('geraeteTyp').value;
+      const nutzung = document.getElementById('nutzung').value;
 
-    function manuelleSuche() {
-      const eingabe = document.getElementById('ramAmazonInput').value.trim();
-      if (eingabe.length < 2) {
-        alert("Bitte gib eine Bezeichnung ein.");
-        return;
+      let zielRam = 16;
+      let kitText = "2x 8 GB Kit";
+      let sucheQuery = "";
+      let badgeText = "";
+
+      // 1. Ziel-RAM bestimmen
+      if (nutzung === 'office') {
+        zielRam = 16;
+        kitText = "1x 8 GB Erweiterung oder 2x 8 GB Kit";
+      } else if (nutzung === 'multitasking') {
+        zielRam = 16;
+        kitText = "2x 8 GB Kit (Dual-Channel)";
+      } else if (nutzung === 'gaming') {
+        zielRam = 32;
+        kitText = "2x 16 GB Kit (Dual-Channel)";
       }
-      direktSuche(eingabe);
+
+      // 2. Hardware-Typ bestimmen
+      if (typ === 'laptop_ddr4') {
+        badgeText = "Laptop (DDR4 SODIMM)";
+        sucheQuery = `DDR4 SODIMM RAM ${zielRam}GB Kit 3200MHz`;
+      } else if (typ === 'laptop_ddr5') {
+        badgeText = "Laptop (DDR5 SODIMM)";
+        sucheQuery = `DDR5 SODIMM RAM ${zielRam}GB Kit`;
+      } else if (typ === 'pc_ddr4') {
+        badgeText = "Desktop-PC (DDR4 DIMM)";
+        sucheQuery = `DDR4 RAM ${zielRam}GB Kit 3200MHz PC`;
+      } else if (typ === 'pc_ddr5') {
+        badgeText = "Desktop-PC (DDR5 DIMM)";
+        sucheQuery = `DDR5 RAM ${zielRam}GB Kit 6000MHz PC`;
+      }
+
+      // 3. Ergebnis anzeigen
+      document.getElementById('ramTypBadge').innerText = badgeText;
+      document.getElementById('zielRamText').innerText = `${zielRam} GB RAM`;
+      document.getElementById('bestueckungText').innerText = kitText;
+      document.getElementById('amazonBtn').href = `https://www.amazon.de/s?k=${encodeURIComponent(sucheQuery)}`;
+
+      document.getElementById('ergebnisBox').classList.remove('hidden');
+      document.getElementById('ergebnisBox').scrollIntoView({ behavior: 'smooth' });
     }
   </script>
 
