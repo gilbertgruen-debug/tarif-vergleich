@@ -20,7 +20,7 @@
     <!-- Suchmaske -->
     <div class="bg-white p-6 md:p-8 rounded-xl shadow-md border">
       <h2 class="text-2xl font-bold text-gray-900 mb-2">⚡ Modell-Aufrüst-Berater</h2>
-      <p class="text-sm text-gray-600 mb-6">Gib einfach den Namen oder die Modellnummer deines Laptops/PCs ein (z. B. <em>Lenovo IdeaPad 3</em> oder <em>HP Pavilion 15</em>):</p>
+      <p class="text-sm text-gray-600 mb-6">Gib einfach den Namen oder die Modellnummer deines Laptops/PCs ein (z. B. <em>Lenovo IdeaPad 3</em>, <em>Dell</em> oder <em>HP Pavilion 15</em>):</p>
 
       <div class="relative">
         <input 
@@ -91,10 +91,15 @@
         return;
       }
 
-      const treffer = alleModelle.filter(m => 
-        m.titel.toLowerCase().includes(eingabe) || 
-        m.hersteller.toLowerCase().includes(eingabe)
-      );
+      // Durchsucht Hersteller, Titel, Kategorie und Kombinationen
+      const treffer = alleModelle.filter(m => {
+        const herstellerMatch = m.hersteller ? m.hersteller.toLowerCase().includes(eingabe) : false;
+        const titelMatch = m.titel ? m.titel.toLowerCase().includes(eingabe) : false;
+        const kombiMatch = `${m.hersteller} ${m.titel}`.toLowerCase().includes(eingabe);
+        const katMatch = m.kategorie ? m.kategorie.toLowerCase().includes(eingabe) : false;
+
+        return herstellerMatch || titelMatch || kombiMatch || katMatch;
+      });
 
       if (treffer.length === 0) {
         liste.innerHTML = `<div class="p-3 text-xs text-gray-500">Kein passendes Modell gefunden. Prüfe die Schreibweise.</div>`;
@@ -122,9 +127,10 @@
       document.getElementById('mGerätekategorie').innerText = m.kategorie || "Notebook";
       document.getElementById('mMaxRam').innerText = `${m.maxRamGB} GB RAM`;
       document.getElementById('mSlots').innerText = m.slotsInfo;
-      document.getElementById('mHinweis').innerText = m.hinweis;
+      
+      const hinweisText = `${m.hinweisStandard} ${m.hinweisUpgrade}`;
+      document.getElementById('mHinweis').innerText = hinweisText;
 
-      // Dynamische Amazon-Suche basierend auf den exakten Spezifikationen
       const amazonQuery = `${m.hersteller} ${m.titel} RAM ${m.ramTyp}`;
       document.getElementById('amazonBtn').href = `https://www.amazon.de/s?k=${encodeURIComponent(amazonQuery)}`;
 
