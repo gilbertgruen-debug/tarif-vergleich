@@ -1,0 +1,42 @@
+[
+  {
+    "id": "notebook-lenovo-ideapad",
+    "hersteller": "Lenovo",
+    "titel": "IdeaPad Slim 3 (15,6 Zoll FHD, Ryzen 5, 16 GB RAM, 512 GB SSD)",
+    "kategorie": "notebooks",
+    "ramGB": 16,
+    "preis": 499.00,
+    "affiliateLink": "https://www.amazon.de",
+    "highlights": ["Ryzen 5 Prozessor", "16 GB RAM", "Schnelle 512 GB SSD"]
+  },
+  {
+    "id": "notebook-apple-macbook-air",
+    "hersteller": "Apple",
+    "titel": "MacBook Air M3 (13,6 Zoll, 16 GB RAM, 256 GB SSD)",
+    "kategorie": "notebooks",
+    "ramGB": 16,
+    "preis": 1199.00,
+    "affiliateLink": "https://www.amazon.de",
+    "highlights": ["M3 Chip", "Sehr lange Akkulaufzeit", "Lautlos ohne Lüfter"]
+  },
+  {
+    "id": "pc-memory-gaming",
+    "hersteller": "Memory PC",
+    "titel": "Gaming Desktop PC (AMD Ryzen 7 5700X, 32 GB RAM, RTX 4060)",
+    "kategorie": "pcs",
+    "ramGB": 32,
+    "preis": 899.00,
+    "affiliateLink": "https://www.amazon.de",
+    "highlights": ["RTX 4060 Grafikkarte", "32 GB DDR4 RAM", "Für Full-HD Gaming"]
+  },
+  {
+    "id": "smartphone-samsung-s24",
+    "hersteller": "Samsung",
+    "titel": "Galaxy S24 5G (128 GB, 8 GB RAM, Dynamic AMOLED)",
+    "kategorie": "smartphones",
+    "ramGB": 8,
+    "preis": 699.00,
+    "affiliateLink": "https://www.amazon.de",
+    "highlights": ["Top-Kamera", "120 Hz Display", "7 Jahre Updates"]
+  }
+]
