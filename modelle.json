@@ -4,39 +4,171 @@
     "hersteller": "Lenovo",
     "titel": "IdeaPad 3 (15 Zoll)",
     "kategorie": "Notebook",
+    "standardRamGB": 8,
     "maxRamGB": 20,
-    "slotsInfo": "1 aufrüstbarer Steckplatz",
+    "slotsInfo": "1 aufrüstbarer Steckplatz (4 GB fest verlötet)",
     "ramTyp": "DDR4 SODIMM 3200MHz",
-    "hinweis": "4 GB RAM sind bei diesem Modell fest auf der Platine verlötet. Du kannst den freien Steckplatz mit einem 8 GB oder 16 GB Riegel erweitern."
+    "hinweisStandard": "Reicht für Office, Surfen und HD-Streaming völlig aus.",
+    "hinweisUpgrade": "Für viel Multitasking oder Bildbearbeitung empfiehlt sich die Erweiterung auf 12 GB oder 20 GB."
   },
   {
     "id": "hp-pavilion-15",
     "hersteller": "HP",
     "titel": "Pavilion 15 (Serie eg / eh)",
     "kategorie": "Notebook",
+    "standardRamGB": 16,
     "maxRamGB": 32,
     "slotsInfo": "2 Steckplätze vorhanden",
     "ramTyp": "DDR4 SODIMM 3200MHz",
-    "hinweis": "Dieses Modell verfügt über zwei Steckplätze. Ein Set aus 2 gleichen Riegeln (z. B. 2x 8 GB oder 2x 16 GB) sorgt für die beste Arbeitsgeschwindigkeit."
+    "hinweisStandard": "Mit 16 GB bereits hervorragend aufgestellt für Alltagsaufgaben, Home-Office und leichtes Gaming.",
+    "hinweisUpgrade": "Ein Upgrade auf 32 GB lohnt sich vor allem bei schwerer Videobearbeitung oder sehr anspruchsvollen Spielen."
   },
   {
     "id": "dell-xps-15-9500",
     "hersteller": "Dell",
     "titel": "XPS 15 (9500 / 9510)",
     "kategorie": "Premium Notebook",
+    "standardRamGB": 32,
     "maxRamGB": 64,
     "slotsInfo": "2 Steckplätze vorhanden",
     "ramTyp": "DDR4 SODIMM 3200MHz",
-    "hinweis": "Sehr leicht aufzurüsten. Beide Steckplätze lassen sich einfach austauschen."
+    "hinweisStandard": "Mit 32 GB bist du für 99 % aller Anwendungen und Spiele perfekt gerüstet. Eine Aufrüstung ist im Normalfall nicht notwendig.",
+    "hinweisUpgrade": "64 GB sind nur für extremen professionellen Videoschnitt (4K/8K) oder virtuelle Maschinen sinnvoll."
   },
   {
     "id": "acer-aspire-5",
     "hersteller": "Acer",
     "titel": "Aspire 5 (A515 Serie)",
     "kategorie": "Notebook",
+    "standardRamGB": 8,
     "maxRamGB": 24,
     "slotsInfo": "1 aufrüstbarer Steckplatz",
     "ramTyp": "DDR4 SODIMM 3200MHz",
-    "hinweis": "Ideal zum Aufrüsten auf 16 GB oder 24 GB Gesamtspeicher geeignet."
-  }
-]
+    "hinweisStandard": "Solide Basis für Alltagsaufgaben.",
+    "hinweisUpgrade": "Empfohlen wird ein Upgrade auf mindestens 16 GB für flüssiges Arbeiten mit vielen offenen Tabs."
+  },
+  {
+    "id": "acer-nitro-5-an515-57",
+    "hersteller": "Acer",
+    "titel": "Nitro 5 (AN515-57 / AN515-58)",
+    "kategorie": "Gaming Notebook",
+    "standardRamGB": 16,
+    "maxRamGB": 32,
+    "slotsInfo": "2 Steckplätze vorhanden (beide austauschbar)",
+    "ramTyp": "DDR4 SODIMM 3200MHz",
+    "hinweisStandard": "Mit 16 GB laufen die meisten aktuellen Spiele flüssig. Wenn du bereits 16 GB oder 32 GB hast, ist ein Upgrade vorerst nicht zwingend nötig.",
+    "hinweisUpgrade": "Ein Upgrade auf 32 GB (2x 16 GB Kit) verhindert Mikroruckler bei extrem aufwendigen Games oder gleichzeitigem Streaming."
+  },
+  {
+    "id": "acer-nitro-16-an16",
+    "hersteller": "Acer",
+    "titel": "Nitro 16 (AN16-41 / AN16-51)",
+    "kategorie": "Gaming Notebook (DDR5)",
+    "standardRamGB": 16,
+    "maxRamGB": 32,
+    "slotsInfo": "2 DDR5 Steckplätze vorhanden",
+    "ramTyp": "DDR5 SODIMM 4800MHz / 5600MHz",
+    "hinweisStandard": "Ausgeliefert mit schnellem DDR5 RAM. 16 GB reichen für normales Gaming vollkommen aus.",
+    "hinweisUpgrade": "Bei 32 GB hast du maximale Zukunftssicherheit für kommende AAA-Spieletitel."
+  },
+  {
+    "id": "asus-tuf-gaming-f15-fx506",
+    "hersteller": "ASUS",
+    "titel": "TUF Gaming F15 (FX506 / FX507 - DDR4)",
+    "kategorie": "Gaming Notebook",
+    "standardRamGB": 8,
+    "maxRamGB": 32,
+    "slotsInfo": "2 Steckplätze vorhanden",
+    "ramTyp": "DDR4 SODIMM 3200MHz",
+    "hinweisStandard": "Viele Varianten wurden ab Werk nur mit 8 GB geliefert. Hier bremst der Arbeitsspeicher moderne Spiele spürbar aus.",
+    "hinweisUpgrade": "Dringend empfohlen: Aufrüstung auf 16 GB oder 32 GB Dual-Channel-Kit für maximale FPS und Ruckelfreiheit."
+  },
+  {
+    "id": "asus-tuf-gaming-a15-fa507",
+    "hersteller": "ASUS",
+    "titel": "TUF Gaming A15 (FA507 - DDR5)",
+    "kategorie": "Gaming Notebook (DDR5)",
+    "standardRamGB": 16,
+    "maxRamGB": 32,
+    "slotsInfo": "2 DDR5 Steckplätze vorhanden",
+    "ramTyp": "DDR5 SODIMM 4800MHz",
+    "hinweisStandard": "Sehr leistungsfähiges System. Hast du bereits 16 GB oder 32 GB verbaut, ist eine weitere Aufrüstung rein fürs Zocken nicht erforderlich.",
+    "hinweisUpgrade": "32 GB bringen Reserven für Content Creation, Videorendering und schwere Multitasking-Setups."
+  },
+  {
+    "id": "lenovo-legion-5-15",
+    "hersteller": "Lenovo",
+    "titel": "Legion 5 / Legion 5 Pro (15 & 16 Zoll)",
+    "kategorie": "Gaming Notebook",
+    "standardRamGB": 16,
+    "maxRamGB": 64,
+    "slotsInfo": "2 Steckplätze vorhanden (voll aufrüstbar)",
+    "ramTyp": "DDR4 / DDR5 SODIMM",
+    "hinweisStandard": "Mit 16 GB oder 32 GB ist dein System hervorragend ausgestattet. Wenn du bereits 32 GB RAM besitzt, ist ein Upgrade im Alltag und beim Gaming aktuell nicht notwendig.",
+    "hinweisUpgrade": "Ein Upgrade auf 32 GB oder 64 GB ist ideal für professionelles 4K-Videorendering, Simulationen und langlebige Gaming-Performances."
+  },
+  {
+    "id": "hp-victus-15-16",
+    "hersteller": "HP",
+    "titel": "Victus 15 / Victus 16",
+    "kategorie": "Gaming Notebook",
+    "standardRamGB": 8,
+    "maxRamGB": 32,
+    "slotsInfo": "2 Steckplätze vorhanden",
+    "ramTyp": "DDR4 / DDR5 SODIMM 3200MHz / 4800MHz",
+    "hinweisStandard": "Günstige Varianten werden oft nur mit 8 GB ausgeliefert. Bei 16 GB oder 32 GB hast du bereits genug Speicher für normale Spiele.",
+    "hinweisUpgrade": "Upgrade auf 16 GB oder 32 GB wird dringend empfohlen, um Nachladeruckler in modernen Spielen zu vermeiden."
+  },
+  {
+    "id": "msi-katana-gf66-15",
+    "hersteller": "MSI",
+    "titel": "Katana GF66 / B12V / 15",
+    "kategorie": "Gaming Notebook",
+    "standardRamGB": 16,
+    "maxRamGB": 64,
+    "slotsInfo": "2 Steckplätze vorhanden",
+    "ramTyp": "DDR4 / DDR5 SODIMM",
+    "hinweisStandard": "Sehr beliebtes Gaming-Modell. Wenn du bereits 16 GB oder 32 GB RAM hast, brauchst du für die meisten Spiele vorerst nicht weiter aufzurüsten.",
+    "hinweisUpgrade": "Aufrüstung auf 32 GB schöpft das volle Potenzial bei rechenintensiven Games und Multitasking aus."
+  },
+  {
+    "id": "apple-macbook-air-m1-m2-m3",
+    "hersteller": "Apple",
+    "titel": "MacBook Air / Pro (M1, M2, M3, M4 Chips)",
+    "kategorie": "Premium Notebook",
+    "standardRamGB": 8,
+    "maxRamGB": 8,
+    "slotsInfo": "0 Steckplätze (Arbeitsspeicher ist fest im M-Prozessor integriert)",
+    "ramTyp": "Fest verlöteter Unified Memory",
+    "hinweisStandard": "Achtung: Bei Apple MacBooks mit M-Chips ist der Arbeitsspeicher fest auf dem Prozessor verlötet. Ein nachträgliches Aufrüsten ist technisch unmöglich.",
+    "hinweisUpgrade": "Kaufe den Arbeitsspeicher bei Apple-Geräten direkt beim Erstkauf in der passenden Größe (mindestens 16 GB empfohlen)."
+  },
+  {
+    "id": "lenovo-thinkpad-t14-e14",
+    "hersteller": "Lenovo",
+    "titel": "ThinkPad T14 / E14 / E15 (Gen 1 - Gen 4)",
+    "kategorie": "Business Notebook",
+    "standardRamGB": 16,
+    "maxRamGB": 40,
+    "slotsInfo": "1 Steckplatz frei (je nach Modell 8/16 GB fest + 1 Slot)",
+    "ramTyp": "DDR4 / DDR5 SODIMM 3200MHz",
+    "hinweisStandard": "Der Klassiker im Home-Office. Mit 16 GB RAM läuft das System extrem stabil für Office, Teams und große Excel-Dateien.",
+    "hinweisUpgrade": "Für schwere Datenbanken, viele parallele Programme oder virtuelle Maschinen lohnt sich das Einsetzen eines zusätzlichen 16 GB oder 32 GB Riegels."
+  },
+  {
+    "id": "hp-probook-450-g8-g9",
+    "hersteller": "HP",
+    "titel": "ProBook 450 / EliteBook 840 (G7, G8, G9)",
+    "kategorie": "Business Notebook",
+    "standardRamGB": 16,
+    "maxRamGB": 64,
+    "slotsInfo": "2 Steckplätze vorhanden (voll aufrüstbar)",
+    "ramTyp": "DDR4 / DDR5 SODIMM 3200MHz / 4800MHz",
+    "hinweisStandard": "Sehr wartungsfreundliche Business-Geräte. Mit 16 GB oder 32 GB bist du für den Büroalltag bestens aufgestellt.",
+    "hinweisUpgrade": "Beide Steckplätze lassen sich einfach austauschen. Ein 32 GB Kit verleiht dem System maximale Langlebigkeit."
+  },
+  {
+    "id": "dell-latitude-5420-5520",
+    "hersteller": "Dell",
+    "titel": "Latitude 5420 / 5520 / 5530",
+    "kategorie
