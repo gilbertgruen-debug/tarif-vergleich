@@ -1,0 +1,42 @@
+[
+  {
+    "id": "lenovo-ideapad-3-15",
+    "hersteller": "Lenovo",
+    "titel": "IdeaPad 3 (15 Zoll, DDR4)",
+    "bauform": "SO-DIMM",
+    "ramTyp": "DDR4 3200MHz",
+    "maxRamGB": 20,
+    "slots": 1,
+    "hinweis": "4 GB RAM sind auf dem Mainboard fest verlötet. 1 Slot ist aufrüstbar (z. B. mit 8 GB oder 16 GB Riegel für max. 20 GB Gesamtspeicher)."
+  },
+  {
+    "id": "hp-pavilion-15",
+    "hersteller": "HP",
+    "titel": "Pavilion 15 (eg / eh Serie)",
+    "bauform": "SO-DIMM",
+    "ramTyp": "DDR4 3200MHz",
+    "maxRamGB": 32,
+    "slots": 2,
+    "hinweis": "Besitzt 2 frei zugängliche RAM-Steckplätze. Ein 2x 8 GB oder 2x 16 GB Kit liefert optimale Leistung im Dual-Channel-Modus."
+  },
+  {
+    "id": "dell-xps-15-9500",
+    "hersteller": "Dell",
+    "titel": "XPS 15 (9500 / 9510)",
+    "bauform": "SO-DIMM",
+    "ramTyp": "DDR4 3200MHz",
+    "maxRamGB": 64,
+    "slots": 2,
+    "hinweis": "Unterstützt bis zu 64 GB RAM über zwei SODIMM-Steckplätze."
+  },
+  {
+    "id": "acer-aspire-5-a515",
+    "hersteller": "Acer",
+    "titel": "Aspire 5 (A515 Serie)",
+    "bauform": "SO-DIMM",
+    "ramTyp": "DDR4 2666MHz / 3200MHz",
+    "maxRamGB": 24,
+    "slots": 1,
+    "hinweis": "Teilweise sind 4 GB fest verlötet + 1 freier Steckplatz für max. 16 GB Erweiterungsriegel."
+  }
+]
