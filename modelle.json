@@ -171,4 +171,36 @@
     "id": "dell-latitude-5420-5520",
     "hersteller": "Dell",
     "titel": "Latitude 5420 / 5520 / 5530",
-    "kategorie
+    "kategorie": "Business Notebook",
+    "standardRamGB": 16,
+    "maxRamGB": 64,
+    "slotsInfo": "2 Steckplätze vorhanden",
+    "ramTyp": "DDR4 / DDR5 SODIMM 3200MHz",
+    "hinweisStandard": "Typisches Firmen-Notebook. 16 GB reichen für alle regulären Büroarbeiten völlig aus.",
+    "hinweisUpgrade": "Ein Upgrade auf 32 GB empfiehlt sich bei intensiver Nutzung von Datenanalyse-Tools oder vielen geöffneten Browser-Sitzungen."
+  },
+  {
+    "id": "desktop-mainboard-b550-b650",
+    "hersteller": "AMD Mainboards",
+    "titel": "AMD Sockel AM4 / AM5 Mainboards (B550 / B650 / X670)",
+    "kategorie": "Desktop PC Mainboard",
+    "standardRamGB": 16,
+    "maxRamGB": 128,
+    "slotsInfo": "4 DIMM Steckplätze",
+    "ramTyp": "DDR4 3600MHz / DDR5 6000MHz DIMM",
+    "hinweisStandard": "Desktop-Mainboards lassen sich besonders leicht aufrüsten. Wenn du bereits 32 GB RAM im Dual-Channel nutzt, ist eine Erweiterung fürs Gaming nicht notwendig.",
+    "hinweisUpgrade": "Achte darauf, bei 4 Riegeln baugleiche Kits zu verwenden oder am besten ein 2x 16 GB bzw. 2x 32 GB Kit für maximale Stabilität zu nutzen."
+  },
+  {
+    "id": "desktop-mainboard-b760-z790",
+    "hersteller": "Intel Mainboards",
+    "titel": "Intel Sockel LGA1700 / LGA1851 Mainboards (B760 / Z790 / Z890)",
+    "kategorie": "Desktop PC Mainboard",
+    "standardRamGB": 16,
+    "maxRamGB": 192,
+    "slotsInfo": "4 DIMM Steckplätze",
+    "ramTyp": "DDR4 / DDR5 6000MHz+ DIMM",
+    "hinweisStandard": "High-End Desktop-Plattform. Für reines Gaming bieten 32 GB DDR5 RAM aktuell das perfekte Preis-Leistungs-Verhältnis.",
+    "hinweisUpgrade": "64 GB oder mehr lohnen sich vor allem für Videoschnitt, 3D-Rendering und professionelles Multitasking."
+  }
+]
