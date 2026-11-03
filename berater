@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RAM & Aufrüst-Berater – TechVergleich24</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 text-gray-800 min-h-screen flex flex-col">
+
+  <header class="bg-slate-900 text-white py-6 px-4 shadow">
+    <div class="max-w-4xl mx-auto flex justify-between items-center">
+      <h1 class="text-xl font-bold"><a href="index.html">TechVergleich24</a></h1>
+      <a href="index.html" class="text-sm bg-slate-800 hover:bg-slate-700 px-3 py-1.5 rounded transition">← Zurück zum Produktvergleich</a>
+    </div>
+  </header>
+
+  <main class="max-w-3xl mx-auto px-4 py-8 flex-grow w-full">
+    
+    <div class="bg-white p-6 md:p-8 rounded-xl shadow-md border mb-8">
+      <h2 class="text-2xl font-bold text-gray-900 mb-2">⚡ RAM-Aufrüst-Berater</h2>
+      <p class="text-sm text-gray-600 mb-6">Finde in 3 Fragen heraus, wie viel Arbeitsspeicher dein System braucht und welcher Riegel exakt passt.</p>
+
+      <form id="ramForm" class="space-y-6">
+        
+        <div>
+          <label class="block text-xs font-bold uppercase text-gray-700 mb-2">1. Welches Gerät möchtest du aufrüsten?</label>
+          <select id="geraeteTyp" class="w-full border rounded-lg p-3 text-sm focus:ring-2 focus:ring-blue-500">
+            <option value="laptop">Laptop / Notebook (benötigt kleine SO-DIMM Riegel)</option>
+            <option value="desktop_ddr4">Desktop-PC (Älter / DDR4 RAM)</option>
+            <option value="desktop_ddr5">Desktop-PC (Neu / DDR5 RAM)</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="block text-xs font-bold uppercase text-gray-700 mb-2">2. Wie viel RAM ist aktuell verbaut?</label>
+          <select id="aktuelleRam" class="w-full border rounded-lg p-3 text-sm focus:ring-2 focus:ring-blue-500">
+            <option value="4">4 GB (System ist extrem langsam)</option>
+            <option value="8">8 GB (Standard für Basis-Aufgaben)</option>
+            <option value="16">16 GB (Gut für alltägliche Nutzung)</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="block text-xs font-bold uppercase text-gray-700 mb-2">3. Wofür nutzt du das Gerät hauptsächlich?</label>
+          <select id="nutzung" class="w-full border rounded-lg p-3 text-sm focus:ring-2 focus:ring-blue-500">
+            <option value="office">Office, Internet, Youtube & Streaming</option>
+            <option value="multitasking">Viele Tabs gleichzeitig, Home-Office, Bildbearbeitung</option>
+            <option value="gaming">Gaming, Videobearbeitung & CAD-Programme</option>
+          </select>
+        </div>
+
+        <button type="button" onclick="berechneEmpfehlung()" class="w-full bg-blue-900 hover:bg-blue-800 text-white font-bold py-3 px-6 rounded-lg shadow transition text-sm">
+          Empfehlung & Riegel-Anzahl berechnen
+        </button>
+
+      </form>
+    </div>
+
+    <!-- Ergebnis-Box -->
+    <div id="ergebnisBox" class="hidden bg-emerald-50 border-2 border-emerald-500 rounded-xl p-6 shadow-md space-y-4">
+      <h3 class="text-xl font-bold text-emerald-900">Deine optimale Aufrüst-Empfehlung:</h3>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+        <div class="bg-white p-4 rounded-lg border">
+          <span class="text-xs text-gray-500 uppercase font-bold">Empfohlener Ziel-RAM</span>
+          <div class="text-2xl font-extrabold text-emerald-700" id="zielRamText">16 GB</div>
+        </div>
+        <div class="bg-white p-4 rounded-lg border">
+          <span class="text-xs text-gray-500 uppercase font-bold">Empfohlene Bestückung</span>
+          <div class="text-lg font-bold text-gray-900" id="bestueckungText">2x 8 GB Kit (Dual-Channel)</div>
+        </div>
+      </div>
+
+      <div class="text-xs text-emerald-950 bg-emerald-100 p-3 rounded leading-relaxed" id="hinweisText">
+        Hinweis: Verwende am besten immer paarweise identische Riegel (Kits), um die Leistung durch den Dual-Channel-Modus zu verdoppeln.
+      </div>
+
+      <div class="pt-2">
+        <a id="amazonSearchBtn" href="#" target="_blank" rel="noopener noreferrer" class="block w-full text-center bg-amber-500 hover:bg-amber-600 text-white font-bold py-3 px-6 rounded-lg transition shadow">
+          Passenden RAM auf Amazon anzeigen *
+        </a>
+      </div>
+    </div>
+
+  </main>
+
+  <footer class="bg-gray-900 text-gray-400 py-6 text-xs text-center border-t border-gray-800">
+    <div class="max-w-4xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-4">
+      <div>© 2026 TechVergleich24 – Alle Angaben ohne Gewähr.</div>
+      <a href="impressum.html" class="hover:text-white">Impressum & Datenschutz</a>
+    </div>
+  </footer>
+
+  <script>
+    function berechneEmpfehlung() {
+      const typ = document.getElementById('geraeteTyp').value;
+      const nutzung = document.getElementById('nutzung').value;
+
+      let zielRam = 16;
+      let kitInfo = "2x 8 GB Kit";
+      let sucheQuery = "";
+
+      if (nutzung === 'office') {
+        zielRam = 16;
+        kitInfo = "1x 8 GB aufrüsten oder 2x 8 GB Kit";
+      } else if (nutzung === 'multitasking') {
+        zielRam = 16;
+        kitInfo = "2x 8 GB Kit (Dual-Channel)";
+      } else if (nutzung === 'gaming') {
+        zielRam = 32;
+        kitInfo = "2x 16 GB Kit (Dual-Channel)";
+      }
+
+      if (typ === 'laptop') {
+        sucheQuery = `SO-DIMM RAM ${zielRam}GB Kit DDR4`;
+      } else if (typ === 'desktop_ddr4') {
+        sucheQuery = `DDR4 RAM ${zielRam}GB Kit 3200MHz`;
+      } else if (typ === 'desktop_ddr5') {
+        sucheQuery = `DDR5 RAM ${zielRam}GB Kit 6000MHz`;
+      }
+
+      document.getElementById('zielRamText').innerText = `${zielRam} GB RAM`;
+      document.getElementById('bestueckungText').innerText = kitInfo;
+      document.getElementById('amazonSearchBtn').href = `https://www.amazon.de/s?k=${encodeURIComponent(sucheQuery)}`;
+      
+      document.getElementById('ergebnisBox').classList.remove('hidden');
+    }
+  </script>
+</body>
+</html>
