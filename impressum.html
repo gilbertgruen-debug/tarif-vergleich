@@ -3,14 +3,61 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Impressum - TarifVergleich24</title>
+  <title>Impressum & Datenschutz – TechVergleich24</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-gray-50 text-gray-800 p-6 max-w-4xl mx-auto">
-  <a href="index.html" class="text-blue-600 hover:underline mb-6 inline-block">← Zurück zur Vergleichsseite</a>
-  <h1 class="text-2xl font-bold mb-4">Impressum & Datenschutz</h1>
-  <p class="mb-4">Angaben gemäß § 5 DDG:</p>
-  <p class="mb-4">[Dein Vorname] [Dein Nachname]<br>c/o [Impressum-Service oder Ladungsfähige Adresse]<br>[Straße & Hausnummer]<br>[PLZ & Ort]</p>
-  <p class="text-sm text-gray-600 mt-6">* Transparenz-Hinweis: Diese Seite enthält Affiliate-Links zu 1&1 und Telekom.</p>
+<body class="bg-gray-100 text-gray-800 min-h-screen flex flex-col">
+
+  <header class="bg-blue-900 text-white py-6 px-4 shadow">
+    <div class="max-w-4xl mx-auto flex justify-between items-center">
+      <h1 class="text-xl font-bold"><a href="index.html">TechVergleich24</a></h1>
+      <a href="index.html" class="text-sm bg-blue-800 hover:bg-blue-700 px-3 py-1.5 rounded transition">← Zurück zur Übersicht</a>
+    </div>
+  </header>
+
+  <main class="max-w-4xl mx-auto px-4 py-8 flex-grow w-full bg-white my-6 rounded-xl shadow-sm border p-6 md:p-10 space-y-8">
+    
+    <!-- Impressum -->
+    <section>
+      <h2 class="text-2xl font-bold mb-4 text-gray-900 border-b pb-2">Impressum</h2>
+      <p class="text-sm text-gray-600 mb-4">Angaben gemäß § 5 DDG / § 18 MStV:</p>
+      <div class="text-sm space-y-1 text-gray-800 leading-relaxed">
+        <p><strong>Gilbert Grün</strong></p>
+        <p>c/o Autorenglück #96058</p>
+        <p>Albert-Einstein-Straße 47</p>
+        <p>02977 Hoyerswerda</p>
+        <p>Deutschland</p>
+      </div>
+      <div class="mt-4 text-sm space-y-1 text-gray-800">
+        <p><strong>Kontakt:</strong></p>
+        <p>E-Mail: [Trage hier deine E-Mail-Adresse ein]</p>
+      </div>
+    </section>
+
+    <!-- Affiliate Hinweis -->
+    <section>
+      <h2 class="text-xl font-bold mb-3 text-gray-900 border-b pb-2">Affiliate-Hinweis (Amazon Partnernet)</h2>
+      <p class="text-sm text-gray-600 leading-relaxed">
+        Als Amazon-Partner verdiene ich an qualifizierten Verkäufen. Die auf dieser Website bereitgestellten Links mit einem Sternchen (*) sind sogenannte Affiliate-Links (Partnerlinks). Wenn Sie auf einen solchen Link klicken und über diesen einkaufen, erhalten wir vom Anbieter eine Provision. Für Sie verändert sich der Preis dadurch nicht.
+      </p>
+    </section>
+
+    <!-- Datenschutz -->
+    <section>
+      <h2 class="text-xl font-bold mb-3 text-gray-900 border-b pb-2">Datenschutzerklärung</h2>
+      <p class="text-sm text-gray-600 leading-relaxed mb-3">
+        Diese Website wird als statische Seite über GitHub Pages bereitgestellt. Beim Aufruf der Website werden durch den Hosting-Anbieter (GitHub Inc.) automatisch Informationen in sogenannten Server-Log-Files erhoben, die Ihr Browser automatisch übermittelt (z. B. IP-Adresse, Browsertyp, Betriebssystem).
+      </p>
+      <p class="text-sm text-gray-600 leading-relaxed">
+        Auf dieser Website werden keine eigenen Cookies oder Tracking-Tools eingesetzt.
+      </p>
+    </section>
+
+  </main>
+
+  <footer class="bg-gray-900 text-gray-400 py-6 text-xs text-center border-t border-gray-800">
+    © 2026 TechVergleich24 – Alle Rechte vorbehalten.
+  </footer>
+
 </body>
 </html>
