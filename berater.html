@@ -17,75 +17,52 @@
 
   <main class="max-w-3xl mx-auto px-4 py-8 flex-grow w-full space-y-8">
     
-    <!-- Interaktiver Berater -->
+    <!-- Suchmaske -->
     <div class="bg-white p-6 md:p-8 rounded-xl shadow-md border">
-      <h2 class="text-2xl font-bold text-gray-900 mb-2">⚡ Interaktiver RAM-Aufrüst-Berater</h2>
-      <p class="text-sm text-gray-600 mb-6">Beantworte 3 kurze Fragen zu deinem System, um den exakt passenden Speichertyp und die optimale Riegel-Bestückung zu ermitteln:</p>
+      <h2 class="text-2xl font-bold text-gray-900 mb-2">⚡ Modell-Aufrüst-Berater</h2>
+      <p class="text-sm text-gray-600 mb-6">Gib einfach den Namen oder die Modellnummer deines Laptops/PCs ein (z. B. <em>Lenovo IdeaPad 3</em> oder <em>HP Pavilion 15</em>):</p>
 
-      <form id="stepForm" class="space-y-6">
-        
-        <!-- Schritt 1 -->
-        <div>
-          <label class="block text-xs font-bold uppercase text-blue-900 mb-2">Schritt 1: Welches Gerät möchtest du aufrüsten?</label>
-          <select id="geraeteTyp" class="w-full border-2 border-gray-200 rounded-lg p-3 text-sm focus:border-blue-500 focus:outline-none">
-            <option value="laptop_ddr4">Laptop / Notebook (Älter bis Aktuell – DDR4 RAM)</option>
-            <option value="laptop_ddr5">Laptop / Notebook (Sehr neu – DDR5 RAM)</option>
-            <option value="pc_ddr4">Desktop-PC (Standard – DDR4 RAM)</option>
-            <option value="pc_ddr5">Desktop-PC (High-End – DDR5 RAM)</option>
-          </select>
-        </div>
-
-        <!-- Schritt 2 -->
-        <div>
-          <label class="block text-xs font-bold uppercase text-blue-900 mb-2">Schritt 2: Wie viel Arbeitsspeicher ist aktuell verbaut?</label>
-          <select id="aktuellerRam" class="w-full border-2 border-gray-200 rounded-lg p-3 text-sm focus:border-blue-500 focus:outline-none">
-            <option value="4">4 GB (System ist oft langsam)</option>
-            <option value="8">8 GB (Standard für Alltagsaufgaben)</option>
-            <option value="16">16 GB (Für flüssiges Arbeiten & Gaming)</option>
-          </select>
-        </div>
-
-        <!-- Schritt 3 -->
-        <div>
-          <label class="block text-xs font-bold uppercase text-blue-900 mb-2">Schritt 3: Wofür nutzt du das Gerät hauptsächlich?</label>
-          <select id="nutzung" class="w-full border-2 border-gray-200 rounded-lg p-3 text-sm focus:border-blue-500 focus:outline-none">
-            <option value="office">Office, Internet, YouTube & Tabellen</option>
-            <option value="multitasking">Home-Office, viele Browser-Tabs gleichzeitig & Bildbearbeitung</option>
-            <option value="gaming">Gaming, Videobearbeitung & 3D/CAD</option>
-          </select>
-        </div>
-
-        <button type="button" onclick="berechneErgebnis()" class="w-full bg-blue-900 hover:bg-blue-800 text-white font-bold py-3 px-6 rounded-lg shadow transition text-sm">
-          Passenden RAM & Bestückung ermitteln
-        </button>
-
-      </form>
+      <div class="relative">
+        <input 
+          type="text" 
+          id="modellInput" 
+          onkeyup="sucheModell()" 
+          placeholder="Modellname eingeben..." 
+          class="w-full border-2 border-blue-500 rounded-lg p-3.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-600 shadow-sm"
+        >
+        <!-- Vorschlagsliste -->
+        <div id="vorschlagsListe" class="hidden absolute top-full left-0 right-0 bg-white border border-gray-200 rounded-b-lg shadow-xl z-20 max-h-60 overflow-y-auto mt-1 divide-y"></div>
+      </div>
     </div>
 
-    <!-- Ergebnis-Box auf der eigenen Seite -->
-    <div id="ergebnisBox" class="hidden bg-emerald-50 border-2 border-emerald-500 rounded-xl p-6 shadow-md space-y-4">
-      <div class="flex justify-between items-center border-b border-emerald-200 pb-3">
-        <h3 class="text-xl font-bold text-emerald-900">Deine Auswertung & Empfehlung:</h3>
-        <span id="ramTypBadge" class="bg-emerald-600 text-white text-xs font-bold px-3 py-1 rounded-full">DDR4 SODIMM</span>
+    <!-- Ergebnisanzeige -->
+    <div id="ergebnisBox" class="hidden bg-blue-50 border-2 border-blue-600 rounded-xl p-6 shadow-md space-y-5">
+      <div class="flex justify-between items-start border-b border-blue-200 pb-3">
+        <div>
+          <span class="text-xs font-bold uppercase text-blue-800" id="mHersteller">HERSTELLER</span>
+          <h3 class="text-2xl font-black text-gray-900" id="mTitel">Modellname</h3>
+        </div>
+        <span class="bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-full" id="mGerätekategorie">Notebook</span>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
-        <div class="bg-white p-4 rounded-lg border border-emerald-100">
-          <span class="text-xs text-gray-500 uppercase font-bold">Empfohlener Ziel-RAM</span>
-          <div class="text-2xl font-extrabold text-emerald-700" id="zielRamText">16 GB RAM</div>
+        <div class="bg-white p-4 rounded-lg border border-blue-100">
+          <span class="text-xs text-gray-500 uppercase font-bold">Maximal aufrüstbar auf</span>
+          <div class="text-2xl font-extrabold text-blue-900" id="mMaxRam">32 GB RAM</div>
         </div>
-        <div class="bg-white p-4 rounded-lg border border-emerald-100">
-          <span class="text-xs text-gray-500 uppercase font-bold">Empfohlene Riegel-Bestückung</span>
-          <div class="text-md font-bold text-gray-900" id="bestueckungText">2x 8 GB Kit (Dual-Channel)</div>
+        <div class="bg-white p-4 rounded-lg border border-blue-100">
+          <span class="text-xs text-gray-500 uppercase font-bold">Freie Steckplätze</span>
+          <div class="text-lg font-bold text-gray-900" id="mSlots">2 Slots vorhanden</div>
         </div>
       </div>
 
-      <div class="text-xs text-emerald-950 bg-emerald-100/70 p-3 rounded leading-relaxed" id="tippText">
-        Tipp: Nutze am besten zwei baugleiche Riegel als Kit, um vom schnelleren Dual-Channel-Modus zu profitieren.
+      <div class="bg-blue-100/70 p-4 rounded-lg text-xs text-blue-950 leading-relaxed space-y-1">
+        <span class="font-bold block text-sm mb-1">💡 Hinweis zum Aufrüsten:</span>
+        <p id="mHinweis">Hier steht der verständliche Hinweis für den Nutzer.</p>
       </div>
 
-      <a id="amazonBtn" href="#" target="_blank" rel="noopener noreferrer" class="block w-full text-center bg-amber-500 hover:bg-amber-600 text-white font-bold py-3 px-6 rounded-lg transition shadow">
-        Empfohlenen RAM auf Amazon anzeigen *
+      <a id="amazonBtn" href="#" target="_blank" rel="noopener noreferrer" class="block w-full text-center bg-amber-500 hover:bg-amber-600 text-white font-bold py-3.5 px-6 rounded-lg transition shadow-md text-sm">
+        Passenden RAM für dieses Modell bei Amazon ansehen *
       </a>
     </div>
 
@@ -96,47 +73,60 @@
   </footer>
 
   <script>
-    function berechneErgebnis() {
-      const typ = document.getElementById('geraeteTyp').value;
-      const nutzung = document.getElementById('nutzung').value;
+    let alleModelle = [];
 
-      let zielRam = 16;
-      let kitText = "2x 8 GB Kit";
-      let sucheQuery = "";
-      let badgeText = "";
+    // Datenbank laden
+    fetch('modelle.json')
+      .then(res => res.json())
+      .then(data => { alleModelle = data; })
+      .catch(err => console.error('Fehler beim Laden der Datenbank:', err));
 
-      // 1. Ziel-RAM bestimmen
-      if (nutzung === 'office') {
-        zielRam = 16;
-        kitText = "1x 8 GB Erweiterung oder 2x 8 GB Kit";
-      } else if (nutzung === 'multitasking') {
-        zielRam = 16;
-        kitText = "2x 8 GB Kit (Dual-Channel)";
-      } else if (nutzung === 'gaming') {
-        zielRam = 32;
-        kitText = "2x 16 GB Kit (Dual-Channel)";
+    function sucheModell() {
+      const eingabe = document.getElementById('modellInput').value.toLowerCase().trim();
+      const liste = document.getElementById('vorschlagsListe');
+      liste.innerHTML = '';
+
+      if (eingabe.length < 2) {
+        liste.classList.add('hidden');
+        return;
       }
 
-      // 2. Hardware-Typ bestimmen
-      if (typ === 'laptop_ddr4') {
-        badgeText = "Laptop (DDR4 SODIMM)";
-        sucheQuery = `DDR4 SODIMM RAM ${zielRam}GB Kit 3200MHz`;
-      } else if (typ === 'laptop_ddr5') {
-        badgeText = "Laptop (DDR5 SODIMM)";
-        sucheQuery = `DDR5 SODIMM RAM ${zielRam}GB Kit`;
-      } else if (typ === 'pc_ddr4') {
-        badgeText = "Desktop-PC (DDR4 DIMM)";
-        sucheQuery = `DDR4 RAM ${zielRam}GB Kit 3200MHz PC`;
-      } else if (typ === 'pc_ddr5') {
-        badgeText = "Desktop-PC (DDR5 DIMM)";
-        sucheQuery = `DDR5 RAM ${zielRam}GB Kit 6000MHz PC`;
+      const treffer = alleModelle.filter(m => 
+        m.titel.toLowerCase().includes(eingabe) || 
+        m.hersteller.toLowerCase().includes(eingabe)
+      );
+
+      if (treffer.length === 0) {
+        liste.innerHTML = `<div class="p-3 text-xs text-gray-500">Kein passendes Modell gefunden. Prüfe die Schreibweise.</div>`;
+        liste.classList.remove('hidden');
+        return;
       }
 
-      // 3. Ergebnis anzeigen
-      document.getElementById('ramTypBadge').innerText = badgeText;
-      document.getElementById('zielRamText').innerText = `${zielRam} GB RAM`;
-      document.getElementById('bestueckungText').innerText = kitText;
-      document.getElementById('amazonBtn').href = `https://www.amazon.de/s?k=${encodeURIComponent(sucheQuery)}`;
+      treffer.forEach(m => {
+        const eintrag = document.createElement('div');
+        eintrag.className = 'p-3 hover:bg-blue-50 cursor-pointer text-sm font-medium text-gray-800 flex justify-between items-center';
+        eintrag.innerHTML = `<span><strong>${m.hersteller}</strong> ${m.titel}</span> <span class="text-xs text-gray-400">Max. ${m.maxRamGB} GB</span>`;
+        eintrag.onclick = () => zeigeErgebnis(m);
+        liste.appendChild(eintrag);
+      });
+
+      liste.classList.remove('hidden');
+    }
+
+    function zeigeErgebnis(m) {
+      document.getElementById('vorschlagsListe').classList.add('hidden');
+      document.getElementById('modellInput').value = `${m.hersteller} ${m.titel}`;
+
+      document.getElementById('mHersteller').innerText = m.hersteller;
+      document.getElementById('mTitel').innerText = m.titel;
+      document.getElementById('mGerätekategorie').innerText = m.kategorie || "Notebook";
+      document.getElementById('mMaxRam').innerText = `${m.maxRamGB} GB RAM`;
+      document.getElementById('mSlots').innerText = m.slotsInfo;
+      document.getElementById('mHinweis').innerText = m.hinweis;
+
+      // Dynamische Amazon-Suche basierend auf den exakten Spezifikationen
+      const amazonQuery = `${m.hersteller} ${m.titel} RAM ${m.ramTyp}`;
+      document.getElementById('amazonBtn').href = `https://www.amazon.de/s?k=${encodeURIComponent(amazonQuery)}`;
 
       document.getElementById('ergebnisBox').classList.remove('hidden');
       document.getElementById('ergebnisBox').scrollIntoView({ behavior: 'smooth' });
