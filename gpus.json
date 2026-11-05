@@ -1,22 +1,112 @@
 [
   {
-    "id": "rtx-3060-desktop",
+    "id": "gtx-1650-desktop",
     "hersteller": "NVIDIA",
-    "titel": "GeForce RTX 3060 (12 GB)",
+    "titel": "GeForce GTX 1650 / GTX 1660 (6 GB)",
     "kategorie": "Desktop GPU",
-    "auflösungStandard": "1080p Full-HD",
-    "empfohlenesNetzteil": "550 Watt",
-    "hinweisStandard": "Perfekt für flüssiges Gaming in Full-HD (1080p).",
-    "hinweisUpgrade": "Für WQHD (1440p) oder Raytracing in neuen Spielen empfiehlt sich ein Upgrade auf RTX 4070 / RX 7800 XT."
+    "suchbegriffe": "gtx1650 gtx1660 1650super 1660super 1660ti 1650",
+    "auflösungStandard": "1080p (Niedrige/Mittlere Details)",
+    "empfohlenesNetzteil": "350 - 450 Watt",
+    "hinweisStandard": "Günstige Einsteigerkarte für ältere Spiele oder eSports (CS:GO, League of Legends).",
+    "hinweisUpgrade": "Für moderne Spiele in Full HD empfiehlt sich mindestens ein Upgrade auf eine RTX 4060 oder RX 7600."
   },
   {
-    "id": "notebook-rtx-4060-laptop",
-    "hersteller": "ASUS / MSI / Lenovo",
-    "titel": "Laptop mit RTX 4060 Laptop GPU",
+    "id": "rtx-3060-desktop",
+    "hersteller": "NVIDIA",
+    "titel": "GeForce RTX 3060 / RTX 3060 Ti (8 / 12 GB)",
+    "kategorie": "Desktop GPU",
+    "suchbegriffe": "rtx3060 rtx3060ti 3060ti rtx-3060 3060",
+    "auflösungStandard": "1080p Full-HD",
+    "empfohlenesNetzteil": "550 - 600 Watt",
+    "hinweisStandard": "Sehr beliebter Allrounder für flüssiges Gaming in Full-HD (1080p).",
+    "hinweisUpgrade": "Für den Umstieg auf WQHD (1440p) oder Raytracing lohnt sich der Wechsel auf eine RTX 4070 Super oder RX 7800 XT."
+  },
+  {
+    "id": "rtx-4060-desktop",
+    "hersteller": "NVIDIA",
+    "titel": "GeForce RTX 4060 / RTX 4060 Ti (8 / 16 GB)",
+    "kategorie": "Desktop GPU",
+    "suchbegriffe": "rtx4060 rtx4060ti 4060ti 4060 rtx-4060 dlss3",
+    "auflösungStandard": "1080p Full-HD",
+    "empfohlenesNetzteil": "500 - 550 Watt",
+    "hinweisStandard": "Moderne Full-HD Grafikkarte mit sehr effizientem Stromverbrauch und DLSS 3 Support.",
+    "hinweisUpgrade": "Für WQHD-Gaming mit hohen Details wird ein Upgrade auf eine RTX 4070 Super empfohlen."
+  },
+  {
+    "id": "rtx-4070-desktop",
+    "hersteller": "NVIDIA",
+    "titel": "GeForce RTX 4070 / RTX 4070 Super / Ti Super (12 / 16 GB)",
+    "kategorie": "Desktop GPU",
+    "suchbegriffe": "rtx4070 rtx4070super 4070ti 4070tisuper 4070",
+    "auflösungStandard": "1440p WQHD",
+    "empfohlenesNetzteil": "650 - 750 Watt",
+    "hinweisStandard": "Der aktuelle Süßpunkt für WQHD-Gaming (1440p) mit maximalen Details und Raytracing.",
+    "hinweisUpgrade": "Ein Upgrade ist nur für zukunftssicheres 4K Ultra HD Gaming (RTX 4080 Super / RTX 5080) erforderlich."
+  },
+  {
+    "id": "rtx-4080-4090-desktop",
+    "hersteller": "NVIDIA",
+    "titel": "GeForce RTX 4080 Super / RTX 4090 / RTX 5080 (16 / 24 GB)",
+    "kategorie": "Desktop GPU",
+    "suchbegriffe": "rtx4080 rtx4090 rtx4080super rtx5080 4080 4090 5080",
+    "auflösungStandard": "4K Ultra HD & Raytracing",
+    "empfohlenesNetzteil": "850 - 1000 Watt",
+    "hinweisStandard": "High-End Grafikkarten der Spitzenklasse. Bieten maximale Leistung für 4K-Gaming und professionelle 3D-Anwendungen.",
+    "hinweisUpgrade": "Aktuell ist kein Upgrade notwendig – dein System gehört zur absoluten Leistungsspitze."
+  },
+  {
+    "id": "rx-6600-6700-desktop",
+    "hersteller": "AMD",
+    "titel": "Radeon RX 6600 / RX 6700 XT (8 / 12 GB)",
+    "kategorie": "Desktop GPU",
+    "suchbegriffe": "rx6600 rx6700 rx6700xt 6600xt 6700xt amd6600",
+    "auflösungStandard": "1080p Full-HD",
+    "empfohlenesNetzteil": "500 - 650 Watt",
+    "hinweisStandard": "Starker Preis-Leistungs-Tipp für flüssiges Zocken in Full-HD.",
+    "hinweisUpgrade": "Ein Upgrade auf eine RX 7800 XT oder RTX 4070 bringt deutlich mehr Reserven für 1440p."
+  },
+  {
+    "id": "rx-7700-7800-desktop",
+    "hersteller": "AMD",
+    "titel": "Radeon RX 7700 XT / RX 7800 XT (12 / 16 GB)",
+    "kategorie": "Desktop GPU",
+    "suchbegriffe": "rx7700xt rx7800xt 7800xt 7700xt amd7800",
+    "auflösungStandard": "1440p WQHD",
+    "empfohlenesNetzteil": "700 - 750 Watt",
+    "hinweisStandard": "Hervorragende WQHD-Grafikkarte mit großzügigen 16 GB Grafikspeicher für lange Haltbarkeit.",
+    "hinweisUpgrade": "Ein Wechsel lohnt sich nur, wenn du auf 4K Ultra HD umsteigen möchtest (RX 7900 XTX)."
+  },
+  {
+    "id": "rx-7900-desktop",
+    "hersteller": "AMD",
+    "titel": "Radeon RX 7900 XT / RX 7900 XTX (20 / 24 GB)",
+    "kategorie": "Desktop GPU",
+    "suchbegriffe": "rx7900xt rx7900xtx 7900xt 7900xtx amd7900",
+    "auflösungStandard": "4K Ultra HD",
+    "empfohlenesNetzteil": "800 - 850 Watt",
+    "hinweisStandard": "AMDs Flaggschiff-Karten mit enorm viel VRAM für flüssiges 4K-Gaming.",
+    "hinweisUpgrade": "Kein Upgrade erforderlich – du bist für alle aktuellen Titel bestens gerüstet."
+  },
+  {
+    "id": "notebook-rtx-4050-4060-laptop",
+    "hersteller": "NVIDIA (Laptop)",
+    "titel": "Laptop mit RTX 4050 / RTX 4060 Laptop GPU",
     "kategorie": "Gaming Notebook",
-    "auflösungStandard": "1080p / 1440p",
+    "suchbegriffe": "rtx4050laptop rtx4060laptop rtx4060mobile 4060laptop",
+    "auflösungStandard": "1080p Full-HD",
     "empfohlenesNetzteil": "Integriertes Laptop-Netzteil",
-    "hinweisStandard": "Achtung: Grafikkarten in Notebooks sind fest verlötet und lassen sich nicht aufrüsten.",
-    "hinweisUpgrade": "Falls die Leistung für 4K nicht mehr reicht, bleibt nur die Nutzung einer externen eGPU via Thunderbolt oder ein Gerätewechsel."
+    "hinweisStandard": "Solide Grafikleistung für Gaming-Laptops in Full-HD.",
+    "hinweisUpgrade": "Achtung: Laptop-Grafikkarten sind fest auf dem Mainboard verlötet und können intern nicht aufgerüstet werden."
+  },
+  {
+    "id": "notebook-rtx-4070-4080-laptop",
+    "hersteller": "NVIDIA (Laptop)",
+    "titel": "Laptop mit RTX 4070 / RTX 4080 / RTX 4090 Laptop GPU",
+    "kategorie": "Gaming Notebook",
+    "suchbegriffe": "rtx4070laptop rtx4080laptop rtx4090laptop 4080mobile",
+    "auflösungStandard": "1440p WQHD / 4K",
+    "empfohlenesNetzteil": "Integriertes Laptop-Netzteil",
+    "hinweisStandard": "Sehr schnelle Oberklasse-Grafikkarten für Gaming-Notebooks.",
+    "hinweisUpgrade": "Fest im Laptop verlötet (nicht aufrüstbar). Bietet aber genug Leistung für anspruchsvolle Spiele."
   }
 ]
