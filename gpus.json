@@ -1,0 +1,22 @@
+[
+  {
+    "id": "rtx-3060-desktop",
+    "hersteller": "NVIDIA",
+    "titel": "GeForce RTX 3060 (12 GB)",
+    "kategorie": "Desktop GPU",
+    "auflösungStandard": "1080p Full-HD",
+    "empfohlenesNetzteil": "550 Watt",
+    "hinweisStandard": "Perfekt für flüssiges Gaming in Full-HD (1080p).",
+    "hinweisUpgrade": "Für WQHD (1440p) oder Raytracing in neuen Spielen empfiehlt sich ein Upgrade auf RTX 4070 / RX 7800 XT."
+  },
+  {
+    "id": "notebook-rtx-4060-laptop",
+    "hersteller": "ASUS / MSI / Lenovo",
+    "titel": "Laptop mit RTX 4060 Laptop GPU",
+    "kategorie": "Gaming Notebook",
+    "auflösungStandard": "1080p / 1440p",
+    "empfohlenesNetzteil": "Integriertes Laptop-Netzteil",
+    "hinweisStandard": "Achtung: Grafikkarten in Notebooks sind fest verlötet und lassen sich nicht aufrüsten.",
+    "hinweisUpgrade": "Falls die Leistung für 4K nicht mehr reicht, bleibt nur die Nutzung einer externen eGPU via Thunderbolt oder ein Gerätewechsel."
+  }
+]
