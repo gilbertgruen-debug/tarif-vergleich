@@ -17,11 +17,10 @@
 
   <main class="max-w-3xl mx-auto px-4 py-8 flex-grow w-full space-y-8">
     
-    <!-- Hauptcontainer für Modellauswahl -->
     <div class="bg-white p-6 md:p-8 rounded-xl shadow-md border space-y-8">
       <div>
-        <h2 class="text-2xl font-bold text-gray-900 mb-1">⚡ Modell-Aufrüst-Berater</h2>
-        <p class="text-sm text-gray-600">Finde in wenigen Schritten den perfekten Arbeitsspeicher für dein Gerät.</p>
+        <h2 class="text-2xl font-bold text-gray-900 mb-1">⚡ Modell-Aufrüst-Berater (RAM)</h2>
+        <p class="text-sm text-gray-600">Finde in 4 einfachen Schritten den perfekten Arbeitsspeicher für dein Gerät.</p>
       </div>
 
       <!-- OPTION A: Direkt-Suche -->
@@ -32,36 +31,34 @@
             type="text" 
             id="modellInput" 
             onkeyup="sucheModell()" 
-            placeholder="Modellname oder Nummer eingeben (z. B. Nitro 5, XPS, ThinkPad)..." 
+            placeholder="Modellname oder Nummer eingeben (z. B. Strix G18, Nitro 5, AM5)..." 
             class="w-full border-2 border-blue-500 rounded-lg p-3.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-600 shadow-sm"
           >
           <div id="vorschlagsListe" class="hidden absolute top-full left-0 right-0 bg-white border border-gray-200 rounded-b-lg shadow-xl z-20 max-h-60 overflow-y-auto mt-1 divide-y"></div>
         </div>
       </div>
 
-      <!-- TRENNLINIE ODER -->
       <div class="relative flex py-1 items-center">
         <div class="flex-grow border-t border-gray-200"></div>
         <span class="flex-shrink mx-4 text-xs font-bold text-gray-400 uppercase">Oder</span>
         <div class="flex-grow border-t border-gray-200"></div>
       </div>
 
-      <!-- OPTION B: Gleichwertiger interaktiver Katalog-Assistent -->
+      <!-- OPTION B: 4-Schritt Katalog-Assistent -->
       <div class="bg-blue-50/60 border-2 border-blue-200 rounded-xl p-5 md:p-6 space-y-4">
         <div class="flex items-center gap-3">
           <div class="w-10 h-10 bg-blue-600 text-white rounded-lg flex items-center justify-center font-bold text-lg shadow-sm">
             ❓
           </div>
           <div>
-            <h3 class="text-base font-bold text-gray-900">Option B: Modell aus Katalog auswählen</h3>
-            <p class="text-xs text-gray-600">Nutze diesen Schritt-für-Schritt Filter, wenn du deine genaue Modellnummer nicht weißt.</p>
+            <h3 class="text-base font-bold text-gray-900">Option B: Schritt-für-Schritt Katalog-Filter</h3>
+            <p class="text-xs text-gray-600">Wähle Gerätetyp, Marke, Modell und deine verbaute Ausstattung.</p>
           </div>
         </div>
 
-        <!-- Step-by-Step Wizard Container -->
         <div id="wizardBox" class="mt-4 pt-4 border-t border-blue-200 space-y-4">
           
-          <!-- Schritt 1: Kategorie (Notebook vs. PC) -->
+          <!-- Schritt 1: Gerätetyp -->
           <div id="wSchritt1" class="space-y-2">
             <span class="text-xs font-bold text-slate-700 uppercase">Schritt 1: Wähle deinen Gerätetyp</span>
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -85,13 +82,22 @@
             <div id="markenListe" class="grid grid-cols-2 sm:grid-cols-3 gap-2"></div>
           </div>
 
-          <!-- Schritt 3: Modellübersicht -->
+          <!-- Schritt 3: Modellreihe -->
           <div id="wSchritt3" class="hidden space-y-2">
             <div class="flex justify-between items-center">
-              <span class="text-xs font-bold text-slate-700 uppercase">Schritt 3: Wähle dein Modell</span>
+              <span class="text-xs font-bold text-slate-700 uppercase">Schritt 3: Wähle die Modellreihe</span>
               <button onclick="zurueckZuSchritt2()" class="text-xs text-blue-600 font-semibold hover:underline">← Marke ändern</button>
             </div>
-            <div id="modelleKatalogListe" class="divide-y border border-blue-200 rounded-lg bg-white max-h-60 overflow-y-auto shadow-inner"></div>
+            <div id="modelleKatalogListe" class="divide-y border border-blue-200 rounded-lg bg-white max-h-56 overflow-y-auto shadow-inner"></div>
+          </div>
+
+          <!-- Schritt 4: Verbaute Ausstattung / Variante -->
+          <div id="wSchritt4" class="hidden space-y-2">
+            <div class="flex justify-between items-center">
+              <span class="text-xs font-bold text-slate-700 uppercase">Schritt 4: Wähle deine Ausstattung/Variante</span>
+              <button onclick="zurueckZuSchritt3()" class="text-xs text-blue-600 font-semibold hover:underline">← Modell ändern</button>
+            </div>
+            <div id="variantenKatalogListe" class="divide-y border border-blue-200 rounded-lg bg-white max-h-56 overflow-y-auto shadow-inner"></div>
           </div>
 
         </div>
@@ -105,6 +111,7 @@
         <div>
           <span class="text-xs font-bold uppercase text-blue-800" id="mHersteller">HERSTELLER</span>
           <h3 class="text-2xl font-black text-gray-900" id="mTitel">Modellname</h3>
+          <p class="text-xs font-semibold text-blue-700 mt-0.5" id="mVarianteLabel"></p>
         </div>
         <span class="bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-full" id="mGerätekategorie">Notebook</span>
       </div>
@@ -121,7 +128,7 @@
       </div>
 
       <div class="bg-white p-5 rounded-xl border border-blue-200 shadow-sm space-y-3">
-        <label class="block text-xs font-bold uppercase text-slate-800">🎯 Schritt 2: Wofür nutzt du das Gerät oder welches Spiel möchtest du spielen?</label>
+        <label class="block text-xs font-bold uppercase text-slate-800">🎯 Schritt 5: Wofür nutzt du das Gerät?</label>
         <select id="nutzungsSelect" onchange="berechneSpezifischeEmpfehlung()" class="w-full border-2 border-gray-200 rounded-lg p-3 text-sm focus:border-blue-500 focus:outline-none bg-gray-50 font-medium">
           <option value="office">Office, Web, Teams & 4K Streaming (Standard)</option>
           <option value="gaming_standard">Standard Gaming (eSports, Fortnite, GTA V, Minecraft, CS2)</option>
@@ -150,7 +157,7 @@
     let alleModelle = [];
     let aktuellesModell = null;
     let gewaehlteKategorie = '';
-    let gewaehlterHersteller = '';
+    let gewaehltesModellObjekt = null;
 
     fetch('modelle.json')
       .then(res => res.json())
@@ -171,14 +178,13 @@
         const herstellerMatch = m.hersteller ? m.hersteller.toLowerCase().includes(eingabe) : false;
         const titelMatch = m.titel ? m.titel.toLowerCase().includes(eingabe) : false;
         const kombiMatch = `${m.hersteller} ${m.titel}`.toLowerCase().includes(eingabe);
-        const katMatch = m.kategorie ? m.kategorie.toLowerCase().includes(eingabe) : false;
         const keywordsMatch = m.suchbegriffe ? m.suchbegriffe.toLowerCase().includes(eingabe) : false;
 
-        return herstellerMatch || titelMatch || kombiMatch || katMatch || keywordsMatch;
+        return herstellerMatch || titelMatch || kombiMatch || keywordsMatch;
       });
 
       if (treffer.length === 0) {
-        liste.innerHTML = `<div class="p-3 text-xs text-gray-500">Kein passendes Modell gefunden. Prüfe die Schreibweise oder nutze den Katalog unten.</div>`;
+        liste.innerHTML = `<div class="p-3 text-xs text-gray-500">Kein passendes Modell gefunden. Nutze den Katalog unten.</div>`;
         liste.classList.remove('hidden');
         return;
       }
@@ -187,7 +193,7 @@
         const eintrag = document.createElement('div');
         eintrag.className = 'p-3 hover:bg-blue-50 cursor-pointer text-sm font-medium text-gray-800 flex justify-between items-center';
         eintrag.innerHTML = `<span><strong>${m.hersteller}</strong> ${m.titel}</span> <span class="text-xs text-gray-400">Max. ${m.maxRamGB} GB</span>`;
-        eintrag.onclick = () => zeigeErgebnis(m);
+        eintrag.onclick = () => zeigeErgebnis(m, m.varianten ? m.varianten[0] : null);
         liste.appendChild(eintrag);
       });
 
@@ -220,7 +226,6 @@
     }
 
     function waehleHersteller(hersteller) {
-      gewaehlterHersteller = hersteller;
       document.getElementById('wSchritt2').classList.add('hidden');
       document.getElementById('wSchritt3').classList.remove('hidden');
 
@@ -235,9 +240,28 @@
       passendeModelle.forEach(m => {
         const eintrag = document.createElement('div');
         eintrag.className = 'p-3 hover:bg-blue-50 cursor-pointer text-xs font-medium text-slate-800 flex justify-between items-center border-b last:border-b-0';
-        eintrag.innerHTML = `<span><strong>${m.titel}</strong></span> <span class="text-slate-400">Max. ${m.maxRamGB} GB</span>`;
-        eintrag.onclick = () => zeigeErgebnis(m);
+        eintrag.innerHTML = `<span><strong>${m.titel}</strong></span> <span class="text-blue-600 font-bold">Variante wählen →</span>`;
+        eintrag.onclick = () => waehleModellReihe(m);
         katListe.appendChild(eintrag);
+      });
+    }
+
+    function waehleModellReihe(m) {
+      gewaehltesModellObjekt = m;
+      document.getElementById('wSchritt3').classList.add('hidden');
+      document.getElementById('wSchritt4').classList.remove('hidden');
+
+      const vListe = document.getElementById('variantenKatalogListe');
+      vListe.innerHTML = '';
+
+      const varianten = m.varianten || [{"label": `Standard Ausstattung (${m.standardRamGB} GB RAM)`, "standardRamGB": m.standardRamGB}];
+
+      varianten.forEach(v => {
+        const eintrag = document.createElement('div');
+        eintrag.className = 'p-3 hover:bg-blue-50 cursor-pointer text-xs font-semibold text-slate-800 flex justify-between items-center border-b last:border-b-0';
+        eintrag.innerHTML = `<span>${v.label}</span> <span class="text-slate-400">Auswählen</span>`;
+        eintrag.onclick = () => zeigeErgebnis(m, v);
+        vListe.appendChild(eintrag);
       });
     }
 
@@ -245,20 +269,32 @@
       document.getElementById('wSchritt1').classList.remove('hidden');
       document.getElementById('wSchritt2').classList.add('hidden');
       document.getElementById('wSchritt3').classList.add('hidden');
+      document.getElementById('wSchritt4').classList.add('hidden');
     }
 
     function zurueckZuSchritt2() {
       document.getElementById('wSchritt2').classList.remove('hidden');
       document.getElementById('wSchritt3').classList.add('hidden');
+      document.getElementById('wSchritt4').classList.add('hidden');
     }
 
-    function zeigeErgebnis(m) {
-      aktuellesModell = m;
+    function zurueckZuSchritt3() {
+      document.getElementById('wSchritt3').classList.remove('hidden');
+      document.getElementById('wSchritt4').classList.add('hidden');
+    }
+
+    function zeigeErgebnis(m, variante) {
+      aktuellesModell = JSON.parse(JSON.stringify(m));
+      if (variante && variante.standardRamGB) {
+        aktuellesModell.standardRamGB = variante.standardRamGB;
+      }
+
       document.getElementById('vorschlagsListe').classList.add('hidden');
       document.getElementById('modellInput').value = `${m.hersteller} ${m.titel}`;
 
       document.getElementById('mHersteller').innerText = m.hersteller;
       document.getElementById('mTitel').innerText = m.titel;
+      document.getElementById('mVarianteLabel').innerText = variante ? `Gewählte Variante: ${variante.label}` : '';
       document.getElementById('mGerätekategorie').innerText = m.kategorie || "Notebook";
       document.getElementById('mMaxRam').innerText = `${m.maxRamGB} GB RAM`;
       document.getElementById('mSlots').innerText = m.slotsInfo;
