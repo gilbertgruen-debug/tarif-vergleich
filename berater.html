@@ -44,7 +44,7 @@
         <div class="flex-grow border-t border-gray-200"></div>
       </div>
 
-      <!-- OPTION B: 4-Schritt Katalog-Assistent -->
+      <!-- OPTION B: 4-Schritt Katalog Assistent -->
       <div class="bg-blue-50/60 border-2 border-blue-200 rounded-xl p-5 md:p-6 space-y-4">
         <div class="flex items-center gap-3">
           <div class="w-10 h-10 bg-blue-600 text-white rounded-lg flex items-center justify-center font-bold text-lg shadow-sm">
@@ -157,7 +157,6 @@
     let alleModelle = [];
     let aktuellesModell = null;
     let gewaehlteKategorie = '';
-    let gewaehltesModellObjekt = null;
 
     fetch('modelle.json')
       .then(res => res.json())
@@ -200,6 +199,11 @@
       liste.classList.remove('hidden');
     }
 
+    function istNotebook(kategorie) {
+      if (!kategorie) return true;
+      return kategorie.toLowerCase().includes('notebook') || kategorie.toLowerCase().includes('ultrabook') || kategorie.toLowerCase().includes('laptop');
+    }
+
     function waehleKategorie(kat) {
       gewaehlteKategorie = kat;
       document.getElementById('wSchritt1').classList.add('hidden');
@@ -207,10 +211,14 @@
 
       const herstellerSet = new Set();
       alleModelle.forEach(m => {
-        if (kat === 'Notebook' && m.kategorie !== 'Desktop PC Mainboard') {
-          herstellerSet.add(m.hersteller);
-        } else if (kat === 'Desktop PC Mainboard' && m.kategorie === 'Desktop PC Mainboard') {
-          herstellerSet.add(m.hersteller);
+        if (kat === 'Notebook') {
+          if (istNotebook(m.kategorie)) {
+            herstellerSet.add(m.hersteller);
+          }
+        } else if (kat === 'Desktop PC Mainboard') {
+          if (!istNotebook(m.kategorie)) {
+            herstellerSet.add(m.hersteller);
+          }
         }
       });
 
@@ -233,7 +241,7 @@
       katListe.innerHTML = '';
 
       const passendeModelle = alleModelle.filter(m => {
-        const katMatch = (gewaehlteKategorie === 'Notebook') ? (m.kategorie !== 'Desktop PC Mainboard') : (m.kategorie === 'Desktop PC Mainboard');
+        const katMatch = (gewaehlteKategorie === 'Notebook') ? istNotebook(m.kategorie) : !istNotebook(m.kategorie);
         return katMatch && m.hersteller === hersteller;
       });
 
@@ -247,14 +255,13 @@
     }
 
     function waehleModellReihe(m) {
-      gewaehltesModellObjekt = m;
       document.getElementById('wSchritt3').classList.add('hidden');
       document.getElementById('wSchritt4').classList.remove('hidden');
 
       const vListe = document.getElementById('variantenKatalogListe');
       vListe.innerHTML = '';
 
-      const varianten = m.varianten || [{"label": `Standard Ausstattung (${m.standardRamGB} GB RAM)`, "standardRamGB": m.standardRamGB}];
+      const varianten = (m.varianten && m.varianten.length > 0) ? m.varianten : [{"label": `Standard Ausstattung (${m.standardRamGB} GB RAM)`, "standardRamGB": m.standardRamGB}];
 
       varianten.forEach(v => {
         const eintrag = document.createElement('div');
@@ -375,7 +382,7 @@
         btn.innerText = `Passendes ${zielRam} GB RAM Kit bei Amazon ansehen *`;
       }
 
-      const formfaktor = aktuellesModell.kategorie === "Desktop PC Mainboard" ? "DIMM Desktop RAM" : "SODIMM Laptop RAM";
+      const formfaktor = istNotebook(aktuellesModell.kategorie) ? "SODIMM Laptop RAM" : "DIMM Desktop RAM";
       const saubererRamTyp = aktuellesModell.ramTyp ? aktuellesModell.ramTyp.replace(/\(.*\)/, '').trim() : "DDR5 SODIMM";
       const amazonQuery = `${zielRam}GB Kit ${saubererRamTyp} ${formfaktor}`;
       
