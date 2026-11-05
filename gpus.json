@@ -2,77 +2,166 @@
   {
     "id": "notebook-rtx-4060",
     "hersteller": "Lenovo",
-    "titel": "Legion 5 / Slim 5 (RTX 4060 Laptop GPU)",
-    "suchbegriffe": "rtx 4060 laptop rtx4060 mobile legion lenovo",
+    "titel": "Legion 5 / Slim 5 / LOQ (RTX 4050 / 4060 / 4070)",
+    "suchbegriffe": "rtx 4060 laptop rtx4060 mobile legion loq lenovo 15 16",
     "kategorie": "Notebook",
     "verbautGpu": "NVIDIA GeForce RTX 4060 Laptop (8 GB)",
     "vramGB": 8,
     "leistungsklasse": "Mittelklasse Gaming",
     "varianten": [
-      {"label": "Standard Gaming (RTX 4060 Laptop GPU - 8 GB VRAM)", "verbautGpu": "NVIDIA GeForce RTX 4060 Laptop (8 GB)"}
+      {"label": "Einsteiger Gaming (RTX 4050 Laptop - 6 GB VRAM)", "verbautGpu": "NVIDIA GeForce RTX 4050 Laptop (6 GB)"},
+      {"label": "Standard Gaming (RTX 4060 Laptop - 8 GB VRAM)", "verbautGpu": "NVIDIA GeForce RTX 4060 Laptop (8 GB)"},
+      {"label": "Performance Gaming (RTX 4070 Laptop - 8 GB VRAM)", "verbautGpu": "NVIDIA GeForce RTX 4070 Laptop (8 GB)"}
     ],
-    "hinweisStandard": "Die RTX 4060 Laptop GPU bietet hervorragende Performance für Full HD (1080p) Gaming mit hohen Details und DLSS 3.",
-    "hinweisUpgrade": "Grafikkarten in Laptops sind fest auf dem Mainboard verlötet und lassen sich nachträglich nicht aufrüsten. Für mehr Grafikleistung ist ein Neukauf eines Laptops mit RTX 4070/4080 erforderlich."
+    "hinweisStandard": "Die RTX 40er Laptop-GPUs bieten hervorragende Effizienz und hohe Bildraten dank DLSS 3 & Frame Generation.",
+    "hinweisUpgrade": "Laptop-Grafikkarten sind fest auf dem Mainboard verlötet und lassen sich nachträglich nicht aufrüsten. Ein GPU-Upgrade erfordert den Neukauf eines Laptops."
   },
   {
     "id": "notebook-rtx-4070-asus",
     "hersteller": "ASUS",
-    "titel": "TUF Gaming / ROG Strix (RTX 4070 Laptop GPU)",
-    "suchbegriffe": "rtx 4070 laptop rtx4070 asus tuf rog",
+    "titel": "TUF Gaming / ROG Strix / Zephyrus (RTX 40-Serie)",
+    "suchbegriffe": "rtx 4070 laptop rtx4070 asus tuf rog strix zephyrus f15 a15 g16",
     "kategorie": "Notebook",
     "verbautGpu": "NVIDIA GeForce RTX 4070 Laptop (8 GB)",
     "vramGB": 8,
     "leistungsklasse": "Gehobene Mittelklasse Gaming",
     "varianten": [
-      {"label": "Performance Gaming (RTX 4070 Laptop GPU - 8 GB VRAM)", "verbautGpu": "NVIDIA GeForce RTX 4070 Laptop (8 GB)"}
+      {"label": "Standard Gaming (RTX 4060 Laptop - 8 GB VRAM)", "verbautGpu": "NVIDIA GeForce RTX 4060 Laptop (8 GB)"},
+      {"label": "Performance Gaming (RTX 4070 Laptop - 8 GB VRAM)", "verbautGpu": "NVIDIA GeForce RTX 4070 Laptop (8 GB)"},
+      {"label": "High-End Gaming (RTX 4080 Laptop - 12 GB VRAM)", "verbautGpu": "NVIDIA GeForce RTX 4080 Laptop (12 GB)"}
     ],
-    "hinweisStandard": "Starke Grafikleistung für QHD (1440p) Gaming und flüssige Bildraten dank Frame Generation.",
-    "hinweisUpgrade": "Der Grafikchip ist fest im Notebook verlötet. Eine Erweiterung der Grafikkarte ist nicht möglich."
+    "hinweisStandard": "Starke Grafikleistung für WQHD (1440p) Gaming und flüssige Bildraten.",
+    "hinweisUpgrade": "Der Grafikchip ist im Gehäuse verlötet. Eine Erweiterung der Grafikkarte ist bei Notebooks nicht möglich."
   },
   {
     "id": "notebook-rtx-4050-hp",
     "hersteller": "HP",
-    "titel": "Victus 15 / 16 (RTX 4050 Laptop GPU)",
-    "suchbegriffe": "rtx 4050 laptop rtx4050 hp victus omen",
+    "titel": "Victus 15/16 & OMEN 16/17 (RTX 30 / 40 Serie)",
+    "suchbegriffe": "rtx 4050 laptop rtx4050 hp victus omen 15 16 17 rtx4060 rtx4070",
     "kategorie": "Notebook",
-    "standardGpu": "NVIDIA GeForce RTX 4050 Laptop (6 GB)",
+    "verbautGpu": "NVIDIA GeForce RTX 4050 Laptop (6 GB)",
     "vramGB": 6,
-    "leistungsklasse": "Einsteiger Gaming",
+    "leistungsklasse": "Einsteiger bis Mittelklasse",
     "varianten": [
-      {"label": "Einsteiger Gaming (RTX 4050 Laptop GPU - 6 GB VRAM)", "verbautGpu": "NVIDIA GeForce RTX 4050 Laptop (6 GB)"}
+      {"label": "Einsteiger Gaming (RTX 3050 / 4050 Laptop - 4-6 GB)", "verbautGpu": "NVIDIA GeForce RTX 4050 Laptop (6 GB)"},
+      {"label": "Standard Gaming (RTX 4060 Laptop - 8 GB VRAM)", "verbautGpu": "NVIDIA GeForce RTX 4060 Laptop (8 GB)"},
+      {"label": "High Gaming (RTX 4070 / 4080 Laptop - 8-12 GB)", "verbautGpu": "NVIDIA GeForce RTX 4070 Laptop (8 GB)"}
     ],
-    "hinweisStandard": "Solide Grafikkarte für eSports-Spiele (Fortnite, CS2) und Full HD Gaming bei mittleren bis hohen Einstellungen.",
+    "hinweisStandard": "Gute Leistung für Full HD & WQHD Gaming je nach Ausstattung.",
     "hinweisUpgrade": "Laptop-Grafikkarten können nicht ausgetauscht werden."
   },
   {
     "id": "notebook-rtx-3060-acer",
     "hersteller": "Acer",
-    "titel": "Nitro 5 (RTX 3060 Laptop GPU)",
-    "suchbegriffe": "rtx 3060 laptop rtx3060 acer nitro",
+    "titel": "Nitro 5 / Nitro 16 / Nitro V & Predator Helios",
+    "suchbegriffe": "rtx 3060 laptop rtx3060 acer nitro predator helios neo triton 16 18",
     "kategorie": "Notebook",
-    "verbautGpu": "NVIDIA GeForce RTX 3060 Laptop (6 GB)",
-    "vramGB": 6,
-    "leistungsklasse": "Ältere Mittelklasse",
+    "verbautGpu": "NVIDIA GeForce RTX 4060 Laptop (8 GB)",
+    "vramGB": 8,
+    "leistungsklasse": "Mittelklasse bis High-End",
     "varianten": [
-      {"label": "Standard Gaming (RTX 3060 Laptop GPU - 6 GB VRAM)", "verbautGpu": "NVIDIA GeForce RTX 3060 Laptop (6 GB)"}
+      {"label": "Standard Gaming (RTX 4060 Laptop - 8 GB VRAM)", "verbautGpu": "NVIDIA GeForce RTX 4060 Laptop (8 GB)"},
+      {"label": "High-End Gaming (RTX 4080 Laptop - 12 GB VRAM)", "verbautGpu": "NVIDIA GeForce RTX 4080 Laptop (12 GB)"}
     ],
-    "hinweisStandard": "Gute Leistung für Full-HD-Gaming älterer und aktueller Titel.",
+    "hinweisStandard": "Solide Gaming-Performance für AAA-Spiele.",
     "hinweisUpgrade": "Fest auf dem Mainboard verlötet, nicht aufrüstbar."
   },
   {
     "id": "notebook-rtx-4080-msi",
     "hersteller": "MSI",
-    "titel": "Vector / Raider (RTX 4080 Laptop GPU)",
-    "suchbegriffe": "rtx 4080 laptop rtx4080 msi raider vector",
+    "titel": "Katana / Cyborg / Pulse / Vector / Raider",
+    "suchbegriffe": "rtx 4080 laptop rtx4080 msi raider vector katana cyborg pulse gf66",
     "kategorie": "Notebook",
-    "verbautGpu": "NVIDIA GeForce RTX 4080 Laptop (12 GB)",
-    "vramGB": 12,
-    "leistungsklasse": "High-End Gaming",
+    "verbautGpu": "NVIDIA GeForce RTX 4060 Laptop (8 GB)",
+    "vramGB": 8,
+    "leistungsklasse": "Mittelklasse bis High-End",
     "varianten": [
-      {"label": "High-End Gaming (RTX 4080 Laptop GPU - 12 GB VRAM)", "verbautGpu": "NVIDIA GeForce RTX 4080 Laptop (12 GB)"}
+      {"label": "Einsteiger Gaming (RTX 4050 Laptop - 6 GB VRAM)", "verbautGpu": "NVIDIA GeForce RTX 4050 Laptop (6 GB)"},
+      {"label": "Standard Gaming (RTX 4060 Laptop - 8 GB VRAM)", "verbautGpu": "NVIDIA GeForce RTX 4060 Laptop (8 GB)"},
+      {"label": "High-End Gaming (RTX 4080 / 4090 Laptop - 12-16 GB)", "verbautGpu": "NVIDIA GeForce RTX 4080 Laptop (12 GB)"}
     ],
-    "hinweisStandard": "Extrem schnelle Laptop-GPU für 4K-Gaming, Raytracing und anspruchsvolle VR-Anwendungen.",
+    "hinweisStandard": "Starke Performance für Gaming und Streaming.",
     "hinweisUpgrade": "Fest im Gehäuse verbaut, kein Upgrade möglich."
+  },
+  {
+    "id": "notebook-razer-blade",
+    "hersteller": "Razer",
+    "titel": "Razer Blade 14 / 16 / 18 (RTX 40-Serie)",
+    "suchbegriffe": "razer blade 14 16 18 rtx 4060 4070 4080 4090",
+    "kategorie": "Notebook",
+    "verbautGpu": "NVIDIA GeForce RTX 4070 Laptop (8 GB)",
+    "vramGB": 8,
+    "leistungsklasse": "Premium High-End Gaming",
+    "varianten": [
+      {"label": "Performance Gaming (RTX 4070 Laptop - 8 GB VRAM)", "verbautGpu": "NVIDIA GeForce RTX 4070 Laptop (8 GB)"},
+      {"label": "Enthusiast Gaming (RTX 4080 / 4090 Laptop - 12-16 GB)", "verbautGpu": "NVIDIA GeForce RTX 4080 Laptop (12 GB)"}
+    ],
+    "hinweisStandard": "Maximale Leistung in ultraflachem Gehäuse.",
+    "hinweisUpgrade": "Grafikchip ist fest mit dem Board verschmolzen und lässt sich nicht tauschen."
+  },
+  {
+    "id": "notebook-gigabyte-aorus",
+    "hersteller": "Gigabyte",
+    "titel": "AORUS 15 / 16X / 17 & Gigabyte G5/G7",
+    "suchbegriffe": "gigabyte aorus g5 g7 15x 16x 17 rtx 4050 4060 4070",
+    "kategorie": "Notebook",
+    "verbautGpu": "NVIDIA GeForce RTX 4060 Laptop (8 GB)",
+    "vramGB": 8,
+    "leistungsklasse": "Mittelklasse bis Gehobene Klasse",
+    "varianten": [
+      {"label": "Standard Gaming (RTX 4060 Laptop - 8 GB VRAM)", "verbautGpu": "NVIDIA GeForce RTX 4060 Laptop (8 GB)"},
+      {"label": "Performance Gaming (RTX 4070 Laptop - 8 GB VRAM)", "verbautGpu": "NVIDIA GeForce RTX 4070 Laptop (8 GB)"}
+    ],
+    "hinweisStandard": "Starkes Preis-Leistungs-Verhältnis für Gaming.",
+    "hinweisUpgrade": "Der Grafikchip ist verlötet und nicht aufrüstbar."
+  },
+  {
+    "id": "notebook-xmg-schenker",
+    "hersteller": "XMG / Schenker",
+    "titel": "XMG NEO / PRO / FOCUS / CORE (RTX 40-Serie)",
+    "suchbegriffe": "xmg schenker neo pro focus core rtx 4060 4070 4080 4090",
+    "kategorie": "Notebook",
+    "verbautGpu": "NVIDIA GeForce RTX 4070 Laptop (8 GB)",
+    "vramGB": 8,
+    "leistungsklasse": "Enthusiast Gaming & Workstation",
+    "varianten": [
+      {"label": "Standard Gaming (RTX 4060 Laptop - 8 GB VRAM)", "verbautGpu": "NVIDIA GeForce RTX 4060 Laptop (8 GB)"},
+      {"label": "High-End Gaming (RTX 4080 / 4090 Laptop - 12-16 GB)", "verbautGpu": "NVIDIA GeForce RTX 4080 Laptop (12 GB)"}
+    ],
+    "hinweisStandard": "Extrem performante Laptops mit hoher TGP-Ausstattung.",
+    "hinweisUpgrade": "Grafikkarte ist fest auf der Hauptplatine verbaut."
+  },
+  {
+    "id": "notebook-dell-g15",
+    "hersteller": "Dell",
+    "titel": "Dell G15 / G16 Gaming Laptop",
+    "suchbegriffe": "dell g15 g16 gaming laptop rtx 3050 4050 4060 4070",
+    "kategorie": "Notebook",
+    "verbautGpu": "NVIDIA GeForce RTX 4060 Laptop (8 GB)",
+    "vramGB": 8,
+    "leistungsklasse": "Mittelklasse Gaming",
+    "varianten": [
+      {"label": "Einsteiger Gaming (RTX 3050 / 4050 Laptop - 4-6 GB)", "verbautGpu": "NVIDIA GeForce RTX 4050 Laptop (6 GB)"},
+      {"label": "Standard Gaming (RTX 4060 Laptop - 8 GB VRAM)", "verbautGpu": "NVIDIA GeForce RTX 4060 Laptop (8 GB)"}
+    ],
+    "hinweisStandard": "Solides Gehäuse mit guter Kühlleistung.",
+    "hinweisUpgrade": "Nicht aufrüstbar da fest verlötet."
+  },
+  {
+    "id": "notebook-apple-macbook",
+    "hersteller": "Apple",
+    "titel": "MacBook Pro 14 / 16 (M1 / M2 / M3 / M4 Pro & Max)",
+    "suchbegriffe": "apple macbook pro m1 m2 m3 m4 pro max gpu unified memory",
+    "kategorie": "Notebook",
+    "verbautGpu": "Apple Unified GPU (Pro / Max)",
+    "vramGB": 18,
+    "leistungsklasse": "Professioneller Grafikprozessor",
+    "varianten": [
+      {"label": "Apple M Pro Chip (Integraphik)", "verbautGpu": "Apple M Pro Integrated GPU"},
+      {"label": "Apple M Max Chip (High-End Integrated GPU)", "verbautGpu": "Apple M Max Integrated GPU"}
+    ],
+    "hinweisStandard": "Grafikeinheit ist direkt im Apple Silicon Chip integriert.",
+    "hinweisUpgrade": "Achtung: Ein nachträgliches Grafik- oder Speicherupgrade ist bei Apple MacBooks absolut unmöglich."
   },
   {
     "id": "desktop-standard-pc-gpu",
@@ -154,5 +243,55 @@
     ],
     "hinweisStandard": "Lenovo Legion Tower nutzen gewöhnliche ATX-Komponenten und lassen sich hervorragend mit modernen Grafikkarten nachrüsten.",
     "hinweisUpgrade": "Beim Wechsel auf eine stärkere GPU auf die Stromversorgung (Netzteil-Leistung) achten."
-  }
-]
+  },
+  {
+    "id": "desktop-csl-computer",
+    "hersteller": "CSL Computer",
+    "titel": "CSL Speed / Sprint / HydroX Fertig-PC",
+    "suchbegriffe": "csl computer sprint speed hydrox fertig pc gaming",
+    "kategorie": "Desktop PC",
+    "verbautGpu": "NVIDIA GeForce / AMD Radeon GPU",
+    "vramGB": 8,
+    "leistungsklasse": "Voll Aufrüstbar",
+    "varianten": [
+      {"label": "Einsteiger-PC (z. B. GTX 1650 / RTX 3050 / RX 6600)", "verbautGpu": "NVIDIA GTX 1650 / RX 6600 (4-8 GB)"},
+      {"label": "Gaming-PC (z. B. RTX 4060 / RTX 4070)", "verbautGpu": "NVIDIA RTX 4060 / RTX 4070 (8-12 GB)"}
+    ],
+    "hinweisStandard": "CSL Fertig-PCs bauen auf gewöhnliche Standard-Komponenten auf. Ein Grafikkarten-Tausch ist unkompliziert möglich.",
+    "hinweisUpgrade": "Vor dem Kauf einer neuen GPU die Netzteil-Wattzahl und verfügbare PCIe-Stromstecker im Gehäuse prüfen."
+  },
+  {
+    "id": "desktop-memory-pc",
+    "hersteller": "Memory PC",
+    "titel": "Memory PC High End / Gaming Komplett-PC",
+    "suchbegriffe": "memory pc gaming pc fertig pc am4 am5 intel",
+    "kategorie": "Desktop PC",
+    "verbautGpu": "NVIDIA GeForce / AMD Radeon GPU",
+    "vramGB": 8,
+    "leistungsklasse": "Voll Aufrüstbar",
+    "varianten": [
+      {"label": "Standard Gaming (z. B. RTX 3060 / RTX 4060 / RX 7600)", "verbautGpu": "NVIDIA RTX 4060 / RX 7600 (8 GB)"},
+      {"label": "High-End Gaming (z. B. RTX 4070 SUPER / RX 7800 XT)", "verbautGpu": "NVIDIA RTX 4070 SUPER / RX 7800 XT (12-16 GB)"}
+    ],
+    "hinweisStandard": "Gutes Standard-Layout mit hoher Erweiterbarkeit.",
+    "hinweisUpgrade": "Einfaches Austauschen der PCIe-Grafikkarte möglich."
+  },
+  {
+    "id": "desktop-megaport",
+    "hersteller": "Megaport",
+    "titel": "Megaport Gaming PC (Super / Premium / Ultimate)",
+    "suchbegriffe": "megaport pc gaming pc fertig pc",
+    "kategorie": "Desktop PC",
+    "verbautGpu": "NVIDIA GeForce / AMD Radeon GPU",
+    "vramGB": 8,
+    "leistungsklasse": "Voll Aufrüstbar",
+    "varianten": [
+      {"label": "Einsteiger / Mittelklasse (RTX 3060 / RTX 4060)", "verbautGpu": "NVIDIA RTX 4060 (8 GB)"},
+      {"label": "High-End (RTX 4070 / RTX 4080)", "verbautGpu": "NVIDIA RTX 4070 (12 GB)"}
+    ],
+    "hinweisStandard": "Nutzt offene ATX-Standards und gewöhnliche PC-Gehäuse.",
+    "hinweisUpgrade": "Neue Grafikkarte einstecken, Treiber installieren und Netzteil-Leistung berücksichtigen."
+  },
+  {
+    "id": "desktop-captiva",
+    "
