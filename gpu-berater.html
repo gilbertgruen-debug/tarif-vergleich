@@ -17,72 +17,88 @@
 
   <main class="max-w-3xl mx-auto px-4 py-8 flex-grow w-full space-y-8">
     
-    <!-- Such- & Auswahlelement -->
-    <div class="bg-white p-6 md:p-8 rounded-xl shadow-md border space-y-6">
+    <!-- Hauptcontainer Modellauswahl -->
+    <div class="bg-white p-6 md:p-8 rounded-xl shadow-md border space-y-8">
       <div>
-        <h2 class="text-2xl font-bold text-gray-900 mb-2">🎮 Grafikkarten- & GPU-Berater</h2>
-        <p class="text-sm text-gray-600">Gib einfach deine aktuelle Grafikkarte oder dein PC/Notebook-Modell ein:</p>
+        <h2 class="text-2xl font-bold text-gray-900 mb-1">🎮 Grafikkarten- & GPU-Berater</h2>
+        <p class="text-sm text-gray-600">Ermittle die optimale Grafikkarte für deine Wunsch-Auflösung und Netzteil.</p>
       </div>
 
-      <!-- Suche -->
-      <div class="relative">
-        <input 
-          type="text" 
-          id="gpuInput" 
-          onkeyup="sucheGpu()" 
-          placeholder="Grafikkarte oder Modell eingeben (z. B. RTX 3060, RX 6700 XT, ROG Strix)..." 
-          class="w-full border-2 border-purple-500 rounded-lg p-3.5 text-sm focus:outline-none focus:ring-2 focus:ring-purple-600 shadow-sm"
-        >
-        <div id="vorschlagsListe" class="hidden absolute top-full left-0 right-0 bg-white border border-gray-200 rounded-b-lg shadow-xl z-20 max-h-60 overflow-y-auto mt-1 divide-y"></div>
+      <!-- OPTION A: Direkt-Suche -->
+      <div class="space-y-2">
+        <label class="block text-xs font-bold uppercase tracking-wider text-slate-700">Option A: Grafikkarte oder PC-Modell suchen</label>
+        <div class="relative">
+          <input 
+            type="text" 
+            id="gpuInput" 
+            onkeyup="sucheGpu()" 
+            placeholder="z. B. RTX 3060, RX 7800 XT oder Notebook-Name..." 
+            class="w-full border-2 border-purple-500 rounded-lg p-3.5 text-sm focus:outline-none focus:ring-2 focus:ring-purple-600 shadow-sm"
+          >
+          <div id="vorschlagsListe" class="hidden absolute top-full left-0 right-0 bg-white border border-gray-200 rounded-b-lg shadow-xl z-20 max-h-60 overflow-y-auto mt-1 divide-y"></div>
+        </div>
       </div>
 
-      <!-- Katalog-Assistent -->
-      <div class="border-t pt-4">
-        <button 
-          onclick="toggleWizard()" 
-          class="text-xs font-semibold text-purple-600 hover:text-purple-800 underline flex items-center gap-1 focus:outline-none"
-        >
-          <span>❓ Du weißt nicht genau, welche Grafikkarte du verbaut hast?</span>
-        </button>
+      <!-- TRENNLINIE ODER -->
+      <div class="relative flex py-1 items-center">
+        <div class="flex-grow border-t border-gray-200"></div>
+        <span class="flex-shrink mx-4 text-xs font-bold text-gray-400 uppercase">Oder</span>
+        <div class="flex-grow border-t border-gray-200"></div>
+      </div>
 
-        <div id="wizardBox" class="hidden mt-4 p-5 bg-slate-50 border border-slate-200 rounded-lg space-y-4">
-          <h4 class="text-xs font-bold uppercase tracking-wider text-slate-700">Grafikkarte über Katalog auswählen:</h4>
+      <!-- OPTION B: Interaktiver Ausschluss-Assistent -->
+      <div class="bg-purple-50/60 border-2 border-purple-200 rounded-xl p-5 md:p-6 space-y-4">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 bg-purple-600 text-white rounded-lg flex items-center justify-center font-bold text-lg shadow-sm">
+            🔍
+          </div>
+          <div>
+            <h3 class="text-base font-bold text-gray-900">Option B: Schritt-für-Schritt über dein Gerät</h3>
+            <p class="text-xs text-gray-600">Grenze dein Gerät über den Hersteller ein, falls du den genauen GPU-Namen nicht weißt.</p>
+          </div>
+        </div>
+
+        <div id="wizardBox" class="mt-4 pt-4 border-t border-purple-200 space-y-4">
           
-          <!-- Schritt 1: Kategorie -->
+          <!-- Schritt 1: Kategorie (PC vs Notebook) -->
           <div id="wSchritt1" class="space-y-2">
-            <span class="text-xs text-gray-500 font-medium">1. Wähle deinen Gerätetyp:</span>
-            <div class="flex gap-3">
-              <button onclick="waehleKategorie('Desktop GPU')" class="flex-1 bg-white hover:bg-purple-50 border border-slate-300 hover:border-purple-500 font-medium text-sm py-2 px-4 rounded-lg shadow-sm transition">
-                🖥️ Desktop PC Grafikkarte
+            <span class="text-xs font-bold text-slate-700 uppercase">Schritt 1: Welches Gerät besitzt du?</span>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <button onclick="waehleKategorie('Desktop GPU')" class="bg-white hover:bg-purple-100 border-2 border-purple-200 hover:border-purple-500 font-semibold text-gray-800 text-sm py-3 px-4 rounded-lg shadow-sm transition text-left flex items-center justify-between">
+                <span>🖥️ Desktop PC (Eigenbau / Fertig-PC)</span>
+                <span class="text-purple-600 font-bold">→</span>
               </button>
-              <button onclick="waehleKategorie('Gaming Notebook')" class="flex-1 bg-white hover:bg-purple-50 border border-slate-300 hover:border-purple-500 font-medium text-sm py-2 px-4 rounded-lg shadow-sm transition">
-                💻 Gaming Notebook / Laptop
+              <button onclick="waehleKategorie('Gaming Notebook')" class="bg-white hover:bg-purple-100 border-2 border-purple-200 hover:border-purple-500 font-semibold text-gray-800 text-sm py-3 px-4 rounded-lg shadow-sm transition text-left flex items-center justify-between">
+                <span>💻 Gaming Notebook / Laptop</span>
+                <span class="text-purple-600 font-bold">→</span>
               </button>
             </div>
           </div>
 
-          <!-- Schritt 2: Marke -->
+          <!-- Schritt 2: Hersteller (NVIDIA / AMD bei PC vs ASUS / MSI / Lenovo bei Laptops) -->
           <div id="wSchritt2" class="hidden space-y-2">
             <div class="flex justify-between items-center">
-              <span class="text-xs text-gray-500 font-medium">2. Wähle den Hersteller:</span>
-              <button onclick="zurueckZuSchritt1()" class="text-xs text-purple-600 hover:underline">← Zurück</button>
+              <span class="text-xs font-bold text-slate-700 uppercase">Schritt 2: Wähle die Marke</span>
+              <button onclick="zurueckZuSchritt1()" class="text-xs text-purple-600 font-semibold hover:underline">← Zurück</button>
             </div>
             <div id="markenListe" class="grid grid-cols-2 sm:grid-cols-3 gap-2"></div>
           </div>
 
-          <!-- Schritt 3: Modellübersicht -->
+          <!-- Schritt 3: GPU Auswahlliste -->
           <div id="wSchritt3" class="hidden space-y-2">
             <div class="flex justify-between items-center">
-              <span class="text-xs text-gray-500 font-medium">3. Wähle dein GPU-Modell:</span>
-              <button onclick="zurueckZuSchritt2()" class="text-xs text-purple-600 hover:underline">← Andere Marke wählen</button>
+              <span class="text-xs font-bold text-slate-700 uppercase">Schritt 3: Wähle deine Grafikkarte</span>
+              <button onclick="zurueckZuSchritt2()" class="text-xs text-purple-600 font-semibold hover:underline">← Marke ändern</button>
             </div>
-            <div id="gpusKatalogListe" class="divide-y border rounded-lg bg-white max-h-56 overflow-y-auto"></div>
+            <div id="gpusKatalogListe" class="divide-y border border-purple-200 rounded-lg bg-white max-h-60 overflow-y-auto shadow-inner"></div>
           </div>
+
         </div>
       </div>
+
     </div>
 
-    <!-- Ergebnisanzeige Schritt 1: Specs -->
+    <!-- Ergebnisanzeige -->
     <div id="ergebnisBox" class="hidden bg-purple-50 border-2 border-purple-600 rounded-xl p-6 shadow-md space-y-5">
       <div class="flex justify-between items-start border-b border-purple-200 pb-3">
         <div>
@@ -103,7 +119,6 @@
         </div>
       </div>
 
-      <!-- Schritt 2: Ziel-Auflösung & Spiele-Anforderung -->
       <div class="bg-white p-5 rounded-xl border border-purple-200 shadow-sm space-y-3">
         <label class="block text-xs font-bold uppercase text-slate-800">🎯 Schritt 2: In welcher Auflösung & Qualität möchtest du zocken?</label>
         <select id="zielAuflösungSelect" onchange="berechneGpuEmpfehlung()" class="w-full border-2 border-gray-200 rounded-lg p-3 text-sm focus:border-purple-500 focus:outline-none bg-gray-50 font-medium">
@@ -113,7 +128,6 @@
         </select>
       </div>
 
-      <!-- Auswertung / Ehrliche Empfehlungsbox -->
       <div id="empfehlungsHinweisBox" class="p-4 rounded-lg text-xs leading-relaxed space-y-1 transition-all">
         <span class="font-bold block text-sm mb-1" id="empfehlungsTitel">💡 Hinweis zum Aufrüsten:</span>
         <p id="gHinweis">Wähle oben deine Ziel-Auflösung aus, um eine genaue Auswertung zu erhalten.</p>
@@ -136,13 +150,11 @@
     let gewaehlteKategorie = '';
     let gewaehlterHersteller = '';
 
-    // Datenbank laden
     fetch('gpus.json')
       .then(res => res.json())
       .then(data => { alleGpus = data; })
       .catch(err => console.error('Fehler beim Laden der GPU-Datenbank:', err));
 
-    // FREITEXT-SUCHE
     function sucheGpu() {
       const eingabe = document.getElementById('gpuInput').value.toLowerCase().trim();
       const liste = document.getElementById('vorschlagsListe');
@@ -163,7 +175,7 @@
       });
 
       if (treffer.length === 0) {
-        liste.innerHTML = `<div class="p-3 text-xs text-gray-500">Keine passende Grafikkarte gefunden. Prüfe die Schreibweise.</div>`;
+        liste.innerHTML = `<div class="p-3 text-xs text-gray-500">Keine passende Grafikkarte gefunden. Prüfe die Schreibweise oder nutze den Assistenten unten.</div>`;
         liste.classList.remove('hidden');
         return;
       }
@@ -177,15 +189,6 @@
       });
 
       liste.classList.remove('hidden');
-    }
-
-    // KATALOG-WIZARD LOGIK
-    function toggleWizard() {
-      const wBox = document.getElementById('wizardBox');
-      wBox.classList.toggle('hidden');
-      if (!wBox.classList.contains('hidden')) {
-        zurueckZuSchritt1();
-      }
     }
 
     function waehleKategorie(kat) {
@@ -204,7 +207,7 @@
       markenContainer.innerHTML = '';
       Array.from(herstellerSet).sort().forEach(hersteller => {
         const btn = document.createElement('button');
-        btn.className = 'bg-white hover:bg-purple-50 border border-slate-200 text-slate-800 text-xs font-semibold py-2 px-3 rounded shadow-sm text-center transition';
+        btn.className = 'bg-white hover:bg-purple-100 border border-purple-300 text-slate-800 text-xs font-semibold py-2.5 px-3 rounded-lg shadow-sm text-center transition';
         btn.innerText = hersteller;
         btn.onclick = () => waehleHersteller(hersteller);
         markenContainer.appendChild(btn);
@@ -241,11 +244,9 @@
       document.getElementById('wSchritt3').classList.add('hidden');
     }
 
-    // ERGEBNIS- & EMPFEHLUNGSAUSWERTUNG
     function zeigeErgebnis(g) {
       aktuelleGpu = g;
       document.getElementById('vorschlagsListe').classList.add('hidden');
-      document.getElementById('wizardBox').classList.add('hidden');
       document.getElementById('gpuInput').value = `${g.hersteller} ${g.titel}`;
 
       document.getElementById('gHersteller').innerText = g.hersteller;
@@ -270,7 +271,6 @@
       const text = document.getElementById('gHinweis');
       const btn = document.getElementById('amazonBtn');
 
-      // Notebook Sonderfall
       if (aktuelleGpu.kategorie === "Gaming Notebook") {
         hinweisBox.className = "p-4 rounded-lg text-xs leading-relaxed bg-amber-100 text-amber-900 border border-amber-300";
         titel.innerText = "⚠️ Laptop-Grafikkarte (Nicht aufrüstbar):";
@@ -280,7 +280,6 @@
         return;
       }
 
-      // Desktop GPU Logik
       let upgradeSuchbegriff = "";
       
       if (ziel === "1080p") {
