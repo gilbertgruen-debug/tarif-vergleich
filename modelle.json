@@ -482,3 +482,192 @@
     "ramTyp": "DDR5 SODIMM 5600MHz",
     "varianten": [
       {"label": "Standard Gaming (16 GB DDR5 ab Werk)", "standardRamGB": 16}
+    ],
+    "hinweisStandard": "Ausgeliefert mit schnellem DDR5 Speicher. Für flüssiges Spielen aktueller Titel sind 16 GB bis 32 GB ideal.",
+    "hinweisUpgrade": "Beide Steckplätze lassen sich einfach austauschen. Ein 2x 16 GB Kit ist die Preis-Leistungs-Empfehlung."
+  },
+  {
+    "id": "apple-macbook-air-m1-m2-m3",
+    "hersteller": "Apple",
+    "titel": "MacBook Air / Pro (M1, M2 Chips)",
+    "suchbegriffe": "macbook macbookair macbookpro m1 m2 a2337 a2681",
+    "kategorie": "Notebook",
+    "standardRamGB": 8,
+    "maxRamGB": 8,
+    "slotsInfo": "0 Steckplätze (Arbeitsspeicher ist fest im M-Prozessor integriert)",
+    "ramTyp": "Fest verlöteter Unified Memory",
+    "varianten": [
+      {"label": "Standard Modell (8 GB Unified Memory)", "standardRamGB": 8},
+      {"label": "Erweitertes Modell (16 GB Unified Memory)", "standardRamGB": 16}
+    ],
+    "hinweisStandard": "Achtung: Bei Apple MacBooks mit M-Chips ist der Arbeitsspeicher fest auf dem Prozessor verlötet. Ein nachträgliches Aufrüsten ist technisch unmöglich.",
+    "hinweisUpgrade": "Kaufe den Arbeitsspeicher bei Apple-Geräten direkt beim Erstkauf in der passenden Größe (mindestens 16 GB empfohlen)."
+  },
+  {
+    "id": "apple-macbook-air-pro-m3-m4",
+    "hersteller": "Apple",
+    "titel": "MacBook Air & MacBook Pro (M3, M3 Pro/Max & M4 - 2024–2026)",
+    "suchbegriffe": "macbook m3 m4 m3pro m3max m4pro m4max",
+    "kategorie": "Notebook",
+    "standardRamGB": 16,
+    "maxRamGB": 128,
+    "slotsInfo": "0 Steckplätze (Unified Memory fest im M-Chip integriert)",
+    "ramTyp": "Fest verlöteter Unified Memory",
+    "varianten": [
+      {"label": "Standard Modell (16 GB Unified Memory)", "standardRamGB": 16},
+      {"label": "Pro Modell (36 GB Unified Memory)", "standardRamGB": 36}
+    ],
+    "hinweisStandard": "Achtung: Bei allen Apple MacBooks mit M3- und M4-Prozessoren ist der Arbeitsspeicher fest im Prozessor integriert. Ein nachträgliches Aufrüsten ist unmöglich.",
+    "hinweisUpgrade": "Wähle deine Speichergröße (mindestens 16 GB oder 24 GB) unbedingt direkt beim Erstkauf des MacBooks."
+  },
+  {
+    "id": "desktop-mainboard-b550-b650",
+    "hersteller": "AMD Mainboards",
+    "titel": "AMD Sockel AM4 / AM5 Mainboards (B550 / B650 / X670 / B850 / X870)",
+    "suchbegriffe": "b550 b650 x670 b850 x870 am4 am5 ryzen mainboard",
+    "kategorie": "Desktop PC Mainboard",
+    "standardRamGB": 16,
+    "maxRamGB": 128,
+    "slotsInfo": "4 DIMM Steckplätze",
+    "ramTyp": "DDR4 3600MHz / DDR5 6000MHz DIMM",
+    "varianten": [
+      {"label": "Einsteiger-Konfiguration (16 GB DDR5 Kit)", "standardRamGB": 16},
+      {"label": "Empfohlene Gaming-Konfiguration (32 GB DDR5 Kit)", "standardRamGB": 32},
+      {"label": "Workstation-Konfiguration (64 GB DDR5 Kit)", "standardRamGB": 64}
+    ],
+    "hinweisStandard": "Desktop-Mainboards lassen sich besonders leicht aufrüsten. Wenn du bereits 32 GB RAM im Dual-Channel nutzt, ist eine Erweiterung fürs Gaming nicht notwendig.",
+    "hinweisUpgrade": "Achte darauf, bei 4 Riegeln baugleiche Kits zu verwenden oder am besten ein 2x 16 GB bzw. 2x 32 GB Kit für maximale Stabilität zu nutzen."
+  },
+  {
+    "id": "desktop-mainboard-b760-z790",
+    "hersteller": "Intel Mainboards",
+    "titel": "Intel Sockel LGA1700 / LGA1851 Mainboards (B760 / Z790 / Z890)",
+    "suchbegriffe": "b760 z790 z890 b760m lga1700 lga1851 intel mainboard",
+    "kategorie": "Desktop PC Mainboard",
+    "standardRamGB": 16,
+    "maxRamGB": 192,
+    "slotsInfo": "4 DIMM Steckplätze",
+    "ramTyp": "DDR4 / DDR5 6000MHz+ DIMM",
+    "varianten": [
+      {"label": "Basis-Konfiguration (16 GB DDR5 Kit)", "standardRamGB": 16},
+      {"label": "Standard Gaming-Konfiguration (32 GB DDR5 Kit)", "standardRamGB": 32},
+      {"label": "High-End Konfiguration (64 GB DDR5 Kit)", "standardRamGB": 64}
+    ],
+    "hinweisStandard": "High-End Desktop-Plattform. Für reines Gaming bieten 32 GB DDR5 RAM aktuell das perfekte Preis-Leistungs-Verhältnis.",
+    "hinweisUpgrade": "64 GB oder mehr lohnen sich vor allem für Videoschnitt, 3D-Rendering und professionelles Multitasking."
+  },
+  {
+    "id": "gigabyte-g5-g7-2024-2026",
+    "hersteller": "Gigabyte",
+    "titel": "Gigabyte G5 / G7 / KF / MF (2024–2026)",
+    "suchbegriffe": "gigabyteg5 g5 g7 kf mf g5-kf g5-mf gigabyte-g5",
+    "kategorie": "Notebook",
+    "standardRamGB": 16,
+    "maxRamGB": 64,
+    "slotsInfo": "2 Steckplätze vorhanden",
+    "ramTyp": "DDR4 / DDR5 SODIMM 3200MHz / 4800MHz",
+    "varianten": [
+      {"label": "Standard Gaming (16 GB RAM ab Werk)", "standardRamGB": 16}
+    ],
+    "hinweisStandard": "Sehr beliebtes Einsteiger-Gaming-Notebook. 16 GB bieten eine gute Ausgangslage für aktuelle eSports-Titel.",
+    "hinweisUpgrade": "Ein Upgrade auf 32 GB (2x 16 GB Kit) empfiehlt sich für Ruckelfreiheit bei anspruchsvollen Spielen und parallelen Hintergrundanwendungen."
+  },
+  {
+    "id": "gigabyte-aorus-15-17-2024-2026",
+    "hersteller": "Gigabyte",
+    "titel": "AORUS 15 / AORUS 17 / AORUS 16X (2024–2026)",
+    "suchbegriffe": "aorus aorus15 aorus17 aorus16x 15-bkf 16x-akg",
+    "kategorie": "Notebook",
+    "standardRamGB": 16,
+    "maxRamGB": 64,
+    "slotsInfo": "2 DDR5 Steckplätze vorhanden",
+    "ramTyp": "DDR5 SODIMM 5600MHz",
+    "varianten": [
+      {"label": "Standard Gaming (16 GB DDR5 ab Werk)", "standardRamGB": 16},
+      {"label": "High Gaming (32 GB DDR5 ab Werk)", "standardRamGB": 32}
+    ],
+    "hinweisStandard": "High-End Serie von Gigabyte. Wenn du bereits 32 GB RAM verbaut hast, reicht das für flüssiges Zocken auf Jahre völlig aus.",
+    "hinweisUpgrade": "Ein Upgrade auf 32 GB oder 64 GB bringt ideale Leistungsreserven für 4K-Rendering, Streaming und Content Creation."
+  },
+  {
+    "id": "razer-blade-14-16-18-2024-2026",
+    "hersteller": "Razer",
+    "titel": "Blade 14 / Blade 16 / Blade 18 (Modelljahre 2024–2026)",
+    "suchbegriffe": "razerblade blade14 blade16 blade18 razer-blade",
+    "kategorie": "Notebook",
+    "standardRamGB": 16,
+    "maxRamGB": 96,
+    "slotsInfo": "2 DDR5 SODIMM Steckplätze (außer Blade 14 Onboard)",
+    "ramTyp": "DDR5 SODIMM 5600MHz / LPDDR5X",
+    "varianten": [
+      {"label": "Standard Modell (16 GB DDR5 ab Werk)", "standardRamGB": 16},
+      {"label": "Pro Modell (32 GB DDR5 ab Werk)", "standardRamGB": 32}
+    ],
+    "hinweisStandard": "Achtung: Beim kompakten Blade 14 ist der RAM oft verlötet. Bei den größeren Blade 16 & 18 Modellen lässt sich der DDR5-Speicher voll aufrüsten.",
+    "hinweisUpgrade": "Bei Blade 16 & 18 lässt sich der RAM auf 32 GB, 64 GB oder sogar 96 GB erweitern – ideal für professionellen Videoschnitt und High-End Gaming."
+  },
+  {
+    "id": "medion-erazer-deputy-defender-2024-2026",
+    "hersteller": "Medion",
+    "titel": "Erazer Deputy / Defender / Scout (P & P10/P20 - 2024–2026)",
+    "suchbegriffe": "erazer deputy defender scout p10 p20 medion-erazer",
+    "kategorie": "Notebook",
+    "standardRamGB": 16,
+    "maxRamGB": 64,
+    "slotsInfo": "2 Steckplätze vorhanden",
+    "ramTyp": "DDR4 / DDR5 SODIMM 3200MHz / 4800MHz",
+    "varianten": [
+      {"label": "Standard Gaming (16 GB RAM ab Werk)", "standardRamGB": 16}
+    ],
+    "hinweisStandard": "Starkes Preis-Leistungs-Verhältnis. Mit 16 GB ab Werk laufen alle gängigen Spiele sehr gut.",
+    "hinweisUpgrade": "Ein einfaches Upgrade auf ein 32 GB Kit schützt vor Nachladerucklern in grafisch aufwendigen Titeln."
+  },
+  {
+    "id": "medion-erazer-beast-major-2024-2026",
+    "hersteller": "Medion",
+    "titel": "Erazer Major / Beast (X10, X20, X30 - 2024–2026)",
+    "suchbegriffe": "erazerbeast beast major x10 x20 x30",
+    "kategorie": "Notebook",
+    "standardRamGB": 32,
+    "maxRamGB": 64,
+    "slotsInfo": "2 DDR5 Steckplätze vorhanden",
+    "ramTyp": "DDR5 SODIMM 5600MHz",
+    "varianten": [
+      {"label": "High-End Gaming (32 GB DDR5 ab Werk)", "standardRamGB": 32}
+    ],
+    "hinweisStandard": "Top-Modelle von Medion mit RTX 4080/4090/5080. Mit 32 GB RAM ab Werk brauchst du fürs pure Gaming kein Upgrade vorzunehmen.",
+    "hinweisUpgrade": "64 GB machen das Gerät zur unschlagbaren Workstation."
+  },
+  {
+    "id": "microsoft-surface-laptop-5-6-7",
+    "hersteller": "Microsoft",
+    "titel": "Surface Laptop 5 / 6 / 7 (13.5, 15 & 13.8 Zoll - 2024–2026)",
+    "suchbegriffe": "surface surface-laptop laptop5 laptop6 laptop7 copilot",
+    "kategorie": "Notebook",
+    "standardRamGB": 16,
+    "maxRamGB": 16,
+    "slotsInfo": "0 Steckplätze (RAM auf dem Mainboard fest verlötet)",
+    "ramTyp": "LPDDR5X (Fest verlötet)",
+    "varianten": [
+      {"label": "Standard Modell (16 GB fest verlötet)", "standardRamGB": 16}
+    ],
+    "hinweisStandard": "Wichtiger Hinweis: Bei Microsoft Surface Laptops ist der Arbeitsspeicher ausnahmslos fest verlötet und lässt sich im Nachhinein nicht aufrüsten.",
+    "hinweisUpgrade": "Achte beim Kauf deines Surface Laptops unbedingt darauf, direkt die Variante mit 16 GB oder 32 GB RAM auszuwählen."
+  },
+  {
+    "id": "microsoft-surface-pro-9-10-11",
+    "hersteller": "Microsoft",
+    "titel": "Surface Pro 9 / 10 / 11 (Intel & Snapdragon Copilot+ - 2024–2026)",
+    "suchbegriffe": "surfacepro surface-pro pro9 pro10 pro11 copilot+",
+    "kategorie": "Notebook",
+    "standardRamGB": 16,
+    "maxRamGB": 16,
+    "slotsInfo": "0 Steckplätze (Arbeitsspeicher fest verlötet)",
+    "ramTyp": "LPDDR5 / LPDDR5X (Fest verlötet)",
+    "varianten": [
+      {"label": "Standard Tablet (16 GB fest verlötet)", "standardRamGB": 16}
+    ],
+    "hinweisStandard": "Achtung: Auch bei den Surface Pro Tablets (inkl. der neuen Snapdragon X Copilot+ Modelle) ist der RAM fest verlötet.",
+    "hinweisUpgrade": "Die SSD lässt sich zwar oft tauschen, der Arbeitsspeicher (RAM) hingegen nicht. Kaufe die gewünschte Speichergröße direkt ab Werk."
+  }
+]
