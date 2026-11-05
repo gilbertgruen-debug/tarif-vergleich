@@ -521,40 +521,89 @@
     "hinweisUpgrade": "Wähle deine Speichergröße (mindestens 16 GB oder 24 GB) unbedingt direkt beim Erstkauf des MacBooks."
   },
   {
-    "id": "desktop-mainboard-b550-b650",
-    "hersteller": "AMD Mainboards",
-    "titel": "AMD Sockel AM4 / AM5 Mainboards (B550 / B650 / X670 / B850 / X870)",
-    "suchbegriffe": "b550 b650 x670 b850 x870 am4 am5 ryzen mainboard",
-    "kategorie": "Desktop PC Mainboard",
+    "id": "desktop-standard-pc",
+    "hersteller": "Standard / Eigenbau PC",
+    "titel": "Klassischer Desktop PC (Eigenbau / Standard-Gehäuse)",
+    "suchbegriffe": "desktop pc eigenbau computer komponenten am4 am5 lga1700 b550 b650 z790",
+    "kategorie": "Desktop PC",
     "standardRamGB": 16,
     "maxRamGB": 128,
-    "slotsInfo": "4 DIMM Steckplätze",
-    "ramTyp": "DDR4 3600MHz / DDR5 6000MHz DIMM",
+    "slotsInfo": "4 DIMM Steckplätze vorhanden",
+    "ramTyp": "DDR4 / DDR5 DIMM 3200MHz - 6000MHz",
     "varianten": [
-      {"label": "Einsteiger-Konfiguration (16 GB DDR5 Kit)", "standardRamGB": 16},
-      {"label": "Empfohlene Gaming-Konfiguration (32 GB DDR5 Kit)", "standardRamGB": 32},
-      {"label": "Workstation-Konfiguration (64 GB DDR5 Kit)", "standardRamGB": 64}
+      {"label": "Standard-PC (16 GB RAM verbaut)", "standardRamGB": 16},
+      {"label": "Gaming-PC (32 GB RAM verbaut)", "standardRamGB": 32}
     ],
-    "hinweisStandard": "Desktop-Mainboards lassen sich besonders leicht aufrüsten. Wenn du bereits 32 GB RAM im Dual-Channel nutzt, ist eine Erweiterung fürs Gaming nicht notwendig.",
-    "hinweisUpgrade": "Achte darauf, bei 4 Riegeln baugleiche Kits zu verwenden oder am besten ein 2x 16 GB bzw. 2x 32 GB Kit für maximale Stabilität zu nutzen."
+    "hinweisStandard": "Klassische Desktop PCs sind sehr einfach aufzurüsten. Mit 16 GB bist du für Office & Alltagsaufgaben perfekt aufgestellt.",
+    "hinweisUpgrade": "Ein Upgrade auf 32 GB DDR4 oder DDR5 sorgt für flüssiges Gaming ohne Ruckler."
   },
   {
-    "id": "desktop-mainboard-b760-z790",
-    "hersteller": "Intel Mainboards",
-    "titel": "Intel Sockel LGA1700 / LGA1851 Mainboards (B760 / Z790 / Z890)",
-    "suchbegriffe": "b760 z790 z890 b760m lga1700 lga1851 intel mainboard",
-    "kategorie": "Desktop PC Mainboard",
+    "id": "desktop-medion-erazer",
+    "hersteller": "Medion (Erazer)",
+    "titel": "Medion Erazer / Akoya Desktop PC",
+    "suchbegriffe": "medion erazer akoya desktop pc gamer-pc",
+    "kategorie": "Desktop PC",
     "standardRamGB": 16,
-    "maxRamGB": 192,
-    "slotsInfo": "4 DIMM Steckplätze",
-    "ramTyp": "DDR4 / DDR5 6000MHz+ DIMM",
+    "maxRamGB": 64,
+    "slotsInfo": "2-4 DIMM Steckplätze vorhanden",
+    "ramTyp": "DDR4 / DDR5 DIMM",
     "varianten": [
-      {"label": "Basis-Konfiguration (16 GB DDR5 Kit)", "standardRamGB": 16},
-      {"label": "Standard Gaming-Konfiguration (32 GB DDR5 Kit)", "standardRamGB": 32},
-      {"label": "High-End Konfiguration (64 GB DDR5 Kit)", "standardRamGB": 64}
+      {"label": "Standard Komplett-PC (16 GB RAM)", "standardRamGB": 16},
+      {"label": "High-End Gaming-PC (32 GB RAM)", "standardRamGB": 32}
     ],
-    "hinweisStandard": "High-End Desktop-Plattform. Für reines Gaming bieten 32 GB DDR5 RAM aktuell das perfekte Preis-Leistungs-Verhältnis.",
-    "hinweisUpgrade": "64 GB oder mehr lohnen sich vor allem für Videoschnitt, 3D-Rendering und professionelles Multitasking."
+    "hinweisStandard": "Verbreitete Komplett-PCs aus Aldi oder Elektronikmärkten. 16 GB bieten eine gute Basis für normale Spiele.",
+    "hinweisUpgrade": "Die Gehäuse lassen sich leicht öffnen. Ein 32 GB Kit verleiht deinem Rechner spürbare Reserven."
+  },
+  {
+    "id": "desktop-hp-pavilion-omen",
+    "hersteller": "HP (Pavilion / OMEN)",
+    "titel": "HP Desktop PC (Pavilion / OMEN / Victus)",
+    "suchbegriffe": "hp omen victus pavilion desktop pc prodesk elitedesk",
+    "kategorie": "Desktop PC",
+    "standardRamGB": 16,
+    "maxRamGB": 64,
+    "slotsInfo": "2-4 DIMM Steckplätze vorhanden",
+    "ramTyp": "DDR4 / DDR5 DIMM",
+    "varianten": [
+      {"label": "Office PC (8 GB RAM)", "standardRamGB": 8},
+      {"label": "Gaming PC (16 GB RAM)", "standardRamGB": 16}
+    ],
+    "hinweisStandard": "HP Fertig-PCs sind weit verbreitet. Mit 16 GB RAM läuft dein Rechner für normale Anwendungen flüssig.",
+    "hinweisUpgrade": "Bei 8 GB wird die Aufrüstung auf 16 GB oder 32 GB dringend empfohlen."
+  },
+  {
+    "id": "desktop-dell-alienware",
+    "hersteller": "Dell (OptiPlex / Alienware)",
+    "titel": "Dell Desktop PC (OptiPlex / Inspiron / Alienware)",
+    "suchbegriffe": "dell optiplex inspiron alienware desktop pc aurora",
+    "kategorie": "Desktop PC",
+    "standardRamGB": 16,
+    "maxRamGB": 64,
+    "slotsInfo": "2-4 DIMM Steckplätze vorhanden",
+    "ramTyp": "DDR4 / DDR5 DIMM",
+    "varianten": [
+      {"label": "Büro PC (8 GB RAM)", "standardRamGB": 8},
+      {"label": "Standard PC (16 GB RAM)", "standardRamGB": 16}
+    ],
+    "hinweisStandard": "Bewährte Büro- und Gaming-Systeme. 16 GB sind ideal für den Arbeitsalltag.",
+    "hinweisUpgrade": "Ein Upgrade auf 32 GB lohnt sich für aufwendiges Multitasking oder Gaming."
+  },
+  {
+    "id": "desktop-lenovo-legion-thinkcentre",
+    "hersteller": "Lenovo (Legion / ThinkCentre)",
+    "titel": "Lenovo Desktop PC (Legion / ThinkCentre / IdeaCentre)",
+    "suchbegriffe": "lenovo legion thinkcentre ideacentre desktop pc",
+    "kategorie": "Desktop PC",
+    "standardRamGB": 16,
+    "maxRamGB": 64,
+    "slotsInfo": "2-4 DIMM Steckplätze vorhanden",
+    "ramTyp": "DDR4 / DDR5 DIMM",
+    "varianten": [
+      {"label": "ThinkCentre Büro PC (8 GB RAM)", "standardRamGB": 8},
+      {"label": "Legion Gaming PC (16 GB RAM)", "standardRamGB": 16}
+    ],
+    "hinweisStandard": "Lenovo Rechner bieten einfache Erweiterungsoptionen. 16 GB reichen im Alltag voll aus.",
+    "hinweisUpgrade": "Für anspruchsvolle Spiele oder Videobearbeitung empfiehlt sich ein Upgrade auf 32 GB RAM."
   },
   {
     "id": "gigabyte-g5-g7-2024-2026",
