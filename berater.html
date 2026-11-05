@@ -155,20 +155,18 @@
   </footer>
 
   <script>
-    let alleModelle = [];
-    let aktuellesModell = null;
-    let gewaehlteKategorie = '';
+    var alleModelle = [];
+    var aktuellesModell = null;
+    var gewaehlteKategorie = '';
 
     fetch('modelle.json')
-      .then(res => res.json())
-      .then(data => { 
-        alleModelle = data; 
-      })
-      .catch(err => console.error('Fehler beim Laden der RAM-Datenbank:', err));
+      .then(function(res) { return res.json(); })
+      .then(function(data) { alleModelle = data; })
+      .catch(function(err) { console.error('Fehler beim Laden:', err); });
 
     function sucheModell() {
-      const eingabe = document.getElementById('modellInput').value.toLowerCase().trim();
-      const liste = document.getElementById('vorschlagsListe');
+      var eingabe = document.getElementById('modellInput').value.toLowerCase().trim();
+      var liste = document.getElementById('vorschlagsListe');
       liste.innerHTML = '';
 
       if (eingabe.length < 2) {
@@ -176,11 +174,11 @@
         return;
       }
 
-      const treffer = alleModelle.filter(m => {
-        const herstellerMatch = m.hersteller ? m.hersteller.toLowerCase().includes(eingabe) : false;
-        const titelMatch = m.titel ? m.titel.toLowerCase().includes(eingabe) : false;
-        const kombiMatch = `${m.hersteller} ${m.titel}`.toLowerCase().includes(eingabe);
-        const keywordsMatch = m.suchbegriffe ? m.suchbegriffe.toLowerCase().includes(eingabe) : false;
+      var treffer = alleModelle.filter(function(m) {
+        var herstellerMatch = m.hersteller ? m.hersteller.toLowerCase().indexOf(eingabe) !== -1 : false;
+        var titelMatch = m.titel ? m.titel.toLowerCase().indexOf(eingabe) !== -1 : false;
+        var kombiMatch = (m.hersteller + ' ' + m.titel).toLowerCase().indexOf(eingabe) !== -1;
+        var keywordsMatch = m.suchbegriffe ? m.suchbegriffe.toLowerCase().indexOf(eingabe) !== -1 : false;
 
         return herstellerMatch || titelMatch || kombiMatch || keywordsMatch;
       });
@@ -191,8 +189,8 @@
         return;
       }
 
-      treffer.forEach(m => {
-        const eintrag = document.createElement('div');
+      treffer.forEach(function(m) {
+        var eintrag = document.createElement('div');
         eintrag.className = 'p-3 hover:bg-blue-50 cursor-pointer text-sm font-medium text-gray-800 flex justify-between items-center';
         eintrag.innerHTML = '<span><strong>' + m.hersteller + '</strong> ' + m.titel + '</span> <span class="text-xs text-gray-400">Max. ' + m.maxRamGB + ' GB</span>';
         eintrag.onclick = function() { zeigeErgebnis(m, m.varianten ? m.varianten[0] : null); };
@@ -204,8 +202,8 @@
 
     function istNotebook(kategorie) {
       if (!kategorie) return true;
-      const katLower = kategorie.toLowerCase();
-      return katLower.includes('notebook') || katLower.includes('ultrabook') || katLower.includes('laptop');
+      var katLower = kategorie.toLowerCase();
+      return katLower.indexOf('notebook') !== -1 || katLower.indexOf('ultrabook') !== -1 || katLower.indexOf('laptop') !== -1;
     }
 
     function waehleKategorie(kat) {
@@ -213,7 +211,7 @@
       document.getElementById('wSchritt1').classList.add('hidden');
       document.getElementById('wSchritt2').classList.remove('hidden');
 
-      const markenContainer = document.getElementById('markenListe');
+      var markenContainer = document.getElementById('markenListe');
       markenContainer.innerHTML = '';
 
       if (!alleModelle || alleModelle.length === 0) {
@@ -222,8 +220,8 @@
         return;
       }
 
-      const herstellerSet = new Set();
-      alleModelle.forEach(m => {
+      var herstellerSet = new Set();
+      alleModelle.forEach(function(m) {
         if (kat === 'Notebook') {
           if (istNotebook(m.kategorie)) {
             herstellerSet.add(m.hersteller);
@@ -235,8 +233,8 @@
         }
       });
 
-      Array.from(herstellerSet).sort().forEach(hersteller => {
-        const btn = document.createElement('button');
+      Array.from(herstellerSet).sort().forEach(function(hersteller) {
+        var btn = document.createElement('button');
         btn.className = 'bg-white hover:bg-blue-100 border border-blue-300 text-slate-800 text-xs font-semibold py-2.5 px-3 rounded-lg shadow-sm text-center transition';
         btn.innerText = hersteller;
         btn.onclick = function() { waehleHersteller(hersteller); };
@@ -248,16 +246,16 @@
       document.getElementById('wSchritt2').classList.add('hidden');
       document.getElementById('wSchritt3').classList.remove('hidden');
 
-      const katListe = document.getElementById('modelleKatalogListe');
+      var katListe = document.getElementById('modelleKatalogListe');
       katListe.innerHTML = '';
 
-      const passendeModelle = alleModelle.filter(m => {
-        const katMatch = (gewaehlteKategorie === 'Notebook') ? istNotebook(m.kategorie) : !istNotebook(m.kategorie);
+      var passendeModelle = alleModelle.filter(function(m) {
+        var katMatch = (gewaehlteKategorie === 'Notebook') ? istNotebook(m.kategorie) : !istNotebook(m.kategorie);
         return katMatch && m.hersteller === hersteller;
       });
 
-      passendeModelle.forEach(m => {
-        const eintrag = document.createElement('div');
+      passendeModelle.forEach(function(m) {
+        var eintrag = document.createElement('div');
         eintrag.className = 'p-3 hover:bg-blue-50 cursor-pointer text-xs font-medium text-slate-800 flex justify-between items-center border-b last:border-b-0';
         eintrag.innerHTML = '<span><strong>' + m.titel + '</strong></span> <span class="text-blue-600 font-bold">Variante wählen →</span>';
         eintrag.onclick = function() { waehleModellReihe(m); };
@@ -269,13 +267,13 @@
       document.getElementById('wSchritt3').classList.add('hidden');
       document.getElementById('wSchritt4').classList.remove('hidden');
 
-      const vListe = document.getElementById('variantenKatalogListe');
+      var vListe = document.getElementById('variantenKatalogListe');
       vListe.innerHTML = '';
 
-      const varianten = (m.varianten && m.varianten.length > 0) ? m.varianten : [{"label": 'Standard Ausstattung (' + m.standardRamGB + ' GB RAM)', "standardRamGB": m.standardRamGB}];
+      var varianten = (m.varianten && m.varianten.length > 0) ? m.varianten : [{"label": 'Standard Ausstattung (' + m.standardRamGB + ' GB RAM)', "standardRamGB": m.standardRamGB}];
 
-      varianten.forEach(v => {
-        const eintrag = document.createElement('div');
+      varianten.forEach(function(v) {
+        var eintrag = document.createElement('div');
         eintrag.className = 'p-3 hover:bg-blue-50 cursor-pointer text-xs font-semibold text-slate-800 flex justify-between items-center border-b last:border-b-0';
         eintrag.innerHTML = '<span>' + v.label + '</span> <span class="text-slate-400">Auswählen</span>';
         eintrag.onclick = function() { zeigeErgebnis(m, v); };
@@ -327,13 +325,13 @@
     function berechneSpezifischeEmpfehlung() {
       if (!aktuellesModell) return;
 
-      const nutzung = document.getElementById('nutzungsSelect').value;
-      const hinweisBox = document.getElementById('empfehlungsHinweisBox');
-      const titel = document.getElementById('empfehlungsTitel');
-      const text = document.getElementById('mHinweis');
-      const btn = document.getElementById('amazonBtn');
+      var nutzung = document.getElementById('nutzungsSelect').value;
+      var hinweisBox = document.getElementById('empfehlungsHinweisBox');
+      var titel = document.getElementById('empfehlungsTitel');
+      var text = document.getElementById('mHinweis');
+      var btn = document.getElementById('amazonBtn');
 
-      if (aktuellesModell.slotsInfo.includes("0 Steckplätze") || (aktuellesModell.maxRamGB === 8 && aktuellesModell.slotsInfo.includes("fest verlötet"))) {
+      if (aktuellesModell.slotsInfo.indexOf("0 Steckplätze") !== -1 || (aktuellesModell.maxRamGB === 8 && aktuellesModell.slotsInfo.indexOf("fest verlötet") !== -1)) {
         hinweisBox.className = "p-4 rounded-lg text-xs leading-relaxed bg-amber-100 text-amber-900 border border-amber-300";
         titel.innerText = "⚠️ Nicht aufrüstbar:";
         text.innerText = aktuellesModell.hinweisStandard;
@@ -342,8 +340,8 @@
         return;
       }
 
-      let zielRam = 16;
-      let erfordereUpgrade = false;
+      var zielRam = 16;
+      var erfordereUpgrade = false;
 
       if (nutzung === 'office') {
         zielRam = 8;
@@ -374,4 +372,31 @@
         if (aktuellesModell.standardRamGB >= 32) {
           hinweisBox.className = "p-4 rounded-lg text-xs leading-relaxed bg-emerald-100 text-emerald-950 border border-emerald-300";
           titel.innerText = "✅ Perfekt ausgestattet:";
-          text.innerText = 'Mit deinen verbauten ' + aktuellesModell.standardRamGB + ' GB RAM bist du selbst für extrem anspruchsvolle Titel
+          text.innerText = 'Mit deinen verbauten ' + aktuellesModell.standardRamGB + ' GB RAM bist du selbst für extrem anspruchsvolle Titel wie Cyberpunk 2077 oder den Flight Simulator bestens gerüstet.';
+          btn.innerText = "Optional: High-End RAM Kits ansehen *";
+        } else {
+          erfordereUpgrade = true;
+          text.innerText = 'Anspruchsvolle Titel und große Simulationen verlangen heute oft mehr als 16 GB. Ein Upgrade auf ein 32 GB Kit (' + aktuellesModell.ramTyp + ') sorgt für stabile Bildraten und verhindert Nachladeruckler.';
+        }
+      } 
+      else if (nutzung === 'workstation') {
+        zielRam = Math.min(64, aktuellesModell.maxRamGB);
+        erfordereUpgrade = true;
+        text.innerText = 'Für professionellen 4K/8K-Videoschnitt, 3D-Rendering oder Virtualisierung schöpfst du mit einem Upgrade auf ' + zielRam + ' GB das volle Potenzial deines ' + aktuellesModell.titel + ' aus.';
+      }
+
+      if (erfordereUpgrade) {
+        hinweisBox.className = "p-4 rounded-lg text-xs leading-relaxed bg-blue-100 text-blue-950 border border-blue-300";
+        titel.innerText = "⚡ Empfohlenes Upgrade:";
+        btn.innerText = 'Passendes ' + zielRam + ' GB RAM Kit bei Amazon ansehen *';
+      }
+
+      var formfaktor = istNotebook(aktuellesModell.kategorie) ? "SODIMM Laptop RAM" : "DIMM Desktop RAM";
+      var saubererRamTyp = aktuellesModell.ramTyp ? aktuellesModell.ramTyp.replace(/\(.*\)/, '').trim() : "DDR5 SODIMM";
+      var amazonQuery = zielRam + 'GB Kit ' + saubererRamTyp + ' ' + formfaktor;
+      
+      btn.href = 'https://www.amazon.de/s?k=' + encodeURIComponent(amazonQuery);
+    }
+  </script>
+</body>
+</html>
