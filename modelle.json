@@ -52,8 +52,8 @@
   {
     "id": "lenovo-legion-pro-5-7-2024-2026",
     "hersteller": "Lenovo",
-    "titel": "Legion Pro 5 / Legion Pro 7 / Slim 5 (Gen 8, Gen 9 & Gen 10 - 2024–2026)",
-    "suchbegriffe": "legionpro5 legionpro7 gen8 gen9 gen10 16irx8 16arx8 16irx9",
+    "titel": "Legion Pro 5 / Legion Pro 7 / LOQ / Slim 5 (2024–2026)",
+    "suchbegriffe": "legionpro5 legionpro7 gen8 gen9 gen10 loq 16irx8 16arx8 16irx9",
     "kategorie": "Notebook",
     "standardRamGB": 16,
     "maxRamGB": 64,
@@ -64,7 +64,7 @@
       {"label": "High-End Variante (32 GB DDR5 ab Werk)", "standardRamGB": 32}
     ],
     "hinweisStandard": "Mit 16 GB oder 32 GB DDR5 RAM ausgeliefert. Bei 32 GB hast du für alle aktuellen Games bereits perfekten Puffer.",
-    "hinweisUpgrade": "Ein Upgrade auf 32 GB oder 64 GB DDR5 schöpft das volle Potenzial für High-End Gaming, Videorendering und Streaming aus."
+    "hinweisUpgrade": "Ein Upgrade auf 32 GB oder 64 GB DDR5 schöpfst das volle Potenzial für High-End Gaming, Videorendering und Streaming aus."
   },
   {
     "id": "lenovo-thinkpad-t14-e14",
@@ -120,33 +120,17 @@
   {
     "id": "hp-victus-15-16",
     "hersteller": "HP",
-    "titel": "Victus 15 / Victus 16 (Ältere Generationen)",
-    "suchbegriffe": "victus15 victus16 victus-15 victus-16 15-fa 16-d 16-e",
-    "kategorie": "Notebook",
-    "standardRamGB": 8,
-    "maxRamGB": 32,
-    "slotsInfo": "2 Steckplätze vorhanden",
-    "ramTyp": "DDR4 / DDR5 SODIMM 3200MHz / 4800MHz",
-    "varianten": [
-      {"label": "Basis Gaming (8 GB RAM ab Werk)", "standardRamGB": 8},
-      {"label": "Standard Gaming (16 GB RAM ab Werk)", "standardRamGB": 16}
-    ],
-    "hinweisStandard": "Günstige Varianten werden oft nur mit 8 GB ausgeliefert. Bei 16 GB oder 32 GB hast du bereits genug Speicher für normale Spiele.",
-    "hinweisUpgrade": "Upgrade auf 16 GB oder 32 GB wird dringend empfohlen, um Nachladeruckler in modernen Spielen zu vermeiden."
-  },
-  {
-    "id": "hp-victus-15-16-2024-2026",
-    "hersteller": "HP",
-    "titel": "Victus 15 / Victus 16 (Modelljahre 2024–2026)",
-    "suchbegriffe": "victus 15-fb 16-r 16-s 2024 2025 2026",
+    "titel": "Victus 15 / Victus 16 (DDR4 & DDR5)",
+    "suchbegriffe": "victus15 victus16 victus-15 victus-16 15-fa 16-d 16-e 15-fb 16-r 16-s",
     "kategorie": "Notebook",
     "standardRamGB": 16,
     "maxRamGB": 32,
     "slotsInfo": "2 Steckplätze vorhanden",
     "ramTyp": "DDR4 / DDR5 SODIMM 3200MHz / 5600MHz",
     "varianten": [
-      {"label": "Standard Gaming (16 GB DDR5 ab Werk)", "standardRamGB": 16},
-      {"label": "Performance Gaming (32 GB DDR5 ab Werk)", "standardRamGB": 32}
+      {"label": "Basis Gaming (8 GB RAM ab Werk)", "standardRamGB": 8},
+      {"label": "Standard Gaming (16 GB RAM ab Werk)", "standardRamGB": 16},
+      {"label": "Performance Gaming (32 GB RAM ab Werk)", "standardRamGB": 32}
     ],
     "hinweisStandard": "Sehr verbreitetes Einsteiger-Gaming-Notebook. Mit 16 GB RAM bist du für eSports und normale Spiele gut aufgestellt.",
     "hinweisUpgrade": "Upgrade auf 32 GB verhindert Ruckler bei anspruchsvollen Spielen mit großen Open-World-Karten."
@@ -171,13 +155,13 @@
   {
     "id": "hp-probook-450-g8-g9",
     "hersteller": "HP",
-    "titel": "ProBook 450 / EliteBook 840 (G7, G8, G9)",
-    "suchbegriffe": "probook450 elitebook840 probook-450 elitebook-840 g7 g8 g9",
+    "titel": "ProBook 440 / 450 & EliteBook 840 (G7 bis G12)",
+    "suchbegriffe": "probook440 probook450 elitebook840 probook-450 elitebook-840 g7 g8 g9 g10 g11 g12",
     "kategorie": "Notebook",
     "standardRamGB": 16,
     "maxRamGB": 64,
     "slotsInfo": "2 Steckplätze vorhanden (voll aufrüstbar)",
-    "ramTyp": "DDR4 / DDR5 SODIMM 3200MHz / 4800MHz",
+    "ramTyp": "DDR4 / DDR5 SODIMM",
     "varianten": [
       {"label": "Standard Business (16 GB RAM ab Werk)", "standardRamGB": 16},
       {"label": "Maximal-Variante (32 GB RAM ab Werk)", "standardRamGB": 32}
@@ -186,77 +170,43 @@
     "hinweisUpgrade": "Beide Steckplätze lassen sich einfach austauschen. Ein 32 GB Kit verleiht dem System maximale Langlebigkeit."
   },
   {
-    "id": "hp-probook-440-450-g10-g11",
-    "hersteller": "HP",
-    "titel": "ProBook 440 / 450 & EliteBook 840 (G10, G11 & G12 - 2024–2026)",
-    "suchbegriffe": "probook440 probook450 elitebook840 g10 g11 g12",
-    "kategorie": "Notebook",
-    "standardRamGB": 16,
-    "maxRamGB": 64,
-    "slotsInfo": "2 Steckplätze vorhanden (leicht zugänglich)",
-    "ramTyp": "DDR4 / DDR5 SODIMM",
-    "varianten": [
-      {"label": "Standard Firmen-Laptop (16 GB RAM)", "standardRamGB": 16},
-      {"label": "Erweiterter Firmen-Laptop (32 GB RAM)", "standardRamGB": 32}
-    ],
-    "hinweisStandard": "Hervorragende Firmen-Laptops. 16 GB reichen für normales Arbeiten, Buchhaltung und Videokonferenzen vollkommen aus.",
-    "hinweisUpgrade": "Das Gehäuse lässt sich sehr einfach öffnen. Ein Upgrade auf 32 GB verlängert die Nutzungsdauer um Jahre."
-  },
-  {
     "id": "dell-xps-15-9500",
     "hersteller": "Dell",
-    "titel": "XPS 15 (9500 / 9510)",
-    "suchbegriffe": "xps15 xps-15 9500 9510 9520 dellxps",
-    "kategorie": "Notebook",
-    "standardRamGB": 32,
-    "maxRamGB": 64,
-    "slotsInfo": "2 Steckplätze vorhanden",
-    "ramTyp": "DDR4 SODIMM 3200MHz",
-    "varianten": [
-      {"label": "Standard Creator (16 GB RAM ab Werk)", "standardRamGB": 16},
-      {"label": "High-End Creator (32 GB RAM ab Werk)", "standardRamGB": 32}
-    ],
-    "hinweisStandard": "Mit 32 GB bist du für 99 % aller Anwendungen und Spiele perfekt gerüstet. Eine Aufrüstung ist im Normalfall nicht notwendig.",
-    "hinweisUpgrade": "64 GB sind nur für extremen professionellen Videoschnitt (4K/8K) oder virtuelle Maschinen sinnvoll."
-  },
-  {
-    "id": "dell-xps-13-14-16-2024-2026",
-    "hersteller": "Dell",
-    "titel": "XPS 13 / XPS 14 / XPS 16 (Modellreihe 2024–2026)",
-    "suchbegriffe": "xps13 xps14 xps16 9340 9440 9640",
+    "titel": "XPS 15 / XPS 14 / XPS 16 (Modellreihe 2024–2026)",
+    "suchbegriffe": "xps13 xps14 xps15 xps16 9340 9440 9500 9510 9640",
     "kategorie": "Notebook",
     "standardRamGB": 16,
     "maxRamGB": 64,
-    "slotsInfo": "0 Steckplätze bei XPS 13 / 2 Steckplätze bei XPS 14 & 16",
-    "ramTyp": "LPDDR5X (XPS 13) / DDR5 SODIMM (XPS 14/16)",
+    "slotsInfo": "2 Steckplätze bei XPS 14 / 15 / 16 (XPS 13 fest verlötet)",
+    "ramTyp": "DDR4 / DDR5 SODIMM",
     "varianten": [
       {"label": "Standard XPS (16 GB RAM ab Werk)", "standardRamGB": 16},
-      {"label": "Pro XPS (32 GB RAM ab Werk)", "standardRamGB": 32}
+      {"label": "High-End Creator (32 GB RAM ab Werk)", "standardRamGB": 32}
     ],
-    "hinweisStandard": "Achtung: Beim kompakten XPS 13 ist der RAM fest verlötet. Die größeren XPS 14 und XPS 16 verfügen über aufrüstbare Steckplätze.",
-    "hinweisUpgrade": "Für XPS 14/16 ist ein 32 GB oder 64 GB Upgrade ideal für professionelle Medienbearbeitung."
+    "hinweisStandard": "Achtung: Beim kompakten XPS 13 ist der RAM fest verlötet. Die größeren XPS 14, 15 und 16 verfügen über aufrüstbare Steckplätze.",
+    "hinweisUpgrade": "Für XPS 14/15/16 ist ein 32 GB oder 64 GB Upgrade ideal für professionelle Medienbearbeitung."
   },
   {
     "id": "dell-latitude-5420-5520",
     "hersteller": "Dell",
-    "titel": "Latitude 5420 / 5520 / 5530",
-    "suchbegriffe": "latitude 5420 5520 5530 5430 dell-latitude",
+    "titel": "Latitude 5420 / 5520 / 5530 & G15/G16 Gaming",
+    "suchbegriffe": "latitude 5420 5520 5530 5430 dell-latitude g15 g16",
     "kategorie": "Notebook",
     "standardRamGB": 16,
     "maxRamGB": 64,
     "slotsInfo": "2 Steckplätze vorhanden",
-    "ramTyp": "DDR4 / DDR5 SODIMM 3200MHz",
+    "ramTyp": "DDR4 / DDR5 SODIMM",
     "varianten": [
       {"label": "Office Standard (8 GB RAM ab Werk)", "standardRamGB": 8},
-      {"label": "Office Pro (16 GB RAM ab Werk)", "standardRamGB": 16}
+      {"label": "Office / Gaming Pro (16 GB RAM ab Werk)", "standardRamGB": 16}
     ],
-    "hinweisStandard": "Typisches Firmen-Notebook. 16 GB reichen für alle regulären Büroarbeiten völlig aus.",
-    "hinweisUpgrade": "Ein Upgrade auf 32 GB empfiehlt sich bei intensiver Nutzung von Datenanalyse-Tools oder vielen geöffneten Browser-Sitzungen."
+    "hinweisStandard": "Typisches Firmen- & Gaming-Notebook. 16 GB reichen für alle regulären Arbeiten völlig aus.",
+    "hinweisUpgrade": "Ein Upgrade auf 32 GB empfiehlt sich bei intensiver Nutzung von Datenanalyse-Tools oder flüssigem Gaming."
   },
   {
     "id": "dell-inspiron-15-16-2024-2026",
     "hersteller": "Dell",
-    "titel": "Inspiron 15 / Inspiron 16 (Plus & 2-in-1 - 2024–2026)",
+    "titel": "Inspiron 15 / Inspiron 16 (Plus & 2-in-1)",
     "suchbegriffe": "inspiron15 inspiron16 inspiron-15 inspiron-16 3520 5630",
     "kategorie": "Notebook",
     "standardRamGB": 16,
@@ -289,137 +239,38 @@
   {
     "id": "acer-nitro-5-an515-57",
     "hersteller": "Acer",
-    "titel": "Nitro 5 (AN515-57 / AN515-58)",
-    "suchbegriffe": "nitro5 nitro-5 an515 an515-57 an515-58 an51557 an51558",
+    "titel": "Nitro 5 / Nitro 16 / Nitro V & Predator Helios",
+    "suchbegriffe": "nitro5 nitro-5 an515 an515-57 an515-58 nitro16 nitrov15 nitrov16 predator helios",
     "kategorie": "Notebook",
     "standardRamGB": 16,
-    "maxRamGB": 32,
+    "maxRamGB": 64,
     "slotsInfo": "2 Steckplätze vorhanden (beide austauschbar)",
-    "ramTyp": "DDR4 SODIMM 3200MHz",
+    "ramTyp": "DDR4 / DDR5 SODIMM",
     "varianten": [
-      {"label": "Basis Gaming (8 GB DDR4 ab Werk)", "standardRamGB": 8},
-      {"label": "Standard Gaming (16 GB DDR4 ab Werk)", "standardRamGB": 16}
+      {"label": "Basis Gaming (8 GB RAM ab Werk)", "standardRamGB": 8},
+      {"label": "Standard Gaming (16 GB RAM ab Werk)", "standardRamGB": 16},
+      {"label": "High Gaming (32 GB RAM ab Werk)", "standardRamGB": 32}
     ],
     "hinweisStandard": "Mit 16 GB laufen die meisten aktuellen Spiele flüssig. Wenn du bereits 16 GB oder 32 GB hast, ist ein Upgrade vorerst nicht zwingend nötig.",
     "hinweisUpgrade": "Ein Upgrade auf 32 GB (2x 16 GB Kit) verhindert Mikroruckler bei extrem aufwendigen Games oder gleichzeitigem Streaming."
   },
   {
-    "id": "acer-nitro-16-an16",
-    "hersteller": "Acer",
-    "titel": "Nitro 16 (AN16-41 / AN16-51)",
-    "suchbegriffe": "nitro16 nitro-16 an16 an16-41 an16-51 an1641",
-    "kategorie": "Notebook",
-    "standardRamGB": 16,
-    "maxRamGB": 32,
-    "slotsInfo": "2 DDR5 Steckplätze vorhanden",
-    "ramTyp": "DDR5 SODIMM 4800MHz / 5600MHz",
-    "varianten": [
-      {"label": "Standard Gaming (16 GB DDR5 ab Werk)", "standardRamGB": 16},
-      {"label": "High Gaming (32 GB DDR5 ab Werk)", "standardRamGB": 32}
-    ],
-    "hinweisStandard": "Ausgeliefert mit schnellem DDR5 RAM. 16 GB reichen für normales Gaming vollkommen aus.",
-    "hinweisUpgrade": "Bei 32 GB hast du maximale Zukunftssicherheit für kommende AAA-Spieletitel."
-  },
-  {
-    "id": "acer-nitro-v15-v16-2024-2026",
-    "hersteller": "Acer",
-    "titel": "Nitro V 15 / Nitro V 16 / Nitro 16 (2024–2026)",
-    "suchbegriffe": "nitrov15 nitrov16 nitro-v15 nitro-v16 anv15 anv16",
-    "kategorie": "Notebook",
-    "standardRamGB": 16,
-    "maxRamGB": 32,
-    "slotsInfo": "2 DDR5 Steckplätze vorhanden",
-    "ramTyp": "DDR5 SODIMM 5200MHz / 5600MHz",
-    "varianten": [
-      {"label": "Standard-Variante (16 GB DDR5 ab Werk)", "standardRamGB": 16}
-    ],
-    "hinweisStandard": "Gefälliges Gaming-Notebook. Mit 16 GB laufen Spiele flüssig. Hast du bereits 16 GB oder 32 GB, musst du vorerst nichts nachrüsten.",
-    "hinweisUpgrade": "Aufrüstung auf 32 GB (2x 16 GB Kit) empfiehlt sich für maximale Bildraten und flüssiges Multitasking."
-  },
-  {
-    "id": "acer-predator-helios-16-18",
-    "hersteller": "Acer",
-    "titel": "Predator Helios 16 / Helios 18 / Neo (2024–2026)",
-    "suchbegriffe": "predator helios16 helios18 helios-neo ph16 ph18",
-    "kategorie": "Notebook",
-    "standardRamGB": 32,
-    "maxRamGB": 64,
-    "slotsInfo": "2 DDR5 Steckplätze vorhanden",
-    "ramTyp": "DDR5 SODIMM 5600MHz",
-    "varianten": [
-      {"label": "High-End Gaming (32 GB DDR5 ab Werk)", "standardRamGB": 32},
-      {"label": "Pro Workstation (64 GB DDR5 ab Werk)", "standardRamGB": 64}
-    ],
-    "hinweisStandard": "Sehr leistungsstark. Mit 32 GB verbautem RAM bist du für alle modernen Titel perfekt gerüstet.",
-    "hinweisUpgrade": "64 GB machen das Gerät zur vollwertigen mobilen Workstation."
-  },
-  {
     "id": "asus-tuf-gaming-f15-fx506",
     "hersteller": "ASUS",
-    "titel": "TUF Gaming F15 (FX506 / FX507 - DDR4)",
-    "suchbegriffe": "tuff15 tuf-f15 fx506 fx507 fx506hm fx506hc",
-    "kategorie": "Notebook",
-    "standardRamGB": 8,
-    "maxRamGB": 32,
-    "slotsInfo": "2 Steckplätze vorhanden",
-    "ramTyp": "DDR4 SODIMM 3200MHz",
-    "varianten": [
-      {"label": "Einsteiger-Variante (8 GB DDR4 ab Werk)", "standardRamGB": 8},
-      {"label": "Standard-Variante (16 GB DDR4 ab Werk)", "standardRamGB": 16}
-    ],
-    "hinweisStandard": "Viele Varianten wurden ab Werk nur mit 8 GB geliefert. Hier bremst der Arbeitsspeicher moderne Spiele spürbar aus.",
-    "hinweisUpgrade": "Dringend empfohlen: Aufrüstung auf 16 GB oder 32 GB Dual-Channel-Kit für maximale FPS und Ruckelfreiheit."
-  },
-  {
-    "id": "asus-tuf-gaming-a15-fa507",
-    "hersteller": "ASUS",
-    "titel": "TUF Gaming A15 (FA507 - DDR5)",
-    "suchbegriffe": "tufa15 tuf-a15 fa507 fa507xv fa507rm",
-    "kategorie": "Notebook",
-    "standardRamGB": 16,
-    "maxRamGB": 32,
-    "slotsInfo": "2 DDR5 Steckplätze vorhanden",
-    "ramTyp": "DDR5 SODIMM 4800MHz",
-    "varianten": [
-      {"label": "Standard Gaming (16 GB DDR5 ab Werk)", "standardRamGB": 16}
-    ],
-    "hinweisStandard": "Sehr leistungsfähiges System. Hast du bereits 16 GB oder 32 GB verbaut, ist eine weitere Aufrüstung rein fürs Zocken nicht erforderlich.",
-    "hinweisUpgrade": "32 GB bringen Reserven für Content Creation, Videorendering und schwere Multitasking-Setups."
-  },
-  {
-    "id": "asus-tuf-gaming-a15-a16-f15-2024-2026",
-    "hersteller": "ASUS",
-    "titel": "TUF Gaming A15 / A16 / F15 / F16 (Modelljahre 2024–2026)",
-    "suchbegriffe": "tuf 2024 2025 2026 fa607 ff16 fa507ui",
+    "titel": "TUF Gaming A15 / A16 / F15 / F16 & ROG Strix G16/G18",
+    "suchbegriffe": "tuff15 tufa15 tuf-f15 tuf-a15 rog strix g16 g18 scar fx506 fa507 g614",
     "kategorie": "Notebook",
     "standardRamGB": 16,
     "maxRamGB": 64,
-    "slotsInfo": "2 DDR5 Steckplätze vorhanden",
-    "ramTyp": "DDR5 SODIMM 4800MHz / 5600MHz",
+    "slotsInfo": "2 Steckplätze vorhanden (voll aufrüstbar)",
+    "ramTyp": "DDR4 / DDR5 SODIMM",
     "varianten": [
-      {"label": "Einsteiger-Variante (8 GB DDR5 ab Werk)", "standardRamGB": 8},
-      {"label": "Standard-Variante (16 GB DDR5 ab Werk)", "standardRamGB": 16}
+      {"label": "Einsteiger-Variante (8 GB RAM ab Werk)", "standardRamGB": 8},
+      {"label": "Standard-Variante (16 GB RAM ab Werk)", "standardRamGB": 16},
+      {"label": "Gängige High-End Konfiguration (32 GB RAM ab Werk)", "standardRamGB": 32}
     ],
-    "hinweisStandard": "Standardmäßig mit 16 GB DDR5 ausgestattet. Für eSports-Titel und normale Spiele ausreichend.",
-    "hinweisUpgrade": "Ein Upgrade auf ein 32 GB DDR5 Kit verhindert Ruckler in anspruchsvollen Spielen (z. B. Cyberpunk 2077, Flight Simulator)."
-  },
-  {
-    "id": "asus-rog-strix-g16-g18-2024-2026",
-    "hersteller": "ASUS",
-    "titel": "ROG Strix G16 / G18 & Scar 16 / 18 (2024–2026)",
-    "suchbegriffe": "rog strix g16 g18 scar16 scar18 g614 g814",
-    "kategorie": "Notebook",
-    "standardRamGB": 32,
-    "maxRamGB": 64,
-    "slotsInfo": "2 DDR5 Steckplätze vorhanden",
-    "ramTyp": "DDR5 SODIMM 5600MHz",
-    "varianten": [
-      {"label": "Basis-Konfiguration (16 GB DDR5 ab Werk)", "standardRamGB": 16},
-      {"label": "Gängige Konfiguration (32 GB DDR5 ab Werk)", "standardRamGB": 32},
-      {"label": "Vollausstattung (64 GB DDR5 ab Werk)", "standardRamGB": 64}
-    ],
-    "hinweisStandard": "Meist ab Werk mit 32 GB DDR5 bestückt. Wenn du bereits 32 GB hast, ist ein weiteres Upgrade rein fürs Gaming absolut unnötig.",
-    "hinweisUpgrade": "64 GB lohnen sich ausschließlich für 4K-Videobearbeitung, 3D-Animationen oder extrem rechenintensive Simulationen."
+    "hinweisStandard": "Viele ältere Varianten wurden ab Werk nur mit 8 GB geliefert. Standardmäßig sind 16 GB bis 32 GB verbaut.",
+    "hinweisUpgrade": "Dringend empfohlen bei 8 GB: Aufrüstung auf 16 GB oder 32 GB Dual-Channel-Kit für maximale FPS und Ruckelfreiheit."
   },
   {
     "id": "asus-zenbook-vivobook-2024-2026",
@@ -440,85 +291,87 @@
   {
     "id": "msi-katana-gf66-15",
     "hersteller": "MSI",
-    "titel": "Katana GF66 / B12V / 15",
-    "suchbegriffe": "katana gf66 gf76 b12v b13v msikatana",
+    "titel": "Katana / Cyborg / Pulse / Vector / Raider (15 & 17 Zoll)",
+    "suchbegriffe": "katana gf66 gf76 b12v b13v cyborg pulse vector raider msikatana",
     "kategorie": "Notebook",
     "standardRamGB": 16,
     "maxRamGB": 64,
     "slotsInfo": "2 Steckplätze vorhanden",
     "ramTyp": "DDR4 / DDR5 SODIMM",
     "varianten": [
-      {"label": "Standard Gaming (16 GB RAM ab Werk)", "standardRamGB": 16}
+      {"label": "Standard Gaming (16 GB RAM ab Werk)", "standardRamGB": 16},
+      {"label": "Pro Gaming (32 GB RAM ab Werk)", "standardRamGB": 32}
     ],
-    "hinweisStandard": "Sehr beliebtes Gaming-Modell. Wenn du bereits 16 GB oder 32 GB RAM hast, brauchst du für die meisten Spiele vorerst nicht weiter aufzurüsten.",
+    "hinweisStandard": "Sehr beliebte Gaming-Modelle. Wenn du bereits 16 GB oder 32 GB RAM hast, brauchst du für die meisten Spiele vorerst nicht weiter aufzurüsten.",
     "hinweisUpgrade": "Aufrüstung auf 32 GB schöpft das volle Potenzial bei rechenintensiven Games und Multitasking aus."
   },
   {
-    "id": "msi-katana-15-17-2024-2026",
-    "hersteller": "MSI",
-    "titel": "Katana 15 / Katana 17 / B13V / B14V (2024–2026)",
-    "suchbegriffe": "katana15 katana17 b14vfk b13vfk",
-    "kategorie": "Notebook",
-    "standardRamGB": 16,
-    "maxRamGB": 64,
-    "slotsInfo": "2 DDR5 SODIMM Steckplätze",
-    "ramTyp": "DDR5 SODIMM 5200MHz / 5600MHz",
-    "varianten": [
-      {"label": "Standard Gaming (16 GB DDR5 ab Werk)", "standardRamGB": 16},
-      {"label": "Pro Gaming (32 GB DDR5 ab Werk)", "standardRamGB": 32}
-    ],
-    "hinweisStandard": "Beliebtes Gaming-Modell. 16 GB reichen für Alltagsaufgaben und Standard-Gaming völlig aus.",
-    "hinweisUpgrade": "Ein Upgrade auf 32 GB DDR5 bringt spürbare Reserven für AAA-Games und paralleles Discord-/Browser-Streaming."
-  },
-  {
-    "id": "msi-cyborg-15-pulse-16-2024-2026",
-    "hersteller": "MSI",
-    "titel": "Cyborg 15 / Pulse 16 / Vector 16 (2024–2026)",
-    "suchbegriffe": "cyborg15 pulse16 vector16 a13v a14v",
+    "id": "gigabyte-g5-g7-2024-2026",
+    "hersteller": "Gigabyte",
+    "titel": "Gigabyte G5 / G7 & AORUS 15 / 16X / 17",
+    "suchbegriffe": "gigabyteg5 g5 g7 kf mf g5-kf aorus aorus15 aorus17",
     "kategorie": "Notebook",
     "standardRamGB": 16,
     "maxRamGB": 64,
     "slotsInfo": "2 Steckplätze vorhanden",
-    "ramTyp": "DDR5 SODIMM 5600MHz",
+    "ramTyp": "DDR4 / DDR5 SODIMM",
     "varianten": [
-      {"label": "Standard Gaming (16 GB DDR5 ab Werk)", "standardRamGB": 16}
+      {"label": "Standard Gaming (16 GB RAM ab Werk)", "standardRamGB": 16},
+      {"label": "High Gaming (32 GB RAM ab Werk)", "standardRamGB": 32}
     ],
-    "hinweisStandard": "Ausgeliefert mit schnellem DDR5 Speicher. Für flüssiges Spielen aktueller Titel sind 16 GB bis 32 GB ideal.",
-    "hinweisUpgrade": "Beide Steckplätze lassen sich einfach austauschen. Ein 2x 16 GB Kit ist die Preis-Leistungs-Empfehlung."
+    "hinweisStandard": "Sehr beliebte Gaming-Notebooks. 16 GB bieten eine gute Ausgangslage für aktuelle eSports-Titel.",
+    "hinweisUpgrade": "Ein Upgrade auf 32 GB (2x 16 GB Kit) empfiehlt sich für Ruckelfreiheit bei anspruchsvollen Spielen und parallelen Hintergrundanwendungen."
   },
   {
-    "id": "apple-macbook-air-m1-m2-m3",
-    "hersteller": "Apple",
-    "titel": "MacBook Air / Pro (M1, M2 Chips)",
-    "suchbegriffe": "macbook macbookair macbookpro m1 m2 a2337 a2681",
+    "id": "razer-blade-14-16-18-2024-2026",
+    "hersteller": "Razer",
+    "titel": "Blade 14 / Blade 16 / Blade 18 (Modelljahre 2024–2026)",
+    "suchbegriffe": "razerblade blade14 blade16 blade18 razer-blade",
     "kategorie": "Notebook",
-    "standardRamGB": 8,
-    "maxRamGB": 8,
-    "slotsInfo": "0 Steckplätze (Arbeitsspeicher ist fest im M-Prozessor integriert)",
-    "ramTyp": "Fest verlöteter Unified Memory",
+    "standardRamGB": 16,
+    "maxRamGB": 96,
+    "slotsInfo": "2 DDR5 SODIMM Steckplätze (außer Blade 14 Onboard)",
+    "ramTyp": "DDR5 SODIMM 5600MHz / LPDDR5X",
     "varianten": [
-      {"label": "Standard Modell (8 GB Unified Memory)", "standardRamGB": 8},
-      {"label": "Erweitertes Modell (16 GB Unified Memory)", "standardRamGB": 16}
+      {"label": "Standard Modell (16 GB DDR5 ab Werk)", "standardRamGB": 16},
+      {"label": "Pro Modell (32 GB DDR5 ab Werk)", "standardRamGB": 32}
     ],
-    "hinweisStandard": "Achtung: Bei Apple MacBooks mit M-Chips ist der Arbeitsspeicher fest auf dem Prozessor verlötet. Ein nachträgliches Aufrüsten ist technisch unmöglich.",
-    "hinweisUpgrade": "Kaufe den Arbeitsspeicher bei Apple-Geräten direkt beim Erstkauf in der passenden Größe (mindestens 16 GB empfohlen)."
+    "hinweisStandard": "Achtung: Beim kompakten Blade 14 ist der RAM oft verlötet. Bei den größeren Blade 16 & 18 Modellen lässt sich der DDR5-Speicher voll aufrüsten.",
+    "hinweisUpgrade": "Bei Blade 16 & 18 lässt sich der RAM auf 32 GB, 64 GB oder sogar 96 GB erweitern – ideal für professionellen Videoschnitt und High-End Gaming."
   },
   {
-    "id": "apple-macbook-air-pro-m3-m4",
+    "id": "xmg-schenker-neo-pro",
+    "hersteller": "XMG / Schenker",
+    "titel": "XMG NEO / PRO / FOCUS / CORE (DDR4 / DDR5)",
+    "suchbegriffe": "xmg schenker neo pro focus core rtx 4060 4070 4080 4090",
+    "kategorie": "Notebook",
+    "standardRamGB": 16,
+    "maxRamGB": 64,
+    "slotsInfo": "2 SODIMM Steckplätze vorhanden",
+    "ramTyp": "DDR4 / DDR5 SODIMM",
+    "varianten": [
+      {"label": "Standard Gaming (16 GB RAM ab Werk)", "standardRamGB": 16},
+      {"label": "High-End Gaming (32 GB RAM ab Werk)", "standardRamGB": 32}
+    ],
+    "hinweisStandard": "Wartungsfreundliche Enthusiast-Notebooks. Sehr leicht zugänglich.",
+    "hinweisUpgrade": "Ein Upgrade auf 32 GB oder 64 GB bringt volle Reserven für High-End Gaming und Content Creation."
+  },
+  {
+    "id": "apple-macbook-air-m1-m2-m3-m4",
     "hersteller": "Apple",
-    "titel": "MacBook Air & MacBook Pro (M3, M3 Pro/Max & M4 - 2024–2026)",
-    "suchbegriffe": "macbook m3 m4 m3pro m3max m4pro m4max",
+    "titel": "MacBook Air & Pro (M1, M2, M3, M4 Pro/Max)",
+    "suchbegriffe": "macbook macbookair macbookpro m1 m2 m3 m4 a2337 a2681",
     "kategorie": "Notebook",
     "standardRamGB": 16,
     "maxRamGB": 128,
     "slotsInfo": "0 Steckplätze (Unified Memory fest im M-Chip integriert)",
     "ramTyp": "Fest verlöteter Unified Memory",
     "varianten": [
-      {"label": "Standard Modell (16 GB Unified Memory)", "standardRamGB": 16},
+      {"label": "Standard Modell (8 GB / 16 GB Unified Memory)", "standardRamGB": 16},
       {"label": "Pro Modell (36 GB Unified Memory)", "standardRamGB": 36}
     ],
-    "hinweisStandard": "Achtung: Bei allen Apple MacBooks mit M3- und M4-Prozessoren ist der Arbeitsspeicher fest im Prozessor integriert. Ein nachträgliches Aufrüsten ist unmöglich.",
-    "hinweisUpgrade": "Wähle deine Speichergröße (mindestens 16 GB oder 24 GB) unbedingt direkt beim Erstkauf des MacBooks."
+    "hinweisStandard": "Achtung: Bei allen Apple MacBooks mit M-Prozessoren ist der Arbeitsspeicher fest im Chip integriert. Ein nachträgliches Aufrüsten ist unmöglich.",
+    "hinweisUpgrade": "Wähle deine Speichergröße unbedingt direkt beim Erstkauf des MacBooks."
   },
   {
     "id": "desktop-standard-pc",
@@ -606,117 +459,139 @@
     "hinweisUpgrade": "Für anspruchsvolle Spiele oder Videobearbeitung empfiehlt sich ein Upgrade auf 32 GB RAM."
   },
   {
-    "id": "gigabyte-g5-g7-2024-2026",
-    "hersteller": "Gigabyte",
-    "titel": "Gigabyte G5 / G7 / KF / MF (2024–2026)",
-    "suchbegriffe": "gigabyteg5 g5 g7 kf mf g5-kf g5-mf gigabyte-g5",
-    "kategorie": "Notebook",
+    "id": "desktop-csl-computer",
+    "hersteller": "CSL Computer",
+    "titel": "CSL Speed / Sprint / HydroX Fertig-PC",
+    "suchbegriffe": "csl computer sprint speed hydrox fertig pc gaming",
+    "kategorie": "Desktop PC",
     "standardRamGB": 16,
     "maxRamGB": 64,
-    "slotsInfo": "2 Steckplätze vorhanden",
-    "ramTyp": "DDR4 / DDR5 SODIMM 3200MHz / 4800MHz",
+    "slotsInfo": "2-4 DIMM Steckplätze vorhanden",
+    "ramTyp": "DDR4 / DDR5 DIMM",
     "varianten": [
-      {"label": "Standard Gaming (16 GB RAM ab Werk)", "standardRamGB": 16}
+      {"label": "Einsteiger-PC (8 GB RAM)", "standardRamGB": 8},
+      {"label": "Standard Gaming (16 GB RAM)", "standardRamGB": 16},
+      {"label": "High-End Gaming (32 GB RAM)", "standardRamGB": 32}
     ],
-    "hinweisStandard": "Sehr beliebtes Einsteiger-Gaming-Notebook. 16 GB bieten eine gute Ausgangslage für aktuelle eSports-Titel.",
-    "hinweisUpgrade": "Ein Upgrade auf 32 GB (2x 16 GB Kit) empfiehlt sich für Ruckelfreiheit bei anspruchsvollen Spielen und parallelen Hintergrundanwendungen."
+    "hinweisStandard": "CSL Fertig-PCs bauen auf offene ATX-Standards auf. Die Arbeitsspeicher-Slots lassen sich einfach erweitern.",
+    "hinweisUpgrade": "Ein Upgrade auf 32 GB DDR4 oder DDR5 sorgt für stabile Bildraten beim Zocken."
   },
   {
-    "id": "gigabyte-aorus-15-17-2024-2026",
-    "hersteller": "Gigabyte",
-    "titel": "AORUS 15 / AORUS 17 / AORUS 16X (2024–2026)",
-    "suchbegriffe": "aorus aorus15 aorus17 aorus16x 15-bkf 16x-akg",
-    "kategorie": "Notebook",
+    "id": "desktop-memory-pc",
+    "hersteller": "Memory PC",
+    "titel": "Memory PC High End / Gaming Komplett-PC",
+    "suchbegriffe": "memory pc gaming pc fertig pc am4 am5 intel",
+    "kategorie": "Desktop PC",
     "standardRamGB": 16,
     "maxRamGB": 64,
-    "slotsInfo": "2 DDR5 Steckplätze vorhanden",
-    "ramTyp": "DDR5 SODIMM 5600MHz",
+    "slotsInfo": "2-4 DIMM Steckplätze vorhanden",
+    "ramTyp": "DDR4 / DDR5 DIMM",
     "varianten": [
-      {"label": "Standard Gaming (16 GB DDR5 ab Werk)", "standardRamGB": 16},
-      {"label": "High Gaming (32 GB DDR5 ab Werk)", "standardRamGB": 32}
+      {"label": "Standard Gaming (16 GB RAM)", "standardRamGB": 16},
+      {"label": "High-End Gaming (32 GB RAM)", "standardRamGB": 32}
     ],
-    "hinweisStandard": "High-End Serie von Gigabyte. Wenn du bereits 32 GB RAM verbaut hast, reicht das für flüssiges Zocken auf Jahre völlig aus.",
-    "hinweisUpgrade": "Ein Upgrade auf 32 GB oder 64 GB bringt ideale Leistungsreserven für 4K-Rendering, Streaming und Content Creation."
+    "hinweisStandard": "Standardisierte PC-Komponenten mit hervorragender Erweiterbarkeit.",
+    "hinweisUpgrade": "2x 16 GB DDR4/DDR5 Riegel einstecken für optimale Leistung."
   },
   {
-    "id": "razer-blade-14-16-18-2024-2026",
-    "hersteller": "Razer",
-    "titel": "Blade 14 / Blade 16 / Blade 18 (Modelljahre 2024–2026)",
-    "suchbegriffe": "razerblade blade14 blade16 blade18 razer-blade",
-    "kategorie": "Notebook",
-    "standardRamGB": 16,
-    "maxRamGB": 96,
-    "slotsInfo": "2 DDR5 SODIMM Steckplätze (außer Blade 14 Onboard)",
-    "ramTyp": "DDR5 SODIMM 5600MHz / LPDDR5X",
-    "varianten": [
-      {"label": "Standard Modell (16 GB DDR5 ab Werk)", "standardRamGB": 16},
-      {"label": "Pro Modell (32 GB DDR5 ab Werk)", "standardRamGB": 32}
-    ],
-    "hinweisStandard": "Achtung: Beim kompakten Blade 14 ist der RAM oft verlötet. Bei den größeren Blade 16 & 18 Modellen lässt sich der DDR5-Speicher voll aufrüsten.",
-    "hinweisUpgrade": "Bei Blade 16 & 18 lässt sich der RAM auf 32 GB, 64 GB oder sogar 96 GB erweitern – ideal für professionellen Videoschnitt und High-End Gaming."
-  },
-  {
-    "id": "medion-erazer-deputy-defender-2024-2026",
-    "hersteller": "Medion",
-    "titel": "Erazer Deputy / Defender / Scout (P & P10/P20 - 2024–2026)",
-    "suchbegriffe": "erazer deputy defender scout p10 p20 medion-erazer",
-    "kategorie": "Notebook",
+    "id": "desktop-megaport",
+    "hersteller": "Megaport",
+    "titel": "Megaport Gaming PC (Super / Premium / Ultimate)",
+    "suchbegriffe": "megaport pc gaming pc fertig pc",
+    "kategorie": "Desktop PC",
     "standardRamGB": 16,
     "maxRamGB": 64,
-    "slotsInfo": "2 Steckplätze vorhanden",
-    "ramTyp": "DDR4 / DDR5 SODIMM 3200MHz / 4800MHz",
+    "slotsInfo": "2-4 DIMM Steckplätze vorhanden",
+    "ramTyp": "DDR4 / DDR5 DIMM",
     "varianten": [
-      {"label": "Standard Gaming (16 GB RAM ab Werk)", "standardRamGB": 16}
+      {"label": "Einsteiger Gaming (16 GB RAM)", "standardRamGB": 16},
+      {"label": "High-End Gaming (32 GB RAM)", "standardRamGB": 32}
     ],
-    "hinweisStandard": "Starkes Preis-Leistungs-Verhältnis. Mit 16 GB ab Werk laufen alle gängigen Spiele sehr gut.",
-    "hinweisUpgrade": "Ein einfaches Upgrade auf ein 32 GB Kit schützt vor Nachladerucklern in grafisch aufwendigen Titeln."
+    "hinweisStandard": "Beliebte Komplett-PCs aus gewöhnlichen Marken-Bauteilen.",
+    "hinweisUpgrade": "Ein Upgrade auf 32 GB schützt vor Rucklern bei modernen Spielen."
   },
   {
-    "id": "medion-erazer-beast-major-2024-2026",
-    "hersteller": "Medion",
-    "titel": "Erazer Major / Beast (X10, X20, X30 - 2024–2026)",
-    "suchbegriffe": "erazerbeast beast major x10 x20 x30",
-    "kategorie": "Notebook",
+    "id": "desktop-captiva",
+    "hersteller": "Captiva",
+    "titel": "Captiva Advanced / HIGHLINE Gaming-PC",
+    "suchbegriffe": "captiva gaming pc fertig pc highline advanced",
+    "kategorie": "Desktop PC",
+    "standardRamGB": 16,
+    "maxRamGB": 64,
+    "slotsInfo": "2-4 DIMM Steckplätze vorhanden",
+    "ramTyp": "DDR4 / DDR5 DIMM",
+    "varianten": [
+      {"label": "Standard Gaming (16 GB RAM)", "standardRamGB": 16},
+      {"label": "Pro Gaming (32 GB RAM)", "standardRamGB": 32}
+    ],
+    "hinweisStandard": "Solide Gaming-Systeme mit leicht zugänglichen Steckplätzen.",
+    "hinweisUpgrade": "Vollständig aufrüstbar."
+  },
+  {
+    "id": "desktop-mifcom",
+    "hersteller": "MIFCOM",
+    "titel": "MIFCOM Gaming PC & Workstation",
+    "suchbegriffe": "mifcom gaming pc workstation fertig pc custom",
+    "kategorie": "Desktop PC",
     "standardRamGB": 32,
+    "maxRamGB": 128,
+    "slotsInfo": "4 DIMM Steckplätze vorhanden",
+    "ramTyp": "DDR4 / DDR5 DIMM",
+    "varianten": [
+      {"label": "Standard Gaming (16 GB RAM)", "standardRamGB": 16},
+      {"label": "Performance Gaming (32 GB RAM)", "standardRamGB": 32},
+      {"label": "Workstation (64 GB RAM)", "standardRamGB": 64}
+    ],
+    "hinweisStandard": "Hochwertige Markenbausteine. Bei 32 GB RAM bist du für alle aktuellen Spiele bestens gerüstet.",
+    "hinweisUpgrade": "Upgrades bis 64 GB oder 128 GB sind problemlos machbar."
+  },
+  {
+    "id": "desktop-dubaro",
+    "hersteller": "Dubaro",
+    "titel": "Dubaro HardwareRat / KrowN / Gaming PC",
+    "suchbegriffe": "dubaro hardwarerat krown gaming pc fertig pc",
+    "kategorie": "Desktop PC",
+    "standardRamGB": 32,
+    "maxRamGB": 128,
+    "slotsInfo": "2-4 DIMM Steckplätze vorhanden",
+    "ramTyp": "DDR4 / DDR5 DIMM",
+    "varianten": [
+      {"label": "Standard Gaming (16 GB RAM)", "standardRamGB": 16},
+      {"label": "High-End Gaming (32 GB RAM)", "standardRamGB": 32}
+    ],
+    "hinweisStandard": "Reine Standard-Mainboards verbaut. 32 GB DDR5 RAM bieten aktuell die beste Preis-Leistung.",
+    "hinweisUpgrade": "Ein Upgrade ist innerhalb von wenigen Minuten durchgeführt."
+  },
+  {
+    "id": "desktop-caseking",
+    "hersteller": "Caseking",
+    "titel": "King Mod Systems / Custom Gaming PC",
+    "suchbegriffe": "caseking king mod systems gaming pc custom pc",
+    "kategorie": "Desktop PC",
+    "standardRamGB": 32,
+    "maxRamGB": 128,
+    "slotsInfo": "4 DIMM Steckplätze vorhanden",
+    "ramTyp": "DDR4 / DDR5 DIMM",
+    "varianten": [
+      {"label": "Performance Gaming (32 GB RAM)", "standardRamGB": 32}
+    ],
+    "hinweisStandard": "Hochwertige Enthusiast-Plattformen.",
+    "hinweisUpgrade": "Maximale Erweiterbarkeit."
+  },
+  {
+    "id": "desktop-kiebel",
+    "hersteller": "Kiebel Computer",
+    "titel": "Kiebel Gaming & Büro Komplett-PC",
+    "suchbegriffe": "kiebel computer gaming pc fertig pc büro pc",
+    "kategorie": "Desktop PC",
+    "standardRamGB": 16,
     "maxRamGB": 64,
-    "slotsInfo": "2 DDR5 Steckplätze vorhanden",
-    "ramTyp": "DDR5 SODIMM 5600MHz",
+    "slotsInfo": "2-4 DIMM Steckplätze vorhanden",
+    "ramTyp": "DDR4 / DDR5 DIMM",
     "varianten": [
-      {"label": "High-End Gaming (32 GB DDR5 ab Werk)", "standardRamGB": 32}
+      {"label": "Standard Büro/Gaming (16 GB RAM)", "standardRamGB": 16}
     ],
-    "hinweisStandard": "Top-Modelle von Medion mit RTX 4080/4090/5080. Mit 32 GB RAM ab Werk brauchst du fürs pure Gaming kein Upgrade vorzunehmen.",
-    "hinweisUpgrade": "64 GB machen das Gerät zur unschlagbaren Workstation."
-  },
-  {
-    "id": "microsoft-surface-laptop-5-6-7",
-    "hersteller": "Microsoft",
-    "titel": "Surface Laptop 5 / 6 / 7 (13.5, 15 & 13.8 Zoll - 2024–2026)",
-    "suchbegriffe": "surface surface-laptop laptop5 laptop6 laptop7 copilot",
-    "kategorie": "Notebook",
-    "standardRamGB": 16,
-    "maxRamGB": 16,
-    "slotsInfo": "0 Steckplätze (RAM auf dem Mainboard fest verlötet)",
-    "ramTyp": "LPDDR5X (Fest verlötet)",
-    "varianten": [
-      {"label": "Standard Modell (16 GB fest verlötet)", "standardRamGB": 16}
-    ],
-    "hinweisStandard": "Wichtiger Hinweis: Bei Microsoft Surface Laptops ist der Arbeitsspeicher ausnahmslos fest verlötet und lässt sich im Nachhinein nicht aufrüsten.",
-    "hinweisUpgrade": "Achte beim Kauf deines Surface Laptops unbedingt darauf, direkt die Variante mit 16 GB oder 32 GB RAM auszuwählen."
-  },
-  {
-    "id": "microsoft-surface-pro-9-10-11",
-    "hersteller": "Microsoft",
-    "titel": "Surface Pro 9 / 10 / 11 (Intel & Snapdragon Copilot+ - 2024–2026)",
-    "suchbegriffe": "surfacepro surface-pro pro9 pro10 pro11 copilot+",
-    "kategorie": "Notebook",
-    "standardRamGB": 16,
-    "maxRamGB": 16,
-    "slotsInfo": "0 Steckplätze (Arbeitsspeicher fest verlötet)",
-    "ramTyp": "LPDDR5 / LPDDR5X (Fest verlötet)",
-    "varianten": [
-      {"label": "Standard Tablet (16 GB fest verlötet)", "standardRamGB": 16}
-    ],
-    "hinweisStandard": "Achtung: Auch bei den Surface Pro Tablets (inkl. der neuen Snapdragon X Copilot+ Modelle) ist der RAM fest verlötet.",
-    "hinweisUpgrade": "Die SSD lässt sich zwar oft tauschen, der Arbeitsspeicher (RAM) hingegen nicht. Kaufe die gewünschte Speichergröße direkt ab Werk."
+    "hinweisStandard": "Klassische Fertig-PCs.",
+    "hinweisUpgrade": "Einfach aufrüstbar."
   }
 ]
