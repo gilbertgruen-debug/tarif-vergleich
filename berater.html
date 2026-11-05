@@ -159,12 +159,10 @@
     let aktuellesModell = null;
     let gewaehlteKategorie = '';
 
-    // Datenbank laden
     fetch('modelle.json')
       .then(res => res.json())
       .then(data => { 
         alleModelle = data; 
-        console.log('RAM-Datenbank erfolgreich geladen:', alleModelle.length, 'Modelle');
       })
       .catch(err => console.error('Fehler beim Laden der RAM-Datenbank:', err));
 
@@ -188,7 +186,7 @@
       });
 
       if (treffer.length === 0) {
-        liste.innerHTML = `<div class="p-3 text-xs text-gray-500">Kein passendes Modell gefunden. Nutze den Katalog unten.</div>`;
+        liste.innerHTML = '<div class="p-3 text-xs text-gray-500">Kein passendes Modell gefunden. Nutze den Katalog unten.</div>';
         liste.classList.remove('hidden');
         return;
       }
@@ -196,8 +194,8 @@
       treffer.forEach(m => {
         const eintrag = document.createElement('div');
         eintrag.className = 'p-3 hover:bg-blue-50 cursor-pointer text-sm font-medium text-gray-800 flex justify-between items-center';
-        eintrag.innerHTML = `<span><strong>${m.hersteller}</strong> ${m.titel}</span> <span class="text-xs text-gray-400">Max. ${m.maxRamGB} GB</span>`;
-        eintrag.onclick = () => zeigeErgebnis(m, m.varianten ? m.varianten[0] : null);
+        eintrag.innerHTML = '<span><strong>' + m.hersteller + '</strong> ' + m.titel + '</span> <span class="text-xs text-gray-400">Max. ' + m.maxRamGB + ' GB</span>';
+        eintrag.onclick = function() { zeigeErgebnis(m, m.varianten ? m.varianten[0] : null); };
         liste.appendChild(eintrag);
       });
 
@@ -218,10 +216,9 @@
       const markenContainer = document.getElementById('markenListe');
       markenContainer.innerHTML = '';
 
-      // Falls die Daten noch asynchron geladen werden
       if (!alleModelle || alleModelle.length === 0) {
         markenContainer.innerHTML = '<div class="col-span-3 p-3 text-xs text-blue-600 font-semibold text-center">Lade Modelle... Bitte einen Moment Geduld.</div>';
-        setTimeout(() => waehleKategorie(kat), 400);
+        setTimeout(function() { waehleKategorie(kat); }, 400);
         return;
       }
 
@@ -242,7 +239,7 @@
         const btn = document.createElement('button');
         btn.className = 'bg-white hover:bg-blue-100 border border-blue-300 text-slate-800 text-xs font-semibold py-2.5 px-3 rounded-lg shadow-sm text-center transition';
         btn.innerText = hersteller;
-        btn.onclick = () => waehleHersteller(hersteller);
+        btn.onclick = function() { waehleHersteller(hersteller); };
         markenContainer.appendChild(btn);
       });
     }
@@ -262,8 +259,8 @@
       passendeModelle.forEach(m => {
         const eintrag = document.createElement('div');
         eintrag.className = 'p-3 hover:bg-blue-50 cursor-pointer text-xs font-medium text-slate-800 flex justify-between items-center border-b last:border-b-0';
-        eintrag.innerHTML = `<span><strong>${m.titel}</strong></span> <span class="text-blue-600 font-bold">Variante wählen →</span>`;
-        eintrag.onclick = () => waehleModellReihe(m);
+        eintrag.innerHTML = '<span><strong>' + m.titel + '</strong></span> <span class="text-blue-600 font-bold">Variante wählen →</span>';
+        eintrag.onclick = function() { waehleModellReihe(m); };
         katListe.appendChild(eintrag);
       });
     }
@@ -275,13 +272,13 @@
       const vListe = document.getElementById('variantenKatalogListe');
       vListe.innerHTML = '';
 
-      const varianten = (m.varianten && m.varianten.length > 0) ? m.varianten : [{"label": `Standard Ausstattung (${m.standardRamGB} GB RAM)`, "standardRamGB": m.standardRamGB}];
+      const varianten = (m.varianten && m.varianten.length > 0) ? m.varianten : [{"label": 'Standard Ausstattung (' + m.standardRamGB + ' GB RAM)', "standardRamGB": m.standardRamGB}];
 
       varianten.forEach(v => {
         const eintrag = document.createElement('div');
         eintrag.className = 'p-3 hover:bg-blue-50 cursor-pointer text-xs font-semibold text-slate-800 flex justify-between items-center border-b last:border-b-0';
-        eintrag.innerHTML = `<span>${v.label}</span> <span class="text-slate-400">Auswählen</span>`;
-        eintrag.onclick = () => zeigeErgebnis(m, v);
+        eintrag.innerHTML = '<span>' + v.label + '</span> <span class="text-slate-400">Auswählen</span>';
+        eintrag.onclick = function() { zeigeErgebnis(m, v); };
         vListe.appendChild(eintrag);
       });
     }
@@ -311,13 +308,13 @@
       }
 
       document.getElementById('vorschlagsListe').classList.add('hidden');
-      document.getElementById('modellInput').value = `${m.hersteller} ${m.titel}`;
+      document.getElementById('modellInput').value = m.hersteller + ' ' + m.titel;
 
       document.getElementById('mHersteller').innerText = m.hersteller;
       document.getElementById('mTitel').innerText = m.titel;
-      document.getElementById('mVarianteLabel').innerText = variante ? `Gewählte Variante: ${variante.label}` : '';
+      document.getElementById('mVarianteLabel').innerText = variante ? 'Gewählte Variante: ' + variante.label : '';
       document.getElementById('mGerätekategorie').innerText = m.kategorie || "Notebook";
-      document.getElementById('mMaxRam').innerText = `${m.maxRamGB} GB RAM`;
+      document.getElementById('mMaxRam').innerText = m.maxRamGB + ' GB RAM';
       document.getElementById('mSlots').innerText = m.slotsInfo;
 
       document.getElementById('nutzungsSelect').value = "office";
@@ -341,7 +338,7 @@
         titel.innerText = "⚠️ Nicht aufrüstbar:";
         text.innerText = aktuellesModell.hinweisStandard;
         btn.innerText = "Alternative Modelle mit mehr RAM bei Amazon ansehen *";
-        btn.href = `https://www.amazon.de/s?k=${encodeURIComponent(aktuellesModell.hersteller + ' ' + aktuellesModell.titel + ' 32GB RAM Notebook')}`;
+        btn.href = 'https://www.amazon.de/s?k=' + encodeURIComponent(aktuellesModell.hersteller + ' ' + aktuellesModell.titel + ' 32GB RAM Notebook');
         return;
       }
 
@@ -353,7 +350,7 @@
         if (aktuellesModell.standardRamGB >= 8) {
           hinweisBox.className = "p-4 rounded-lg text-xs leading-relaxed bg-emerald-100 text-emerald-950 border border-emerald-300";
           titel.innerText = "✅ Keine Aufrüstung notwendig:";
-          text.innerText = `Für Office, Streaming und Surfen reichen deine verbauten ${aktuellesModell.standardRamGB} GB vollkommen aus. Du musst kein Geld für ein Upgrade ausgeben!`;
+          text.innerText = 'Für Office, Streaming und Surfen reichen deine verbauten ' + aktuellesModell.standardRamGB + ' GB vollkommen aus. Du musst kein Geld für ein Upgrade ausgeben!';
           btn.innerText = "Optional: Passendes RAM Kit auf Amazon ansehen *";
         } else {
           erfordereUpgrade = true;
@@ -363,4 +360,18 @@
       else if (nutzung === 'gaming_standard') {
         zielRam = 16;
         if (aktuellesModell.standardRamGB >= 16) {
-          hinweisBox.className = "p-4 rounded-lg text-xs
+          hinweisBox.className = "p-4 rounded-lg text-xs leading-relaxed bg-emerald-100 text-emerald-950 border border-emerald-300";
+          titel.innerText = "✅ Vorerst kein Upgrade nötig:";
+          text.innerText = 'Für eSports-Titel, Fortnite oder GTA V reichen deine verbauten ' + aktuellesModell.standardRamGB + ' GB RAM problemlos aus. Die Spiele laufen damit flüssig.';
+          btn.innerText = "Optional: Speicher auf Amazon ansehen *";
+        } else {
+          erfordereUpgrade = true;
+          text.innerText = "Um Ruckler in Spielen wie Fortnite oder GTA V zu vermeiden, wird die Erweiterung auf 16 GB dringend empfohlen.";
+        }
+      } 
+      else if (nutzung === 'gaming_heavy') {
+        zielRam = 32;
+        if (aktuellesModell.standardRamGB >= 32) {
+          hinweisBox.className = "p-4 rounded-lg text-xs leading-relaxed bg-emerald-100 text-emerald-950 border border-emerald-300";
+          titel.innerText = "✅ Perfekt ausgestattet:";
+          text.innerText = 'Mit deinen verbauten ' + aktuellesModell.standardRamGB + ' GB RAM bist du selbst für extrem anspruchsvolle Titel
