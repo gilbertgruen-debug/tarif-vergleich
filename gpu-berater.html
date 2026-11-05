@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Grafikkarten & GPU-Berater – TechVergleich24</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 text-gray-800 min-h-screen flex flex-col">
+
+  <header class="bg-slate-900 text-white py-6 px-4 shadow">
+    <div class="max-w-4xl mx-auto flex justify-between items-center">
+      <h1 class="text-xl font-bold"><a href="index.html">TechVergleich24</a></h1>
+      <a href="index.html" class="text-sm bg-slate-800 hover:bg-slate-700 px-3 py-1.5 rounded transition">← Zurück zur Übersicht</a>
+    </div>
+  </header>
+
+  <main class="max-w-3xl mx-auto px-4 py-8 flex-grow w-full space-y-8">
+    
+    <!-- Such- & Auswahlelement -->
+    <div class="bg-white p-6 md:p-8 rounded-xl shadow-md border space-y-6">
+      <div>
+        <h2 class="text-2xl font-bold text-gray-900 mb-2">🎮 Grafikkarten- & GPU-Berater</h2>
+        <p class="text-sm text-gray-600">Gib einfach deine aktuelle Grafikkarte oder dein PC/Notebook-Modell ein:</p>
+      </div>
+
+      <!-- Suche -->
+      <div class="relative">
+        <input 
+          type="text" 
+          id="gpuInput" 
+          onkeyup="sucheGpu()" 
+          placeholder="Grafikkarte oder Modell eingeben (z. B. RTX 3060, RX 6700 XT, ROG Strix)..." 
+          class="w-full border-2 border-purple-500 rounded-lg p-3.5 text-sm focus:outline-none focus:ring-2 focus:ring-purple-600 shadow-sm"
+        >
+        <div id="vorschlagsListe" class="hidden absolute top-full left-0 right-0 bg-white border border-gray-200 rounded-b-lg shadow-xl z-20 max-h-60 overflow-y-auto mt-1 divide-y"></div>
+      </div>
+
+      <!-- Katalog-Assistent -->
+      <div class="border-t pt-4">
+        <button 
+          onclick="toggleWizard()" 
+          class="text-xs font-semibold text-purple-600 hover:text-purple-800 underline flex items-center gap-1 focus:outline-none"
+        >
+          <span>❓ Du weißt nicht genau, welche Grafikkarte du verbaut hast?</span>
+        </button>
+
+        <div id="wizardBox" class="hidden mt-4 p-5 bg-slate-50 border border-slate-200 rounded-lg space-y-4">
+          <h4 class="text-xs font-bold uppercase tracking-wider text-slate-700">Grafikkarte über Katalog auswählen:</h4>
+          
+          <!-- Schritt 1: Kategorie -->
+          <div id="wSchritt1" class="space-y-2">
+            <span class="text-xs text-gray-500 font-medium">1. Wähle deinen Gerätetyp:</span>
+            <div class="flex gap-3">
+              <button onclick="waehleKategorie('Desktop GPU')" class="flex-1 bg-white hover:bg-purple-50 border border-slate-300 hover:border-purple-500 font-medium text-sm py-2 px-4 rounded-lg shadow-sm transition">
+                🖥️ Desktop PC Grafikkarte
+              </button>
+              <button onclick="waehleKategorie('Gaming Notebook')" class="flex-1 bg-white hover:bg-purple-50 border border-slate-300 hover:border-purple-500 font-medium text-sm py-2 px-4 rounded-lg shadow-sm transition">
+                💻 Gaming Notebook / Laptop
+              </button>
+            </div>
+          </div>
+
+          <!-- Schritt 2: Marke -->
+          <div id="wSchritt2" class="hidden space-y-2">
+            <div class="flex justify-between items-center">
+              <span class="text-xs text-gray-500 font-medium">2. Wähle den Hersteller:</span>
+              <button onclick="zurueckZuSchritt1()" class="text-xs text-purple-600 hover:underline">← Zurück</button>
+            </div>
+            <div id="markenListe" class="grid grid-cols-2 sm:grid-cols-3 gap-2"></div>
+          </div>
+
+          <!-- Schritt 3: Modellübersicht -->
+          <div id="wSchritt3" class="hidden space-y-2">
+            <div class="flex justify-between items-center">
+              <span class="text-xs text-gray-500 font-medium">3. Wähle dein GPU-Modell:</span>
+              <button onclick="zurueckZuSchritt2()" class="text-xs text-purple-600 hover:underline">← Andere Marke wählen</button>
+            </div>
+            <div id="gpusKatalogListe" class="divide-y border rounded-lg bg-white max-h-56 overflow-y-auto"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Ergebnisanzeige Schritt 1: Specs -->
+    <div id="ergebnisBox" class="hidden bg-purple-50 border-2 border-purple-600 rounded-xl p-6 shadow-md space-y-5">
+      <div class="flex justify-between items-start border-b border-purple-200 pb-3">
+        <div>
+          <span class="text-xs font-bold uppercase text-purple-800" id="gHersteller">HERSTELLER</span>
+          <h3 class="text-2xl font-black text-gray-900" id="gTitel">Grafikkarten-Name</h3>
+        </div>
+        <span class="bg-purple-600 text-white text-xs font-bold px-3 py-1 rounded-full" id="gKategorie">Desktop GPU</span>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+        <div class="bg-white p-4 rounded-lg border border-purple-100">
+          <span class="text-xs text-gray-500 uppercase font-bold">Optimal für Auflösung</span>
+          <div class="text-xl font-extrabold text-purple-900" id="gAuflösung">1080p Full-HD</div>
+        </div>
+        <div class="bg-white p-4 rounded-lg border border-purple-100">
+          <span class="text-xs text-gray-500 uppercase font-bold">Empfohlenes Netzteil</span>
+          <div class="text-lg font-bold text-gray-900" id="gNetzteil">550 Watt</div>
+        </div>
+      </div>
+
+      <!-- Schritt 2: Ziel-Auflösung & Spiele-Anforderung -->
+      <div class="bg-white p-5 rounded-xl border border-purple-200 shadow-sm space-y-3">
+        <label class="block text-xs font-bold uppercase text-slate-800">🎯 Schritt 2: In welcher Auflösung & Qualität möchtest du zocken?</label>
+        <select id="zielAuflösungSelect" onchange="berechneGpuEmpfehlung()" class="w-full border-2 border-gray-200 rounded-lg p-3 text-sm focus:border-purple-500 focus:outline-none bg-gray-50 font-medium">
+          <option value="1080p">Full HD (1080p) – eSports & Standard Gaming</option>
+          <option value="1440p">WQHD (1440p) – Hohe Details & flüssiges Gaming</option>
+          <option value="4k">4K Ultra HD & Raytracing – High-End Gaming</option>
+        </select>
+      </div>
+
+      <!-- Auswertung / Ehrliche Empfehlungsbox -->
+      <div id="empfehlungsHinweisBox" class="p-4 rounded-lg text-xs leading-relaxed space-y-1 transition-all">
+        <span class="font-bold block text-sm mb-1" id="empfehlungsTitel">💡 Hinweis zum Aufrüsten:</span>
+        <p id="gHinweis">Wähle oben deine Ziel-Auflösung aus, um eine genaue Auswertung zu erhalten.</p>
+      </div>
+
+      <a id="amazonBtn" href="#" target="_blank" rel="noopener noreferrer" class="block w-full text-center bg-amber-500 hover:bg-amber-600 text-white font-bold py-3.5 px-6 rounded-lg transition shadow-md text-sm">
+        Passendes Grafikkarten-Upgrade bei Amazon ansehen *
+      </a>
+    </div>
+
+  </main>
+
+  <footer class="bg-gray-900 text-gray-400 py-6 text-xs text-center border-t border-gray-800">
+    <a href="impressum.html" class="hover:text-white">Impressum & Datenschutz</a>
+  </footer>
+
+  <script>
+    let alleGpus = [];
+    let aktuelleGpu = null;
+    let gewaehlteKategorie = '';
+    let gewaehlterHersteller = '';
+
+    // Datenbank laden
+    fetch('gpus.json')
+      .then(res => res.json())
+      .then(data => { alleGpus = data; })
+      .catch(err => console.error('Fehler beim Laden der GPU-Datenbank:', err));
+
+    // FREITEXT-SUCHE
+    function sucheGpu() {
+      const eingabe = document.getElementById('gpuInput').value.toLowerCase().trim();
+      const liste = document.getElementById('vorschlagsListe');
+      liste.innerHTML = '';
+
+      if (eingabe.length < 2) {
+        liste.classList.add('hidden');
+        return;
+      }
+
+      const treffer = alleGpus.filter(g => {
+        const herstellerMatch = g.hersteller ? g.hersteller.toLowerCase().includes(eingabe) : false;
+        const titelMatch = g.titel ? g.titel.toLowerCase().includes(eingabe) : false;
+        const kombiMatch = `${g.hersteller} ${g.titel}`.toLowerCase().includes(eingabe);
+        const keywordsMatch = g.suchbegriffe ? g.suchbegriffe.toLowerCase().includes(eingabe) : false;
+
+        return herstellerMatch || titelMatch || kombiMatch || keywordsMatch;
+      });
+
+      if (treffer.length === 0) {
+        liste.innerHTML = `<div class="p-3 text-xs text-gray-500">Keine passende Grafikkarte gefunden. Prüfe die Schreibweise.</div>`;
+        liste.classList.remove('hidden');
+        return;
+      }
+
+      treffer.forEach(g => {
+        const eintrag = document.createElement('div');
+        eintrag.className = 'p-3 hover:bg-purple-50 cursor-pointer text-sm font-medium text-gray-800 flex justify-between items-center';
+        eintrag.innerHTML = `<span><strong>${g.hersteller}</strong> ${g.titel}</span> <span class="text-xs text-gray-400">${g.auflösungStandard}</span>`;
+        eintrag.onclick = () => zeigeErgebnis(g);
+        liste.appendChild(eintrag);
+      });
+
+      liste.classList.remove('hidden');
+    }
+
+    // KATALOG-WIZARD LOGIK
+    function toggleWizard() {
+      const wBox = document.getElementById('wizardBox');
+      wBox.classList.toggle('hidden');
+      if (!wBox.classList.contains('hidden')) {
+        zurueckZuSchritt1();
+      }
+    }
+
+    function waehleKategorie(kat) {
+      gewaehlteKategorie = kat;
+      document.getElementById('wSchritt1').classList.add('hidden');
+      document.getElementById('wSchritt2').classList.remove('hidden');
+
+      const herstellerSet = new Set();
+      alleGpus.forEach(g => {
+        if (g.kategorie === kat) {
+          herstellerSet.add(g.hersteller);
+        }
+      });
+
+      const markenContainer = document.getElementById('markenListe');
+      markenContainer.innerHTML = '';
+      Array.from(herstellerSet).sort().forEach(hersteller => {
+        const btn = document.createElement('button');
+        btn.className = 'bg-white hover:bg-purple-50 border border-slate-200 text-slate-800 text-xs font-semibold py-2 px-3 rounded shadow-sm text-center transition';
+        btn.innerText = hersteller;
+        btn.onclick = () => waehleHersteller(hersteller);
+        markenContainer.appendChild(btn);
+      });
+    }
+
+    function waehleHersteller(hersteller) {
+      gewaehlterHersteller = hersteller;
+      document.getElementById('wSchritt2').classList.add('hidden');
+      document.getElementById('wSchritt3').classList.remove('hidden');
+
+      const katListe = document.getElementById('gpusKatalogListe');
+      katListe.innerHTML = '';
+
+      const passendeGpus = alleGpus.filter(g => g.kategorie === gewaehlteKategorie && g.hersteller === hersteller);
+
+      passendeGpus.forEach(g => {
+        const eintrag = document.createElement('div');
+        eintrag.className = 'p-3 hover:bg-purple-50 cursor-pointer text-xs font-medium text-slate-800 flex justify-between items-center border-b last:border-b-0';
+        eintrag.innerHTML = `<span><strong>${g.titel}</strong></span> <span class="text-slate-400">${g.auflösungStandard}</span>`;
+        eintrag.onclick = () => zeigeErgebnis(g);
+        katListe.appendChild(eintrag);
+      });
+    }
+
+    function zurueckZuSchritt1() {
+      document.getElementById('wSchritt1').classList.remove('hidden');
+      document.getElementById('wSchritt2').classList.add('hidden');
+      document.getElementById('wSchritt3').classList.add('hidden');
+    }
+
+    function zurueckZuSchritt2() {
+      document.getElementById('wSchritt2').classList.remove('hidden');
+      document.getElementById('wSchritt3').classList.add('hidden');
+    }
+
+    // ERGEBNIS- & EMPFEHLUNGSAUSWERTUNG
+    function zeigeErgebnis(g) {
+      aktuelleGpu = g;
+      document.getElementById('vorschlagsListe').classList.add('hidden');
+      document.getElementById('wizardBox').classList.add('hidden');
+      document.getElementById('gpuInput').value = `${g.hersteller} ${g.titel}`;
+
+      document.getElementById('gHersteller').innerText = g.hersteller;
+      document.getElementById('gTitel').innerText = g.titel;
+      document.getElementById('gKategorie').innerText = g.kategorie || "Desktop GPU";
+      document.getElementById('gAuflösung').innerText = g.auflösungStandard;
+      document.getElementById('gNetzteil').innerText = g.empfohlenesNetzteil;
+
+      document.getElementById('zielAuflösungSelect').value = "1080p";
+      berechneGpuEmpfehlung();
+
+      document.getElementById('ergebnisBox').classList.remove('hidden');
+      document.getElementById('ergebnisBox').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function berechneGpuEmpfehlung() {
+      if (!aktuelleGpu) return;
+
+      const ziel = document.getElementById('zielAuflösungSelect').value;
+      const hinweisBox = document.getElementById('empfehlungsHinweisBox');
+      const titel = document.getElementById('empfehlungsTitel');
+      const text = document.getElementById('gHinweis');
+      const btn = document.getElementById('amazonBtn');
+
+      // Notebook Sonderfall
+      if (aktuelleGpu.kategorie === "Gaming Notebook") {
+        hinweisBox.className = "p-4 rounded-lg text-xs leading-relaxed bg-amber-100 text-amber-900 border border-amber-300";
+        titel.innerText = "⚠️ Laptop-Grafikkarte (Nicht aufrüstbar):";
+        text.innerText = "Grafikkarten in Notebooks sind fest auf dem Mainboard verlötet. Ein internes Aufrüsten ist nicht möglich. Für mehr Grafikleistung kannst du eine externe eGPU über Thunderbolt anschließen oder auf ein neues Gaming-Notebook umsteigen.";
+        btn.innerText = "Neue Gaming Notebooks bei Amazon ansehen *";
+        btn.href = `https://www.amazon.de/s?k=${encodeURIComponent('Gaming Notebook RTX 4070')}`;
+        return;
+      }
+
+      // Desktop GPU Logik
+      let upgradeSuchbegriff = "";
+      
+      if (ziel === "1080p") {
+        if (aktuelleGpu.auflösungStandard.includes("1080p") || schnelleGpu(aktuelleGpu)) {
+          hinweisBox.className = "p-4 rounded-lg text-xs leading-relaxed bg-emerald-100 text-emerald-950 border border-emerald-300";
+          titel.innerText = "✅ Keine Aufrüstung notwendig:";
+          text.innerText = `Deine ${aktuelleGpu.titel} ist für Full-HD Gaming (1080p) bestens gerüstet. Du musst kein Geld für eine neue Grafikkarte ausgeben!`;
+          btn.innerText = "Optional: Aktuelle Grafikkarten auf Amazon ansehen *";
+          upgradeSuchbegriff = "Grafikkarte RTX 4060";
+        } else {
+          hinweisBox.className = "p-4 rounded-lg text-xs leading-relaxed bg-blue-100 text-blue-950 border border-blue-300";
+          titel.innerText = "⚡ Empfohlenes Upgrade für Full HD:";
+          text.innerText = `Für flüssiges Full-HD Gaming mit hohen Details empfiehlt sich ein Upgrade auf eine modernere Karte (z. B. RTX 4060 / RX 7600). Prüfe, ob dein Netzteil mindestens 500–550 Watt hat.`;
+          btn.innerText = "Passende Full-HD Grafikkarten bei Amazon ansehen *";
+          upgradeSuchbegriff = "RTX 4060 Grafikkarte";
+        }
+      } 
+      else if (ziel === "1440p") {
+        if (aktuelleGpu.auflösungStandard.includes("1440p") || aktuelleGpu.auflösungStandard.includes("4K")) {
+          hinweisBox.className = "p-4 rounded-lg text-xs leading-relaxed bg-emerald-100 text-emerald-950 border border-emerald-300";
+          titel.innerText = "✅ Vorerst kein Upgrade nötig:";
+          text.innerText = `Deine ${aktuelleGpu.titel} liefert bereits genug Power für WQHD (1440p). Spiele laufen flüssig.`;
+          btn.innerText = "Optional: WQHD Grafikkarten ansehen *";
+          upgradeSuchbegriff = "RTX 4070 Super Grafikkarte";
+        } else {
+          hinweisBox.className = "p-4 rounded-lg text-xs leading-relaxed bg-blue-100 text-blue-950 border border-blue-300";
+          titel.innerText = "⚡ Empfohlenes Upgrade für WQHD (1440p):";
+          text.innerText = `Für flüssiges Gaming in WQHD empfiehlt sich eine Karte wie die RTX 4070 Super oder RX 7800 XT. 💡 Hinweis: Dafür wird meist ein Netzteil mit mindestens 650–700 Watt benötigt.`;
+          btn.innerText = "Passende WQHD Grafikkarten bei Amazon ansehen *";
+          upgradeSuchbegriff = "RTX 4070 Super Grafikkarte";
+        }
+      } 
+      else if (ziel === "4k") {
+        if (aktuelleGpu.auflösungStandard.includes("4K")) {
+          hinweisBox.className = "p-4 rounded-lg text-xs leading-relaxed bg-emerald-100 text-emerald-950 border border-emerald-300";
+          titel.innerText = "✅ High-End Ausstattung:";
+          text.innerText = `Mit deiner ${aktuelleGpu.titel} besitzt du bereits eine echte 4K-Grafikkarte!`;
+          btn.innerText = "High-End Grafikkarten auf Amazon ansehen *";
+          upgradeSuchbegriff = "RTX 4080 Super Grafikkarte";
+        } else {
+          hinweisBox.className = "p-4 rounded-lg text-xs leading-relaxed bg-blue-100 text-blue-950 border border-blue-300";
+          titel.innerText = "⚡ Empfohlenes Upgrade für 4K & Raytracing:";
+          text.innerText = `4K Gaming fordert maximale Leistung. Empfohlen werden High-End Grafikkarten wie die RTX 4080 Super / RTX 5080 oder RX 7900 XTX. 💡 Hinweis: Achte auf ein starkes Netzteil (mindestens 750–850 Watt) und ausreichend Platz im Gehäuse!`;
+          btn.innerText = "Passende 4K Grafikkarten bei Amazon ansehen *";
+          upgradeSuchbegriff = "RTX 4080 Super Grafikkarte";
+        }
+      }
+
+      btn.href = `https://www.amazon.de/s?k=${encodeURIComponent(upgradeSuchbegriff)}`;
+    }
+
+    function schnelleGpu(gpu) {
+      return gpu.auflösungStandard.includes("1440p") || gpu.auflösungStandard.includes("4K");
+    }
+  </script>
+
+</body>
+</html>
