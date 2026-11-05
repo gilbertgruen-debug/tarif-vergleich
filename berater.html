@@ -17,25 +17,73 @@
 
   <main class="max-w-3xl mx-auto px-4 py-8 flex-grow w-full space-y-8">
     
-    <!-- Suchmaske -->
-    <div class="bg-white p-6 md:p-8 rounded-xl shadow-md border">
-      <h2 class="text-2xl font-bold text-gray-900 mb-2">⚡ Modell-Aufrüst-Berater</h2>
-      <p class="text-sm text-gray-600 mb-6">Gib einfach den Namen oder die Modellnummer deines Laptops/PCs ein (z. B. <em>Lenovo IdeaPad 3</em>, <em>Dell XPS</em> oder <em>HP Pavilion 15</em>):</p>
+    <!-- Such- & Auswahlelement -->
+    <div class="bg-white p-6 md:p-8 rounded-xl shadow-md border space-y-6">
+      <div>
+        <h2 class="text-2xl font-bold text-gray-900 mb-2">⚡ Modell-Aufrüst-Berater</h2>
+        <p class="text-sm text-gray-600">Gib einfach den Namen oder die Modellnummer deines Laptops/PCs ein:</p>
+      </div>
 
+      <!-- Suche -->
       <div class="relative">
         <input 
           type="text" 
           id="modellInput" 
           onkeyup="sucheModell()" 
-          placeholder="Modellname eingeben..." 
+          placeholder="Modellname oder Nummer eingeben (z. B. Nitro 5, XPS, ThinkPad)..." 
           class="w-full border-2 border-blue-500 rounded-lg p-3.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-600 shadow-sm"
         >
-        <!-- Vorschlagsliste -->
         <div id="vorschlagsListe" class="hidden absolute top-full left-0 right-0 bg-white border border-gray-200 rounded-b-lg shadow-xl z-20 max-h-60 overflow-y-auto mt-1 divide-y"></div>
+      </div>
+
+      <!-- Option für unentschlossene Nutzer -->
+      <div class="border-t pt-4">
+        <button 
+          onclick="toggleWizard()" 
+          class="text-xs font-semibold text-blue-600 hover:text-blue-800 underline flex items-center gap-1 focus:outline-none"
+        >
+          <span>❓ Du weißt nicht genau, welchen PC oder welches Notebook du hast?</span>
+        </button>
+
+        <!-- Step-by-Step Wizard Container -->
+        <div id="wizardBox" class="hidden mt-4 p-5 bg-slate-50 border border-slate-200 rounded-lg space-y-4">
+          <h4 class="text-xs font-bold uppercase tracking-wider text-slate-700">Gerät über Katalog auswählen:</h4>
+          
+          <!-- Schritt 1: Kategorie (Notebook vs. PC) -->
+          <div id="wSchritt1" class="space-y-2">
+            <span class="text-xs text-gray-500 font-medium">1. Wähle deinen Gerätetyp:</span>
+            <div class="flex gap-3">
+              <button onclick="waehleKategorie('Notebook')" class="flex-1 bg-white hover:bg-blue-50 border border-slate-300 hover:border-blue-500 font-medium text-sm py-2 px-4 rounded-lg shadow-sm transition">
+                💻 Notebook / Laptop
+              </button>
+              <button onclick="waehleKategorie('Desktop PC Mainboard')" class="flex-1 bg-white hover:bg-blue-50 border border-slate-300 hover:border-blue-500 font-medium text-sm py-2 px-4 rounded-lg shadow-sm transition">
+                🖥️ Desktop PC / Mainboard
+              </button>
+            </div>
+          </div>
+
+          <!-- Schritt 2: Marke -->
+          <div id="wSchritt2" class="hidden space-y-2">
+            <div class="flex justify-between items-center">
+              <span class="text-xs text-gray-500 font-medium">2. Wähle die Marke:</span>
+              <button onclick="zurueckZuSchritt1()" class="text-xs text-blue-600 hover:underline">← Zurück</button>
+            </div>
+            <div id="markenListe" class="grid grid-cols-2 sm:grid-cols-3 gap-2"></div>
+          </div>
+
+          <!-- Schritt 3: Modellübersicht -->
+          <div id="wSchritt3" class="hidden space-y-2">
+            <div class="flex justify-between items-center">
+              <span class="text-xs text-gray-500 font-medium">3. Wähle dein Modell:</span>
+              <button onclick="zurueckZuSchritt2()" class="text-xs text-blue-600 hover:underline">← Andere Marke wählen</button>
+            </div>
+            <div id="modelleKatalogListe" class="divide-y border rounded-lg bg-white max-h-56 overflow-y-auto"></div>
+          </div>
+        </div>
       </div>
     </div>
 
-    <!-- Ergebnisanzeige Schritt 1: Modell-Specs -->
+    <!-- Ergebnisanzeige Schritt 1: Specs -->
     <div id="ergebnisBox" class="hidden bg-blue-50 border-2 border-blue-600 rounded-xl p-6 shadow-md space-y-5">
       <div class="flex justify-between items-start border-b border-blue-200 pb-3">
         <div>
@@ -87,6 +135,8 @@
   <script>
     let alleModelle = [];
     let aktuellesModell = null;
+    let gewaehlteKategorie = '';
+    let gewaehlterHersteller = '';
 
     // Datenbank laden
     fetch('modelle.json')
@@ -94,6 +144,7 @@
       .then(data => { alleModelle = data; })
       .catch(err => console.error('Fehler beim Laden der Datenbank:', err));
 
+    // --- FREITEXT-SUCHE INKL. SUCHBEGRIFFE ---
     function sucheModell() {
       const eingabe = document.getElementById('modellInput').value.toLowerCase().trim();
       const liste = document.getElementById('vorschlagsListe');
@@ -109,12 +160,13 @@
         const titelMatch = m.titel ? m.titel.toLowerCase().includes(eingabe) : false;
         const kombiMatch = `${m.hersteller} ${m.titel}`.toLowerCase().includes(eingabe);
         const katMatch = m.kategorie ? m.kategorie.toLowerCase().includes(eingabe) : false;
+        const keywordsMatch = m.suchbegriffe ? m.suchbegriffe.toLowerCase().includes(eingabe) : false;
 
-        return herstellerMatch || titelMatch || kombiMatch || katMatch;
+        return herstellerMatch || titelMatch || kombiMatch || katMatch || keywordsMatch;
       });
 
       if (treffer.length === 0) {
-        liste.innerHTML = `<div class="p-3 text-xs text-gray-500">Kein passendes Modell gefunden. Prüfe die Schreibweise.</div>`;
+        liste.innerHTML = `<div class="p-3 text-xs text-gray-500">Kein passendes Modell gefunden. Prüfe die Schreibweise oder nutze den Auswahlassistenten unten.</div>`;
         liste.classList.remove('hidden');
         return;
       }
@@ -130,9 +182,79 @@
       liste.classList.remove('hidden');
     }
 
+    // --- KATALOG-WIZARD LOGIK ---
+    function toggleWizard() {
+      const wBox = document.getElementById('wizardBox');
+      wBox.classList.toggle('hidden');
+      if (!wBox.classList.contains('hidden')) {
+        zurueckZuSchritt1();
+      }
+    }
+
+    function waehleKategorie(kat) {
+      gewaehlteKategorie = kat;
+      document.getElementById('wSchritt1').classList.add('hidden');
+      document.getElementById('wSchritt2').classList.remove('hidden');
+
+      // Gefilterte Hersteller für die gewählte Kategorie ermitteln
+      const herstellerSet = new Set();
+      alleModelle.forEach(m => {
+        if (kat === 'Notebook' && m.kategorie !== 'Desktop PC Mainboard') {
+          herstellerSet.add(m.hersteller);
+        } else if (kat === 'Desktop PC Mainboard' && m.kategorie === 'Desktop PC Mainboard') {
+          herstellerSet.add(m.hersteller);
+        }
+      });
+
+      const markenContainer = document.getElementById('markenListe');
+      markenContainer.innerHTML = '';
+      Array.from(herstellerSet).sort().forEach(hersteller => {
+        const btn = document.createElement('button');
+        btn.className = 'bg-white hover:bg-blue-50 border border-slate-200 text-slate-800 text-xs font-semibold py-2 px-3 rounded shadow-sm text-center transition';
+        btn.innerText = hersteller;
+        btn.onclick = () => waehleHersteller(hersteller);
+        markenContainer.appendChild(btn);
+      });
+    }
+
+    function waehleHersteller(hersteller) {
+      gewaehlterHersteller = hersteller;
+      document.getElementById('wSchritt2').classList.add('hidden');
+      document.getElementById('wSchritt3').classList.remove('hidden');
+
+      const katListe = document.getElementById('modelleKatalogListe');
+      katListe.innerHTML = '';
+
+      const passendeModelle = alleModelle.filter(m => {
+        const katMatch = (gewaehlteKategorie === 'Notebook') ? (m.kategorie !== 'Desktop PC Mainboard') : (m.kategorie === 'Desktop PC Mainboard');
+        return katMatch && m.hersteller === hersteller;
+      });
+
+      passendeModelle.forEach(m => {
+        const eintrag = document.createElement('div');
+        eintrag.className = 'p-3 hover:bg-blue-50 cursor-pointer text-xs font-medium text-slate-800 flex justify-between items-center border-b last:border-b-0';
+        eintrag.innerHTML = `<span><strong>${m.titel}</strong></span> <span class="text-slate-400">Max. ${m.maxRamGB} GB</span>`;
+        eintrag.onclick = () => zeigeErgebnis(m);
+        katListe.appendChild(eintrag);
+      });
+    }
+
+    function zurueckZuSchritt1() {
+      document.getElementById('wSchritt1').classList.remove('hidden');
+      document.getElementById('wSchritt2').classList.add('hidden');
+      document.getElementById('wSchritt3').classList.add('hidden');
+    }
+
+    function zurueckZuSchritt2() {
+      document.getElementById('wSchritt2').classList.remove('hidden');
+      document.getElementById('wSchritt3').classList.add('hidden');
+    }
+
+    // --- ERGEBNIS- & EMPFEHLUNGSAUSWERTUNG ---
     function zeigeErgebnis(m) {
       aktuellesModell = m;
       document.getElementById('vorschlagsListe').classList.add('hidden');
+      document.getElementById('wizardBox').classList.add('hidden');
       document.getElementById('modellInput').value = `${m.hersteller} ${m.titel}`;
 
       document.getElementById('mHersteller').innerText = m.hersteller;
@@ -141,7 +263,6 @@
       document.getElementById('mMaxRam').innerText = `${m.maxRamGB} GB RAM`;
       document.getElementById('mSlots').innerText = m.slotsInfo;
 
-      // Setze Dropdown zurück & berechne Empfehlung
       document.getElementById('nutzungsSelect').value = "office";
       berechneSpezifischeEmpfehlung();
 
@@ -158,7 +279,6 @@
       const text = document.getElementById('mHinweis');
       const btn = document.getElementById('amazonBtn');
 
-      // Apple Sonderfall
       if (aktuellesModell.maxRamGB === 8 && aktuellesModell.slotsInfo.includes("0 Steckplätze")) {
         hinweisBox.className = "p-4 rounded-lg text-xs leading-relaxed bg-amber-100 text-amber-900 border border-amber-300";
         titel.innerText = "⚠️ Nicht aufrüstbar:";
@@ -219,7 +339,6 @@
         btn.innerText = `Passendes ${zielRam} GB RAM Kit für ${aktuellesModell.titel} bei Amazon ansehen *`;
       }
 
-      // Amazon Link anpassen
       const query = `${aktuellesModell.hersteller} ${aktuellesModell.titel} RAM ${aktuellesModell.ramTyp}`;
       btn.href = `https://www.amazon.de/s?k=${encodeURIComponent(query)}`;
     }
