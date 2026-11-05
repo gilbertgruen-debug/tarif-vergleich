@@ -17,6 +17,7 @@
 
   <main class="max-w-3xl mx-auto px-4 py-8 flex-grow w-full space-y-8">
     
+    <!-- Hauptcontainer für Modellauswahl -->
     <div class="bg-white p-6 md:p-8 rounded-xl shadow-md border space-y-8">
       <div>
         <h2 class="text-2xl font-bold text-gray-900 mb-1">⚡ Modell-Aufrüst-Berater (RAM)</h2>
@@ -44,7 +45,7 @@
         <div class="flex-grow border-t border-gray-200"></div>
       </div>
 
-      <!-- OPTION B: 4-Schritt Katalog Assistent -->
+      <!-- OPTION B: 4-Schritt Katalog-Assistent -->
       <div class="bg-blue-50/60 border-2 border-blue-200 rounded-xl p-5 md:p-6 space-y-4">
         <div class="flex items-center gap-3">
           <div class="w-10 h-10 bg-blue-600 text-white rounded-lg flex items-center justify-center font-bold text-lg shadow-sm">
@@ -158,10 +159,14 @@
     let aktuellesModell = null;
     let gewaehlteKategorie = '';
 
+    // Datenbank laden
     fetch('modelle.json')
       .then(res => res.json())
-      .then(data => { alleModelle = data; })
-      .catch(err => console.error('Fehler beim Laden der Datenbank:', err));
+      .then(data => { 
+        alleModelle = data; 
+        console.log('RAM-Datenbank erfolgreich geladen:', alleModelle.length, 'Modelle');
+      })
+      .catch(err => console.error('Fehler beim Laden der RAM-Datenbank:', err));
 
     function sucheModell() {
       const eingabe = document.getElementById('modellInput').value.toLowerCase().trim();
@@ -201,13 +206,24 @@
 
     function istNotebook(kategorie) {
       if (!kategorie) return true;
-      return kategorie.toLowerCase().includes('notebook') || kategorie.toLowerCase().includes('ultrabook') || kategorie.toLowerCase().includes('laptop');
+      const katLower = kategorie.toLowerCase();
+      return katLower.includes('notebook') || katLower.includes('ultrabook') || katLower.includes('laptop');
     }
 
     function waehleKategorie(kat) {
       gewaehlteKategorie = kat;
       document.getElementById('wSchritt1').classList.add('hidden');
       document.getElementById('wSchritt2').classList.remove('hidden');
+
+      const markenContainer = document.getElementById('markenListe');
+      markenContainer.innerHTML = '';
+
+      // Falls die Daten noch asynchron geladen werden
+      if (!alleModelle || alleModelle.length === 0) {
+        markenContainer.innerHTML = '<div class="col-span-3 p-3 text-xs text-blue-600 font-semibold text-center">Lade Modelle... Bitte einen Moment Geduld.</div>';
+        setTimeout(() => waehleKategorie(kat), 400);
+        return;
+      }
 
       const herstellerSet = new Set();
       alleModelle.forEach(m => {
@@ -222,8 +238,6 @@
         }
       });
 
-      const markenContainer = document.getElementById('markenListe');
-      markenContainer.innerHTML = '';
       Array.from(herstellerSet).sort().forEach(hersteller => {
         const btn = document.createElement('button');
         btn.className = 'bg-white hover:bg-blue-100 border border-blue-300 text-slate-800 text-xs font-semibold py-2.5 px-3 rounded-lg shadow-sm text-center transition';
@@ -349,46 +363,4 @@
       else if (nutzung === 'gaming_standard') {
         zielRam = 16;
         if (aktuellesModell.standardRamGB >= 16) {
-          hinweisBox.className = "p-4 rounded-lg text-xs leading-relaxed bg-emerald-100 text-emerald-950 border border-emerald-300";
-          titel.innerText = "✅ Vorerst kein Upgrade nötig:";
-          text.innerText = `Für eSports-Titel, Fortnite oder GTA V reichen deine verbauten ${aktuellesModell.standardRamGB} GB RAM problemlos aus. Die Spiele laufen damit flüssig.`;
-          btn.innerText = "Optional: Speicher auf Amazon ansehen *";
-        } else {
-          erfordereUpgrade = true;
-          text.innerText = "Um Ruckler in Spielen wie Fortnite oder GTA V zu vermeiden, wird die Erweiterung auf 16 GB dringend empfohlen.";
-        }
-      } 
-      else if (nutzung === 'gaming_heavy') {
-        zielRam = 32;
-        if (aktuellesModell.standardRamGB >= 32) {
-          hinweisBox.className = "p-4 rounded-lg text-xs leading-relaxed bg-emerald-100 text-emerald-950 border border-emerald-300";
-          titel.innerText = "✅ Perfekt ausgestattet:";
-          text.innerText = `Mit deinen verbauten ${aktuellesModell.standardRamGB} GB RAM bist du selbst für extrem anspruchsvolle Titel wie Cyberpunk 2077 oder den Flight Simulator bestens gerüstet.`;
-          btn.innerText = "Optional: High-End RAM Kits ansehen *";
-        } else {
-          erfordereUpgrade = true;
-          text.innerText = `Anspruchsvolle Titel und große Simulationen verlangen heute oft mehr als 16 GB. Ein Upgrade auf ein 32 GB Kit (${aktuellesModell.ramTyp}) sorgt für stabile Bildraten und verhindert Nachladeruckler.`;
-        }
-      } 
-      else if (nutzung === 'workstation') {
-        zielRam = Math.min(64, aktuellesModell.maxRamGB);
-        erfordereUpgrade = true;
-        text.innerText = `Für professionellen 4K/8K-Videoschnitt, 3D-Rendering oder Virtualisierung schöpfst du mit einem Upgrade auf ${zielRam} GB das volle Potenzial deines ${aktuellesModell.titel} aus.`;
-      }
-
-      if (erfordereUpgrade) {
-        hinweisBox.className = "p-4 rounded-lg text-xs leading-relaxed bg-blue-100 text-blue-950 border border-blue-300";
-        titel.innerText = "⚡ Empfohlenes Upgrade:";
-        btn.innerText = `Passendes ${zielRam} GB RAM Kit bei Amazon ansehen *`;
-      }
-
-      const formfaktor = istNotebook(aktuellesModell.kategorie) ? "SODIMM Laptop RAM" : "DIMM Desktop RAM";
-      const saubererRamTyp = aktuellesModell.ramTyp ? aktuellesModell.ramTyp.replace(/\(.*\)/, '').trim() : "DDR5 SODIMM";
-      const amazonQuery = `${zielRam}GB Kit ${saubererRamTyp} ${formfaktor}`;
-      
-      btn.href = `https://www.amazon.de/s?k=${encodeURIComponent(amazonQuery)}`;
-    }
-  </script>
-
-</body>
-</html>
+          hinweisBox.className = "p-4 rounded-lg text-xs
