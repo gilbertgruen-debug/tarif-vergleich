@@ -19,23 +19,58 @@
     
     <div class="bg-white p-6 md:p-8 rounded-xl shadow-md border space-y-8">
       <div>
-        <h2 class="text-2xl font-bold text-gray-900 mb-1">🎮 Grafikkarten- & GPU-Berater</h2>
+        <h2 class="text-2xl font-bold text-gray-900 mb-1">🎮 Grafikkarten- &amp; GPU-Berater</h2>
         <p class="text-sm text-gray-600">Ermittle die optimale Grafikkarte für dein Komplettgerät oder Mainboard.</p>
       </div>
 
       <!-- OPTION A: Direkt-Suche -->
-      <div class="space-y-2">
+      <div class="space-y-3">
         <label class="block text-xs font-bold uppercase tracking-wider text-slate-700">Option A: Grafikkarte oder PC-Modell suchen</label>
         <div class="relative">
           <input 
             type="text" 
             id="modellInput" 
             onkeyup="sucheModell()" 
-            placeholder="z. B. Strix G18, Legion Pro 5, AM5, RTX 4070..." 
+            placeholder="z. B. Strix G18, Legion Pro 5, B550, OptiPlex, RTX 4070..." 
             class="w-full border-2 border-purple-500 rounded-lg p-3.5 text-sm focus:outline-none focus:ring-2 focus:ring-purple-600 shadow-sm"
           >
-          <div id="vorschlagsListe" class="hidden absolute top-full left-0 right-0 bg-white border border-gray-200 rounded-b-lg shadow-xl z-20 max-h-60 overflow-y-auto mt-1 divide-y"></div>
+          <div id="vorschlagsListe" class="hidden absolute top-full left-0 right-0 bg-white border border-gray-200 rounded-b-lg shadow-xl z-20 max-h-64 overflow-y-auto mt-1 divide-y"></div>
         </div>
+
+        <!-- Aufklappbare Schritt-für-Schritt-Anleitung -->
+        <details class="group bg-slate-50 border border-slate-200 rounded-lg p-3.5 text-xs text-slate-700 transition">
+          <summary class="cursor-pointer font-semibold text-slate-800 flex items-center justify-between list-none">
+            <span>🔍 Modell oder Grafikkarte nicht sicher? So liest du beides in 10 Sekunden aus</span>
+            <span class="text-purple-600 font-bold group-open:rotate-180 transition-transform">▾</span>
+          </summary>
+          
+          <div class="mt-3 pt-3 border-t border-slate-200 space-y-3 leading-relaxed">
+            <div>
+              <p class="font-bold text-slate-900 mb-1">1. Unter Windows (PC-Modell, Mainboard &amp; Grafikkarte):</p>
+              <ol class="list-decimal list-inside space-y-1 ml-1">
+                <li>Drücke gleichzeitig <strong>Windows-Taste + R</strong> auf deiner Tastatur.</li>
+                <li>Tippe <code class="bg-slate-200 px-1.5 py-0.5 rounded font-mono text-slate-900">msinfo32</code> ein und drücke <strong>Enter</strong>.</li>
+                <li>Lies im Fenster <em>Systeminformationen</em> diese Zeilen ab:
+                  <ul class="list-disc list-inside ml-4 mt-1 space-y-0.5 text-slate-600">
+                    <li><strong>Systemmodell:</strong> Zeigt deine exakte Laptop- oder Fertig-PC-Bezeichnung (z. B. <em>Legion Pro 5 16IRX8</em> oder <em>OMEN 40L</em>).</li>
+                    <li><strong>BaseBoard-Produkt:</strong> Zeigt bei Desktop-PCs dein genaues Mainboard (z. B. <em>ROG STRIX B550-F GAMING</em>).</li>
+                  </ul>
+                </li>
+                <li><em>Tipp für deine aktuelle Grafikkarte:</em> Drücke <strong>Windows-Taste + X → Geräte-Manager</strong> und klappe den Punkt <strong>Grafikkarten</strong> auf.</li>
+              </ol>
+            </div>
+
+            <div>
+              <p class="font-bold text-slate-900 mb-1">2. Auf dem Gehäuse-Aufkleber (ohne Einschalten):</p>
+              <p class="text-slate-600">Drehe deinen Laptop um (Aufkleber auf der Unterseite unter <em>Model / Typ</em>) oder schaue bei Desktop-PCs auf das Typenschild an der Rückseite.</p>
+            </div>
+
+            <div>
+              <p class="font-bold text-slate-900 mb-1">3. Apple Mac (MacBook / iMac / Mac mini):</p>
+              <p class="text-slate-600">Klicke oben links auf das <strong>Apple-Symbol () → Über diesen Mac</strong>.</p>
+            </div>
+          </div>
+        </details>
       </div>
 
       <div class="relative flex py-1 items-center">
@@ -79,7 +114,7 @@
               <span class="text-xs font-bold text-slate-700 uppercase">Schritt 2: Wähle die Marke</span>
               <button onclick="zurueckZuSchritt1()" class="text-xs text-purple-600 font-semibold hover:underline">← Zurück</button>
             </div>
-            <div id="markenListe" class="grid grid-cols-1 sm:grid-cols-2 gap-2"></div>
+            <div id="markenListe" class="grid grid-cols-2 sm:grid-cols-3 gap-2"></div>
           </div>
 
           <!-- Schritt 3: Modellreihe -->
@@ -139,14 +174,28 @@
 
   </main>
 
-  <footer class="bg-gray-900 text-gray-400 py-6 text-xs text-center border-t border-gray-800">
-    <a href="impressum.html" class="hover:text-white">Impressum & Datenschutz</a>
+  <footer class="bg-gray-900 text-gray-400 py-6 px-4 text-xs text-center border-t border-gray-800 space-y-2">
+    <p>* Als Amazon-Partner verdiene ich an qualifizierten Verkäufen. Für dich entstehen keine Mehrkosten.</p>
+    <div>
+      <a href="impressum.html" class="hover:text-white">Impressum &amp; Datenschutz</a>
+    </div>
   </footer>
 
   <script>
+    // HIER SPÄTER DEINE AMAZON PARTNERNET-ID EINTRAGEN (z. B. 'techvergleich-21'):
+    var AMAZON_PARTNER_TAG = "";
+
     var alleGpus = [];
     var aktuellesModell = null;
     var gewaehlteKategorie = '';
+
+    function baueAmazonLink(suchbegriff) {
+      var url = 'https://www.amazon.de/s?k=' + encodeURIComponent(suchbegriff);
+      if (AMAZON_PARTNER_TAG && AMAZON_PARTNER_TAG.trim() !== '') {
+        url += '&tag=' + encodeURIComponent(AMAZON_PARTNER_TAG.trim());
+      }
+      return url;
+    }
 
     fetch('gpus.json')
       .then(function(res) { return res.json(); })
@@ -173,18 +222,28 @@
       });
 
       if (treffer.length === 0) {
-        liste.innerHTML = '<div class="p-3 text-xs text-gray-500">Kein passendes Modell gefunden. Nutze den Katalog unten.</div>';
+        liste.innerHTML = '<div class="p-3 text-xs text-gray-500">Kein passendes Modell gefunden. Nutze die Anleitung oben oder den Katalog unten.</div>';
         liste.classList.remove('hidden');
         return;
       }
 
-      treffer.forEach(function(m) {
+      // Maximal 25 Treffer gleichzeitig rendern für flüssige Performance bei großen JSON-Listen
+      var anzeigeTreffer = treffer.slice(0, 25);
+
+      anzeigeTreffer.forEach(function(m) {
         var eintrag = document.createElement('div');
         eintrag.className = 'p-3 hover:bg-purple-50 cursor-pointer text-sm font-medium text-gray-800 flex justify-between items-center';
         eintrag.innerHTML = '<span><strong>' + m.hersteller + '</strong> ' + m.titel + '</span> <span class="text-xs text-purple-600 font-bold">' + m.kategorie + '</span>';
         eintrag.onclick = function() { zeigeErgebnis(m, m.varianten ? m.varianten[0] : null); };
         liste.appendChild(eintrag);
       });
+
+      if (treffer.length > 25) {
+        var hinweis = document.createElement('div');
+        hinweis.className = 'p-2.5 text-center text-xs text-slate-500 bg-slate-50';
+        hinweis.innerText = '+ ' + (treffer.length - 25) + ' weitere Treffer – tippe die genaue Modellnummer ein, um die Liste einzugrenzen.';
+        liste.appendChild(hinweis);
+      }
 
       liste.classList.remove('hidden');
     }
@@ -204,7 +263,7 @@
       markenContainer.innerHTML = '';
 
       if (!alleGpus || alleGpus.length === 0) {
-        markenContainer.innerHTML = '<div class="col-span-2 p-3 text-xs text-purple-600 font-semibold text-center">Lade Modelle... Bitte einen Moment Geduld.</div>';
+        markenContainer.innerHTML = '<div class="col-span-3 p-3 text-xs text-purple-600 font-semibold text-center">Lade Modelle... Bitte einen Moment Geduld.</div>';
         setTimeout(function() { waehleKategorie(kat); }, 400);
         return;
       }
@@ -311,13 +370,13 @@
         titel.innerText = "⚠️ Nicht aufrüstbar (Laptop):";
         text.innerText = m.hinweisUpgrade || m.hinweisStandard;
         btn.innerText = "Aktuelle Gaming-Laptops mit neuer RTX-Grafikkarte bei Amazon ansehen *";
-        btn.href = 'https://www.amazon.de/s?k=' + encodeURIComponent('Gaming Laptop RTX 4070 16GB');
+        btn.href = baueAmazonLink('Gaming Laptop RTX 4070 16GB');
       } else {
         hinweisBox.className = "p-4 rounded-lg text-xs leading-relaxed bg-emerald-100 text-emerald-950 border border-emerald-300";
         titel.innerText = "✅ Grafikkarte aufrüstbar (Desktop PC):";
         text.innerText = (m.hinweisStandard || '') + ' ' + (m.hinweisUpgrade || '');
         btn.innerText = "Aktuelle Grafikkarten-Upgrades (RTX 4060 / 4070) bei Amazon ansehen *";
-        btn.href = 'https://www.amazon.de/s?k=' + encodeURIComponent('NVIDIA GeForce RTX 4060 4070 Grafikkarte');
+        btn.href = baueAmazonLink('NVIDIA GeForce RTX 4060 4070 Grafikkarte');
       }
 
       document.getElementById('ergebnisBox').classList.remove('hidden');
