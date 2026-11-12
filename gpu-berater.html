@@ -167,9 +167,8 @@
         <p id="mHinweis"></p>
       </div>
 
-      <a id="amazonBtn" href="#" target="_blank" rel="noopener noreferrer" class="block w-full text-center bg-amber-500 hover:bg-amber-600 text-white font-bold py-3.5 px-6 rounded-lg transition shadow-md text-sm">
-        Passendes Grafikkarten-Upgrade bei Amazon ansehen *
-      </a>
+      <!-- Kuratierte Upgrade-Empfehlungen (dynamisch befüllt) -->
+      <div id="gpuEmpfehlungenContainer" class="space-y-3"></div>
     </div>
 
   </main>
@@ -184,16 +183,81 @@
   <script>
     var AMAZON_PARTNER_TAG = "techverglei00-21";
 
+    // Kuratierte GPU-Empfehlungen pro Upgrade-Szenario (optional mit direkter ASIN ergänzbar)
+    var KURATIERTE_GPU_UPGRADES = {
+      desktop_standard: [
+        {
+          badge: "⭐ Preis-Leistungs-Tipp (Full-HD Gaming)",
+          name: "NVIDIA GeForce RTX 4060 (8 GB GDDR6, Dual-Fan)",
+          details: "Sehr sparsam (nur 115W TDP, läuft mit fast jedem 450W–550W Netzteil) inkl. DLSS 3 Frame Generation.",
+          query: "MSI GeForce RTX 4060 Ventus 2X Black 8G OC Grafikkarte",
+          asin: ""
+        },
+        {
+          badge: "🚀 WQHD-Gaming Sweetspot (12 GB VRAM)",
+          name: "NVIDIA GeForce RTX 4070 Super (12 GB GDDR6X)",
+          details: "Enormer Leistungssprung für flüssiges 1440p/WQHD-Gaming und Raytracing (empf. Netzteil ab 650W).",
+          query: "ASUS Dual GeForce RTX 4070 Super OC Edition 12GB",
+          asin: ""
+        },
+        {
+          badge: "💎 High-End & 4K-Gaming (16 GB VRAM)",
+          name: "NVIDIA GeForce RTX 4070 Ti Super / RTX 4080 Super (16 GB)",
+          details: "Zukunftssichere 16 GB Grafikspeicher für höchste Details in 4K und KI-Anwendungen (empf. Netzteil ab 750W).",
+          query: "MSI GeForce RTX 4070 Ti Super 16G Ventus 2X OC",
+          asin: ""
+        }
+      ],
+      office_sff: [
+        {
+          badge: "🔧 Speziell für schmale Office-Gehäuse (SFF / Low-Profile)",
+          name: "NVIDIA GeForce RTX 3050 6GB Low Profile (ohne Stromanschluss)",
+          details: "Passt in schmale SFF-Gehäuse (Dell OptiPlex, HP ProDesk, Lenovo ThinkCentre) und benötigt kein extra Netzteilkabel (max. 70W über PCIe).",
+          query: "MSI GeForce RTX 3050 LP 6G OC Low Profile Grafikkarte",
+          asin: ""
+        },
+        {
+          badge: "💡 Kompakte Alternative für Office & 4K-Monitore",
+          name: "AMD Radeon RX 6400 Low Profile (4 GB GDDR6)",
+          details: "Flache 1-Slot-Bauform für besonders enge Business-PCs und flüssige Multi-Monitor-Setups.",
+          query: "Sapphire Pulse AMD Radeon RX 6400 Low Profile 4GB",
+          asin: ""
+        }
+      ],
+      laptop_alternativen: [
+        {
+          badge: "💻 Leistungsstarkes Komplett-Upgrade",
+          name: "Aktuelle Gaming- & Creator-Laptops mit RTX 4060 / RTX 4070 & 16–32 GB RAM",
+          details: "Da Laptop-Grafikkarten fest verlötet sind, ist der Wechsel auf ein aktuelles RTX-Modell der sauberste Weg zu deutlich mehr FPS.",
+          query: "Gaming Laptop RTX 4070 32GB RAM 1TB SSD",
+          asin: ""
+        },
+        {
+          badge: "🔌 Externe Lösung (für Laptops mit Thunderbolt 3/4 oder USB4)",
+          name: "Externe Grafikkarten-Dockingstation (eGPU Gehäuse Thunderbolt / USB4)",
+          details: "Ermöglicht den Betrieb einer echten Desktop-Grafikkarte am Laptop über das Thunderbolt-/USB4-Kabel.",
+          query: "Thunderbolt eGPU Gehäuse externe Grafikkarte",
+          asin: ""
+        }
+      ]
+    };
+
     var alleGpus = [];
     var aktuellesModell = null;
     var gewaehlteKategorie = '';
 
-    function baueAmazonLink(suchbegriff) {
-      var url = 'https://www.amazon.de/s?k=' + encodeURIComponent(suchbegriff);
-      if (AMAZON_PARTNER_TAG && AMAZON_PARTNER_TAG.trim() !== '') {
-        url += '&tag=' + encodeURIComponent(AMAZON_PARTNER_TAG.trim());
+    function baueAmazonProduktLink(item) {
+      var tagParam = (AMAZON_PARTNER_TAG && AMAZON_PARTNER_TAG.trim() !== '')
+        ? 'tag=' + encodeURIComponent(AMAZON_PARTNER_TAG.trim())
+        : '';
+
+      if (item && item.asin && item.asin.trim() !== '') {
+        var dpUrl = 'https://www.amazon.de/dp/' + encodeURIComponent(item.asin.trim());
+        return tagParam ? dpUrl + '?' + tagParam : dpUrl;
       }
-      return url;
+
+      var searchUrl = 'https://www.amazon.de/s?k=' + encodeURIComponent(item.query);
+      return tagParam ? searchUrl + '&' + tagParam : searchUrl;
     }
 
     fetch('gpus.json')
@@ -249,7 +313,7 @@
     function istNotebook(kategorie) {
       if (!kategorie) return true;
       var katLower = kategorie.toLowerCase();
-      return katLower.indexOf('notebook') !== -1 || katLower.indexOf('laptop') !== -1;
+      return katLower.indexOf('notebook') !== -1 || katLower.indexOf('laptop') !== -1 || katLower.indexOf('mini-pc') !== -1;
     }
 
     function waehleKategorie(kat) {
@@ -345,6 +409,29 @@
       document.getElementById('wSchritt4').classList.add('hidden');
     }
 
+    function renderUpgradeKarten(liste) {
+      var container = document.getElementById('gpuEmpfehlungenContainer');
+      container.innerHTML = '';
+
+      liste.forEach(function(item) {
+        var link = baueAmazonProduktLink(item);
+        var card = document.createElement('div');
+        card.className = 'bg-white border-2 border-amber-400/80 rounded-xl p-4 shadow-sm space-y-2.5';
+        card.innerHTML =
+          '<div class="flex items-center justify-between">' +
+            '<span class="bg-amber-100 text-amber-900 text-[11px] font-bold uppercase px-2.5 py-0.5 rounded-full">' + item.badge + '</span>' +
+          '</div>' +
+          '<div>' +
+            '<h4 class="text-sm md:text-base font-bold text-gray-900">' + item.name + '</h4>' +
+            '<p class="text-xs text-gray-600 mt-0.5">' + item.details + '</p>' +
+          '</div>' +
+          '<a href="' + link + '" target="_blank" rel="noopener noreferrer" class="block w-full text-center bg-amber-500 hover:bg-amber-600 text-white font-bold py-2.5 px-4 rounded-lg transition shadow-sm text-xs md:text-sm">' +
+            'Dieses Modell bei Amazon prüfen *' +
+          '</a>';
+        container.appendChild(card);
+      });
+    }
+
     function zeigeErgebnis(m, variante) {
       aktuellesModell = m;
 
@@ -361,20 +448,25 @@
       var hinweisBox = document.getElementById('empfehlungsHinweisBox');
       var titel = document.getElementById('empfehlungsTitel');
       var text = document.getElementById('mHinweis');
-      var btn = document.getElementById('amazonBtn');
+
+      var katLow = (m.kategorie || '').toLowerCase();
+      var titelLow = (m.titel || '').toLowerCase();
 
       if (istNotebook(m.kategorie)) {
         hinweisBox.className = "p-4 rounded-lg text-xs leading-relaxed bg-amber-100 text-amber-900 border border-amber-300";
-        titel.innerText = "⚠️ Nicht aufrüstbar (Laptop):";
+        titel.innerText = "⚠️ Intern nicht tauschbar (Laptop / Mini-PC):";
         text.innerText = m.hinweisUpgrade || m.hinweisStandard;
-        btn.innerText = "Aktuelle Gaming-Laptops mit neuer RTX-Grafikkarte bei Amazon ansehen *";
-        btn.href = baueAmazonLink('Gaming Laptop RTX 4070 16GB');
+        renderUpgradeKarten(KURATIERTE_GPU_UPGRADES.laptop_alternativen);
+      } else if (katLow.indexOf('office') !== -1 || titelLow.indexOf('optiplex') !== -1 || titelLow.indexOf('prodesk') !== -1 || titelLow.indexOf('elitedesk') !== -1 || titelLow.indexOf('thinkcentre') !== -1) {
+        hinweisBox.className = "p-4 rounded-lg text-xs leading-relaxed bg-blue-100 text-blue-950 border border-blue-300";
+        titel.innerText = "ℹ️ Office- / SFF-Gehäuse beachten:";
+        text.innerText = (m.hinweisStandard || '') + ' ' + (m.hinweisUpgrade || '');
+        renderUpgradeKarten(KURATIERTE_GPU_UPGRADES.office_sff);
       } else {
         hinweisBox.className = "p-4 rounded-lg text-xs leading-relaxed bg-emerald-100 text-emerald-950 border border-emerald-300";
-        titel.innerText = "✅ Grafikkarte aufrüstbar (Desktop PC):";
+        titel.innerText = "✅ Grafikkarte aufrüstbar (Standard PCIe x16):";
         text.innerText = (m.hinweisStandard || '') + ' ' + (m.hinweisUpgrade || '');
-        btn.innerText = "Aktuelle Grafikkarten-Upgrades (RTX 4060 / 4070) bei Amazon ansehen *";
-        btn.href = baueAmazonLink('NVIDIA GeForce RTX 4060 4070 Grafikkarte');
+        renderUpgradeKarten(KURATIERTE_GPU_UPGRADES.desktop_standard);
       }
 
       document.getElementById('ergebnisBox').classList.remove('hidden');
