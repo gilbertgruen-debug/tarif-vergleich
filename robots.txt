@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /*.json$
+
+Sitemap: https://techvergleich24.de/sitemap.xml
