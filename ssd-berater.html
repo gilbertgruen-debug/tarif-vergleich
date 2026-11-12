@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SSD &amp; M.2 Speicher-Berater – TechVergleich24</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 text-gray-800 min-h-screen flex flex-col">
+
+  <header class="bg-slate-900 text-white py-6 px-4 shadow">
+    <div class="max-w-4xl mx-auto flex justify-between items-center">
+      <h1 class="text-xl font-bold"><a href="index.html">TechVergleich24</a></h1>
+      <a href="index.html" class="text-sm bg-slate-800 hover:bg-slate-700 px-3 py-1.5 rounded transition">← Zurück zur Übersicht</a>
+    </div>
+  </header>
+
+  <main class="max-w-3xl mx-auto px-4 py-8 flex-grow w-full space-y-8">
+    
+    <!-- Hauptcontainer für Modellauswahl -->
+    <div class="bg-white p-6 md:p-8 rounded-xl shadow-md border space-y-8">
+      <div>
+        <h2 class="text-2xl font-bold text-gray-900 mb-1">💾 SSD- &amp; M.2-Speicher-Berater</h2>
+        <p class="text-sm text-gray-600">Finde in wenigen Sekunden die passende M.2 NVMe oder SATA-SSD für dein Laptop oder Mainboard.</p>
+      </div>
+
+      <!-- OPTION A: Direkt-Suche -->
+      <div class="space-y-3">
+        <label class="block text-xs font-bold uppercase tracking-wider text-slate-700">Option A: Modell oder Mainboard direkt suchen</label>
+        <div class="relative">
+          <input 
+            type="text" 
+            id="modellInput" 
+            onkeyup="sucheModell()" 
+            placeholder="Modellname oder Mainboard eingeben (z. B. Legion 5, Strix B550, ThinkPad)..." 
+            class="w-full border-2 border-emerald-600 rounded-lg p-3.5 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-600 shadow-sm"
+          >
+          <div id="vorschlagsListe" class="hidden absolute top-full left-0 right-0 bg-white border border-gray-200 rounded-b-lg shadow-xl z-20 max-h-64 overflow-y-auto mt-1 divide-y"></div>
+        </div>
+
+        <!-- Aufklappbare Schritt-für-Schritt-Anleitung -->
+        <details class="group bg-slate-50 border border-slate-200 rounded-lg p-3.5 text-xs text-slate-700 transition">
+          <summary class="cursor-pointer font-semibold text-slate-800 flex items-center justify-between list-none">
+            <span>🔍 Modell nicht sicher oder unsicher, ob ein M.2-Slot frei ist?</span>
+            <span class="text-emerald-700 font-bold group-open:rotate-180 transition-transform">▾</span>
+          </summary>
+          
+          <div class="mt-3 pt-3 border-t border-slate-200 space-y-3 leading-relaxed">
+            <div>
+              <p class="font-bold text-slate-900 mb-1">1. Unter Windows Modell / Mainboard auslesen:</p>
+              <ol class="list-decimal list-inside space-y-1 ml-1">
+                <li>Drücke gleichzeitig <strong>Windows-Taste + R</strong> auf deiner Tastatur.</li>
+                <li>Tippe <code class="bg-slate-200 px-1.5 py-0.5 rounded font-mono text-slate-900">msinfo32</code> ein und drücke <strong>Enter</strong>.</li>
+                <li>Lies <strong>Systemmodell</strong> (Laptop/Fertig-PC) oder <strong>BaseBoard-Produkt</strong> (Mainboard) ab.</li>
+              </ol>
+            </div>
+
+            <div>
+              <p class="font-bold text-slate-900 mb-1">2. Prüfen, welche SSD aktuell verbaut ist:</p>
+              <p class="text-slate-600">Öffne den <strong>Task-Manager (Strg + Umschalt + Esc) → Leistung → Datenträger 0</strong>. Oben rechts steht der exakte Name deiner aktuellen SSD (z. B. <em>Samsung MZVL21T0HCLR</em> = M.2 NVMe).</p>
+            </div>
+          </div>
+        </details>
+      </div>
+
+      <div class="relative flex py-1 items-center">
+        <div class="flex-grow border-t border-gray-200"></div>
+        <span class="flex-shrink mx-4 text-xs font-bold text-gray-400 uppercase">Oder</span>
+        <div class="flex-grow border-t border-gray-200"></div>
+      </div>
+
+      <!-- OPTION B: Schritt-für-Schritt Katalog-Assistent -->
+      <div class="bg-emerald-50/60 border-2 border-emerald-200 rounded-xl p-5 md:p-6 space-y-4">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 bg-emerald-600 text-white rounded-lg flex items-center justify-center font-bold text-lg shadow-sm">
+            💿
+          </div>
+          <div>
+            <h3 class="text-base font-bold text-gray-900">Option B: Schritt-für-Schritt Katalog-Filter</h3>
+            <p class="text-xs text-gray-600">Wähle Gerätetyp, Hersteller und dein Modell aus.</p>
+          </div>
+        </div>
+
+        <div id="wizardBox" class="mt-4 pt-4 border-t border-emerald-200 space-y-4">
+          
+          <!-- Schritt 1: Gerätetyp -->
+          <div id="wSchritt1" class="space-y-2">
+            <span class="text-xs font-bold text-slate-700 uppercase">Schritt 1: Wähle deinen Gerätetyp</span>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <button onclick="waehleKategorie('Notebook')" class="bg-white hover:bg-emerald-100 border-2 border-emerald-200 hover:border-emerald-500 font-semibold text-gray-800 text-sm py-3 px-4 rounded-lg shadow-sm transition text-left flex items-center justify-between">
+                <span>💻 Notebook / Laptop</span>
+                <span class="text-emerald-600 font-bold">→</span>
+              </button>
+              <button onclick="waehleKategorie('Desktop PC Mainboard')" class="bg-white hover:bg-emerald-100 border-2 border-emerald-200 hover:border-emerald-500 font-semibold text-gray-800 text-sm py-3 px-4 rounded-lg shadow-sm transition text-left flex items-center justify-between">
+                <span>🖥️ Desktop PC / Mainboard</span>
+                <span class="text-emerald-600 font-bold">→</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Schritt 2: Marke -->
+          <div id="wSchritt2" class="hidden space-y-2">
+            <div class="flex justify-between items-center">
+              <span class="text-xs font-bold text-slate-700 uppercase">Schritt 2: Wähle die Marke</span>
+              <button onclick="zurueckZuSchritt1()" class="text-xs text-emerald-700 font-semibold hover:underline">← Zurück</button>
+            </div>
+            <div id="markenListe" class="grid grid-cols-2 sm:grid-cols-3 gap-2"></div>
+          </div>
+
+          <!-- Schritt 3: Modellreihe -->
+          <div id="wSchritt3" class="hidden space-y-2">
+            <div class="flex justify-between items-center">
+              <span class="text-xs font-bold text-slate-700 uppercase">Schritt 3: Wähle das Modell</span>
+              <button onclick="zurueckZuSchritt2()" class="text-xs text-emerald-700 font-semibold hover:underline">← Marke ändern</button>
+            </div>
+            <div id="modelleKatalogListe" class="divide-y border border-emerald-200 rounded-lg bg-white max-h-56 overflow-y-auto shadow-inner"></div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Ergebnisanzeige -->
+    <div id="ergebnisBox" class="hidden bg-emerald-50 border-2 border-emerald-600 rounded-xl p-6 shadow-md space-y-5">
+      <div class="flex justify-between items-start border-b border-emerald-200 pb-3">
+        <div>
+          <span class="text-xs font-bold uppercase text-emerald-800" id="mHersteller">HERSTELLER</span>
+          <h3 class="text-2xl font-black text-gray-900" id="mTitel">Modellname</h3>
+        </div>
+        <span class="bg-emerald-600 text-white text-xs font-bold px-3 py-1 rounded-full" id="mGerätekategorie">Notebook</span>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+        <div class="bg-white p-4 rounded-lg border border-emerald-100">
+          <span class="text-xs text-gray-500 uppercase font-bold">Passender SSD-Anschluss</span>
+          <div class="text-lg font-extrabold text-emerald-900" id="mSsdTyp">M.2 2280 NVMe (PCIe 4.0)</div>
+        </div>
+        <div class="bg-white p-4 rounded-lg border border-emerald-100">
+          <span class="text-xs text-gray-500 uppercase font-bold">Bauform &amp; Kühlung</span>
+          <div class="text-sm font-bold text-gray-900 mt-1" id="mBauform">M.2 2280 (ohne Kühlkörper)</div>
+        </div>
+      </div>
+
+      <!-- Wunsch-Kapazität & Einbauart wählen -->
+      <div class="bg-white p-5 rounded-xl border border-emerald-200 shadow-sm grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div class="space-y-1.5">
+          <label class="block text-xs font-bold uppercase text-slate-800">📦 Gewünschte Speichergröße</label>
+          <select id="kapazitaetSelect" onchange="berechneSsdEmpfehlung()" class="w-full border-2 border-gray-200 rounded-lg p-2.5 text-sm focus:border-emerald-500 focus:outline-none bg-gray-50 font-medium">
+            <option value="1TB">1 TB (Ideal für Windows &amp; 5–10 Spiele)</option>
+            <option value="2TB" selected>2 TB (Preis-Leistungs-Sieger für Gaming &amp; Daten)</option>
+            <option value="4TB">4 TB (Maximum für große Spiele-Bibliotheken &amp; 4K-Videos)</option>
+          </select>
+        </div>
+
+        <div class="space-y-1.5">
+          <label class="block text-xs font-bold uppercase text-slate-800">🔧 Einbau-Situation</label>
+          <select id="einbauSelect" onchange="berechneSsdEmpfehlung()" class="w-full border-2 border-gray-200 rounded-lg p-2.5 text-sm focus:border-emerald-500 focus:outline-none bg-gray-50 font-medium">
+            <option value="intern" selected>Intern einbauen / ersetzen</option>
+            <option value="extern">Kein Slot frei → Externe USB-C SSD</option>
+          </select>
+        </div>
+      </div>
+
+      <div id="empfehlungsHinweisBox" class="p-4 rounded-lg text-xs leading-relaxed bg-emerald-100 text-emerald-950 border border-emerald-300 space-y-1">
+        <span class="font-bold block text-sm mb-1" id="empfehlungsTitel">💡 Einbau- &amp; Kompatibilitäts-Hinweis:</span>
+        <p id="mHinweis"></p>
+      </div>
+
+      <!-- Kuratierte SSD-Produktempfehlungen -->
+      <div id="ssdEmpfehlungenContainer" class="space-y-3"></div>
+    </div>
+
+  </main>
+
+  <footer class="bg-gray-900 text-gray-400 py-6 px-4 text-xs text-center border-t border-gray-800 space-y-2">
+    <p>* Als Amazon-Partner verdiene ich an qualifizierten Verkäufen. Für dich entstehen keine Mehrkosten.</p>
+    <div>
+      <a href="impressum.html" class="hover:text-white">Impressum &amp; Datenschutz</a>
+    </div>
+  </footer>
+
+  <script>
+    var AMAZON_PARTNER_TAG = "techverglei00-21";
+
+    var alleModelle = [];
+    var aktuellesModell = null;
+    var gewaehlteKategorie = '';
+
+    function baueAmazonLink(suchbegriff, asin) {
+      var tagParam = (AMAZON_PARTNER_TAG && AMAZON_PARTNER_TAG.trim() !== '')
+        ? 'tag=' + encodeURIComponent(AMAZON_PARTNER_TAG.trim())
+        : '';
+
+      if (asin && asin.trim() !== '') {
+        var dpUrl = 'https://www.amazon.de/dp/' + encodeURIComponent(asin.trim());
+        return tagParam ? dpUrl + '?' + tagParam : dpUrl;
+      }
+
+      var searchUrl = 'https://www.amazon.de/s?k=' + encodeURIComponent(suchbegriff);
+      return tagParam ? searchUrl + '&' + tagParam : searchUrl;
+    }
+
+    fetch('modelle.json')
+      .then(function(res) { return res.json(); })
+      .then(function(data) { alleModelle = data; })
+      .catch(function(err) { console.error('Fehler beim Laden:', err); });
+
+    function sucheModell() {
+      var eingabe = document.getElementById('modellInput').value.toLowerCase().trim();
+      var liste = document.getElementById('vorschlagsListe');
+      liste.innerHTML = '';
+
+      if (eingabe.length < 2) {
+        liste.classList.add('hidden');
+        return;
+      }
+
+      var treffer = alleModelle.filter(function(m) {
+        var herstellerMatch = m.hersteller ? m.hersteller.toLowerCase().indexOf(eingabe) !== -1 : false;
+        var titelMatch = m.titel ? m.titel.toLowerCase().indexOf(eingabe) !== -1 : false;
+        var kombiMatch = (m.hersteller + ' ' + m.titel).toLowerCase().indexOf(eingabe) !== -1;
+        var keywordsMatch = m.suchbegriffe ? m.suchbegriffe.toLowerCase().indexOf(eingabe) !== -1 : false;
+
+        return herstellerMatch || titelMatch || kombiMatch || keywordsMatch;
+      });
+
+      if (treffer.length === 0) {
+        liste.innerHTML = '<div class="p-3 text-xs text-gray-500">Kein passendes Modell gefunden. Nutze den Katalog unten.</div>';
+        liste.classList.remove('hidden');
+        return;
+      }
+
+      var anzeigeTreffer = treffer.slice(0, 25);
+
+      anzeigeTreffer.forEach(function(m) {
+        var eintrag = document.createElement('div');
+        eintrag.className = 'p-3 hover:bg-emerald-50 cursor-pointer text-sm font-medium text-gray-800 flex justify-between items-center';
+        eintrag.innerHTML = '<span><strong>' + m.hersteller + '</strong> ' + m.titel + '</span> <span class="text-xs text-emerald-700 font-bold">' + (m.kategorie || 'Gerät') + '</span>';
+        eintrag.onclick = function() { zeigeErgebnis(m); };
+        liste.appendChild(eintrag);
+      });
+
+      if (treffer.length > 25) {
+        var hinweis = document.createElement('div');
+        hinweis.className = 'p-2.5 text-center text-xs text-slate-500 bg-slate-50';
+        hinweis.innerText = '+ ' + (treffer.length - 25) + ' weitere Treffer – tippe die genaue Modellnummer ein, um die Liste einzugrenzen.';
+        liste.appendChild(hinweis);
+      }
+
+      liste.classList.remove('hidden');
+    }
+
+    function istNotebook(kategorie) {
+      if (!kategorie) return true;
+      var katLower = kategorie.toLowerCase();
+      return katLower.indexOf('notebook') !== -1 || katLower.indexOf('ultrabook') !== -1 || katLower.indexOf('laptop') !== -1;
+    }
+
+    function waehleKategorie(kat) {
+      gewaehlteKategorie = kat;
+      document.getElementById('wSchritt1').classList.add('hidden');
+      document.getElementById('wSchritt2').classList.remove('hidden');
+
+      var markenContainer = document.getElementById('markenListe');
+      markenContainer.innerHTML = '';
+
+      if (!alleModelle || alleModelle.length === 0) {
+        markenContainer.innerHTML = '<div class="col-span-3 p-3 text-xs text-emerald-700 font-semibold text-center">Lade Modelle... Bitte einen Moment Geduld.</div>';
+        setTimeout(function() { waehleKategorie(kat); }, 400);
+        return;
+      }
+
+      var herstellerSet = new Set();
+      alleModelle.forEach(function(m) {
+        if (kat === 'Notebook') {
+          if (istNotebook(m.kategorie)) herstellerSet.add(m.hersteller);
+        } else {
+          if (!istNotebook(m.kategorie)) herstellerSet.add(m.hersteller);
+        }
+      });
+
+      Array.from(herstellerSet).sort().forEach(function(hersteller) {
+        var btn = document.createElement('button');
+        btn.className = 'bg-white hover:bg-emerald-100 border border-emerald-300 text-slate-800 text-xs font-semibold py-2.5 px-3 rounded-lg shadow-sm text-center transition';
+        btn.innerText = hersteller;
+        btn.onclick = function() { waehleHersteller(hersteller); };
+        markenContainer.appendChild(btn);
+      });
+    }
+
+    function waehleHersteller(hersteller) {
+      document.getElementById('wSchritt2').classList.add('hidden');
+      document.getElementById('wSchritt3').classList.remove('hidden');
+
+      var katListe = document.getElementById('modelleKatalogListe');
+      katListe.innerHTML = '';
+
+      var passendeModelle = alleModelle.filter(function(m) {
+        var katMatch = (gewaehlteKategorie === 'Notebook') ? istNotebook(m.kategorie) : !istNotebook(m.kategorie);
+        return katMatch && m.hersteller === hersteller;
+      });
+
+      passendeModelle.forEach(function(m) {
+        var eintrag = document.createElement('div');
+        eintrag.className = 'p-3 hover:bg-emerald-50 cursor-pointer text-xs font-medium text-slate-800 flex justify-between items-center border-b last:border-b-0';
+        eintrag.innerHTML = '<span><strong>' + m.titel + '</strong></span> <span class="text-emerald-700 font-bold">Prüfen →</span>';
+        eintrag.onclick = function() { zeigeErgebnis(m); };
+        katListe.appendChild(eintrag);
+      });
+    }
+
+    function zurueckZuSchritt1() {
+      document.getElementById('wSchritt1').classList.remove('hidden');
+      document.getElementById('wSchritt2').classList.add('hidden');
+      document.getElementById('wSchritt3').classList.add('hidden');
+    }
+
+    function zurueckZuSchritt2() {
+      document.getElementById('wSchritt2').classList.remove('hidden');
+      document.getElementById('wSchritt3').classList.add('hidden');
+    }
+
+    function zeigeErgebnis(m) {
+      aktuellesModell = m;
+
+      document.getElementById('vorschlagsListe').classList.add('hidden');
+      document.getElementById('modellInput').value = m.hersteller + ' ' + m.titel;
+
+      document.getElementById('mHersteller').innerText = m.hersteller;
+      document.getElementById('mTitel').innerText = m.titel;
+      document.getElementById('mGerätekategorie').innerText = m.kategorie || "Notebook";
+
+      berechneSsdEmpfehlung();
+
+      document.getElementById('ergebnisBox').classList.remove('hidden');
+      document.getElementById('ergebnisBox').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function renderSsdKarten(karten) {
+      var container = document.getElementById('ssdEmpfehlungenContainer');
+      container.innerHTML = '';
+
+      karten.forEach(function(item) {
+        var link = baueAmazonLink(item.query, item.asin || "");
+        var card = document.createElement('div');
+        card.className = 'bg-white border-2 border-amber-400/80 rounded-xl p-4 shadow-sm space-y-2.5';
+        card.innerHTML =
+          '<div class="flex items-center justify-between">' +
+            '<span class="bg-amber-100 text-amber-900 text-[11px] font-bold uppercase px-2.5 py-0.5 rounded-full">' + item.badge + '</span>' +
+          '</div>' +
+          '<div>' +
+            '<h4 class="text-sm md:text-base font-bold text-gray-900">' + item.name + '</h4>' +
+            '<p class="text-xs text-gray-600 mt-0.5">' + item.details + '</p>' +
+          '</div>' +
+          '<a href="' + link + '" target="_blank" rel="noopener noreferrer" class="block w-full text-center bg-amber-500 hover:bg-amber-600 text-white font-bold py-2.5 px-4 rounded-lg transition shadow-sm text-xs md:text-sm">' +
+            'Dieses Modell bei Amazon ansehen *' +
+          '</a>';
+        container.appendChild(card);
+      });
+    }
+
+    function berechneSsdEmpfehlung() {
+      if (!aktuellesModell) return;
+
+      var kap = document.getElementById('kapazitaetSelect').value;
+      var einbau = document.getElementById('einbauSelect').value;
+      var isLap = istNotebook(aktuellesModell.kategorie);
+      var ramLow = (aktuellesModell.ramTyp || "").toLowerCase();
+      var isDdr3 = ramLow.indexOf("ddr3") !== -1;
+
+      var ssdTypEl = document.getElementById('mSsdTyp');
+      var bauformEl = document.getElementById('mBauform');
+      var hinweisEl = document.getElementById('mHinweis');
+
+      // Fall 1: Externe SSD gewählt (oder MacBook mit fest verlöteter SSD)
+      var titelLow = (aktuellesModell.titel || "").toLowerCase();
+      var istMac = (aktuellesModell.hersteller || "").toLowerCase() === "apple" && titelLow.indexOf("macbook") !== -1;
+
+      if (einbau === "extern" || istMac) {
+        ssdTypEl.innerText = "USB-C / Thunderbolt Externe SSD";
+        bauformEl.innerText = "Plug & Play (kein Aufschrauben nötig)";
+        hinweisEl.innerText = istMac
+          ? "Bei neueren MacBooks ist die interne SSD fest verlötet. Eine kompakte externe USB-C/Thunderbolt-SSD erweitert deinen Speicherplatz sofort ohne Geschwindigkeitsverlust."
+          : "Perfekt, wenn kein freier M.2-Steckplatz mehr im Gehäuse vorhanden ist oder du Spiele und Backups mobil zwischen mehreren Geräten nutzen möchtest.";
+
+        renderSsdKarten([
+          {
+            badge: "⭐ Kompaktes Robust-Wunder",
+            name: "Samsung Portable SSD T7 Shield " + kap + " (USB 3.2 Gen2, bis 1.050 MB/s)",
+            details: "Stoßfest, extrem kompakt und läuft sofort an Windows-PCs, Laptops, Macs und Konsolen.",
+            query: "Samsung Portable SSD T7 Shield " + kap + " USB-C",
+            asin: ""
+          },
+          {
+            badge: "🚀 High-Speed USB4 / Thunderbolt",
+            name: "Crucial X9 Pro / X10 Pro " + kap + " Portable SSD (bis 2.100 MB/s)",
+            details: "Ideal für direkte 4K-Videobearbeitung und riesige Steam-Bibliotheken direkt von der externen SSD.",
+            query: "Crucial X10 Pro " + kap + " Portable SSD",
+            asin: ""
+          }
+        ]);
+        return;
+      }
+
+      // Fall 2: Älteres DDR3-System -> 2,5 Zoll SATA SSD
+      if (isDdr3) {
+        ssdTypEl.innerText = "2,5 Zoll SATA III SSD (6 Gbit/s)";
+        bauformEl.innerText = "Standard 2,5\" Laufwerk (7 mm Bauhöhe)";
+        hinweisEl.innerText = "Dein Gerät stammt aus der DDR3-Generation und nutzt klassische 2,5-Zoll-SATA-Anschlüsse. Der Wechsel von einer alten HDD auf eine SATA-SSD macht das System bis zu 5x schneller.";
+
+        renderSsdKarten([
+          {
+            badge: "⭐ Zuverlässigste 2,5\" SATA-SSD",
+            name: "Samsung 870 EVO " + kap + " 2,5 Zoll SATA III Interne SSD",
+            details: "Höchste Lebensdauer und maximale SATA-Geschwindigkeit für ältere Laptops und Desktop-PCs.",
+            query: "Samsung 870 EVO " + kap + " SATA 2.5 Zoll SSD",
+            asin: ""
+          },
+          {
+            badge: "💡 Preis-Leistungs-Tipp",
+            name: "Crucial MX500 " + kap + " 2,5 Zoll SATA III Interne SSD",
+            details: "Bewährter Klassiker inklusive DRAM-Cache für flüssiges Arbeiten.",
+            query: "Crucial MX500 " + kap + " SATA 2.5 Zoll SSD",
+            asin: ""
+          }
+        ]);
+        return;
+      }
+
+      // Fall 3: Moderne DDR4 / DDR5 Systeme -> M.2 2280 NVMe PCIe 4.0
+      ssdTypEl.innerText = "M.2 2280 NVMe SSD (PCIe 4.0 x4)";
+      if (isLap) {
+        bauformEl.innerText = "M.2 2280 flach (OHNE dicken Kühlkörper!)";
+        hinweisEl.innerText = "Wichtig für Laptops: Wähle unbedingt eine flache M.2-2280-SSD ohne vormontierten Aluminium-Kühlkörper, damit die Bodenplatte wieder problemlos schließt. PCIe 4.0 ist zudem 100 % abwärtskompatibel zu PCIe 3.0.";
+
+        renderSsdKarten([
+          {
+            badge: "⭐ Top-Empfehlung für Laptops (kühl & effizient)",
+            name: "WD_BLACK SN850X " + kap + " NVMe SSD (M.2 2280, bis 7.300 MB/s, ohne Heatsink)",
+            details: "Extrem hohe Geschwindigkeit bei geringem Stromverbrauch – passt in jeden Laptop mit M.2 2280 Slot.",
+            query: "WD_BLACK SN850X " + kap + " NVMe SSD ohne Heatsink",
+            asin: ""
+          },
+          {
+            badge: "💡 Preis-Leistungs-Sieger",
+            name: "Crucial P3 Plus " + kap + " M.2 PCIe Gen4 NVMe SSD (bis 5.000 MB/s)",
+            details: "Sehr kühler Betrieb (einseitig bestückt) – ideal für dünne Ultrabooks und Office-Laptops.",
+            query: "Crucial P3 Plus " + kap + " M.2 PCIe Gen4 NVMe SSD",
+            asin: ""
+          }
+        ]);
+      } else {
+        bauformEl.innerText = "M.2 2280 (Mainboard-Kühler oder Heatsink-Version)";
+        hinweisEl.innerText = "Dein Mainboard nutzt den Standard-Formfaktor M.2 2280. Falls dein Mainboard bereits eigene M.2-Abdeckbleche besitzt, wähle die Version ohne Kühlkörper – sonst empfehlen wir die Variante mit integriertem Heatsink.";
+
+        renderSsdKarten([
+          {
+            badge: "🚀 High-End Gaming & Workstation",
+            name: "Samsung 990 PRO " + kap + " NVMe M.2 SSD (PCIe 4.0, bis 7.450 MB/s)",
+            details: "Maximale Transferraten und beste Zuverlässigkeit für Gaming-PCs und Creator-Workstations.",
+            query: "Samsung 990 PRO " + kap + " NVMe M.2 SSD",
+            asin: ""
+          },
+          {
+            badge: "⭐ Gaming Preis-Leistungs-Tipp",
+            name: "WD_BLACK SN850X " + kap + " NVMe M.2 SSD (bis 7.300 MB/s)",
+            details: "Einer der schnellsten Gaming-Speicher mit eigenem Game-Mode.",
+            query: "WD_BLACK SN850X " + kap + " NVMe SSD",
+            asin: ""
+          }
+        ]);
+      }
+    }
+  </script>
+</body>
+</html>
