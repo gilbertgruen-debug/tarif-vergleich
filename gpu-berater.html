@@ -182,8 +182,7 @@
   </footer>
 
   <script>
-    // HIER SPÄTER DEINE AMAZON PARTNERNET-ID EINTRAGEN (z. B. 'techvergleich-21'):
-    var AMAZON_PARTNER_TAG = "";
+    var AMAZON_PARTNER_TAG = "techverglei00-21";
 
     var alleGpus = [];
     var aktuellesModell = null;
@@ -227,7 +226,6 @@
         return;
       }
 
-      // Maximal 25 Treffer gleichzeitig rendern für flüssige Performance bei großen JSON-Listen
       var anzeigeTreffer = treffer.slice(0, 25);
 
       anzeigeTreffer.forEach(function(m) {
