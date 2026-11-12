@@ -177,5 +177,433 @@
         <p id="mHinweis">Wähle oben deine Nutzung aus, um eine genaue Auswertung zu erhalten.</p>
       </div>
 
-      <a id="amazonBtn" href="#" target="_blank" rel="noopener noreferrer" class="block w-full text-center bg-amber-500 hover:bg-amber-600 text-white font-bold py-3.5 px-6 rounded-lg transition shadow-md text-sm">
-        Pass
+      <!-- Konkrete kuratierte Produktempfehlung -->
+      <div id="produktKarte" class="bg-white border-2 border-amber-400 rounded-xl p-4 shadow-sm space-y-3">
+        <div class="flex items-center justify-between">
+          <span class="bg-amber-100 text-amber-900 text-[11px] font-bold uppercase px-2.5 py-0.5 rounded-full" id="pBadge">⭐ Empfohlenes Marken-Kit</span>
+          <span class="text-[11px] text-gray-400 font-medium">Geprüfte Kompatibilität</span>
+        </div>
+        <div>
+          <h4 class="text-base font-bold text-gray-900" id="pName">Crucial RAM Kit</h4>
+          <p class="text-xs text-gray-600 mt-0.5" id="pDetails">100 % kompatibler Markenspeicher für dein System.</p>
+        </div>
+        <a id="amazonBtn" href="#" target="_blank" rel="noopener noreferrer" class="block w-full text-center bg-amber-500 hover:bg-amber-600 text-white font-bold py-3.5 px-6 rounded-lg transition shadow-md text-sm">
+          Direkt zum empfohlenen RAM-Kit bei Amazon *
+        </a>
+      </div>
+    </div>
+
+  </main>
+
+  <footer class="bg-gray-900 text-gray-400 py-6 px-4 text-xs text-center border-t border-gray-800 space-y-2">
+    <p>* Als Amazon-Partner verdiene ich an qualifizierten Verkäufen. Für dich entstehen keine Mehrkosten.</p>
+    <div>
+      <a href="impressum.html" class="hover:text-white">Impressum &amp; Datenschutz</a>
+    </div>
+  </footer>
+
+  <script>
+    var AMAZON_PARTNER_TAG = "techverglei00-21";
+
+    // Kuratierte Produkt-Matrix für klare Kaufentscheidungen ohne Überforderung.
+    // Optional kann bei jedem Eintrag eine 'asin' (z. B. 'B09RVNMGFH') ergänzt werden.
+    var KURATIERTE_RAM_PRODUKTE = {
+      // LAPTOP / SODIMM KITS
+      "sodimm_ddr4_16": {
+        badge: "⭐ Laptop Bestseller (16 GB)",
+        name: "Crucial RAM 16GB Kit (2x 8GB) DDR4 3200MHz CL22 Laptop-Speicher",
+        details: "Zuverlässiges Dual-Channel-Kit für Laptops – läuft stabil ohne BIOS-XMP-Einstellungen.",
+        query: "Crucial RAM 16GB Kit 2x8GB DDR4 3200MHz CL22 Laptop CT2K8G4SFRA32A",
+        asin: ""
+      },
+      "sodimm_ddr4_32": {
+        badge: "🚀 Gaming- & Multitasking-Tipp (32 GB)",
+        name: "Crucial RAM 32GB Kit (2x 16GB) DDR4 3200MHz CL22 Laptop-Speicher",
+        details: "Maximale Stabilität & Kompatibilität für Gaming-Notebooks und Workstations mit DDR4.",
+        query: "Crucial RAM 32GB Kit 2x16GB DDR4 3200MHz CL22 Laptop CT2K16G4SFRA32A",
+        asin: ""
+      },
+      "sodimm_ddr4_64": {
+        badge: "💼 Workstation-Maximum (64 GB)",
+        name: "Crucial RAM 64GB Kit (2x 32GB) DDR4 3200MHz CL22 Laptop-Speicher",
+        details: "Ideal für Videoschnitt, 3D-Rendering und virtuelle Maschinen auf DDR4-Notebooks.",
+        query: "Crucial RAM 64GB Kit 2x32GB DDR4 3200MHz Laptop CT2K32G4SFD832A",
+        asin: ""
+      },
+      "sodimm_ddr5_16": {
+        badge: "⭐ Moderner Laptop-Standard (16 GB DDR5)",
+        name: "Crucial RAM 16GB Kit (2x 8GB) DDR5 4800MHz / 5600MHz SODIMM",
+        details: "Schneller DDR5-Laptopspeicher mit hoher Energieeffizienz.",
+        query: "Crucial RAM 16GB Kit DDR5 5600MHz SODIMM Laptop",
+        asin: ""
+      },
+      "sodimm_ddr5_32": {
+        badge: "🚀 Empfehlung für moderne Laptops (32 GB DDR5)",
+        name: "Crucial RAM 32GB Kit (2x 16GB) DDR5 5600MHz SODIMM (abwärtskompatibel zu 5200/4800MHz)",
+        details: "Der Preis-Leistungs-Sieger für aktuelle Gaming- & Creator-Laptops mit DDR5.",
+        query: "Crucial RAM 32GB Kit 2x16GB DDR5 5600MHz SODIMM CT2K16G56C46S5",
+        asin: ""
+      },
+      "sodimm_ddr5_64": {
+        badge: "💼 High-End Creator & KI-Setup (64 GB DDR5)",
+        name: "Crucial RAM 64GB Kit (2x 32GB) DDR5 5600MHz SODIMM Laptop-Speicher",
+        details: "Volle 64 GB Dual-Channel-Power für anspruchsvollste Anwendungen unterwegs.",
+        query: "Crucial RAM 64GB Kit 2x32GB DDR5 5600MHz SODIMM CT2K32G56C46S5",
+        asin: ""
+      },
+
+      // DESKTOP / DIMM KITS
+      "dimm_ddr4_16": {
+        badge: "⭐ Desktop Preis-Leistungs-Tipp (16 GB DDR4)",
+        name: "Corsair Vengeance LPX 16GB (2x 8GB) DDR4 3200MHz C16 Desktop-Kit",
+        details: "Kompakte Bauhöhe (passt unter jeden CPU-Kühler) mit Intel XMP & AMD Ryzen Support.",
+        query: "Corsair Vengeance LPX 16GB 2x8GB DDR4 3200MHz C16",
+        asin: ""
+      },
+      "dimm_ddr4_32": {
+        badge: "🚀 Desktop Gaming-Sweetspot (32 GB DDR4)",
+        name: "Corsair Vengeance LPX 32GB (2x 16GB) DDR4 3600MHz C18 Desktop-Kit",
+        details: "Optimaler Takt für AMD Ryzen (AM4) und Intel Core (LGA1200/1700) Gaming-PCs.",
+        query: "Corsair Vengeance LPX 32GB 2x16GB DDR4 3600MHz",
+        asin: ""
+      },
+      "dimm_ddr4_64": {
+        badge: "💼 Workstation & Simulationen (64 GB DDR4)",
+        name: "Corsair Vengeance LPX 64GB (2x 32GB) DDR4 3200MHz C16 Desktop-Kit",
+        details: "Zwei 32-GB-Riegel belasten den Speichercontroller weniger als Vollbestückung mit 4 Riegeln.",
+        query: "Corsair Vengeance LPX 64GB 2x32GB DDR4 3200MHz",
+        asin: ""
+      },
+      "dimm_ddr5_32": {
+        badge: "🚀 High-End Desktop-Empfehlung (32 GB DDR5)",
+        name: "Corsair Vengeance 32GB (2x 16GB) DDR5 6000MHz CL30 (AMD EXPO & Intel XMP)",
+        details: "Der ideale Sweetspot für moderne AM5- und LGA1700/1851-Mainboards.",
+        query: "Corsair Vengeance 32GB 2x16GB DDR5 6000MHz CL30",
+        asin: ""
+      },
+      "dimm_ddr5_64": {
+        badge: "💼 Enthusiast & Creator-Maximum (64 GB DDR5)",
+        name: "Corsair Vengeance 64GB (2x 32GB) DDR5 6000MHz CL30 (AMD EXPO & Intel XMP)",
+        details: "Maximale Stabilität im Dual-Channel-Betrieb für 4K-Editing, KI und Simulationen.",
+        query: "Corsair Vengeance 64GB 2x32GB DDR5 6000MHz CL30",
+        asin: ""
+      }
+    };
+
+    var alleModelle = [];
+    var aktuellesModell = null;
+    var gewaehlteKategorie = '';
+
+    function baueAmazonProduktLink(produktObj, fallbackQuery) {
+      var tagParam = (AMAZON_PARTNER_TAG && AMAZON_PARTNER_TAG.trim() !== '')
+        ? 'tag=' + encodeURIComponent(AMAZON_PARTNER_TAG.trim())
+        : '';
+
+      if (produktObj && produktObj.asin && produktObj.asin.trim() !== '') {
+        var dpUrl = 'https://www.amazon.de/dp/' + encodeURIComponent(produktObj.asin.trim());
+        return tagParam ? dpUrl + '?' + tagParam : dpUrl;
+      }
+
+      var suchbegriff = (produktObj && produktObj.query) ? produktObj.query : fallbackQuery;
+      var searchUrl = 'https://www.amazon.de/s?k=' + encodeURIComponent(suchbegriff);
+      return tagParam ? searchUrl + '&' + tagParam : searchUrl;
+    }
+
+    function ermittleKuratierteProduktEmpfehlung(modell, zielRam) {
+      var isLap = istNotebook(modell.kategorie);
+      var ramTypStr = (modell.ramTyp || "").toLowerCase();
+      var isDdr5 = ramTypStr.indexOf("ddr5") !== -1;
+      var isDdr3 = ramTypStr.indexOf("ddr3") !== -1;
+
+      if (isDdr3) {
+        var ddr3Form = isLap ? "DDR3L 1600MHz SODIMM Laptop" : "DDR3 1600MHz DIMM Desktop";
+        return {
+          badge: "🔧 Kompatibler DDR3-Speicher",
+          name: zielRam + " GB Kit " + ddr3Form + " Arbeitsspeicher",
+          details: "Bewährter Markenspeicher für ältere Systeme mit DDR3-Steckplätzen.",
+          query: zielRam + "GB Kit " + ddr3Form,
+          asin: ""
+        };
+      }
+
+      var prefix = isLap ? "sodimm_" : "dimm_";
+      var gen = isDdr5 ? "ddr5_" : "ddr4_";
+      var kapazitaet = zielRam >= 64 ? "64" : (zielRam >= 32 ? "32" : "16");
+
+      // Bei Desktop DDR5 starten sinnvolle Kits ab 32 GB
+      if (!isLap && isDdr5 && kapazitaet === "16") {
+        kapazitaet = "32";
+      }
+
+      var key = prefix + gen + kapazitaet;
+      return KURATIERTE_RAM_PRODUKTE[key] || null;
+    }
+
+    fetch('modelle.json')
+      .then(function(res) { return res.json(); })
+      .then(function(data) { alleModelle = data; })
+      .catch(function(err) { console.error('Fehler beim Laden:', err); });
+
+    function sucheModell() {
+      var eingabe = document.getElementById('modellInput').value.toLowerCase().trim();
+      var liste = document.getElementById('vorschlagsListe');
+      liste.innerHTML = '';
+
+      if (eingabe.length < 2) {
+        liste.classList.add('hidden');
+        return;
+      }
+
+      var treffer = alleModelle.filter(function(m) {
+        var herstellerMatch = m.hersteller ? m.hersteller.toLowerCase().indexOf(eingabe) !== -1 : false;
+        var titelMatch = m.titel ? m.titel.toLowerCase().indexOf(eingabe) !== -1 : false;
+        var kombiMatch = (m.hersteller + ' ' + m.titel).toLowerCase().indexOf(eingabe) !== -1;
+        var keywordsMatch = m.suchbegriffe ? m.suchbegriffe.toLowerCase().indexOf(eingabe) !== -1 : false;
+
+        return herstellerMatch || titelMatch || kombiMatch || keywordsMatch;
+      });
+
+      if (treffer.length === 0) {
+        liste.innerHTML = '<div class="p-3 text-xs text-gray-500">Kein passendes Modell gefunden. Nutze die Anleitung oben oder den Katalog unten.</div>';
+        liste.classList.remove('hidden');
+        return;
+      }
+
+      var anzeigeTreffer = treffer.slice(0, 25);
+
+      anzeigeTreffer.forEach(function(m) {
+        var eintrag = document.createElement('div');
+        eintrag.className = 'p-3 hover:bg-blue-50 cursor-pointer text-sm font-medium text-gray-800 flex justify-between items-center';
+        eintrag.innerHTML = '<span><strong>' + m.hersteller + '</strong> ' + m.titel + '</span> <span class="text-xs text-gray-400">Max. ' + m.maxRamGB + ' GB</span>';
+        eintrag.onclick = function() { zeigeErgebnis(m, m.varianten ? m.varianten[0] : null); };
+        liste.appendChild(eintrag);
+      });
+
+      if (treffer.length > 25) {
+        var hinweis = document.createElement('div');
+        hinweis.className = 'p-2.5 text-center text-xs text-slate-500 bg-slate-50';
+        hinweis.innerText = '+ ' + (treffer.length - 25) + ' weitere Treffer – tippe die genaue Modellnummer ein, um die Liste einzugrenzen.';
+        liste.appendChild(hinweis);
+      }
+
+      liste.classList.remove('hidden');
+    }
+
+    function istNotebook(kategorie) {
+      if (!kategorie) return true;
+      var katLower = kategorie.toLowerCase();
+      return katLower.indexOf('notebook') !== -1 || katLower.indexOf('ultrabook') !== -1 || katLower.indexOf('laptop') !== -1;
+    }
+
+    function waehleKategorie(kat) {
+      gewaehlteKategorie = kat;
+      document.getElementById('wSchritt1').classList.add('hidden');
+      document.getElementById('wSchritt2').classList.remove('hidden');
+
+      var markenContainer = document.getElementById('markenListe');
+      markenContainer.innerHTML = '';
+
+      if (!alleModelle || alleModelle.length === 0) {
+        markenContainer.innerHTML = '<div class="col-span-3 p-3 text-xs text-blue-600 font-semibold text-center">Lade Modelle... Bitte einen Moment Geduld.</div>';
+        setTimeout(function() { waehleKategorie(kat); }, 400);
+        return;
+      }
+
+      var herstellerSet = new Set();
+      alleModelle.forEach(function(m) {
+        if (kat === 'Notebook') {
+          if (istNotebook(m.kategorie)) {
+            herstellerSet.add(m.hersteller);
+          }
+        } else if (kat === 'Desktop PC Mainboard') {
+          if (!istNotebook(m.kategorie)) {
+            herstellerSet.add(m.hersteller);
+          }
+        }
+      });
+
+      Array.from(herstellerSet).sort().forEach(function(hersteller) {
+        var btn = document.createElement('button');
+        btn.className = 'bg-white hover:bg-blue-100 border border-blue-300 text-slate-800 text-xs font-semibold py-2.5 px-3 rounded-lg shadow-sm text-center transition';
+        btn.innerText = hersteller;
+        btn.onclick = function() { waehleHersteller(hersteller); };
+        markenContainer.appendChild(btn);
+      });
+    }
+
+    function waehleHersteller(hersteller) {
+      document.getElementById('wSchritt2').classList.add('hidden');
+      document.getElementById('wSchritt3').classList.remove('hidden');
+
+      var katListe = document.getElementById('modelleKatalogListe');
+      katListe.innerHTML = '';
+
+      var passendeModelle = alleModelle.filter(function(m) {
+        var katMatch = (gewaehlteKategorie === 'Notebook') ? istNotebook(m.kategorie) : !istNotebook(m.kategorie);
+        return katMatch && m.hersteller === hersteller;
+      });
+
+      passendeModelle.forEach(function(m) {
+        var eintrag = document.createElement('div');
+        eintrag.className = 'p-3 hover:bg-blue-50 cursor-pointer text-xs font-medium text-slate-800 flex justify-between items-center border-b last:border-b-0';
+        eintrag.innerHTML = '<span><strong>' + m.titel + '</strong></span> <span class="text-blue-600 font-bold">Variante wählen →</span>';
+        eintrag.onclick = function() { waehleModellReihe(m); };
+        katListe.appendChild(eintrag);
+      });
+    }
+
+    function waehleModellReihe(m) {
+      document.getElementById('wSchritt3').classList.add('hidden');
+      document.getElementById('wSchritt4').classList.remove('hidden');
+
+      var vListe = document.getElementById('variantenKatalogListe');
+      vListe.innerHTML = '';
+
+      var varianten = (m.varianten && m.varianten.length > 0) ? m.varianten : [{"label": 'Standard Ausstattung (' + m.standardRamGB + ' GB RAM)', "standardRamGB": m.standardRamGB}];
+
+      varianten.forEach(function(v) {
+        var eintrag = document.createElement('div');
+        eintrag.className = 'p-3 hover:bg-blue-50 cursor-pointer text-xs font-semibold text-slate-800 flex justify-between items-center border-b last:border-b-0';
+        eintrag.innerHTML = '<span>' + v.label + '</span> <span class="text-slate-400">Auswählen</span>';
+        eintrag.onclick = function() { zeigeErgebnis(m, v); };
+        vListe.appendChild(eintrag);
+      });
+    }
+
+    function zurueckZuSchritt1() {
+      document.getElementById('wSchritt1').classList.remove('hidden');
+      document.getElementById('wSchritt2').classList.add('hidden');
+      document.getElementById('wSchritt3').classList.add('hidden');
+      document.getElementById('wSchritt4').classList.add('hidden');
+    }
+
+    function zurueckZuSchritt2() {
+      document.getElementById('wSchritt2').classList.remove('hidden');
+      document.getElementById('wSchritt3').classList.add('hidden');
+      document.getElementById('wSchritt4').classList.add('hidden');
+    }
+
+    function zurueckZuSchritt3() {
+      document.getElementById('wSchritt3').classList.remove('hidden');
+      document.getElementById('wSchritt4').classList.add('hidden');
+    }
+
+    function zeigeErgebnis(m, variante) {
+      aktuellesModell = JSON.parse(JSON.stringify(m));
+      if (variante && variante.standardRamGB) {
+        aktuellesModell.standardRamGB = variante.standardRamGB;
+      }
+
+      document.getElementById('vorschlagsListe').classList.add('hidden');
+      document.getElementById('modellInput').value = m.hersteller + ' ' + m.titel;
+
+      document.getElementById('mHersteller').innerText = m.hersteller;
+      document.getElementById('mTitel').innerText = m.titel;
+      document.getElementById('mVarianteLabel').innerText = variante ? 'Gewählte Variante: ' + variante.label : '';
+      document.getElementById('mGerätekategorie').innerText = m.kategorie || "Notebook";
+      document.getElementById('mMaxRam').innerText = m.maxRamGB + ' GB RAM';
+      document.getElementById('mSlots').innerText = m.slotsInfo;
+
+      document.getElementById('nutzungsSelect').value = "office";
+      berechneSpezifischeEmpfehlung();
+
+      document.getElementById('ergebnisBox').classList.remove('hidden');
+      document.getElementById('ergebnisBox').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function berechneSpezifischeEmpfehlung() {
+      if (!aktuellesModell) return;
+
+      var nutzung = document.getElementById('nutzungsSelect').value;
+      var hinweisBox = document.getElementById('empfehlungsHinweisBox');
+      var titel = document.getElementById('empfehlungsTitel');
+      var text = document.getElementById('mHinweis');
+      var btn = document.getElementById('amazonBtn');
+      var pBadge = document.getElementById('pBadge');
+      var pName = document.getElementById('pName');
+      var pDetails = document.getElementById('pDetails');
+
+      if (aktuellesModell.slotsInfo.indexOf("0 Steckplätze") !== -1 || (aktuellesModell.maxRamGB === 8 && aktuellesModell.slotsInfo.indexOf("fest verlötet") !== -1)) {
+        hinweisBox.className = "p-4 rounded-lg text-xs leading-relaxed bg-amber-100 text-amber-900 border border-amber-300";
+        titel.innerText = "⚠️ Nicht aufrüstbar:";
+        text.innerText = aktuellesModell.hinweisStandard;
+
+        pBadge.innerText = "💡 Alternative Empfehlung";
+        pName.innerText = aktuellesModell.hersteller + " Nachfolgemodell mit 16 GB / 32 GB RAM";
+        pDetails.innerText = "Da der Arbeitsspeicher bei diesem Modell fest verlötet ist, lohnt sich direkt eine Ausstattungsvariante mit mehr RAM ab Werk.";
+        btn.innerText = "Passende Modelle mit mehr RAM bei Amazon ansehen *";
+        btn.href = baueAmazonProduktLink(null, aktuellesModell.hersteller + ' ' + aktuellesModell.titel + ' 32GB RAM Notebook');
+        return;
+      }
+
+      var zielRam = 16;
+      var erfordereUpgrade = false;
+
+      if (nutzung === 'office') {
+        zielRam = 16;
+        if (aktuellesModell.standardRamGB >= 8) {
+          hinweisBox.className = "p-4 rounded-lg text-xs leading-relaxed bg-emerald-100 text-emerald-950 border border-emerald-300";
+          titel.innerText = "✅ Keine Aufrüstung notwendig:";
+          text.innerText = 'Für Office, Streaming und Surfen reichen deine verbauten ' + aktuellesModell.standardRamGB + ' GB vollkommen aus. Falls du dennoch mehr Reserven für viele Browser-Tabs möchtest, findest du unten das passende Kit:';
+        } else {
+          erfordereUpgrade = true;
+          text.innerText = "Für flüssiges Arbeiten unter Windows 11 und mit mehreren offenen Tabs empfiehlt sich das Upgrade auf 16 GB.";
+        }
+      } 
+      else if (nutzung === 'gaming_standard') {
+        zielRam = 16;
+        if (aktuellesModell.standardRamGB >= 16) {
+          hinweisBox.className = "p-4 rounded-lg text-xs leading-relaxed bg-emerald-100 text-emerald-950 border border-emerald-300";
+          titel.innerText = "✅ Vorerst kein Upgrade nötig:";
+          text.innerText = 'Für eSports-Titel, Fortnite oder GTA V reichen deine verbauten ' + aktuellesModell.standardRamGB + ' GB RAM problemlos aus. Für zukünftige Titel wäre 32 GB der nächste Schritt:';
+          zielRam = 32;
+        } else {
+          erfordereUpgrade = true;
+          text.innerText = "Um Ruckler in Spielen wie Fortnite oder GTA V zu vermeiden, wird die Erweiterung auf 16 GB dringend empfohlen.";
+        }
+      } 
+      else if (nutzung === 'gaming_heavy') {
+        zielRam = 32;
+        if (aktuellesModell.standardRamGB >= 32) {
+          hinweisBox.className = "p-4 rounded-lg text-xs leading-relaxed bg-emerald-100 text-emerald-950 border border-emerald-300";
+          titel.innerText = "✅ Perfekt ausgestattet:";
+          text.innerText = 'Mit deinen verbauten ' + aktuellesModell.standardRamGB + ' GB RAM bist du selbst für extrem anspruchsvolle Titel wie Cyberpunk 2077 oder den Flight Simulator bestens gerüstet.';
+        } else {
+          erfordereUpgrade = true;
+          text.innerText = 'Anspruchsvolle Titel und große Simulationen verlangen heute oft mehr als 16 GB. Ein Upgrade auf ein 32 GB Kit (' + aktuellesModell.ramTyp + ') sorgt für stabile Bildraten und verhindert Nachladeruckler.';
+        }
+      } 
+      else if (nutzung === 'workstation') {
+        zielRam = Math.min(64, aktuellesModell.maxRamGB);
+        erfordereUpgrade = true;
+        text.innerText = 'Für professionellen 4K/8K-Videoschnitt, 3D-Rendering oder Virtualisierung schöpfst du mit einem Upgrade auf ' + zielRam + ' GB das volle Potenzial deines ' + aktuellesModell.titel + ' aus.';
+      }
+
+      if (erfordereUpgrade) {
+        hinweisBox.className = "p-4 rounded-lg text-xs leading-relaxed bg-blue-100 text-blue-950 border border-blue-300";
+        titel.innerText = "⚡ Empfohlenes Upgrade:";
+      }
+
+      var produkt = ermittleKuratierteProduktEmpfehlung(aktuellesModell, zielRam);
+      var formfaktor = istNotebook(aktuellesModell.kategorie) ? "SODIMM Laptop RAM" : "DIMM Desktop RAM";
+      var saubererRamTyp = aktuellesModell.ramTyp ? aktuellesModell.ramTyp.replace(/\(.*\)/, '').trim() : "DDR5 SODIMM";
+      var fallbackQuery = zielRam + 'GB Kit ' + saubererRamTyp + ' ' + formfaktor;
+
+      if (produkt) {
+        pBadge.innerText = produkt.badge;
+        pName.innerText = produkt.name;
+        pDetails.innerText = produkt.details;
+      } else {
+        pBadge.innerText = "⭐ Passendes Speicher-Kit";
+        pName.innerText = zielRam + " GB Kit (" + saubererRamTyp + " " + formfaktor + ")";
+        pDetails.innerText = "Kompatibles Dual-Channel-Kit für dein " + aktuellesModell.titel + ".";
+      }
+
+      btn.innerText = erfordereUpgrade
+        ? "Direkt zum empfohlenen " + zielRam + " GB Kit bei Amazon *"
+        : "Optional: Passendes " + zielRam + " GB Kit bei Amazon ansehen *";
+      btn.href = baueAmazonProduktLink(produkt, fallbackQuery);
+    }
+  </script>
+</body>
+</html>
