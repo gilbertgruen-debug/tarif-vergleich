@@ -9,13 +9,13 @@
 <body class="bg-gray-100 text-gray-800 min-h-screen flex flex-col">
 
   <header class="bg-slate-900 text-white py-8 px-4 shadow-lg">
-    <div class="max-w-4xl mx-auto text-center space-y-2">
+    <div class="max-w-5xl mx-auto text-center space-y-2">
       <h1 class="text-3xl md:text-4xl font-extrabold tracking-tight">TechVergleich24</h1>
       <p class="text-slate-300 text-sm md:text-base">Schritt-für-Schritt Hardware-Berater für deinen Laptop &amp; Desktop-PC</p>
     </div>
   </header>
 
-  <main class="max-w-4xl mx-auto px-4 py-10 flex-grow w-full space-y-12">
+  <main class="max-w-5xl mx-auto px-4 py-10 flex-grow w-full space-y-12">
     
     <!-- Sektion 1: Interaktive Berater -->
     <section class="space-y-6">
@@ -24,8 +24,8 @@
         <p class="text-sm text-gray-600">Wähle einfach den passenden Berater aus, um dein System gezielt aufzurüsten:</p>
       </div>
 
-      <!-- Cards-Übersicht -->
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <!-- 3-Spalten Cards-Übersicht -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
         
         <!-- Card 1: RAM-Berater -->
         <a href="berater.html" class="bg-white rounded-xl p-6 shadow-md border hover:border-blue-500 hover:shadow-lg transition flex flex-col justify-between group">
@@ -34,9 +34,9 @@
               ⚡
             </div>
             <div>
-              <h3 class="text-xl font-bold text-gray-900 group-hover:text-blue-600 transition">RAM &amp; Arbeitsspeicher-Berater</h3>
+              <h3 class="text-lg font-bold text-gray-900 group-hover:text-blue-600 transition">RAM &amp; Arbeitsspeicher-Berater</h3>
               <p class="text-xs text-gray-500 mt-2 leading-relaxed">
-                Finde heraus, wie viel Arbeitsspeicher dein Laptop oder PC unterstützt und ob sich ein Upgrade für deine Spiele oder Programme lohnt.
+                Finde heraus, wie viel DDR4/DDR5-RAM dein Laptop oder PC unterstützt und welches Kit sich lohnt.
               </p>
             </div>
           </div>
@@ -53,9 +53,9 @@
               🎮
             </div>
             <div>
-              <h3 class="text-xl font-bold text-gray-900 group-hover:text-purple-600 transition">Grafikkarten- &amp; GPU-Berater</h3>
+              <h3 class="text-lg font-bold text-gray-900 group-hover:text-purple-600 transition">Grafikkarten- &amp; GPU-Berater</h3>
               <p class="text-xs text-gray-500 mt-2 leading-relaxed">
-                Prüfe deine aktuelle Grafikkarte für Full HD, WQHD oder 4K und erhalte konkrete Empfehlungen inklusive Netzteil-Check.
+                Prüfe deine Grafikkarte für Full HD, WQHD oder 4K und erhalte passende Upgrade-Vorschläge.
               </p>
             </div>
           </div>
@@ -65,26 +65,43 @@
           </div>
         </a>
 
+        <!-- Card 3: SSD-Berater -->
+        <a href="ssd-berater.html" class="bg-white rounded-xl p-6 shadow-md border hover:border-emerald-500 hover:shadow-lg transition flex flex-col justify-between group">
+          <div class="space-y-4">
+            <div class="w-12 h-12 bg-emerald-100 text-emerald-600 rounded-lg flex items-center justify-center text-2xl group-hover:bg-emerald-600 group-hover:text-white transition">
+              💾
+            </div>
+            <div>
+              <h3 class="text-lg font-bold text-gray-900 group-hover:text-emerald-600 transition">SSD &amp; M.2 Speicher-Berater</h3>
+              <p class="text-xs text-gray-500 mt-2 leading-relaxed">
+                Ermittle den richtigen Anschluss (M.2 NVMe, SATA oder extern USB-C) und die passende Bauhöhe.
+              </p>
+            </div>
+          </div>
+          <div class="mt-6 flex items-center text-xs font-bold text-emerald-600 group-hover:translate-x-1 transition">
+            <span>SSD-Speicher prüfen</span>
+            <span class="ml-1">→</span>
+          </div>
+        </a>
+
       </div>
     </section>
 
     <!-- Sektion 2: Beliebte Upgrade-Empfehlungen (Direktlinks) -->
     <section class="space-y-4 pt-4 border-t border-gray-200">
-      <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-1">
-        <div>
-          <h2 class="text-lg font-bold text-gray-900">🔥 Beliebte Aufrüst-Bestseller</h2>
-          <p class="text-xs text-gray-600">Du weißt schon, welches Format du brauchst? Hier geht es direkt zu den meistgewählten Kits:</p>
-        </div>
+      <div>
+        <h2 class="text-lg font-bold text-gray-900">🔥 Beliebte Aufrüst-Bestseller</h2>
+        <p class="text-xs text-gray-600">Du weißt schon, welches Format du brauchst? Hier geht es direkt zu den meistgewählten Upgrades:</p>
       </div>
 
-      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         
         <!-- Bestseller 1 -->
-        <div class="bg-white rounded-xl p-5 border shadow-sm flex flex-col justify-between space-y-4">
+        <div class="bg-white rounded-xl p-4 border shadow-sm flex flex-col justify-between space-y-3">
           <div class="space-y-1.5">
             <span class="inline-block bg-blue-100 text-blue-800 text-[10px] font-bold uppercase px-2 py-0.5 rounded-full">Laptop DDR5</span>
-            <h3 class="text-sm font-bold text-gray-900">Crucial 32GB Kit (2x16GB) DDR5-5600 SODIMM</h3>
-            <p class="text-xs text-gray-500 leading-relaxed">Der Top-Seller für moderne Gaming- und Creator-Notebooks (abwärtskompatibel zu 5200/4800 MHz).</p>
+            <h3 class="text-sm font-bold text-gray-900">Crucial 32GB Kit DDR5-5600 SODIMM</h3>
+            <p class="text-xs text-gray-500 leading-relaxed">Der Top-Seller für moderne Gaming- und Creator-Notebooks.</p>
           </div>
           <a href="https://www.amazon.de/s?k=Crucial+RAM+32GB+Kit+2x16GB+DDR5+5600MHz+SODIMM+CT2K16G56C46S5&tag=techverglei00-21" target="_blank" rel="noopener noreferrer" class="block w-full text-center bg-amber-500 hover:bg-amber-600 text-white font-bold py-2 px-3 rounded-lg transition text-xs">
             Bei Amazon ansehen *
@@ -92,11 +109,11 @@
         </div>
 
         <!-- Bestseller 2 -->
-        <div class="bg-white rounded-xl p-5 border shadow-sm flex flex-col justify-between space-y-4">
+        <div class="bg-white rounded-xl p-4 border shadow-sm flex flex-col justify-between space-y-3">
           <div class="space-y-1.5">
-            <span class="inline-block bg-emerald-100 text-emerald-800 text-[10px] font-bold uppercase px-2 py-0.5 rounded-full">Desktop DDR5</span>
+            <span class="inline-block bg-indigo-100 text-indigo-800 text-[10px] font-bold uppercase px-2 py-0.5 rounded-full">Desktop DDR5</span>
             <h3 class="text-sm font-bold text-gray-900">Corsair Vengeance 32GB DDR5-6000 CL30</h3>
-            <p class="text-xs text-gray-500 leading-relaxed">Idealer Sweetspot für AMD AM5 (EXPO) &amp; Intel LGA1700/1851 (XMP) Gaming-PCs.</p>
+            <p class="text-xs text-gray-500 leading-relaxed">Idealer Sweetspot für AM5 (EXPO) &amp; Intel (XMP) Gaming-PCs.</p>
           </div>
           <a href="https://www.amazon.de/s?k=Corsair+Vengeance+32GB+2x16GB+DDR5+6000MHz+CL30&tag=techverglei00-21" target="_blank" rel="noopener noreferrer" class="block w-full text-center bg-amber-500 hover:bg-amber-600 text-white font-bold py-2 px-3 rounded-lg transition text-xs">
             Bei Amazon ansehen *
@@ -104,11 +121,23 @@
         </div>
 
         <!-- Bestseller 3 -->
-        <div class="bg-white rounded-xl p-5 border shadow-sm flex flex-col justify-between space-y-4">
+        <div class="bg-white rounded-xl p-4 border shadow-sm flex flex-col justify-between space-y-3">
           <div class="space-y-1.5">
-            <span class="inline-block bg-purple-100 text-purple-800 text-[10px] font-bold uppercase px-2 py-0.5 rounded-full">GPU Preis-Leistung</span>
-            <h3 class="text-sm font-bold text-gray-900">NVIDIA GeForce RTX 4060 / 4070 Super</h3>
-            <p class="text-xs text-gray-500 leading-relaxed">Effiziente Upgrades für flüssiges Full-HD- und WQHD-Gaming inklusive DLSS 3.</p>
+            <span class="inline-block bg-emerald-100 text-emerald-800 text-[10px] font-bold uppercase px-2 py-0.5 rounded-full">M.2 NVMe SSD</span>
+            <h3 class="text-sm font-bold text-gray-900">WD_BLACK SN850X 2TB NVMe SSD</h3>
+            <p class="text-xs text-gray-500 leading-relaxed">Bis zu 7.300 MB/s – perfekt für PC, Laptop &amp; PS5.</p>
+          </div>
+          <a href="https://www.amazon.de/s?k=WD_BLACK+SN850X+2TB+NVMe+SSD&tag=techverglei00-21" target="_blank" rel="noopener noreferrer" class="block w-full text-center bg-amber-500 hover:bg-amber-600 text-white font-bold py-2 px-3 rounded-lg transition text-xs">
+            Bei Amazon ansehen *
+          </a>
+        </div>
+
+        <!-- Bestseller 4 -->
+        <div class="bg-white rounded-xl p-4 border shadow-sm flex flex-col justify-between space-y-3">
+          <div class="space-y-1.5">
+            <span class="inline-block bg-purple-100 text-purple-800 text-[10px] font-bold uppercase px-2 py-0.5 rounded-full">GPU Upgrade</span>
+            <h3 class="text-sm font-bold text-gray-900">NVIDIA GeForce RTX 4070 Super</h3>
+            <p class="text-xs text-gray-500 leading-relaxed">Starker Leistungssprung für flüssiges WQHD-Gaming &amp; DLSS 3.</p>
           </div>
           <a href="https://www.amazon.de/s?k=GeForce+RTX+4070+Super+Grafikkarte&tag=techverglei00-21" target="_blank" rel="noopener noreferrer" class="block w-full text-center bg-amber-500 hover:bg-amber-600 text-white font-bold py-2 px-3 rounded-lg transition text-xs">
             Bei Amazon ansehen *
