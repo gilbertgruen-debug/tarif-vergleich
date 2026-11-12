@@ -3,7 +3,43 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Grafikkarten- & GPU-Berater – TechVergleich24</title>
+  <title>Grafikkarten- &amp; GPU-Berater – Passende Grafikkarte für PC &amp; Mainboard | TechVergleich24</title>
+  <meta name="description" content="Finde die passende Grafikkarte für dein Mainboard oder deinen Fertig-PC. Mit PCIe-Check, Low-Profile-Empfehlungen für Office-PCs und Netzteil-Hinweisen.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://techvergleich24.de/gpu-berater.html">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Passt jede moderne Grafikkarte auf mein Mainboard?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Ja, praktisch jedes Desktop-Mainboard der letzten 15 Jahre besitzt einen PCIe x16-Steckplatz, auf dem sowohl NVIDIA GeForce RTX- als auch AMD Radeon-Grafikkarten laufen. Entscheidend sind vor allem die Leistung des Netzteils und der Platz im PC-Gehäuse."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Welche Grafikkarte passt in schmale Office-PCs wie Dell OptiPlex oder HP ProDesk?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Schmale Small-Form-Factor-Gehäuse (SFF) benötigen spezielle Low-Profile-Grafikkarten ohne eigenen Stromanschluss, wie die NVIDIA GeForce RTX 3050 6GB Low Profile oder AMD Radeon RX 6400 Low Profile."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Kann man die Grafikkarte in einem Laptop austauschen?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Bei modernen Notebooks ist der Grafikchip fest auf dem Mainboard verlötet und kann intern nicht getauscht werden. Als Alternative bieten sich externe eGPU-Gehäuse über Thunderbolt 3/4 oder USB4 an."
+        }
+      }
+    ]
+  }
+  </script>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-100 text-gray-800 min-h-screen flex flex-col">
@@ -167,9 +203,31 @@
         <p id="mHinweis"></p>
       </div>
 
-      <!-- Kuratierte Upgrade-Empfehlungen (dynamisch befüllt) -->
+      <!-- Kuratierte Upgrade-Empfehlungen -->
       <div id="gpuEmpfehlungenContainer" class="space-y-3"></div>
     </div>
+
+    <!-- SEO-Ratgeber & Häufige Fragen (FAQ) -->
+    <section class="bg-white p-6 md:p-8 rounded-xl shadow-sm border space-y-5">
+      <h2 class="text-lg font-bold text-gray-900">Häufige Fragen zum Grafikkarten-Upgrade (FAQ)</h2>
+      
+      <div class="space-y-4 text-xs text-gray-600 leading-relaxed">
+        <div class="border-b border-gray-100 pb-3">
+          <h3 class="font-bold text-sm text-gray-900 mb-1">Passt jede moderne Grafikkarte auf mein Mainboard?</h3>
+          <p>Ja, praktisch jedes Desktop-Mainboard der letzten 15 Jahre besitzt einen <strong>PCIe x16-Steckplatz</strong>, auf dem sowohl NVIDIA GeForce RTX- als auch AMD Radeon-Grafikkarten laufen. Entscheidend sind vor allem die Leistung des Netzteils (meist 550W bis 750W) und die maximale Kartenlänge im PC-Gehäuse.</p>
+        </div>
+
+        <div class="border-b border-gray-100 pb-3">
+          <h3 class="font-bold text-sm text-gray-900 mb-1">Welche Grafikkarte passt in schmale Office-PCs wie Dell OptiPlex oder HP ProDesk?</h3>
+          <p>Schmale Small-Form-Factor-Gehäuse (SFF) benötigen spezielle <strong>Low-Profile-Grafikkarten ohne eigenen Stromanschluss</strong>, wie die NVIDIA GeForce RTX 3050 6GB Low Profile oder AMD Radeon RX 6400 Low Profile (max. 70 Watt direkt über den PCIe-Slot).</p>
+        </div>
+
+        <div>
+          <h3 class="font-bold text-sm text-gray-900 mb-1">Kann man die Grafikkarte in einem Laptop austauschen?</h3>
+          <p>Bei modernen Notebooks ist der Grafikchip fest auf dem Mainboard verlötet und kann intern nicht getauscht werden. Als Alternative bieten sich externe <strong>eGPU-Gehäuse über Thunderbolt 3/4 oder USB4</strong> an.</p>
+        </div>
+      </div>
+    </section>
 
   </main>
 
@@ -183,7 +241,6 @@
   <script>
     var AMAZON_PARTNER_TAG = "techverglei00-21";
 
-    // Kuratierte GPU-Empfehlungen pro Upgrade-Szenario (optional mit direkter ASIN ergänzbar)
     var KURATIERTE_GPU_UPGRADES = {
       desktop_standard: [
         {
