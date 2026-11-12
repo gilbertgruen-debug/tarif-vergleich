@@ -25,18 +25,52 @@
       </div>
 
       <!-- OPTION A: Direkt-Suche -->
-      <div class="space-y-2">
+      <div class="space-y-3">
         <label class="block text-xs font-bold uppercase tracking-wider text-slate-700">Option A: Modell direkt suchen</label>
         <div class="relative">
           <input 
             type="text" 
             id="modellInput" 
             onkeyup="sucheModell()" 
-            placeholder="Modellname oder Nummer eingeben (z. B. Strix G18, Nitro 5, AM5)..." 
+            placeholder="Modellname oder Mainboard eingeben (z. B. Legion 5, Strix B550, OptiPlex)..." 
             class="w-full border-2 border-blue-500 rounded-lg p-3.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-600 shadow-sm"
           >
-          <div id="vorschlagsListe" class="hidden absolute top-full left-0 right-0 bg-white border border-gray-200 rounded-b-lg shadow-xl z-20 max-h-60 overflow-y-auto mt-1 divide-y"></div>
+          <div id="vorschlagsListe" class="hidden absolute top-full left-0 right-0 bg-white border border-gray-200 rounded-b-lg shadow-xl z-20 max-h-64 overflow-y-auto mt-1 divide-y"></div>
         </div>
+
+        <!-- Aufklappbare Schritt-für-Schritt-Anleitung -->
+        <details class="group bg-slate-50 border border-slate-200 rounded-lg p-3.5 text-xs text-slate-700 transition">
+          <summary class="cursor-pointer font-semibold text-slate-800 flex items-center justify-between list-none">
+            <span>🔍 Modell nicht sicher? So findest du dein genaues Modell in 10 Sekunden</span>
+            <span class="text-blue-600 font-bold group-open:rotate-180 transition-transform">▾</span>
+          </summary>
+          
+          <div class="mt-3 pt-3 border-t border-slate-200 space-y-3 leading-relaxed">
+            <div>
+              <p class="font-bold text-slate-900 mb-1">1. Unter Windows (Laptops, Fertig-PCs &amp; Mainboards):</p>
+              <ol class="list-decimal list-inside space-y-1 ml-1">
+                <li>Drücke gleichzeitig <strong>Windows-Taste + R</strong> auf deiner Tastatur.</li>
+                <li>Tippe <code class="bg-slate-200 px-1.5 py-0.5 rounded font-mono text-slate-900">msinfo32</code> ein und drücke <strong>Enter</strong>.</li>
+                <li>Lies im Fenster <em>Systeminformationen</em> diese Zeilen ab:
+                  <ul class="list-disc list-inside ml-4 mt-1 space-y-0.5 text-slate-600">
+                    <li><strong>Systemmodell:</strong> Zeigt die exakte Laptop- oder Fertig-PC-Bezeichnung (z. B. <em>Legion Pro 5 16IRX8</em> oder <em>OptiPlex 7010</em>).</li>
+                    <li><strong>BaseBoard-Produkt:</strong> Zeigt bei Desktop-PCs dein genaues Mainboard (z. B. <em>ROG STRIX B550-F GAMING</em>).</li>
+                  </ul>
+                </li>
+              </ol>
+            </div>
+
+            <div>
+              <p class="font-bold text-slate-900 mb-1">2. Auf dem Gehäuse-Aufkleber (ohne Einschalten):</p>
+              <p class="text-slate-600">Drehe deinen Laptop um (Aufkleber auf der Unterseite unter <em>Model / Typ</em>) oder schaue bei Desktop-PCs auf das Typenschild an der Rückseite.</p>
+            </div>
+
+            <div>
+              <p class="font-bold text-slate-900 mb-1">3. Apple Mac (MacBook / iMac / Mac mini):</p>
+              <p class="text-slate-600">Klicke oben links auf das <strong>Apple-Symbol () → Über diesen Mac</strong>.</p>
+            </div>
+          </div>
+        </details>
       </div>
 
       <div class="relative flex py-1 items-center">
@@ -131,7 +165,7 @@
       <div class="bg-white p-5 rounded-xl border border-blue-200 shadow-sm space-y-3">
         <label class="block text-xs font-bold uppercase text-slate-800">🎯 Schritt 5: Wofür nutzt du das Gerät?</label>
         <select id="nutzungsSelect" onchange="berechneSpezifischeEmpfehlung()" class="w-full border-2 border-gray-200 rounded-lg p-3 text-sm focus:border-blue-500 focus:outline-none bg-gray-50 font-medium">
-          <option value="office">Office, Web, Teams & 4K Streaming (Standard)</option>
+          <option value="office">Office, Web, Teams &amp; 4K Streaming (Standard)</option>
           <option value="gaming_standard">Standard Gaming (eSports, Fortnite, GTA V, Minecraft, CS2)</option>
           <option value="gaming_heavy">Anspruchsvolle Games / Simulationen (Cyberpunk, Starfield, Flight Sim, BeamNG, Anno 1800)</option>
           <option value="workstation">Professionell (4K-Videosequenzen, 3D-CAD, Virtualisierung)</option>
@@ -150,14 +184,28 @@
 
   </main>
 
-  <footer class="bg-gray-900 text-gray-400 py-6 text-xs text-center border-t border-gray-800">
-    <a href="impressum.html" class="hover:text-white">Impressum & Datenschutz</a>
+  <footer class="bg-gray-900 text-gray-400 py-6 px-4 text-xs text-center border-t border-gray-800 space-y-2">
+    <p>* Als Amazon-Partner verdiene ich an qualifizierten Verkäufen. Für dich entstehen keine Mehrkosten.</p>
+    <div>
+      <a href="impressum.html" class="hover:text-white">Impressum &amp; Datenschutz</a>
+    </div>
   </footer>
 
   <script>
+    // HIER SPÄTER DEINE AMAZON PARTNERNET-ID EINTRAGEN (z. B. 'techvergleich-21'):
+    var AMAZON_PARTNER_TAG = "";
+
     var alleModelle = [];
     var aktuellesModell = null;
     var gewaehlteKategorie = '';
+
+    function baueAmazonLink(suchbegriff) {
+      var url = 'https://www.amazon.de/s?k=' + encodeURIComponent(suchbegriff);
+      if (AMAZON_PARTNER_TAG && AMAZON_PARTNER_TAG.trim() !== '') {
+        url += '&tag=' + encodeURIComponent(AMAZON_PARTNER_TAG.trim());
+      }
+      return url;
+    }
 
     fetch('modelle.json')
       .then(function(res) { return res.json(); })
@@ -184,18 +232,28 @@
       });
 
       if (treffer.length === 0) {
-        liste.innerHTML = '<div class="p-3 text-xs text-gray-500">Kein passendes Modell gefunden. Nutze den Katalog unten.</div>';
+        liste.innerHTML = '<div class="p-3 text-xs text-gray-500">Kein passendes Modell gefunden. Nutze die Anleitung oben oder den Katalog unten.</div>';
         liste.classList.remove('hidden');
         return;
       }
 
-      treffer.forEach(function(m) {
+      // Maximal 25 Treffer gleichzeitig rendern für flüssige Performance bei großen JSON-Listen
+      var anzeigeTreffer = treffer.slice(0, 25);
+
+      anzeigeTreffer.forEach(function(m) {
         var eintrag = document.createElement('div');
         eintrag.className = 'p-3 hover:bg-blue-50 cursor-pointer text-sm font-medium text-gray-800 flex justify-between items-center';
         eintrag.innerHTML = '<span><strong>' + m.hersteller + '</strong> ' + m.titel + '</span> <span class="text-xs text-gray-400">Max. ' + m.maxRamGB + ' GB</span>';
         eintrag.onclick = function() { zeigeErgebnis(m, m.varianten ? m.varianten[0] : null); };
         liste.appendChild(eintrag);
       });
+
+      if (treffer.length > 25) {
+        var hinweis = document.createElement('div');
+        hinweis.className = 'p-2.5 text-center text-xs text-slate-500 bg-slate-50';
+        hinweis.innerText = '+ ' + (treffer.length - 25) + ' weitere Treffer – tippe die genaue Modellnummer ein, um die Liste einzugrenzen.';
+        liste.appendChild(hinweis);
+      }
 
       liste.classList.remove('hidden');
     }
@@ -336,7 +394,7 @@
         titel.innerText = "⚠️ Nicht aufrüstbar:";
         text.innerText = aktuellesModell.hinweisStandard;
         btn.innerText = "Alternative Modelle mit mehr RAM bei Amazon ansehen *";
-        btn.href = 'https://www.amazon.de/s?k=' + encodeURIComponent(aktuellesModell.hersteller + ' ' + aktuellesModell.titel + ' 32GB RAM Notebook');
+        btn.href = baueAmazonLink(aktuellesModell.hersteller + ' ' + aktuellesModell.titel + ' 32GB RAM Notebook');
         return;
       }
 
@@ -395,7 +453,7 @@
       var saubererRamTyp = aktuellesModell.ramTyp ? aktuellesModell.ramTyp.replace(/\(.*\)/, '').trim() : "DDR5 SODIMM";
       var amazonQuery = zielRam + 'GB Kit ' + saubererRamTyp + ' ' + formfaktor;
       
-      btn.href = 'https://www.amazon.de/s?k=' + encodeURIComponent(amazonQuery);
+      btn.href = baueAmazonLink(amazonQuery);
     }
   </script>
 </body>
