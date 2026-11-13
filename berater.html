@@ -710,4 +710,10 @@
       }
 
       btn.innerText = erfordereUpgrade
-        ? "Direkt zum empfohlenen " + zielRam
+        ? "Direkt zum empfohlenen " + zielRam + " GB Kit bei Amazon *"
+        : "Optional: Passendes " + zielRam + " GB Kit bei Amazon ansehen *";
+      btn.href = baueAmazonProduktLink(produkt, fallbackQuery);
+    }
+  </script>
+</body>
+</html>
