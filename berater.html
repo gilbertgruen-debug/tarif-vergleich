@@ -3,39 +3,69 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>RAM &amp; Arbeitsspeicher-Berater – Kompatiblen DDR4/DDR5 RAM finden | TechVergleich24</title>
-  <meta name="description" content="Prüfe in Sekunden, wie viel DDR4- oder DDR5-RAM dein Laptop oder Mainboard unterstützt. Inklusive Dual-Channel-Check und passenden Kit-Empfehlungen.">
+  <title>RAM &amp; Arbeitsspeicher-Berater 2026 – DDR4/DDR5 finden | TechVergleich24</title>
+  <meta name="description" content="Prüfe in Sekunden, wie viel DDR4- oder DDR5-RAM dein Laptop oder Mainboard unterstützt. Inklusive Dual-Channel-Check, Bauform (SODIMM/DIMM) und Kit-Empfehlungen.">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://techvergleich24.de/berater.html">
 
+  <!-- Open Graph für Social Media & Messenger -->
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="de_DE">
+  <meta property="og:site_name" content="TechVergleich24">
+  <meta property="og:title" content="RAM &amp; Arbeitsspeicher-Berater – Kompatiblen DDR4/DDR5 RAM finden">
+  <meta property="og:description" content="Finde in Sekunden den passenden DDR4- oder DDR5-Arbeitsspeicher für deinen Laptop oder Desktop-PC inklusive Dual-Channel-Empfehlung.">
+  <meta property="og:url" content="https://techvergleich24.de/berater.html">
+
+  <!-- Strukturierte Daten: WebApplication + FAQPage -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
+    "@graph": [
       {
-        "@type": "Question",
-        "name": "Wie finde ich heraus, welcher RAM in meinen Laptop oder PC passt?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Drücke unter Windows gleichzeitig Windows-Taste + R, tippe msinfo32 ein und lies unter Systemmodell (Laptop) oder BaseBoard-Produkt (Desktop-Mainboard) deine genaue Modellnummer ab. Gib diese oben in den Berater ein, um Speichertyp (DDR4/DDR5), Bauform (SODIMM/DIMM) und Maximal-RAM zu ermitteln."
-        }
+        "@type": "WebApplication",
+        "name": "TechVergleich24 RAM & Arbeitsspeicher-Berater",
+        "url": "https://techvergleich24.de/berater.html",
+        "applicationCategory": "UtilitiesApplication",
+        "operatingSystem": "All",
+        "inLanguage": "de",
+        "description": "Interaktiver Kompatibilitäts-Berater zur Ermittlung von maximalem Arbeitsspeicher, Speichertyp (DDR4/DDR5) und Bauform (SODIMM/DIMM) für Laptops und Mainboards."
       },
       {
-        "@type": "Question",
-        "name": "Was ist der Unterschied zwischen SODIMM und DIMM Arbeitsspeicher?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "SODIMM sind kompakte Arbeitsspeicher-Riegel für Notebooks, Mini-PCs und All-in-One-Geräte. DIMM sind deutlich längere Speicherriegel für klassische Desktop-PC-Mainboards. Beide Bauformen sind mechanisch nicht untereinander kompatibel."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Lohnt sich ein Upgrade von 16 GB auf 32 GB RAM?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Für reine Office-Aufgaben und Web-Browsing reichen 16 GB aus. Für moderne Spiele, Simulationen, Videobearbeitung oder viele parallele Browser-Tabs sorgt ein Upgrade auf 32 GB im Dual-Channel-Betrieb für deutlich stabilere Bildraten ohne Nachladeruckler."
-        }
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Wie finde ich heraus, welcher RAM in meinen Laptop oder PC passt?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Drücke unter Windows gleichzeitig Windows-Taste + R, tippe msinfo32 ein und lies unter Systemmodell (Laptop) oder BaseBoard-Produkt (Desktop-Mainboard) deine genaue Modellnummer ab. Gib diese oben in den Berater ein, um Speichertyp (DDR4/DDR5), Bauform (SODIMM/DIMM) und Maximal-RAM zu ermitteln."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Was ist der Unterschied zwischen SODIMM und DIMM Arbeitsspeicher?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "SODIMM sind kompakte Arbeitsspeicher-Riegel für Notebooks, Mini-PCs und All-in-One-Geräte. DIMM sind deutlich längere Speicherriegel für klassische Desktop-PC-Mainboards. Beide Bauformen sind mechanisch nicht untereinander kompatibel."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Lohnt sich ein Upgrade von 16 GB auf 32 GB RAM?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Für reine Office-Aufgaben und Web-Browsing reichen 16 GB aus. Für moderne Spiele, Simulationen, Videobearbeitung oder viele parallele Browser-Tabs sorgt ein Upgrade auf 32 GB im Dual-Channel-Betrieb für deutlich stabilere Bildraten ohne Nachladeruckler."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Kann man DDR4 und DDR5 Arbeitsspeicher mischen?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Nein. DDR4 und DDR5 besitzen unterschiedliche Kerben an den Kontaktleisten, verschiedene Spannungen und unterschiedliche Pin-Belegungen. Ein Mainboard oder Laptop unterstützt immer nur genau eine der beiden Generationen."
+            }
+          }
+        ]
       }
     ]
   }
@@ -44,30 +74,34 @@
 </head>
 <body class="bg-gray-100 text-gray-800 min-h-screen flex flex-col">
 
-  <header class="bg-slate-900 text-white py-6 px-4 shadow">
-    <div class="max-w-4xl mx-auto flex justify-between items-center">
-      <h1 class="text-xl font-bold"><a href="index.html">TechVergleich24</a></h1>
-      <a href="index.html" class="text-sm bg-slate-800 hover:bg-slate-700 px-3 py-1.5 rounded transition">← Zurück zur Übersicht</a>
+  <header class="bg-slate-900 text-white py-5 px-4 shadow">
+    <div class="max-w-4xl mx-auto flex flex-wrap justify-between items-center gap-3">
+      <a href="index.html" class="text-xl font-bold tracking-tight hover:text-blue-400 transition">TechVergleich24</a>
+      <nav aria-label="Hauptnavigation" class="flex items-center gap-2 text-sm">
+        <a href="gpu-berater.html" class="bg-slate-800 hover:bg-slate-700 px-3 py-1.5 rounded transition">🎮 GPU-Berater</a>
+        <a href="index.html" class="bg-slate-800 hover:bg-slate-700 px-3 py-1.5 rounded transition">← Übersicht</a>
+      </nav>
     </div>
   </header>
 
   <main class="max-w-3xl mx-auto px-4 py-8 flex-grow w-full space-y-8">
     
     <!-- Hauptcontainer für Modellauswahl -->
-    <div class="bg-white p-6 md:p-8 rounded-xl shadow-md border space-y-8">
+    <section aria-labelledby="main-heading" class="bg-white p-6 md:p-8 rounded-xl shadow-md border space-y-8">
       <div>
-        <h2 class="text-2xl font-bold text-gray-900 mb-1">⚡ Modell-Aufrüst-Berater (RAM)</h2>
-        <p class="text-sm text-gray-600">Finde in 4 einfachen Schritten den perfekten Arbeitsspeicher für dein Gerät.</p>
+        <h1 id="main-heading" class="text-2xl md:text-3xl font-extrabold text-gray-900 mb-1.5">⚡ RAM &amp; Arbeitsspeicher-Berater für Laptop &amp; PC</h1>
+        <p class="text-sm text-gray-600">Prüfe in Sekunden deinen maximal unterstützten DDR4- oder DDR5-Speicher, die richtige Bauform (SODIMM/DIMM) und das ideale Dual-Channel-Kit.</p>
       </div>
 
       <!-- OPTION A: Direkt-Suche -->
       <div class="space-y-3">
-        <label class="block text-xs font-bold uppercase tracking-wider text-slate-700">Option A: Modell direkt suchen</label>
+        <label for="modellInput" class="block text-xs font-bold uppercase tracking-wider text-slate-700">Option A: Modell oder Mainboard direkt suchen</label>
         <div class="relative">
           <input 
             type="text" 
             id="modellInput" 
             onkeyup="sucheModell()" 
+            autocomplete="off"
             placeholder="Modellname oder Mainboard eingeben (z. B. Legion 5, Strix B550, OptiPlex)..." 
             class="w-full border-2 border-blue-500 rounded-lg p-3.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-600 shadow-sm"
           >
@@ -103,7 +137,7 @@
 
             <div>
               <p class="font-bold text-slate-900 mb-1">3. Apple Mac (MacBook / iMac / Mac mini):</p>
-              <p class="text-slate-600">Klicke oben links auf das <strong>Apple-Symbol () → Über diesen Mac</strong>.</p>
+              <p class="text-slate-600">Klicke oben links auf das <strong>Apple-Menü → Über diesen Mac</strong>, um Modellreihe und Baujahr abzulesen.</p>
             </div>
           </div>
         </details>
@@ -118,11 +152,11 @@
       <!-- OPTION B: 4-Schritt Katalog-Assistent -->
       <div class="bg-blue-50/60 border-2 border-blue-200 rounded-xl p-5 md:p-6 space-y-4">
         <div class="flex items-center gap-3">
-          <div class="w-10 h-10 bg-blue-600 text-white rounded-lg flex items-center justify-center font-bold text-lg shadow-sm">
+          <div class="w-10 h-10 bg-blue-600 text-white rounded-lg flex items-center justify-center font-bold text-lg shadow-sm" aria-hidden="true">
             ❓
           </div>
           <div>
-            <h3 class="text-base font-bold text-gray-900">Option B: Schritt-für-Schritt Katalog-Filter</h3>
+            <h2 class="text-base font-bold text-gray-900">Option B: Schritt-für-Schritt Katalog-Filter</h2>
             <p class="text-xs text-gray-600">Wähle Gerätetyp, Marke, Modell und deine verbaute Ausstattung.</p>
           </div>
         </div>
@@ -133,11 +167,11 @@
           <div id="wSchritt1" class="space-y-2">
             <span class="text-xs font-bold text-slate-700 uppercase">Schritt 1: Wähle deinen Gerätetyp</span>
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-              <button onclick="waehleKategorie('Notebook')" class="bg-white hover:bg-blue-100 border-2 border-blue-200 hover:border-blue-500 font-semibold text-gray-800 text-sm py-3 px-4 rounded-lg shadow-sm transition text-left flex items-center justify-between">
+              <button type="button" onclick="waehleKategorie('Notebook')" class="bg-white hover:bg-blue-100 border-2 border-blue-200 hover:border-blue-500 font-semibold text-gray-800 text-sm py-3 px-4 rounded-lg shadow-sm transition text-left flex items-center justify-between">
                 <span>💻 Notebook / Laptop</span>
                 <span class="text-blue-500 font-bold">→</span>
               </button>
-              <button onclick="waehleKategorie('Desktop PC Mainboard')" class="bg-white hover:bg-blue-100 border-2 border-blue-200 hover:border-blue-500 font-semibold text-gray-800 text-sm py-3 px-4 rounded-lg shadow-sm transition text-left flex items-center justify-between">
+              <button type="button" onclick="waehleKategorie('Desktop PC Mainboard')" class="bg-white hover:bg-blue-100 border-2 border-blue-200 hover:border-blue-500 font-semibold text-gray-800 text-sm py-3 px-4 rounded-lg shadow-sm transition text-left flex items-center justify-between">
                 <span>🖥️ Desktop PC / Mainboard</span>
                 <span class="text-blue-500 font-bold">→</span>
               </button>
@@ -148,7 +182,7 @@
           <div id="wSchritt2" class="hidden space-y-2">
             <div class="flex justify-between items-center">
               <span class="text-xs font-bold text-slate-700 uppercase">Schritt 2: Wähle die Marke</span>
-              <button onclick="zurueckZuSchritt1()" class="text-xs text-blue-600 font-semibold hover:underline">← Zurück</button>
+              <button type="button" onclick="zurueckZuSchritt1()" class="text-xs text-blue-600 font-semibold hover:underline">← Zurück</button>
             </div>
             <div id="markenListe" class="grid grid-cols-2 sm:grid-cols-3 gap-2"></div>
           </div>
@@ -157,7 +191,7 @@
           <div id="wSchritt3" class="hidden space-y-2">
             <div class="flex justify-between items-center">
               <span class="text-xs font-bold text-slate-700 uppercase">Schritt 3: Wähle die Modellreihe</span>
-              <button onclick="zurueckZuSchritt2()" class="text-xs text-blue-600 font-semibold hover:underline">← Marke ändern</button>
+              <button type="button" onclick="zurueckZuSchritt2()" class="text-xs text-blue-600 font-semibold hover:underline">← Marke ändern</button>
             </div>
             <div id="modelleKatalogListe" class="divide-y border border-blue-200 rounded-lg bg-white max-h-56 overflow-y-auto shadow-inner"></div>
           </div>
@@ -166,7 +200,7 @@
           <div id="wSchritt4" class="hidden space-y-2">
             <div class="flex justify-between items-center">
               <span class="text-xs font-bold text-slate-700 uppercase">Schritt 4: Wähle deine Ausstattung/Variante</span>
-              <button onclick="zurueckZuSchritt3()" class="text-xs text-blue-600 font-semibold hover:underline">← Modell ändern</button>
+              <button type="button" onclick="zurueckZuSchritt3()" class="text-xs text-blue-600 font-semibold hover:underline">← Modell ändern</button>
             </div>
             <div id="variantenKatalogListe" class="divide-y border border-blue-200 rounded-lg bg-white max-h-56 overflow-y-auto shadow-inner"></div>
           </div>
@@ -174,14 +208,14 @@
         </div>
       </div>
 
-    </div>
+    </section>
 
     <!-- Ergebnisanzeige -->
     <div id="ergebnisBox" class="hidden bg-blue-50 border-2 border-blue-600 rounded-xl p-6 shadow-md space-y-5">
       <div class="flex justify-between items-start border-b border-blue-200 pb-3">
         <div>
           <span class="text-xs font-bold uppercase text-blue-800" id="mHersteller">HERSTELLER</span>
-          <h3 class="text-2xl font-black text-gray-900" id="mTitel">Modellname</h3>
+          <h2 class="text-2xl font-black text-gray-900" id="mTitel">Modellname</h2>
           <p class="text-xs font-semibold text-blue-700 mt-0.5" id="mVarianteLabel"></p>
         </div>
         <span class="bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-full" id="mGerätekategorie">Notebook</span>
@@ -199,7 +233,7 @@
       </div>
 
       <div class="bg-white p-5 rounded-xl border border-blue-200 shadow-sm space-y-3">
-        <label class="block text-xs font-bold uppercase text-slate-800">🎯 Schritt 5: Wofür nutzt du das Gerät?</label>
+        <label for="nutzungsSelect" class="block text-xs font-bold uppercase text-slate-800">🎯 Schritt 5: Wofür nutzt du das Gerät?</label>
         <select id="nutzungsSelect" onchange="berechneSpezifischeEmpfehlung()" class="w-full border-2 border-gray-200 rounded-lg p-3 text-sm focus:border-blue-500 focus:outline-none bg-gray-50 font-medium">
           <option value="office">Office, Web, Teams &amp; 4K Streaming (Standard)</option>
           <option value="gaming_standard">Standard Gaming (eSports, Fortnite, GTA V, Minecraft, CS2)</option>
@@ -220,14 +254,28 @@
           <span class="text-[11px] text-gray-400 font-medium">Geprüfte Kompatibilität</span>
         </div>
         <div>
-          <h4 class="text-base font-bold text-gray-900" id="pName">Crucial RAM Kit</h4>
+          <h3 class="text-base font-bold text-gray-900" id="pName">Crucial RAM Kit</h3>
           <p class="text-xs text-gray-600 mt-0.5" id="pDetails">100 % kompatibler Markenspeicher für dein System.</p>
         </div>
-        <a id="amazonBtn" href="#" target="_blank" rel="noopener noreferrer" class="block w-full text-center bg-amber-500 hover:bg-amber-600 text-white font-bold py-3.5 px-6 rounded-lg transition shadow-md text-sm">
+        <a id="amazonBtn" href="#" target="_blank" rel="nofollow sponsored noopener noreferrer" class="block w-full text-center bg-amber-500 hover:bg-amber-600 text-white font-bold py-3.5 px-6 rounded-lg transition shadow-md text-sm">
           Direkt zum empfohlenen RAM-Kit bei Amazon *
         </a>
       </div>
     </div>
+
+    <!-- SEO-Ratgeber: Dual-Channel & Kaufberatung -->
+    <article class="bg-white p-6 md:p-8 rounded-xl shadow-sm border space-y-4">
+      <h2 class="text-lg font-bold text-gray-900">Arbeitsspeicher richtig aufrüsten: Dual-Channel, Takt &amp; Kompatibilität</h2>
+      <div class="text-xs text-gray-600 leading-relaxed space-y-3">
+        <p>Wer seinen Laptop oder Desktop-PC beschleunigen möchte, erzielt mit einer Erweiterung des Arbeitsspeichers (RAM) oft den größten spürbaren Effekt im Alltag. Damit der neue Speicher ohne Bluescreens oder Leistungsverlust läuft, solltest du drei technische Eckdaten beachten:</p>
+        <ul class="list-disc list-inside space-y-1.5 ml-1">
+          <li><strong>Dual-Channel-Betrieb nutzen:</strong> Zwei identische Speicherriegel (z. B. ein <em>2× 16 GB Kit</em> statt eines einzelnen 32-GB-Moduls) verdoppeln die Speicherbandbreite. Besonders bei AMD-Ryzen-Prozessoren und integrierten Laptop-Grafikeinheiten steigert Dual-Channel die Bildrate in Spielen spürbar.</li>
+          <li><strong>Taktfrequenz (MHz / MT/s):</strong> Schnellerer RAM (wie DDR4-3200 oder DDR5-5600) ist abwärtskompatibel. Falls dein Mainboard maximal 4800 MT/s unterstützt, läuft ein 5600-MT/s-Kit automatisch stabil mit dem maximal möglichen Takt des Systems.</li>
+          <li><strong>XMP &amp; EXPO im Desktop-PC:</strong> Bei Desktop-Mainboards musst du nach dem Einbau im BIOS einmalig das <em>Intel XMP</em>- oder <em>AMD EXPO</em>-Profil aktivieren, damit der Speicher mit seiner beworbenen Geschwindigkeit arbeitet.</li>
+        </ul>
+        <p class="pt-1 text-slate-700">Du planst neben dem RAM auch ein Grafik-Upgrade? Prüfe mit unserem <a href="gpu-berater.html" class="text-blue-600 font-semibold hover:underline">interaktiven GPU-Berater</a>, welche Grafikkarte optimal zu deiner Auflösung und deinem Netzteil passt.</p>
+      </div>
+    </article>
 
     <!-- SEO-Ratgeber & Häufige Fragen (FAQ) -->
     <section class="bg-white p-6 md:p-8 rounded-xl shadow-sm border space-y-5">
@@ -244,9 +292,14 @@
           <p><strong>SODIMM</strong> sind kompakte Arbeitsspeicher-Riegel für Notebooks, Mini-PCs und All-in-One-Geräte. <strong>DIMM</strong> sind deutlich längere Speicherriegel für klassische Desktop-PC-Mainboards. Beide Bauformen sind mechanisch nicht untereinander kompatibel.</p>
         </div>
 
-        <div>
+        <div class="border-b border-gray-100 pb-3">
           <h3 class="font-bold text-sm text-gray-900 mb-1">Lohnt sich ein Upgrade von 16 GB auf 32 GB RAM?</h3>
           <p>Für reine Office-Aufgaben und Web-Browsing reichen 16 GB aus. Für moderne Spiele, Simulationen, Videobearbeitung oder viele parallele Browser-Tabs sorgt ein Upgrade auf <strong>32 GB im Dual-Channel-Betrieb</strong> (z. B. 2x 16 GB Kit) für deutlich stabilere Bildraten ohne Nachladeruckler.</p>
+        </div>
+
+        <div>
+          <h3 class="font-bold text-sm text-gray-900 mb-1">Kann man DDR4 und DDR5 Arbeitsspeicher mischen?</h3>
+          <p>Nein. DDR4 und DDR5 besitzen unterschiedliche Kerben an den Kontaktleisten, verschiedene Spannungen und unterschiedliche Pin-Belegungen. Ein Mainboard oder Laptop unterstützt immer nur genau eine der beiden Generationen.</p>
         </div>
       </div>
     </section>
@@ -255,7 +308,11 @@
 
   <footer class="bg-gray-900 text-gray-400 py-6 px-4 text-xs text-center border-t border-gray-800 space-y-2">
     <p>* Als Amazon-Partner verdiene ich an qualifizierten Verkäufen. Für dich entstehen keine Mehrkosten.</p>
-    <div>
+    <div class="flex justify-center gap-4">
+      <a href="index.html" class="hover:text-white">Startseite</a>
+      <span>·</span>
+      <a href="gpu-berater.html" class="hover:text-white">GPU-Berater</a>
+      <span>·</span>
       <a href="impressum.html" class="hover:text-white">Impressum &amp; Datenschutz</a>
     </div>
   </footer>
@@ -476,6 +533,7 @@
 
       Array.from(herstellerSet).sort().forEach(function(hersteller) {
         var btn = document.createElement('button');
+        btn.type = 'button';
         btn.className = 'bg-white hover:bg-blue-100 border border-blue-300 text-slate-800 text-xs font-semibold py-2.5 px-3 rounded-lg shadow-sm text-center transition';
         btn.innerText = hersteller;
         btn.onclick = function() { waehleHersteller(hersteller); };
@@ -652,10 +710,4 @@
       }
 
       btn.innerText = erfordereUpgrade
-        ? "Direkt zum empfohlenen " + zielRam + " GB Kit bei Amazon *"
-        : "Optional: Passendes " + zielRam + " GB Kit bei Amazon ansehen *";
-      btn.href = baueAmazonProduktLink(produkt, fallbackQuery);
-    }
-  </script>
-</body>
-</html>
+        ? "Direkt zum empfohlenen " + zielRam
