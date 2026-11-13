@@ -8,29 +8,68 @@
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://techvergleich24.de/">
   
-  <!-- OpenGraph für Social Media & Vorschauen -->
-  <meta property="og:title" content="TechVergleich24 – Hardware- &amp; Aufrüst-Berater">
-  <meta property="og:description" content="Kompatiblen Arbeitsspeicher, Grafikkarten und M.2 SSDs für dein Laptop- oder Mainboard-Modell ermitteln.">
+  <!-- Open Graph für Social Media & Vorschauen -->
   <meta property="og:type" content="website">
+  <meta property="og:locale" content="de_DE">
+  <meta property="og:site_name" content="TechVergleich24">
+  <meta property="og:title" content="TechVergleich24 – Hardware- &amp; Aufrüst-Berater für Laptop &amp; PC">
+  <meta property="og:description" content="Kompatiblen Arbeitsspeicher, Grafikkarten und M.2 SSDs für dein Laptop- oder Mainboard-Modell ermitteln.">
   <meta property="og:url" content="https://techvergleich24.de/">
 
+  <!-- Strukturierte Daten: WebSite + Tool-Übersicht -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "TechVergleich24",
-    "url": "https://techvergleich24.de/",
-    "description": "Interaktiver Hardware- und Aufrüst-Berater für Arbeitsspeicher (RAM), Grafikkarten (GPU) und SSDs."
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "name": "TechVergleich24",
+        "url": "https://techvergleich24.de/",
+        "inLanguage": "de",
+        "description": "Interaktiver Hardware- und Aufrüst-Berater für Arbeitsspeicher (RAM), Grafikkarten (GPU) und SSDs."
+      },
+      {
+        "@type": "ItemList",
+        "name": "Interaktive Hardware-Berater auf TechVergleich24",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "RAM & Arbeitsspeicher-Berater",
+            "url": "https://techvergleich24.de/berater.html"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Grafikkarten- & GPU-Berater",
+            "url": "https://techvergleich24.de/gpu-berater.html"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "SSD & M.2 Speicher-Berater",
+            "url": "https://techvergleich24.de/ssd-berater.html"
+          }
+        ]
+      }
+    ]
   }
   </script>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-100 text-gray-800 min-h-screen flex flex-col">
 
-  <header class="bg-slate-900 text-white py-8 px-4 shadow-lg">
-    <div class="max-w-5xl mx-auto text-center space-y-2">
-      <h1 class="text-3xl md:text-4xl font-extrabold tracking-tight">TechVergleich24</h1>
-      <p class="text-slate-300 text-sm md:text-base">Schritt-für-Schritt Hardware-Berater für deinen Laptop &amp; Desktop-PC</p>
+  <header class="bg-slate-900 text-white py-9 px-4 shadow-lg">
+    <div class="max-w-5xl mx-auto text-center space-y-2.5">
+      <span class="inline-block bg-blue-600/20 border border-blue-400/30 text-blue-300 text-xs font-semibold px-3 py-1 rounded-full">
+        TechVergleich24.de · Kostenloser Kompatibilitäts-Check
+      </span>
+      <h1 class="text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight">
+        Hardware- &amp; Aufrüst-Berater für Laptop &amp; PC
+      </h1>
+      <p class="text-slate-300 text-sm md:text-base max-w-2xl mx-auto">
+        Prüfe in Sekunden kompatiblen DDR4/DDR5-Arbeitsspeicher, Grafikkarten und M.2 NVMe SSDs für über 2.400 Mainboards, Notebooks und Fertig-PCs.
+      </p>
     </div>
   </header>
 
@@ -49,13 +88,13 @@
         <!-- Card 1: RAM-Berater -->
         <a href="berater.html" class="bg-white rounded-xl p-6 shadow-md border hover:border-blue-500 hover:shadow-lg transition flex flex-col justify-between group">
           <div class="space-y-4">
-            <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center text-2xl group-hover:bg-blue-600 group-hover:text-white transition">
+            <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center text-2xl group-hover:bg-blue-600 group-hover:text-white transition" aria-hidden="true">
               ⚡
             </div>
             <div>
               <h3 class="text-lg font-bold text-gray-900 group-hover:text-blue-600 transition">RAM &amp; Arbeitsspeicher-Berater</h3>
               <p class="text-xs text-gray-500 mt-2 leading-relaxed">
-                Finde heraus, wie viel DDR4/DDR5-RAM dein Laptop oder PC unterstützt und welches Kit sich lohnt.
+                Finde heraus, wie viel DDR4/DDR5-RAM dein Laptop oder PC unterstützt und welches Dual-Channel-Kit sich lohnt.
               </p>
             </div>
           </div>
@@ -68,13 +107,13 @@
         <!-- Card 2: GPU-Berater -->
         <a href="gpu-berater.html" class="bg-white rounded-xl p-6 shadow-md border hover:border-purple-500 hover:shadow-lg transition flex flex-col justify-between group">
           <div class="space-y-4">
-            <div class="w-12 h-12 bg-purple-100 text-purple-600 rounded-lg flex items-center justify-center text-2xl group-hover:bg-purple-600 group-hover:text-white transition">
+            <div class="w-12 h-12 bg-purple-100 text-purple-600 rounded-lg flex items-center justify-center text-2xl group-hover:bg-purple-600 group-hover:text-white transition" aria-hidden="true">
               🎮
             </div>
             <div>
               <h3 class="text-lg font-bold text-gray-900 group-hover:text-purple-600 transition">Grafikkarten- &amp; GPU-Berater</h3>
               <p class="text-xs text-gray-500 mt-2 leading-relaxed">
-                Prüfe deine Grafikkarte für Full HD, WQHD oder 4K und erhalte passende Upgrade-Vorschläge.
+                Prüfe deine Grafikkarte für Full HD, WQHD oder 4K und erhalte passende Upgrade-Vorschläge inklusive Low-Profile-Check.
               </p>
             </div>
           </div>
@@ -87,13 +126,13 @@
         <!-- Card 3: SSD-Berater -->
         <a href="ssd-berater.html" class="bg-white rounded-xl p-6 shadow-md border hover:border-emerald-500 hover:shadow-lg transition flex flex-col justify-between group">
           <div class="space-y-4">
-            <div class="w-12 h-12 bg-emerald-100 text-emerald-600 rounded-lg flex items-center justify-center text-2xl group-hover:bg-emerald-600 group-hover:text-white transition">
+            <div class="w-12 h-12 bg-emerald-100 text-emerald-600 rounded-lg flex items-center justify-center text-2xl group-hover:bg-emerald-600 group-hover:text-white transition" aria-hidden="true">
               💾
             </div>
             <div>
               <h3 class="text-lg font-bold text-gray-900 group-hover:text-emerald-600 transition">SSD &amp; M.2 Speicher-Berater</h3>
               <p class="text-xs text-gray-500 mt-2 leading-relaxed">
-                Ermittle den richtigen Anschluss (M.2 NVMe, SATA oder extern USB-C) und die passende Bauhöhe.
+                Ermittle den richtigen Anschluss (M.2 NVMe, SATA oder extern USB-C) und die passende Bauhöhe für Laptop &amp; PC.
               </p>
             </div>
           </div>
@@ -122,7 +161,7 @@
             <h3 class="text-sm font-bold text-gray-900">Crucial 32GB Kit DDR5-5600 SODIMM</h3>
             <p class="text-xs text-gray-500 leading-relaxed">Der Top-Seller für moderne Gaming- und Creator-Notebooks.</p>
           </div>
-          <a href="https://www.amazon.de/s?k=Crucial+RAM+32GB+Kit+2x16GB+DDR5+5600MHz+SODIMM+CT2K16G56C46S5&tag=techverglei00-21" target="_blank" rel="noopener noreferrer" class="block w-full text-center bg-amber-500 hover:bg-amber-600 text-white font-bold py-2 px-3 rounded-lg transition text-xs">
+          <a href="https://www.amazon.de/s?k=Crucial+RAM+32GB+Kit+2x16GB+DDR5+5600MHz+SODIMM+CT2K16G56C46S5&tag=techverglei00-21" target="_blank" rel="nofollow sponsored noopener noreferrer" class="block w-full text-center bg-amber-500 hover:bg-amber-600 text-white font-bold py-2 px-3 rounded-lg transition text-xs">
             Bei Amazon ansehen *
           </a>
         </div>
@@ -134,7 +173,7 @@
             <h3 class="text-sm font-bold text-gray-900">Corsair Vengeance 32GB DDR5-6000 CL30</h3>
             <p class="text-xs text-gray-500 leading-relaxed">Idealer Sweetspot für AM5 (EXPO) &amp; Intel (XMP) Gaming-PCs.</p>
           </div>
-          <a href="https://www.amazon.de/s?k=Corsair+Vengeance+32GB+2x16GB+DDR5+6000MHz+CL30&tag=techverglei00-21" target="_blank" rel="noopener noreferrer" class="block w-full text-center bg-amber-500 hover:bg-amber-600 text-white font-bold py-2 px-3 rounded-lg transition text-xs">
+          <a href="https://www.amazon.de/s?k=Corsair+Vengeance+32GB+2x16GB+DDR5+6000MHz+CL30&tag=techverglei00-21" target="_blank" rel="nofollow sponsored noopener noreferrer" class="block w-full text-center bg-amber-500 hover:bg-amber-600 text-white font-bold py-2 px-3 rounded-lg transition text-xs">
             Bei Amazon ansehen *
           </a>
         </div>
@@ -146,7 +185,7 @@
             <h3 class="text-sm font-bold text-gray-900">WD_BLACK SN850X 2TB NVMe SSD</h3>
             <p class="text-xs text-gray-500 leading-relaxed">Bis zu 7.300 MB/s – perfekt für PC, Laptop &amp; PS5.</p>
           </div>
-          <a href="https://www.amazon.de/s?k=WD_BLACK+SN850X+2TB+NVMe+SSD&tag=techverglei00-21" target="_blank" rel="noopener noreferrer" class="block w-full text-center bg-amber-500 hover:bg-amber-600 text-white font-bold py-2 px-3 rounded-lg transition text-xs">
+          <a href="https://www.amazon.de/s?k=WD_BLACK+SN850X+2TB+NVMe+SSD&tag=techverglei00-21" target="_blank" rel="nofollow sponsored noopener noreferrer" class="block w-full text-center bg-amber-500 hover:bg-amber-600 text-white font-bold py-2 px-3 rounded-lg transition text-xs">
             Bei Amazon ansehen *
           </a>
         </div>
@@ -158,7 +197,7 @@
             <h3 class="text-sm font-bold text-gray-900">NVIDIA GeForce RTX 4070 Super</h3>
             <p class="text-xs text-gray-500 leading-relaxed">Starker Leistungssprung für flüssiges WQHD-Gaming &amp; DLSS 3.</p>
           </div>
-          <a href="https://www.amazon.de/s?k=GeForce+RTX+4070+Super+Grafikkarte&tag=techverglei00-21" target="_blank" rel="noopener noreferrer" class="block w-full text-center bg-amber-500 hover:bg-amber-600 text-white font-bold py-2 px-3 rounded-lg transition text-xs">
+          <a href="https://www.amazon.de/s?k=GeForce+RTX+4070+Super+Grafikkarte&tag=techverglei00-21" target="_blank" rel="nofollow sponsored noopener noreferrer" class="block w-full text-center bg-amber-500 hover:bg-amber-600 text-white font-bold py-2 px-3 rounded-lg transition text-xs">
             Bei Amazon ansehen *
           </a>
         </div>
@@ -172,15 +211,15 @@
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-xs text-gray-600 leading-relaxed">
         <div class="space-y-1.5">
           <h3 class="font-bold text-sm text-gray-900">SODIMM vs. DIMM &amp; DDR4 vs. DDR5</h3>
-          <p>Notebooks verwenden kompakte <strong>SODIMM-Module</strong>, während Desktop-Mainboards längere <strong>DIMM-Riegel</strong> benötigen. Zudem sind DDR4- und DDR5-Steckplätze mechanisch unterschiedlich gekerbt und nicht untereinander austauschbar.</p>
+          <p>Notebooks verwenden kompakte <strong>SODIMM-Module</strong>, während Desktop-Mainboards längere <strong>DIMM-Riegel</strong> benötigen. Zudem sind DDR4- und DDR5-Steckplätze mechanisch unterschiedlich gekerbt und nicht untereinander austauschbar. Nutze unseren <a href="berater.html" class="text-blue-600 font-semibold hover:underline">RAM-Berater</a> für den Direkt-Check.</p>
         </div>
         <div class="space-y-1.5">
           <h3 class="font-bold text-sm text-gray-900">PCIe-Steckplatz, Netzteil &amp; Gehäuse</h3>
-          <p>Nahezu jedes Desktop-Mainboard verfügt über einen <strong>PCIe x16-Steckplatz</strong>. Entscheidend für das Grafikkarten-Upgrade sind jedoch die maximale Gehäuselänge, die Bauhöhe (Low-Profile bei SFF-Office-PCs) und ausreichende Netzteil-Reserven.</p>
+          <p>Nahezu jedes Desktop-Mainboard verfügt über einen <strong>PCIe x16-Steckplatz</strong>. Entscheidend für das <a href="gpu-berater.html" class="text-purple-600 font-semibold hover:underline">Grafikkarten-Upgrade</a> sind jedoch die maximale Gehäuselänge, die Bauhöhe (Low-Profile bei SFF-Office-PCs) und ausreichende Netzteil-Reserven.</p>
         </div>
         <div class="space-y-1.5">
           <h3 class="font-bold text-sm text-gray-900">M.2 NVMe Bauhöhe im Laptop</h3>
-          <p>Während auf Desktop-Mainboards oft M.2-SSDs mit massivem Kühlkörper Platz finden, passen in Notebooks ausschließlich flache <strong>M.2-2280-Module ohne Heatsink</strong>, damit die Bodenabdeckung problemlos schließt.</p>
+          <p>Während auf Desktop-Mainboards oft M.2-SSDs mit massivem Kühlkörper Platz finden, passen in Notebooks ausschließlich flache <strong>M.2-2280-Module ohne Heatsink</strong>, damit die Bodenabdeckung problemlos schließt. Prüfe dein Modell direkt im <a href="ssd-berater.html" class="text-emerald-700 font-semibold hover:underline">SSD- &amp; M.2-Berater</a>.</p>
         </div>
       </div>
     </section>
@@ -189,7 +228,13 @@
 
   <footer class="bg-gray-900 text-gray-400 py-6 px-4 text-xs text-center border-t border-gray-800 space-y-2">
     <p>* Als Amazon-Partner verdiene ich an qualifizierten Verkäufen. Für dich entstehen keine Mehrkosten.</p>
-    <div>
+    <div class="flex justify-center gap-4">
+      <a href="berater.html" class="hover:text-white">RAM-Berater</a>
+      <span>·</span>
+      <a href="gpu-berater.html" class="hover:text-white">GPU-Berater</a>
+      <span>·</span>
+      <a href="ssd-berater.html" class="hover:text-white">SSD-Berater</a>
+      <span>·</span>
       <a href="impressum.html" class="hover:text-white">Impressum &amp; Datenschutz</a>
     </div>
   </footer>
