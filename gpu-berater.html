@@ -3,39 +3,69 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Grafikkarten- &amp; GPU-Berater – Passende Grafikkarte für PC &amp; Mainboard | TechVergleich24</title>
-  <meta name="description" content="Finde die passende Grafikkarte für dein Mainboard oder deinen Fertig-PC. Mit PCIe-Check, Low-Profile-Empfehlungen für Office-PCs und Netzteil-Hinweisen.">
+  <title>Grafikkarten- &amp; GPU-Berater 2026 – Passende GPU finden | TechVergleich24</title>
+  <meta name="description" content="Finde die passende Grafikkarte für dein Mainboard oder deinen Fertig-PC. Mit PCIe-Check, Low-Profile-Empfehlungen für Office-PCs (SFF) und Netzteil-Hinweisen.">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://techvergleich24.de/gpu-berater.html">
 
+  <!-- Open Graph für Social Media & Messenger -->
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="de_DE">
+  <meta property="og:site_name" content="TechVergleich24">
+  <meta property="og:title" content="Grafikkarten- &amp; GPU-Berater – Passende Grafikkarte für PC &amp; Mainboard">
+  <meta property="og:description" content="Ermittle in Sekunden die ideale Grafikkarte für deinen Desktop-PC, dein Mainboard oder deinen schmalen Office-PC inklusive Netzteil-Check.">
+  <meta property="og:url" content="https://techvergleich24.de/gpu-berater.html">
+
+  <!-- Strukturierte Daten: WebApplication + FAQPage -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
+    "@graph": [
       {
-        "@type": "Question",
-        "name": "Passt jede moderne Grafikkarte auf mein Mainboard?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Ja, praktisch jedes Desktop-Mainboard der letzten 15 Jahre besitzt einen PCIe x16-Steckplatz, auf dem sowohl NVIDIA GeForce RTX- als auch AMD Radeon-Grafikkarten laufen. Entscheidend sind vor allem die Leistung des Netzteils und der Platz im PC-Gehäuse."
-        }
+        "@type": "WebApplication",
+        "name": "TechVergleich24 Grafikkarten- & GPU-Berater",
+        "url": "https://techvergleich24.de/gpu-berater.html",
+        "applicationCategory": "UtilitiesApplication",
+        "operatingSystem": "All",
+        "inLanguage": "de",
+        "description": "Interaktiver Kompatibilitäts-Berater zur Auswahl passender Grafikkarten (NVIDIA GeForce RTX & AMD Radeon) für Desktop-Mainboards, Gaming-PCs und Low-Profile-Office-Rechner."
       },
       {
-        "@type": "Question",
-        "name": "Welche Grafikkarte passt in schmale Office-PCs wie Dell OptiPlex oder HP ProDesk?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Schmale Small-Form-Factor-Gehäuse (SFF) benötigen spezielle Low-Profile-Grafikkarten ohne eigenen Stromanschluss, wie die NVIDIA GeForce RTX 3050 6GB Low Profile oder AMD Radeon RX 6400 Low Profile."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Kann man die Grafikkarte in einem Laptop austauschen?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Bei modernen Notebooks ist der Grafikchip fest auf dem Mainboard verlötet und kann intern nicht getauscht werden. Als Alternative bieten sich externe eGPU-Gehäuse über Thunderbolt 3/4 oder USB4 an."
-        }
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Passt jede moderne Grafikkarte auf mein Mainboard?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Ja, praktisch jedes Desktop-Mainboard der letzten 15 Jahre besitzt einen PCIe x16-Steckplatz, auf dem sowohl NVIDIA GeForce RTX- als auch AMD Radeon-Grafikkarten laufen. Entscheidend sind vor allem die Leistung des Netzteils und der Platz im PC-Gehäuse."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Welche Grafikkarte passt in schmale Office-PCs wie Dell OptiPlex oder HP ProDesk?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Schmale Small-Form-Factor-Gehäuse (SFF) benötigen spezielle Low-Profile-Grafikkarten ohne eigenen Stromanschluss, wie die NVIDIA GeForce RTX 3050 6GB Low Profile oder AMD Radeon RX 6400 Low Profile."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Kann man die Grafikkarte in einem Laptop austauschen?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Bei modernen Notebooks ist der Grafikchip fest auf dem Mainboard verlötet und kann intern nicht getauscht werden. Als Alternative bieten sich externe eGPU-Gehäuse über Thunderbolt 3/4 oder USB4 an."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Läuft eine PCIe 4.0 oder PCIe 5.0 Grafikkarte auf einem PCIe 3.0 Mainboard?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Ja, PCI-Express ist vollständig auf- und abwärtskompatibel. Eine moderne PCIe 4.0 oder 5.0 Grafikkarte funktioniert problemlos in einem PCIe 3.0 x16-Steckplatz mit nahezu identischer Spieleleistung."
+            }
+          }
+        ]
       }
     ]
   }
@@ -44,29 +74,33 @@
 </head>
 <body class="bg-gray-100 text-gray-800 min-h-screen flex flex-col">
 
-  <header class="bg-slate-900 text-white py-6 px-4 shadow">
-    <div class="max-w-4xl mx-auto flex justify-between items-center">
-      <h1 class="text-xl font-bold"><a href="index.html">TechVergleich24</a></h1>
-      <a href="index.html" class="text-sm bg-slate-800 hover:bg-slate-700 px-3 py-1.5 rounded transition">← Zurück zur Übersicht</a>
+  <header class="bg-slate-900 text-white py-5 px-4 shadow">
+    <div class="max-w-4xl mx-auto flex flex-wrap justify-between items-center gap-3">
+      <a href="index.html" class="text-xl font-bold tracking-tight hover:text-purple-400 transition">TechVergleich24</a>
+      <nav aria-label="Hauptnavigation" class="flex items-center gap-2 text-sm">
+        <a href="berater.html" class="bg-slate-800 hover:bg-slate-700 px-3 py-1.5 rounded transition">⚡ RAM-Berater</a>
+        <a href="index.html" class="bg-slate-800 hover:bg-slate-700 px-3 py-1.5 rounded transition">← Übersicht</a>
+      </nav>
     </div>
   </header>
 
   <main class="max-w-3xl mx-auto px-4 py-8 flex-grow w-full space-y-8">
     
-    <div class="bg-white p-6 md:p-8 rounded-xl shadow-md border space-y-8">
+    <section aria-labelledby="main-heading" class="bg-white p-6 md:p-8 rounded-xl shadow-md border space-y-8">
       <div>
-        <h2 class="text-2xl font-bold text-gray-900 mb-1">🎮 Grafikkarten- &amp; GPU-Berater</h2>
-        <p class="text-sm text-gray-600">Ermittle die optimale Grafikkarte für dein Komplettgerät oder Mainboard.</p>
+        <h1 id="main-heading" class="text-2xl md:text-3xl font-extrabold text-gray-900 mb-1.5">🎮 Grafikkarten- &amp; GPU-Berater für PC &amp; Mainboard</h1>
+        <p class="text-sm text-gray-600">Ermittle die optimale Grafikkarte für dein Komplettgerät, Mainboard oder schmales SFF-Gehäuse – inklusive Netzteil- und PCIe-Check.</p>
       </div>
 
       <!-- OPTION A: Direkt-Suche -->
       <div class="space-y-3">
-        <label class="block text-xs font-bold uppercase tracking-wider text-slate-700">Option A: Grafikkarte oder PC-Modell suchen</label>
+        <label for="modellInput" class="block text-xs font-bold uppercase tracking-wider text-slate-700">Option A: Grafikkarte oder PC-Modell direkt suchen</label>
         <div class="relative">
           <input 
             type="text" 
             id="modellInput" 
             onkeyup="sucheModell()" 
+            autocomplete="off"
             placeholder="z. B. Strix G18, Legion Pro 5, B550, OptiPlex, RTX 4070..." 
             class="w-full border-2 border-purple-500 rounded-lg p-3.5 text-sm focus:outline-none focus:ring-2 focus:ring-purple-600 shadow-sm"
           >
@@ -103,7 +137,7 @@
 
             <div>
               <p class="font-bold text-slate-900 mb-1">3. Apple Mac (MacBook / iMac / Mac mini):</p>
-              <p class="text-slate-600">Klicke oben links auf das <strong>Apple-Symbol () → Über diesen Mac</strong>.</p>
+              <p class="text-slate-600">Klicke oben links auf das <strong>Apple-Menü → Über diesen Mac</strong>, um Modellreihe und Grafikchip abzulesen.</p>
             </div>
           </div>
         </details>
@@ -118,11 +152,11 @@
       <!-- OPTION B: 4-Schritt Katalog-Assistent -->
       <div class="bg-purple-50/60 border-2 border-purple-200 rounded-xl p-5 md:p-6 space-y-4">
         <div class="flex items-center gap-3">
-          <div class="w-10 h-10 bg-purple-600 text-white rounded-lg flex items-center justify-center font-bold text-lg shadow-sm">
+          <div class="w-10 h-10 bg-purple-600 text-white rounded-lg flex items-center justify-center font-bold text-lg shadow-sm" aria-hidden="true">
             🔍
           </div>
           <div>
-            <h3 class="text-base font-bold text-gray-900">Option B: Schritt-für-Schritt über dein Gerät</h3>
+            <h2 class="text-base font-bold text-gray-900">Option B: Schritt-für-Schritt über dein Gerät</h2>
             <p class="text-xs text-gray-600">Wähle Gerätetyp, Hersteller, Modellreihe und deine verbaute Grafikkarte.</p>
           </div>
         </div>
@@ -133,11 +167,11 @@
           <div id="wSchritt1" class="space-y-2">
             <span class="text-xs font-bold text-slate-700 uppercase">Schritt 1: Wähle deinen Gerätetyp</span>
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-              <button onclick="waehleKategorie('Notebook')" class="bg-white hover:bg-purple-100 border-2 border-purple-200 hover:border-purple-500 font-semibold text-gray-800 text-sm py-3 px-4 rounded-lg shadow-sm transition text-left flex items-center justify-between">
+              <button type="button" onclick="waehleKategorie('Notebook')" class="bg-white hover:bg-purple-100 border-2 border-purple-200 hover:border-purple-500 font-semibold text-gray-800 text-sm py-3 px-4 rounded-lg shadow-sm transition text-left flex items-center justify-between">
                 <span>💻 Notebook / Laptop</span>
                 <span class="text-purple-600 font-bold">→</span>
               </button>
-              <button onclick="waehleKategorie('Desktop PC')" class="bg-white hover:bg-purple-100 border-2 border-purple-200 hover:border-purple-500 font-semibold text-gray-800 text-sm py-3 px-4 rounded-lg shadow-sm transition text-left flex items-center justify-between">
+              <button type="button" onclick="waehleKategorie('Desktop PC')" class="bg-white hover:bg-purple-100 border-2 border-purple-200 hover:border-purple-500 font-semibold text-gray-800 text-sm py-3 px-4 rounded-lg shadow-sm transition text-left flex items-center justify-between">
                 <span>🖥️ Desktop PC / Mainboard</span>
                 <span class="text-purple-600 font-bold">→</span>
               </button>
@@ -148,7 +182,7 @@
           <div id="wSchritt2" class="hidden space-y-2">
             <div class="flex justify-between items-center">
               <span class="text-xs font-bold text-slate-700 uppercase">Schritt 2: Wähle die Marke</span>
-              <button onclick="zurueckZuSchritt1()" class="text-xs text-purple-600 font-semibold hover:underline">← Zurück</button>
+              <button type="button" onclick="zurueckZuSchritt1()" class="text-xs text-purple-600 font-semibold hover:underline">← Zurück</button>
             </div>
             <div id="markenListe" class="grid grid-cols-2 sm:grid-cols-3 gap-2"></div>
           </div>
@@ -157,7 +191,7 @@
           <div id="wSchritt3" class="hidden space-y-2">
             <div class="flex justify-between items-center">
               <span class="text-xs font-bold text-slate-700 uppercase">Schritt 3: Wähle das Modell</span>
-              <button onclick="zurueckZuSchritt2()" class="text-xs text-purple-600 font-semibold hover:underline">← Marke ändern</button>
+              <button type="button" onclick="zurueckZuSchritt2()" class="text-xs text-purple-600 font-semibold hover:underline">← Marke ändern</button>
             </div>
             <div id="modelleKatalogListe" class="divide-y border border-purple-200 rounded-lg bg-white max-h-56 overflow-y-auto shadow-inner"></div>
           </div>
@@ -166,7 +200,7 @@
           <div id="wSchritt4" class="hidden space-y-2">
             <div class="flex justify-between items-center">
               <span class="text-xs font-bold text-slate-700 uppercase">Schritt 4: Wähle deine verbaute Grafikkarte</span>
-              <button onclick="zurueckZuSchritt3()" class="text-xs text-purple-600 font-semibold hover:underline">← Modell ändern</button>
+              <button type="button" onclick="zurueckZuSchritt3()" class="text-xs text-purple-600 font-semibold hover:underline">← Modell ändern</button>
             </div>
             <div id="variantenKatalogListe" class="divide-y border border-purple-200 rounded-lg bg-white max-h-56 overflow-y-auto shadow-inner"></div>
           </div>
@@ -174,14 +208,14 @@
         </div>
       </div>
 
-    </div>
+    </section>
 
     <!-- Ergebnisanzeige -->
     <div id="ergebnisBox" class="hidden bg-purple-50 border-2 border-purple-600 rounded-xl p-6 shadow-md space-y-5">
       <div class="flex justify-between items-start border-b border-purple-200 pb-3">
         <div>
           <span class="text-xs font-bold uppercase text-purple-800" id="mHersteller">HERSTELLER</span>
-          <h3 class="text-2xl font-black text-gray-900" id="mTitel">Modellname</h3>
+          <h2 class="text-2xl font-black text-gray-900" id="mTitel">Modellname</h2>
           <p class="text-xs font-semibold text-purple-700 mt-0.5" id="mVarianteLabel"></p>
         </div>
         <span class="bg-purple-600 text-white text-xs font-bold px-3 py-1 rounded-full" id="mGerätekategorie">Desktop PC</span>
@@ -207,6 +241,20 @@
       <div id="gpuEmpfehlungenContainer" class="space-y-3"></div>
     </div>
 
+    <!-- SEO-Ratgeber: Grafikkarte richtig auswählen -->
+    <article class="bg-white p-6 md:p-8 rounded-xl shadow-sm border space-y-4">
+      <h2 class="text-lg font-bold text-gray-900">Grafikkarte aufrüsten: Worauf du bei VRAM, Netzteil &amp; Gehäuse achten musst</h2>
+      <div class="text-xs text-gray-600 leading-relaxed space-y-3">
+        <p>Während der PCIe-x16-Steckplatz auf dem Mainboard genormt ist, scheitern Grafikkarten-Upgrades in der Praxis meist an drei mechanischen oder elektrischen Grenzen. Prüfe vor dem Kauf kurz diese drei Punkte:</p>
+        <ul class="list-disc list-inside space-y-1.5 ml-1">
+          <li><strong>Grafikspeicher (VRAM) nach Auflösung:</strong> Für flüssiges Full-HD-Gaming (1080p) reichen 8 GB VRAM gut aus. Spielst du in WQHD (1440p) oder 4K mit hohen Texturdetails und Raytracing, solltest du mindestens zu <strong>12 GB oder 16 GB VRAM</strong> greifen.</li>
+          <li><strong>Netzteil-Leistung &amp; PCIe-Stromkabel:</strong> Karten bis 75 Watt (z. B. RTX 3050 6GB LP) beziehen ihren gesamten Strom direkt aus dem Mainboard. Leistungsstärkere GPUs benötigen mindestens einen freien <strong>8-Pin-PCIe-Stecker</strong> (oder einen 16-Pin 12VHPWR-Anschluss) sowie ein Markennetzteil mit 550 bis 750 Watt.</li>
+          <li><strong>Gehäuselänge &amp; Slot-Breite:</strong> Miss im PC-Gehäuse den Abstand von der Slotblende bis zum Frontlüfter oder Festplattenkäfig aus. Viele moderne Dual- oder Triple-Fan-Karten sind zwischen 24 cm und 33 cm lang.</li>
+        </ul>
+        <p class="pt-1 text-slate-700">Tipp: Eine schnelle Grafikkarte entfaltet ihre volle Leistung nur mit ausreichend Arbeitsspeicher. Prüfe mit unserem <a href="berater.html" class="text-purple-600 font-semibold hover:underline">RAM- &amp; Arbeitsspeicher-Berater</a>, ob dein System bereits im Dual-Channel-Betrieb mit mindestens 16 GB oder 32 GB läuft.</p>
+      </div>
+    </article>
+
     <!-- SEO-Ratgeber & Häufige Fragen (FAQ) -->
     <section class="bg-white p-6 md:p-8 rounded-xl shadow-sm border space-y-5">
       <h2 class="text-lg font-bold text-gray-900">Häufige Fragen zum Grafikkarten-Upgrade (FAQ)</h2>
@@ -222,9 +270,14 @@
           <p>Schmale Small-Form-Factor-Gehäuse (SFF) benötigen spezielle <strong>Low-Profile-Grafikkarten ohne eigenen Stromanschluss</strong>, wie die NVIDIA GeForce RTX 3050 6GB Low Profile oder AMD Radeon RX 6400 Low Profile (max. 70 Watt direkt über den PCIe-Slot).</p>
         </div>
 
-        <div>
+        <div class="border-b border-gray-100 pb-3">
           <h3 class="font-bold text-sm text-gray-900 mb-1">Kann man die Grafikkarte in einem Laptop austauschen?</h3>
           <p>Bei modernen Notebooks ist der Grafikchip fest auf dem Mainboard verlötet und kann intern nicht getauscht werden. Als Alternative bieten sich externe <strong>eGPU-Gehäuse über Thunderbolt 3/4 oder USB4</strong> an.</p>
+        </div>
+
+        <div>
+          <h3 class="font-bold text-sm text-gray-900 mb-1">Läuft eine PCIe 4.0 oder PCIe 5.0 Grafikkarte auf einem PCIe 3.0 Mainboard?</h3>
+          <p>Ja, PCI-Express ist vollständig auf- und abwärtskompatibel. Eine moderne PCIe 4.0 oder 5.0 Grafikkarte funktioniert problemlos in einem PCIe 3.0 x16-Steckplatz mit nahezu identischer Spieleleistung.</p>
         </div>
       </div>
     </section>
@@ -233,7 +286,11 @@
 
   <footer class="bg-gray-900 text-gray-400 py-6 px-4 text-xs text-center border-t border-gray-800 space-y-2">
     <p>* Als Amazon-Partner verdiene ich an qualifizierten Verkäufen. Für dich entstehen keine Mehrkosten.</p>
-    <div>
+    <div class="flex justify-center gap-4">
+      <a href="index.html" class="hover:text-white">Startseite</a>
+      <span>·</span>
+      <a href="berater.html" class="hover:text-white">RAM-Berater</a>
+      <span>·</span>
       <a href="impressum.html" class="hover:text-white">Impressum &amp; Datenschutz</a>
     </div>
   </footer>
@@ -402,6 +459,7 @@
 
       Array.from(herstellerSet).sort().forEach(function(hersteller) {
         var btn = document.createElement('button');
+        btn.type = 'button';
         btn.className = 'bg-white hover:bg-purple-100 border border-purple-300 text-slate-800 text-xs font-semibold py-2.5 px-3 rounded-lg shadow-sm text-center transition';
         btn.innerText = hersteller;
         btn.onclick = function() { waehleHersteller(hersteller); };
@@ -479,10 +537,10 @@
             '<span class="bg-amber-100 text-amber-900 text-[11px] font-bold uppercase px-2.5 py-0.5 rounded-full">' + item.badge + '</span>' +
           '</div>' +
           '<div>' +
-            '<h4 class="text-sm md:text-base font-bold text-gray-900">' + item.name + '</h4>' +
+            '<h3 class="text-sm md:text-base font-bold text-gray-900">' + item.name + '</h3>' +
             '<p class="text-xs text-gray-600 mt-0.5">' + item.details + '</p>' +
           '</div>' +
-          '<a href="' + link + '" target="_blank" rel="noopener noreferrer" class="block w-full text-center bg-amber-500 hover:bg-amber-600 text-white font-bold py-2.5 px-4 rounded-lg transition shadow-sm text-xs md:text-sm">' +
+          '<a href="' + link + '" target="_blank" rel="nofollow sponsored noopener noreferrer" class="block w-full text-center bg-amber-500 hover:bg-amber-600 text-white font-bold py-2.5 px-4 rounded-lg transition shadow-sm text-xs md:text-sm">' +
             'Dieses Modell bei Amazon prüfen *' +
           '</a>';
         container.appendChild(card);
